@@ -27,7 +27,7 @@ description: 把产品Brief、脚本、分镜、故事板、参考视频或成�
 
 6. **控制方式服从难度，返修保护成功层**：文字控制失败、参考角度不足或三维路径过复杂时，优先减少变量、拆镜或升级为多角度资产、独立关键帧、动作参考、故事板、白模、编辑或后期，不用同义词堆叠掩盖输入层问题。用户只改一处时保留未涉及的方向、事实、母规则、成功镜头与声音，只修改唯一主问题层及必要承接；同层连续失败时升级控制方式或回到上游。
 
-7. **按严格信息预算编译，前台只保留可见结果**：开场总控最多三句，必须说清片子任务、风格/摄影/质感、节奏曲线和视觉母机制；每份参考素材只用一句绑定唯一职责；技术基线固定一句；每镜按“首帧构图 → 可见事件 → 摄影机反应 → 完成态/承接”写2–4个高密度画面句。每句话必须改变主体、动作、构图、摄影、光线、材质、节奏或声音之一；删除后画面不变的句子直接删除。默认正向描述成片，不输出内部问答、理由、风险表、设备清单或重复技术参数。
+7. **先判编译复杂度，再按最小充分信息输出**：典型4–10秒、单人、单场景、单一清楚动作链，且没有对话轴线、人物/道具交接、跨区域移动、复杂运镜或跨镜状态继承时，使用简单直写模式，以1–2个高密度句写清主体、场景、起点、动作路径、完成态和必要摄影反应；不建立人物编号、俯视站位、三层空间协议或状态表。只要存在多人相对关系、正反打、长时间连续调度、复杂一镜到底、交接、跨区移动或高风险空间继承，即使总时长较短也进入结构化模式：场景拓扑只定义一次，人物/产品编号只映射身份，镜头时码只写当前画面的局部关系与变化。每条事实只在最高有效层出现一次，后文只写变化；每句话必须改变可见或可听结果，删除后画面不变的句子直接删除。详细编译见 `references/prompt-compilation-and-consistency.md`，三层空间方法唯一归属 `references/spatial-optics-physics-control.md`。
 
 8. **默认一版最优、资产最小化**：除非用户明确要求多个方向或版本，只交付判断后的单一最佳整合方案；只建议会实质提高身份、结构、动作、构图、连续性或生成稳定度的最少资产，并为每个资产绑定唯一职责。角色/产品/道具有年龄、受伤、变形、换装、破损等连续状态时，建立最小 `Asset Dependency`：先锁基础母资产，再从已确认上游派生下游状态，普通表情、临时污渍或模型可稳定完成的变化不拆独立资产。最终可复制提示词的第三部分仅用一句 `【全片视觉与技术基线】` 呈现全片共用的可见技术结果，不在每镜重复。
 
@@ -48,7 +48,7 @@ description: 把产品Brief、脚本、分镜、故事板、参考视频或成�
 5. 若任务依赖首屏停留、社媒传播、短视频转化或用户明确要求强 Hook，先运行黄金3秒后台链路：`普通开头 → 观众预测 → 主要预测偏差 → 具体观众问题 → 未完成状态 → Hook模式判断 → Bridge → Payoff → 事实/安全检查`。默认选择与产品或剧情同因果的标准 Hook；仅当传播目标明确优先获取停留、品类允许延迟产品揭示时启用 `attention-first-hook`，并同步建立首屏色彩分离与视觉主次。最终只保留被选中的可见成片，不外显后台推理。
 6. 商业任务先锁商业主目标、产品事实、真实比例、单一传播命题、主决策/首要犹豫、可见证据、产品进入、Hero Shot/End Frame与事实边界；剧情任务先锁人物关系、诉求、冲突、知情差、转折和情绪落点；若为短剧/剧情对话/关系戏，再建立人物表演状态与空间总控后拆镜。只有节奏复杂或时长较长时，后台增加轻量节奏图：剧情看情绪起伏，广告看注意力×信息密度×情绪，UGC看好奇×证据×信任；不为短而简单的任务强制建表。
 7. 在后台建立完整技术方案与画质风险定位；若输入或交付层是主问题，优先修输入、高清模式、真实输出规格、码率、编码、平台压缩或后期超分，不污染创意提示词。
-8. 按“首帧构图 → 可见事件 → 摄影机反应 → 完成态/承接”编译时间轴。依次运行方向测试、人脑成像测试、`Consistency Gate`、模型容量、物理连续性、画质交付和 `Duration Gate`；任何未解决的总控/时码/状态矛盾或 `<4秒` 独立生成单元都必须先重写。
+8. 先通过编译复杂度门：简单片段直接压成1–2句；结构化任务再按“首帧构图 → 可见事件 → 摄影机反应 → 完成态/承接”编译时间轴，复杂空间额外启用三层空间协议。依次运行方向测试、人脑成像测试、`Consistency Gate`、模型容量、物理连续性、画质交付和 `Duration Gate`；任何未解决的总控/时码/状态矛盾或 `<4秒` 独立生成单元都必须先重写。
 9. 用户只要视频提示词时，隐藏内部问答并按 `references/output-contract-and-validation.md` 输出；用户要分镜表、导演分析或参考视频反推时，再展示每镜的“镜头核心表达”和“承接”。
 10. 用户返回成片时先按时间码取证，区分成功层、失败层、必须保留和唯一主修层；只做证据驱动局部重试，同层两次失败时升级控制方式或回到上游。
 
@@ -59,7 +59,7 @@ description: 把产品Brief、脚本、分镜、故事板、参考视频或成�
 | 每次调用 | `references/user-operating-contract.md` |
 | 新写、重写、分镜转提示词或检查提示词 | `references/prompt-compilation-and-consistency.md`、`references/output-contract-and-validation.md` |
 | 主轴/带宽含混、混合任务、跨模块冲突或技能维护 | `references/rule-governance-and-module-routing.md`、`references/direction-routing.md` |
-| 摄影、光影、构图、空间、物理或画质需要重新设计/返修 | 按问题读取 `references/camera-light-quality-baseline.md`、`references/camera-composition-decision-layer.md`、`references/spatial-optics-physics-control.md`，不因普通写作全部加载 |
+| 多人相对站位、正反打、长时间连续场景、复杂一镜到底、人物/道具交接、跨区域移动、高风险空间继承，或摄影/空间/物理需要重新设计与返修 | 读取 `references/spatial-optics-physics-control.md`，并按问题叠加 `references/camera-light-quality-baseline.md`、`references/camera-composition-decision-layer.md`；4–10秒单人单场景单动作的简单片段不因此加载三层空间协议 |
 | 两个及以上镜头、故事板、分镜表、时间轴、一镜到底连续节拍、参考视频反推；或单镜“为什么这样拍/怎样设置” | `references/director-information-control.md` |
 | 创意、脚本、剧情大纲、时间轴、分镜、故事板、构图设计，或需要用视觉重量、负空间、引导线、框中框表达关系、悬念、产品地位 | `references/composition-story-engine.md`；正式分镜与提示词继续叠加 `references/camera-composition-decision-layer.md`，若用于首屏 Hook 同时读取 `references/golden-3s-hook-engine.md` |
 | 短剧、剧情对话、关系戏、双人/多人情绪对白、抢话/打断/重叠对白、微表演或克制表演 | `references/drama-performance-control.md`；同时读取 `references/director-information-control.md`，多镜连续再叠加 `references/continuity.md` |
@@ -105,9 +105,9 @@ description: 把产品Brief、脚本、分镜、故事板、参考视频或成�
 - 用户只要可复制提示词：只输出问答后的有效结论，不展示内部分析表。
 - 用户未要求多个方向或版本：只输出一版最优整合结果；不得用多个近似方案转移创作判断。
 - 用户要分镜/导演分析/参考反推：每镜增加“镜头核心表达”和“承接”，说明新增信息/关系/感知/产品证据，以及回答上一镜什么、用何种视觉或声音变量接向下一镜。
-- 最终提示词第三部分固定为一句 `【全片视觉与技术基线】`；其余技术方案留在后台，镜头段只写真实变化项，不重复整套基线。
-- 每个完整的新写、重写、降级版、安全版或备选版都保留固定前三部分，不把备用提示词压成失去结构的一段话。
+- 简单直写模式输出一个1–2句的可复制提示词块，不为凑格式增加固定前三部分；结构化模式的第三部分固定为一句 `【全片视觉与技术基线】`，其余技术方案留在后台，镜头段只写真实变化项。
+- 每个结构化的新写、重写、降级版、安全版或备选版都保留固定前三部分，不把结构化备用提示词压成失去控制信息的一段话。
 - 默认沿用用户的语言、模型和格式硬约束；字符数、时长、镜头数、素材引用数、比例与输出格式在交付前主动校验。时长校验必须执行全局 `Duration Gate`：任何独立视频生成提示词 `<4秒` 均不得输出，必须先修正为 `>=4秒`。
 - 所有多镜、多时段或状态变化提示词必须通过 `Consistency Gate`；总控承诺、时码状态、叙事因果、摄影/声音与素材职责存在未解决矛盾时不得输出。
 
-仅在用户明确要求更新本技能时，先依照 `references/rule-governance-and-module-routing.md` 判断新增知识应进入公共层、跨域层还是专用层，再用 `python3 scripts/audit_module_routing.py` 检查失联引用，并使用 `evaluation-cases/director-and-quality-cases.md`、`evaluation-cases/portable-behavior-cases.md`、`evaluation-cases/cross-module-routing-cases.md`、`evaluation-cases/grounded-surreal-cases.md`、`evaluation-cases/transformation-spectacle-cases.md` 与 `evaluation-cases/observational-camera-cases.md` 做回归验证，最后通过 Skill Creator 的结构验证后保存；普通视频任务不运行维护流程。
+仅在用户明确要求更新本技能时，先依照 `references/rule-governance-and-module-routing.md` 判断新增知识应进入公共层、跨域层还是专用层，再用 `python3 scripts/audit_module_routing.py` 检查失联引用，并使用 `evaluation-cases/director-and-quality-cases.md`、`evaluation-cases/portable-behavior-cases.md`、`evaluation-cases/cross-module-routing-cases.md`、`evaluation-cases/grounded-surreal-cases.md`、`evaluation-cases/transformation-spectacle-cases.md`、`evaluation-cases/observational-camera-cases.md` 与 `evaluation-cases/spatial-prompt-compression-cases.md` 做回归验证，最后通过 Skill Creator 的结构验证后保存；普通视频任务不运行维护流程。
