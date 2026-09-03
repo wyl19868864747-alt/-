@@ -200,6 +200,36 @@ Proof必须来自真实商品事实。
 
 禁止：上一镜两只耳机都在耳朵，下一镜一只已经躺在盒里，没有任何取下过程。
 
+**Hero Shot也必须服从Object State Ledger。** 不允许因为“标准商品图长这样”就把正在被人物佩戴/使用的配件重新复制回包装或盒体。
+
+## 2.12 Post-Proof Continuation Check｜卖点证明后，故事还活着吗？
+
+真实Benchmark发现：一条30秒广告即使Hook、Selling Point和Proof都正确，如果在8–10秒已经完成核心Benefit，后面十几秒只剩“继续工作 / 继续使用 / 继续微笑”，观众依然会觉得平。
+
+如果Best Proof / Benefit Expression在总时长前约40–50%已经完成，后续必须二选一：
+
+### A. 继续推进同一个商业因果
+至少发生1个与当前Selling Point直接相关的新Beat，例如：
+- Benefit产生真实后果；
+- 人物关系/立场变化；
+- 新的小阻力被同一个Benefit解决；
+- 轻Surprise；
+- Comedy Payoff；
+- 新选择/新目标；
+- Product Benefit导致新的Decision Change。
+
+### B. 缩短广告
+如果没有值得发生的新Beat：
+
+> **直接缩成15–20秒，比用重复使用镜头填满30秒更好。**
+
+硬规则：
+- 不因为中段平就条件反射强制R2；
+- R0可以通过`Proof → Consequence → Emotional Payoff`保持有趣；
+- R1 Surprise / Comedy可以作为轻量增强，但必须继续服务同一个Selling Point；
+- 禁止为了续命突然加入第二卖点；
+- Proof后每4–6秒至少检查是否出现`新信息 / 新动作目标 / 新关系 / 新后果 / 新笑点`之一。
+
 ---
 
 # 3. 推荐执行顺序
@@ -272,6 +302,11 @@ OBJECT STATE LEDGER:
 
 AUDIO SPATIAL PLAN:
 
+POST-PROOF CONTINUATION:
+- Proof complete at:
+- Next causal beat:
+- Why it still serves the same selling point:
+
 PRIMARY GENERATION RISK:
 ```
 
@@ -309,7 +344,7 @@ PASS / PARTIAL / FAIL
 
 8. STORY_ENGAGEMENT:
 PASS / PARTIAL / FAIL
-前1–3秒是否有继续看的理由？剧情是否有推进？
+前1–3秒是否有继续看的理由？Proof后是否仍有推进？
 
 9. EMOTIONAL_PAYOFF:
 PASS / PARTIAL / FAIL
@@ -319,6 +354,10 @@ PASS / PARTIAL / FAIL
 PASS / PARTIAL / FAIL / N/A
 距离、方向、耳机/门/空间遮挡与听觉逻辑是否成立？
 
+11. POST_PROOF_CONTINUATION:
+PASS / PARTIAL / FAIL / N/A
+若Proof在前半段完成，后续是否出现新的因果Beat，还是只重复“继续使用”？
+
 PRIMARY FAILURE TYPE:
 SKILL_RULE / PROMPT_COMPILER / MODEL_LIMIT / RANDOM_GENERATION / PRODUCT_ASSET_LIMIT / NONE
 
@@ -326,7 +365,7 @@ FAILURE PATTERN IDS:
 GFxx...
 
 NEXT ACTION:
-KEEP / PROMPT_FIX / SKILL_FIX / COMMERCIAL_RESET / SIMPLIFY / SPLIT_SHOT / CHANGE_CAMERA / CHANGE_SCENE / RERUN / STOP
+KEEP / PROMPT_FIX / SKILL_FIX / COMMERCIAL_RESET / SIMPLIFY / SPLIT_SHOT / CHANGE_CAMERA / CHANGE_SCENE / SHORTEN / ADD_CONSEQUENCE / ADD_R1_SURPRISE / RERUN / STOP
 ```
 
 ---
@@ -341,6 +380,7 @@ KEEP / PROMPT_FIX / SKILL_FIX / COMMERCIAL_RESET / SIMPLIFY / SPLIT_SHOT / CHANG
 - 同一Scene关键空间规则连续2条FAIL
 - Commercial Clarity连续2条FAIL
 - Story Engagement连续2条FAIL
+- Proof在前半段完成但Post-Proof Continuation连续失败
 - 同一Prompt Compiler缺陷跨2条复现
 
 尤其：
