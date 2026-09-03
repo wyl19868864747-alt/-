@@ -1,9 +1,10 @@
 ---
 name: story-commerce-skill
-description: 面向短视频剧情带货广告的全品类消费者决策、Story Architecture路由、Reversal信息变化路由、可选Scene DNA世界路由、Performance/FACS表演编译、创意编剧、导演拆解、Seedance可执行提示词编译与静默QA。先锁定真实商业事实、消费者主决策问题与可证明Proof，再选择最合适的剧情因果骨架；随后从R0无反转、R1轻信息变化、R2真反转中保守路由，只有确实增强商业表达时才调用强反转、Comedy、Absurdity、Scene DNA等模块；最终把抽象创意与人物Reaction编译成明确动作链、视线链、微表情链、道具链和镜头链。
+description: 面向短视频剧情带货广告的全品类消费者决策、Story Architecture路由、Reversal信息变化路由、可选Scene DNA世界路由、Performance/FACS表演编译、创意编剧、导演拆解、Seedance可执行提示词编译与静默QA。先锁定真实商业事实、消费者主决策问题与可证明Proof，再选择最合适的剧情因果骨架；随后从R0无反转、R1轻信息变化、R2真反转中保守路由，特殊Scene必须与NORMAL_LOCATION直接竞争并证明独特因果增益，只有确实增强商业表达时才调用强反转、Comedy、Absurdity、Scene DNA等模块；最终把抽象创意与人物Reaction编译成明确动作链、视线链、微表情链、道具链和镜头链。
 ---
 
-# 剧情带货 Skill 3.3｜Commercial Decision × Story Architecture × Reversal Router × Optional Scene DNA × Performance/FACS
+# 剧情带货 Skill 3.4｜COMMERCIAL FREEZE
+## Commercial Decision × Story Architecture × Reversal Router × Optional Scene DNA × Performance/FACS
 
 ## 0. 每次开始
 
@@ -12,7 +13,7 @@ description: 面向短视频剧情带货广告的全品类消费者决策、Stor
 3. Story Architecture确定后先形成Proof Plan；Proof先于反转、荒诞、喜剧和Scene奇观。
 4. 完整阅读 `references/reversal-router.md`，从R0开始判断最终是R0无反转、R1轻信息变化还是R2真反转。**每条都要完成路由，但R0完全合格。**
 5. 当商品属于明确实体品类、品类陌生、用户只给一句商品名，或需要跨品类稳定性时，阅读 `references/category-priors.md`；品类先验不能替代具体SKU、人群和购买问题。
-6. **只有**用户明确指定特殊Scene，或Story/Creative Card判断Scene DNA能实质增强人物关系、冲突、Proof、Reaction或镜头时，才完整阅读 `references/scene-router.md`。
+6. **只有**用户明确指定特殊Scene，或Story/Creative Card判断Scene DNA能实质增强人物关系、冲突、Proof、Reaction或镜头时，才完整阅读 `references/scene-router.md`。用户未指定时，`NORMAL_LOCATION`与S01–S12从一开始共同竞争，普通现实场景可以合法胜出。
 7. 只有Scene Router最终选择特殊Scene DNA后，才读取 `references/scene-dna-library.md` 中对应Scene Card；普通真实生活场景不强制进入Scene Library。
 8. 在故事Beat、Proof、R-level与Scene/Location确定后，完整阅读 `references/performance-facs.md`，把需要的Reaction编译成可见、克制、景别可读的视线/面部/头部/身体动作。**FACS只负责表演动作，不得改写Story、Proof或R-level。**
 9. 用户本轮明确要求、真实商品事实、参考资产、平台规则与合规边界始终高于参考文件。
@@ -39,7 +40,7 @@ description: 面向短视频剧情带货广告的全品类消费者决策、Stor
 → `Proof Plan`
 → `Reversal Router：R0 / R1 / R2`
 → `按需其他Creative Modules`
-→ `按需Scene DNA`
+→ `Scene Router：NORMAL_LOCATION vs S01–S12`
 → `Story`
 → `Performance Intent / FACS Compiler`
 → `Seedance动作编译`
@@ -52,7 +53,8 @@ description: 面向短视频剧情带货广告的全品类消费者决策、Stor
 - `R0`是默认且完全合格；`R1`是常见增强；`R2`是少数高价值真反转。
 - Clarification、Reveal、Surprise不冒充True Reversal。
 - Reversal / Comedy / Absurdity / Escalation / Visual Spectacle都是可选增强，不是每条广告必备。
-- Scene DNA是可选世界增强，不是所有剧情的必经步骤。
+- Scene DNA是可选世界增强；`NORMAL_LOCATION`是正式Candidate 0，不是失败方案。
+- 特殊Scene必须说得清 `UNIQUE_CAUSAL_GAIN`，不能靠“更有视觉奇观”获胜。
 - Performance/FACS只负责把已经确定的事件翻译成人物可见Reaction，不得凭表情重新发明剧情。
 - 如果拿掉商品后剧情仍能用完全相同方式解决，产品植入失败。
 - 如果为了故事、反转、Scene或表情修改商品事实，直接失败。
@@ -63,6 +65,7 @@ description: 面向短视频剧情带货广告的全品类消费者决策、Stor
 `PRODUCT TRUTH > STORY TRICK`
 `PROOF > REVERSAL`
 `PRIMARY ARCHITECTURE > OPTIONAL MODULES`
+`NORMAL LOCATION IS A VALID WINNER`
 `EVENT > PERFORMANCE DECORATION`
 `PRODUCT LOCK > SCENE STYLE`
 
@@ -81,7 +84,7 @@ description: 面向短视频剧情带货广告的全品类消费者决策、Stor
 7. 产品在剧情中的因果作用
 8. Reversal Router正确性与信息清晰度
 9. 其他Creative Modules是否真正增益
-10. 若调用Scene：Scene Safety Fit与Scene原生因果
+10. 若调用Scene：Scene Safety / DNA Activation / Unique Causal Gain与Scene原生因果
 11. 人物 / 产品 / 空间 / 物理连续
 12. Performance Intent / Reaction正确性
 13. 镜头 / 节奏 / 表演细节
@@ -98,6 +101,7 @@ description: 面向短视频剧情带货广告的全品类消费者决策、Stor
 `产品因果作用 > 产品露出次数`
 `动作事件 > 抽象形容词`
 `具体Reaction > “大家震惊”`
+`商业匹配 > 特殊世界视觉炫技`
 `清晰转化 > 电影炫技`
 
 ---
@@ -274,29 +278,68 @@ R1禁止补假第二证据、微小异常或180°链。
 
 ---
 
-# 8. SCENE ROUTER｜按需调用
+# 8. SCENE ROUTER｜NORMAL_LOCATION与特殊Scene共同竞争
+
+完整执行 `references/scene-router.md`。
 
 Scene不是默认必经步骤。
 
-只有满足任一才调用特殊Scene DNA：
-- 用户明确指定Scene；
-- Story/Creative Card判断Scene DNA能实质增强商业表达；
-- SA07等社会关系架构确实需要更明确世界规则；
-- 特殊Scene能让Product Entry、Proof、Reaction或Hook明显更自然/独特。
+用户未指定特殊Scene时，候选从一开始就是：
 
-否则优先普通真实生活场景。
+`NORMAL_LOCATION + S01–S12`
 
-调用后完整执行 `references/scene-router.md`；只有Scene Router选中特殊Scene后才读取 `references/scene-dna-library.md` 对应Card。
+选择采用分层Gate，不做10项机械等权相加：
+
+### HARD GATES
+- Safety / Audience
+- Product Truth
+- Proofability
+- DNA Activation
+
+### PRIMARY COMMERCIAL FIT
+- Decision Fit
+- Architecture Fit
+- Proof Fit
+- Product Entry Fit
+
+### UNIQUE CAUSAL GAIN
+特殊Scene必须能回答：
+
+> **这个世界提供了什么NORMAL_LOCATION和其他候选无法同样自然提供的因果优势？**
+
+写不清则降级。
+
+### SECONDARY EXECUTION FIT
+- Character Fit
+- Reaction Signature
+- Generation Risk
+- Native Conflict Fit
+
+### TIE BREAK ONLY
+- Visual Distinctiveness
+- Batch Diversity
+- Camera novelty
+
+**Visual Distinctiveness不得补偿商业不匹配。**
+
+如果特殊Scene不能明显赢过NORMAL_LOCATION：
+
+> 使用普通真实生活场景。
+
+只有Scene Router选中特殊Scene后才读取 `references/scene-dna-library.md` 对应Card。
 
 特殊Scene必须通过：
 - Safety Gate
+- DNA Activation Test
 - Scene Independence Test
+- Unique Causal Gain
 - Product Truth不被Scene改写
 - Scene真正改变人物身份/关系/规则/冲突/商品入口/动作/Reaction/节奏/镜头中的多个维度
 
 Reversal与Scene调用顺序：
 - 先由Reversal Router决定R-level；
 - 若同时调用Scene，再用Scene Card寻找最自然的表达；
+- Scene Card里的反转内容仅为R2兼容资产；
 - **不能因为选了宫廷/西部/列车等Scene，就自动强制R2。**
 
 ---
@@ -314,7 +357,7 @@ Reversal与Scene调用顺序：
 → `Product Entry`
 → `Reversal Card：R0/R1/R2`
 → `按需其他Creative Modules`
-→ `按需Scene原生化`
+→ `Scene Mode：NORMAL_LOCATION / SPECIAL_SCENE_DNA`
 → `人物Decision Change`
 → `CTA`
 
@@ -370,7 +413,7 @@ Hook首先属于：
 
 若R2，Hook可以建立Wrong Answer/Evidence；若R0/R1，不得为了“像反转”强造误导Hook。
 
-若调用Scene，Hook再服从Scene规则。
+若调用Scene，Hook再服从Scene规则；若NORMAL_LOCATION，不为展示Scene库强造特殊世界。
 
 Hook与Best Proof必须属于同一商业因果链。
 
@@ -418,7 +461,7 @@ R1：只表现对应Clarification / Reveal / Surprise的轻信息变化，不演
 
 R2：Wrong Answer阶段保持可信旧判断；Micro Anomaly才出现短暂停顿/视线变化；Reveal后再发生认知重置与Aftermath。**不得通过提前表情泄底。**
 
-若调用Scene：Scene Performance DNA只调节Reaction的社会方式、强度和传播路径，不改Story事实与R-level；否则使用现实关系最自然的Reaction路径。
+若调用特殊Scene：按Scene Router的Reaction Signature和Scene Performance DNA调节Reaction的社会方式、强度和传播路径；若NORMAL_LOCATION：使用现实关系最自然的Reaction路径。
 
 ---
 
@@ -686,17 +729,23 @@ Reversal会额外消耗复杂度；R2通常至少需要4–6个剧情Beat。Perf
 - [ ] R2相对R0/R1的Value Delta为正
 - [ ] 情绪奖励真实且回看合理
 
-## D. Scene Router / Scene DNA｜仅调用特殊Scene时
+## D. Scene Router / Scene DNA
 
-- [ ] Scene通过Safety Gate
+- [ ] 用户未指定Scene时，NORMAL_LOCATION已作为Candidate 0参与比较
+- [ ] 特殊Scene通过Safety / Truth / Proofability / DNA Activation Hard Gates
+- [ ] Decision / Architecture / Proof / Product Entry是Primary Fit，没有被视觉奇观抵消
+- [ ] 若选择特殊Scene，能用一句话写出Unique Causal Gain
 - [ ] Scene Independence Test通过
 - [ ] 商品使用Scene原生冲突/入口
 - [ ] Scene实质改变多个剧情执行维度
 - [ ] WORLD TECH没有变成PRODUCT FACT
 - [ ] Scene没有因为自身DNA强行触发R2
+- [ ] Reaction Signature与Performance调制一致
+- [ ] Visual Distinctiveness只作Tie Break
+- [ ] 若特殊Scene净收益不明确，已回退NORMAL_LOCATION
 - [ ] 未Seedance实测Scene仍标 `TESTING_CANDIDATE`
 
-未调用特殊Scene时整组跳过，不强制补Scene DNA。
+如果最终为NORMAL_LOCATION，跳过特殊Scene执行Card，不强制补Scene DNA。
 
 ## E. Performance / FACS｜每条含人物Reaction时必检
 
@@ -711,7 +760,7 @@ Reversal会额外消耗复杂度；R2通常至少需要4–6个剧情Beat。Perf
 - [ ] R0没有被表演偷偷制造误会/反转
 - [ ] R1没有被表演升级成R2
 - [ ] R2在Micro Anomaly前没有表演泄底
-- [ ] 若调用Scene，Reaction方式符合Scene Performance DNA
+- [ ] 若调用Scene，Reaction方式符合Scene Performance DNA / Reaction Signature
 - [ ] 多人Reaction有先后顺序，不同步触发
 - [ ] 人物表情没有暗示未被证明的医学/安全/金融/性能结论
 
@@ -736,9 +785,9 @@ Reversal会额外消耗复杂度；R2通常至少需要4–6个剧情Beat。Perf
 - [ ] R0没有偷偷补反转模板
 - [ ] R1没有被编译成假R2
 - [ ] R2的每个反转Beat都有明确可见动作/信息
-- [ ] 未调用Scene时没有增加不必要特殊世界复杂度
+- [ ] NORMAL_LOCATION获胜时没有为了展示Scene库增加特殊世界复杂度
 
-关键项失败，返回对应层内部重写；Performance失败时优先**删减或重编Reaction**，不为了保住表情去改Story、Proof或R-level。
+关键项失败，返回对应层内部重写；Performance失败时优先删减或重编Reaction；Reversal失败时优先降级R-level；Scene失败时优先回退NORMAL_LOCATION。**任何下游模块都不得为了保住自己去改商品事实、Best Proof或Primary Architecture。**
 
 ---
 
@@ -746,7 +795,7 @@ Reversal会额外消耗复杂度；R2通常至少需要4–6个剧情Beat。Perf
 
 当前12个Scene只完成：
 
-> **结构研发 + 横向差异QA + 跨3C/服装/日用品内部稳定性QA**
+> **结构研发 + 横向差异QA + 跨3C/服装/日用品内部稳定性QA + Scene Index结构化迁移 + Router规则回归**
 
 尚未完成：
 - Seedance实际跨商品生成
@@ -758,13 +807,59 @@ Reversal会额外消耗复杂度；R2通常至少需要4–6个剧情Beat。Perf
 当前统一状态：
 `TESTING_CANDIDATE`
 
-只有满足 `references/scene-router.md` 中Validated升级条件，才可单独升级为 `VALIDATED`。
+只有满足 `references/scene-validation-registry.md` 与 `references/scene-router.md` 中Validated升级条件，才可单独升级为 `VALIDATED`。
 
 ---
 
-# 19. 最终判定
+# 19. 模块权限边界｜FREEZE
 
-剧情带货商用版最低标准不是“必须有反转”，也不是“必须使用Scene DNA”，更不是“每个人都必须表演得很满”。
+下游模块只能**编译或增强**上游已经确定的内容，不能反向篡权：
+
+`Commercial Decision`
+决定“消费者为什么买/犹豫什么”
+
+↓
+
+`Story Architecture`
+决定“因果骨架怎么走”
+
+↓
+
+`Proof Plan`
+决定“什么必须真实可见”
+
+↓
+
+`Reversal Router`
+只决定“信息变化强度R0/R1/R2”
+
+↓
+
+`Creative Modules`
+只增强表达，不改商业事实与主Driver
+
+↓
+
+`Scene Router`
+只决定NORMAL_LOCATION或世界原生化方式，不改架构/R-level/Proof
+
+↓
+
+`Performance/FACS`
+只把Beat翻译为可见Reaction，不发明新剧情
+
+↓
+
+`Seedance Compiler`
+只把上述内容翻译为可执行动作/镜头/声音/空间约束
+
+**若下游模块改变了上游事实、Primary Driver、Best Proof或R-level，视为模块越权，返回重路由。**
+
+---
+
+# 20. 最终判定｜3.4 COMMERCIAL FREEZE
+
+剧情带货商用版最低标准不是“必须有反转”，不是“必须使用Scene DNA”，也不是“每个人都必须表演得很满”。
 
 必须同时成立：
 
@@ -776,11 +871,13 @@ Reversal会额外消耗复杂度；R2通常至少需要4–6个剧情Beat。Perf
 +
 `产品推动剧情`
 +
-`R-level选择正确且商业净收益为正/无需反转时保持R0`
+`R-level选择正确且商业净收益为正 / 无需反转时保持R0`
 +
 `其他Creative Modules确实增益且未篡改事实`
 +
-`若调用Scene：Scene选择正确且真正改变剧情因果`
+`NORMAL_LOCATION与特殊Scene公平比较`
++
+`若调用Scene：Scene选择正确且具有Unique Causal Gain`
 +
 `Performance对应真实Trigger且不抢主事件`
 +
@@ -791,3 +888,5 @@ Reversal会额外消耗复杂度；R2通常至少需要4–6个剧情Beat。Perf
 `事实/物理/平台/IP合规稳定`
 
 只有全部适用项达到可接受状态才交付。
+
+**3.4为本轮商用重构冻结基线。后续新增Scene、真实Seedance验证、品类扩展或新的Creative Module，应作为增量更新，不得重新破坏上述权限边界。**
