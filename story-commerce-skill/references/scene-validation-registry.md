@@ -67,10 +67,13 @@ Scene总状态：
 - 测试商品
 - 模型/版本
 - 生成片段或任务引用
+- Asset Mode：REFERENCE / PARTIAL_REFERENCE / TEXT_ONLY
 - 失败模式
 - 修复后是否复测
 
 没有证据时不得把 `NOT_TESTED` 改成 `PASS`。
+
+`TEXT_ONLY`结果可以支持Scene、动作、空间、Performance等诊断，但不能单独把Reference Product Lock升级PASS。
 
 ---
 
@@ -105,7 +108,7 @@ Scene总状态：
 | S01 | 架空古装宫廷 | TESTING_CANDIDATE | INTERNAL_PASS | INTERNAL_PASS | INTERNAL_PASS | NOT_TESTED |
 | S02 | 现代美国高中 | TESTING_CANDIDATE | INTERNAL_PASS | INTERNAL_PASS | INTERNAL_PASS | NOT_TESTED |
 | S03 | 架空古代战争军营 | TESTING_CANDIDATE | INTERNAL_PASS | INTERNAL_PASS | INTERNAL_PASS | NOT_TESTED |
-| S04 | 现代美国企业办公室 | TESTING_CANDIDATE | INTERNAL_PASS | INTERNAL_PASS | INTERNAL_PASS | NOT_TESTED |
+| S04 | 现代美国企业办公室 | TESTING_CANDIDATE | INTERNAL_PASS | INTERNAL_PASS | INTERNAL_PASS | STARTED / PARTIAL-FAIL |
 | S05 | 架空美国西部边疆贸易小镇 | TESTING_CANDIDATE | INTERNAL_PASS | INTERNAL_PASS | INTERNAL_PASS | NOT_TESTED |
 | S06 | 架空现代豪华上流晚宴 | TESTING_CANDIDATE | INTERNAL_PASS | INTERNAL_PASS | INTERNAL_PASS | NOT_TESTED |
 | S07 | 现代美国大型购物中心 | TESTING_CANDIDATE | INTERNAL_PASS | INTERNAL_PASS | INTERNAL_PASS | NOT_TESTED |
@@ -117,16 +120,14 @@ Scene总状态：
 
 ---
 
-# 5. 实际生成测试矩阵｜当前基线
-
-当前没有足够证据将以下任何实际生成字段标记PASS，因此统一保持NOT_TESTED。
+# 5. 实际生成测试矩阵｜当前证据
 
 | ID | 3C | Apparel | Daily Goods | Recognition | Product Lock | Space | Physical | Multi-Char | Handoff | Reaction |
 |---|---|---|---|---|---|---|---|---|---|---|
 | S01 | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED |
 | S02 | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED |
 | S03 | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED |
-| S04 | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED |
+| S04 | PARTIAL | NOT_TESTED | NOT_TESTED | PARTIAL | NOT_TESTED* | FAIL | FAIL | NOT_TESTED | NOT_TESTED | PARTIAL |
 | S05 | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED |
 | S06 | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED |
 | S07 | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED |
@@ -136,16 +137,38 @@ Scene总状态：
 | S11 | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED |
 | S12 | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED |
 
+`*` S04首条3C Attempt为TEXT_ONLY，没有实际上传参考图，因此不能把Reference Product Lock从NOT_TESTED改为PASS/PARTIAL；产品外观的纯文生观察记录在 `validation/results-registry.md`。
+
 ---
 
-# 6. Pilot Migration记录
+# 6. S04实际证据
 
-以下仅表示已经迁移到 `scene-index.md` V1.1结构，不表示生成验证升级：
+## B1-S04-P1｜Attempt 1
 
-- S01 架空古装宫廷：`INDEX_PILOT_READY`
-- S04 现代美国企业办公室：`INDEX_PILOT_READY`
-- S12 架空复古豪华长途列车：`INDEX_PILOT_READY`
+- 日期：2026-09-03
+- 商品：Apple AirPods Pro 2｜White
+- 模型：Seedance 2.5
+- 时长：30s
+- Asset Mode：TEXT_ONLY
+- Scene Recognition：PARTIAL
+- 3C Overall：PARTIAL（但Case总体FAIL，需要复测）
+- Space Continuity / Physical Interaction：FAIL
+- Reaction：PARTIAL
+- Product Lock：NOT_TESTED as reference-lock evidence
+- 关键失败：
+  - GF15 Proof镜头与人物操作面冲突
+  - GF16 小物体×手指精细取放穿模
+  - GF17 Story Driver没有被视觉化，剧情变平
+- 复测：REQUIRED｜Attempt 2
 
-其余S02/S03/S05/S06/S07/S08/S09/S10/S11：`INDEX_MIGRATION_PENDING`
+详细证据：`validation/results-registry.md`
+
+---
+
+# 7. Index Migration记录
+
+当前S01–S12已经全部迁移到 `scene-index.md` V1.1结构：
+
+`S01 / S02 / S03 / S04 / S05 / S06 / S07 / S08 / S09 / S10 / S11 / S12 = MIGRATED`
 
 Index迁移状态与Validation状态必须分开管理。
