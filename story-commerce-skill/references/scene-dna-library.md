@@ -2,15 +2,25 @@
 
 > 所有Scene当前状态：`TESTING_CANDIDATE`
 >
-> 本文件是执行参考，不是完整故事模板。使用顺序：先完成Product Decision Card，再由Scene Router选择Scene，然后只读取对应Scene Card，将商品真实卖点编译进该世界。
+> 本文件是**选中特殊Scene后的执行参考**，不是完整故事模板，也不负责选择Story Architecture或R-level。
+>
+> 正确顺序：`Commercial Decision → Story Architecture → Proof → R0/R1/R2 → Scene Router → 只读取选中的Scene Card → Performance/FACS → Seedance Prompt`
 
 统一原则：
 
-`Product DNA × Scene DNA → Story → Seedance Prompt`
+`PRIMARY ARCHITECTURE > SCENE`
+
+`PROOF > SCENE SPECTACLE`
 
 `PRODUCT LOCK > SCENE STYLE`
 
 任何Scene都不能修改商品真实外观、尺度、包装、结构和能力。
+
+**重要：每张Card里的“抓马 / 荒诞 / 喜剧 / 反转兼容 / 节奏DNA”都是可选执行资产，不是强制Beat。**
+- R0：不得调用会新增错误答案、双误导证据、Micro Anomaly、180°反转的资产；
+- R1：只表达已确定的Clarification / Reveal / Surprise；
+- R2：只有Reversal Router已批准R2，才调用“反转兼容”资产；
+- Scene中的人物池是角色资源，不是人数要求，始终遵守“最低必要人物数”。
 
 ---
 
@@ -25,17 +35,17 @@
 **抓马**：公开打断、礼仪越界、身份误判、公开纠正。  
 **荒诞**：普通商品被按国家大事/宫廷重宝级程序处理。  
 **喜剧**：Serious World + Mundane Product、礼仪延迟、等级Reaction Chain、权威deadpan。  
-**反转**：身份/地位、目标对象、归属、价值、权威知识反转。  
+**反转兼容（仅R2）**：身份/地位、目标对象、归属、价值、权威知识。  
 **动作DNA**：沿中轴进入→停在礼仪点→双手呈递→等待许可→揭布/开盒→主位小幅手势控制现场→后退。  
 **对白DNA**：现代清晰英语+正式宫廷语气；短句，如“Who approved this?”“Show them.”；禁止伪莎士比亚英语。  
 **表演DNA**：克制权威；轻皱眉、抬下巴、压唇、短暂停顿、目光控制；Reaction按等级逐层传递。  
-**节奏DNA**：异常宫廷事件→礼仪/误判升级→微小异常→Proof→权力判断变化→冷幽默余震。  
+**节奏DNA**：异常宫廷事件→礼仪/判断升级→Proof→权力判断变化→冷幽默余震；若R2才允许加入Micro Anomaly与前文重解释。  
 **镜头DNA**：中轴对称中大全景、主位轻低机位、沿中轴稳定缓推、商品揭示特写、等级Reaction反打。  
 **光声DNA**：高窗自然光+暖烛光；深红/深绿/木色/少量暖金；脚步、布料、银器、房间突然安静。  
 **商品入口**：Tribute Entry、Worn Entry、Demonstration Entry、Large Object Entry。  
 **跨商品不变量**：无论3C/服装/日用品，都必须经过“礼仪/身份规则→公开判断→商品改变权力或理解”。  
 **安全/IP**：不对应真实王室、国家、宫殿、冠冕、纹章、影视IP；不把仆役羞辱/阶级虐待当笑点。  
-**Seedance锁定**：架空旧世界王室宫廷、中轴高低等级、严格礼仪、2–4主角、现代商品保持原貌。  
+**Seedance锁定**：架空旧世界王室宫廷、中轴高低等级、严格礼仪、最低必要核心人物数、现代商品保持原貌。  
 **高风险失败**：自动魔法化、全员夸张瞪眼、过度金色、现代商品被古代化、托盘/交接穿模。
 
 ---
@@ -51,17 +61,17 @@
 **抓马**：Public Embarrassment、Teacher Interrupt、Group Judgment、Social Challenge、Wrong Blame。  
 **荒诞**：一个微小事件获得过高校园社交重要性，越来越多人注意。  
 **喜剧**：Peer Reaction Chain、Confident Wrong Judgment、Teacher Deadpan、Embarrassment Transfer。  
-**反转**：能力、身份、归属、目的、社交地位、输赢反转。  
+**反转兼容（仅R2）**：能力、身份、归属、目的、社交地位、输赢。  
 **动作DNA**：走廊快走、开locker、塞书、关柜、从背包取物、肘碰朋友、快速换眼神、老师敲桌、路人减速回头。  
 **对白DNA**：短、口语、Reaction优先：“Wait.”“No way.”“Watch.”“Okay… that's actually good.”  
 **表演DNA**：反应快而自然；尴尬=快速看左右+轻缩肩；怀疑=头后仰+眉抬；Proof后先看结果再看主角。  
-**节奏DNA**：异常1.5秒内出现→误判→第二人物/老师加入→Proof→Reaction Chain→尴尬转移。  
+**节奏DNA**：异常尽早出现→同伴/老师介入→Proof→Reaction Chain→判断变化；误判链只在SA03/R1或R2确有需要时加入。  
 **镜头DNA**：TikTok-native轻手持、走廊跟拍、locker侧机位、快速反打；Proof时稳定。  
 **光声DNA**：窗光+校园顶灯；locker、脚步、铃声、椅子、走廊低声。  
 **商品入口**：Backpack、Worn、Locker Reveal、Desk、Class Demo、Cafeteria。  
 **跨商品不变量**：商品必须触发“同伴/课堂公开判断”，而不是普通朋友聊天。  
 **安全/IP**：默认18+演员；成人药品/减重/酒精/烟草/赌博/性产品/武器等禁入；无真实学校Logo、吉祥物、球队。  
-**Seedance锁定**：generic contemporary American public high school、2–3主角、背景弱化、快速社交Reaction。  
+**Seedance锁定**：generic contemporary American public high school、最低必要核心人物数、背景弱化、快速但非同步的社交Reaction。  
 **高风险失败**：Disney/Netflix偶像化、全员模特、locker/背包穿模、背景学生变形、学校空间颜色漂移。
 
 ---
@@ -77,7 +87,7 @@
 **抓马**：Messenger Burst-In、Supply Failure、Countdown、Command Reversal、Public Responsibility。  
 **荒诞**：普通消费品突然被军营当作战略资源。  
 **喜剧**：Military Seriousness + Ordinary Product、Command Chain、Wrong Strategic Interpretation、Commander Deadpan。  
-**反转**：能力、战略价值、身份、目的、假危机、命令对象反转。  
+**反转兼容（仅R2）**：能力、战略价值、身份、目的、假危机、命令对象。  
 **动作DNA**：掀帐帘、快步汇报、指地图、开补给箱、传递物资、向帐外下令、士兵接令离开。  
 **对白DNA**：命令式短句：“Report.”“How long?”“Open it.”“Try it.”“How many?”  
 **表演DNA**：压力下功能性表演；坏消息=动作停半拍+下颌收紧；Proof后Commander轻停再给新命令。  
@@ -103,11 +113,11 @@
 **抓马**：Presentation Failure、Boss Walk-In、Client Early Arrival、Public Challenge、Credit Conflict。  
 **荒诞**：为了维持专业，大家把简单问题处理得越来越复杂；普通商品被当成公司战略工具。  
 **喜剧**：Chaos vs Deadpan、Professional Face vs Internal Panic、Corporate Language vs Ordinary Problem、Silent Coworker Reaction。  
-**反转**：能力、专业身份、效率、责任、价值、Credit反转。  
+**反转兼容（仅R2）**：能力、专业身份、效率、责任、价值、Credit。  
 **动作DNA**：打字、看表、推电脑给别人、拿文件、端咖啡、打开玻璃门、从包/抽屉取物、老板出现时动作收敛。  
 **对白DNA**：现代职场短句：“We're late.”“Fix it.”“Already did.”“With that?”“Client's here.”  
 **表演DNA**：忙中保持职业控制；慌张靠快速扫桌面和压唇，成功后忙乱人物停手、坐回去。  
-**节奏DNA**：问题已发生→Deadline→忙乱升级→商品简单介入→Proof→短静→能力判断反转。  
+**节奏DNA**：问题已发生→Deadline→处理升级→商品介入→Proof→短静→能力/结果判断变化；不是默认R2。  
 **镜头DNA**：受控社媒原生感；开放区轻跟拍、会议室稳定中景、桌面中近景、玻璃背景Boss进入、Proof稳定。  
 **光声DNA**：窗光+中性办公灯；键盘、鼠标、玻璃门、咖啡机、打印机、office hum。  
 **商品入口**：Desk Item、Work Bag、Delivery Box、Meeting Demo、Coworker Discovery、Problem Solver。  
@@ -129,11 +139,11 @@
 **抓马**：Newcomer Arrival、Public Challenge、Storekeeper Refusal、Whole Street Watches。  
 **荒诞**：普通现代消费品被整个小镇当作神秘新技术公开审判。  
 **喜剧**：Long Silence + Simple Answer、Tough Guy Misjudgment、Pretends Not to Care、Storekeeper Deadpan。  
-**反转**：实用能力、名声、专家、价值、所有权、Crowd反转。  
+**反转兼容（仅R2）**：实用能力、名声、专家、价值、所有权、Crowd立场。  
 **动作DNA**：推木门、放箱、掀盖、掂商品、轻敲表面、抬眼、靠柱观察、慢慢靠近、现场测试。  
 **对白DNA**：极短：“New?”“Works?”“Try it.”“No chance.”“How many?”；禁止Yeehaw/Howdy过量。  
-**表演DNA**：身体停顿大于脸部Reaction；被打脸后避开眼神、轻收下巴；想买仍装作不在意。  
-**节奏DNA**：Action→Silence→Reaction；新货进入→错误判断→现场测试→长静→改判。  
+**表演DNA**：身体停顿大于脸部Reaction；被证据纠正后避开眼神、轻收下巴；想买仍装作不在意。  
+**节奏DNA**：Action→Silence→Reaction；新货进入→现场测试→长静→改判；错误判断仅在当前Architecture/R-level需要时使用。  
 **镜头DNA**：主街纵深、boardwalk双人中景、商品特写、较长Reaction停顿、围观者逐步进入。  
 **光声DNA**：下午侧光、风化木、沙土、皮革；风、木牌、靴子、木箱、马车远声。  
 **商品入口**：Stagecoach Delivery、General Store New Arrival、Traveler Personal Item、Trade Offer、Work Problem Solver。  
@@ -155,11 +165,11 @@
 **抓马**：Room Goes Quiet、Etiquette Violation、Wrong Guest Assumption、Public Introduction、Silent Exclusion。  
 **荒诞**：高度克制的人群越来越无法隐藏自己对一个普通商品的兴趣。  
 **喜剧**：Polite Hostility、Pretends Not to Want It、Silent Table Reaction、Underreaction。  
-**反转**：身份、品味、注意力、归属、专业知识、社交接纳反转。  
+**反转兼容（仅R2）**：身份、品味、注意力、归属、专业知识、社交接纳。  
 **动作DNA**：整理袖口/礼服、轻碰杯、停杯、侧目、轻侧身、打开礼盒、Host主动走近、人物起身/重新坐下。  
 **对白DNA**：短、礼貌、有潜台词：“Interesting.”“Is it?”“That's yours?”“You noticed.”  
 **表演DNA**：微表情权重高；笑容轻僵、目光快速扫商品再回眼睛、停杯、侧身；distributed reaction。  
-**节奏DNA**：Attention→Judgment→Silence→Reversal。  
+**节奏DNA**：Attention→Judgment→Silence→Decision Change；只有R2才加入前文重解释型Reversal。  
 **镜头DNA**：Elegant Social Camera；稳定入场跟拍、OTS观察、餐桌中近景、商品特写、较慢Reaction Chain。  
 **光声DNA**：暖晚宴光、黑/奶油白/酒红/深蓝/墨绿；杯碟、刀叉、低声交谈、谈话音量下降。  
 **商品入口**：Worn、Gift Box、Personal Item、Table Discovery、Public Demonstration、Accident Solver。  
@@ -181,7 +191,7 @@
 **抓马**：Last-One Moment、Friend Stops Walking、Public Demo、Wrong Choice Confidence、Passing Stranger Interrupts。  
 **荒诞**：一件商品逐渐打断越来越多人的正常购物路线；Comparison Escalation。  
 **喜剧**：Friend Brutal Honesty、Stranger Joins Conversation、Everyone Tries It、Pretends Not to Buy、Decision Fatigue。  
-**反转**：选择、热度、专家、朋友判断、社会证明、稀缺误会反转。  
+**反转兼容（仅R2）**：选择、热度、专家、朋友判断、社会证明、稀缺误会。  
 **动作DNA**：边走边看、突然停、回头、取商品/放回/比较、试戴/试穿、递给朋友、路人减速。  
 **对白DNA**：消费决策短句：“That one.”“No.”“Try it.”“I'm not buying it.”“You already are.”  
 **表演DNA**：先看→脚步慢→身体停；被Proof说服后重新拿起；想买又走两步回头。  
@@ -207,7 +217,7 @@
 **抓马**：Scan Rejected、Gate Won't Open、Wrong Classification、Cargo Mix-up、Old Object Alert。  
 **荒诞**：未来最先进系统被今天极普通商品难住；Over-Technology。  
 **喜剧**：Advanced System vs Simple Object、System Voice Deadpan、Future Misunderstands Present Object、Human Beats Automation。  
-**反转**：分类、技术价值、人类专业、权限、系统Override反转。  
+**反转兼容（仅R2）**：分类、技术价值、人类专业、权限、系统Override。  
 **动作DNA**：放检测台、身份验证、扫描、看结果、重新扫描、人工拿起检查、实际试用、手动确认、通道恢复。  
 **对白DNA**：极短专业句：“Unknown object.”“Scan again.”“Compatible?”“Try it.”“Approved.”  
 **表演DNA**：高效冷静；第二次系统失败后人物才真正认真看商品；Proof后视线按结果→系统→商品→主人。  
@@ -233,7 +243,7 @@
 **抓马**：Half-Heard Sentence、Whole Diner Goes Quiet、Newcomer Entrance、Server Interrupts、Wrong Table Assumption。  
 **荒诞**：半句话经隔桌、Server、吧台不断被重解释；一个评论变成全餐厅意见。  
 **喜剧**：Overheard Comedy、Server Knows Everything、Regular Gives Unrequested Opinion、Server Deadpan。  
-**反转**：误听、陌生人、熟客专家、关系、社会关注、Server知识反转。  
+**反转兼容（仅R2）**：误听、陌生人、熟客专家、关系、社会关注、Server知识。  
 **动作DNA**：滑入booth、倒咖啡、搅饮料、叉子停半空、从包取物、隔桌侧耳、吧台半转、Server边工作边插话。  
 **对白DNA**：快、自然、可打断：“That wasn't nothing.”“You heard that?”“Everybody heard that.”“Too late.”  
 **表演DNA**：手继续日常动作、眼睛先去偷听；Reaction通过停叉子/停杯/半转高脚凳传播。  
@@ -259,17 +269,17 @@
 **抓马**：Countdown Already Running、Clearly Losing、Host Stops Game、Confident Trash Talk、Unexpected Tool Reveal。  
 **荒诞**：世界级节目规格认真测试极普通生活任务。  
 **喜剧**：Premature Celebration、Host Deadpan、Confident Collapse、Audience False Start、Simple Strategy Beats Elaborate Plan。  
-**反转**：Underdog、Confidence、Rule Interpretation、Performance、Tool、Result反转。  
+**反转兼容（仅R2）**：Underdog、Confidence、Rule Interpretation、Performance、Tool、Result。  
 **动作DNA**：站起始位→Host抬手→拿商品→执行单一任务→时间到双手离开→Judge检查→Host确认→Reaction。  
 **对白DNA**：Host极短控制语：“Ready?”“Go.”“Five seconds.”“Stop.”“Check it.”  
 **表演DNA**：Result→Emotion；提前庆祝后被“Wait”打断；输者看结果再苦笑，不摔东西。  
-**节奏DNA**：RULE→RACE→RESULT→REFRAME。  
+**节奏DNA**：RULE→RACE→RESULT→REFRAME；REFRAME不等于R2，只有前文被完整重解释时才算强反转。  
 **镜头DNA**：0.5–1秒舞台宽景、A/B中景、任务特写、稳定Proof、独立Result Shot、Host→Loser→Audience Reaction。  
 **光声DNA**：原创几何舞美、清晰舞台主光、generic倒计时/提示音/短欢呼。  
 **商品入口**：Assigned Tool、Personal Advantage、Mystery Reveal、Choice Round、Rescue Item、Final Round Product。  
 **跨商品不变量**：先读真实卖点再设计挑战：`Verified Product Fact → Visible Task → Fair Rule → Observable Result`。  
 **安全/IP**：不复制真实综艺舞台/按钮/转盘/音效；非博彩/抽奖；禁危险挑战；不生成未经证实性能百分比/#1/best。  
-**Seedance锁定**：original challenge arena，Host+A+B固定站位，Result Shot必须独立清楚。  
+**Seedance锁定**：original challenge arena，Host/Contestant按最低必要人数设置固定站位，Result Shot必须独立清楚。  
 **高风险失败**：自动抄综艺、LED乱码、挑战偏离卖点、并行动作穿模、结果不清、AI乱加性能比分。
 
 ---
@@ -285,17 +295,17 @@
 **抓马**：Merchant Publicly Challenged、Customer Walks Away、Foreign Trader Arrives、Rival Demonstration、Failed Sale Turns Public。  
 **荒诞**：古代人对现代商品提出多个自信但错误的用途解释；群众变成公开陪审团。  
 **喜剧**：Heckler Merchant、Everybody Has an Opinion、Ancient Misclassification、Aggressive Bargainer、Rival Quietly Switches Sides。  
-**反转**：商人信誉、Rival、价值、外来者、Buyer、Crowd立场反转。  
+**反转兼容（仅R2）**：商人信誉、Rival、价值、外来者、Buyer、Crowd立场。  
 **动作DNA**：招呼顾客、把商品推前、拿起/掂/翻/放、砍价手势、Rival探身、清空桌面、围观半圆Collective Lean。  
 **对白DNA**：交易型短句：“What is it?”“Too much.”“Show us.”“I'll take one.”“Get in line.”  
 **表演DNA**：比Western外放；Proof时群众身体共同前倾；最先质疑者不解释，直接重新伸手拿商品。  
-**节奏DNA**：Public Claim→Public Challenge→Public Proof→Public Reversal。  
+**节奏DNA**：Public Claim→Public Challenge→Public Proof→Public Decision Change；只有R2才升级为前文重解释型Reversal。  
 **镜头DNA**：Market Pulse；短建立、Merchant-Buyer-Rival三角构图、手部商品特写、围观逐步增长、Buyer→Rival→Crowd Reaction。  
 **光声DNA**：Bright Mediterranean Daylight；石灰石/陶土/亚麻/木材；叫卖、议论、陶器、木车、布棚风声。  
 **商品入口**：Foreign Trader Arrival、New Stall Product、Wrapped Delivery、Traveler Personal Item、Public Demonstration、Rival Comparison。  
 **跨商品不变量**：必须有公开Claim/挑战/演示/群众改判，不变成古装商品陈列。  
 **安全/IP**：统一架空地中海古典视觉，不混搭文明；不突出真实宗教、人口交易、族裔刻板印象。  
-**Seedance锁定**：coherent Mediterranean-inspired market，3–6近景人物，现代商品保持原样。  
+**Seedance锁定**：coherent Mediterranean-inspired market，最低必要前景人物数，现代商品保持原样。  
 **高风险失败**：文明随机混搭、人群过多、商品古代化、一摊复制几十件、讨价还价自动生成错误价格。
 
 ---
@@ -311,11 +321,11 @@
 **抓马**：Wrong Bag / Item、Attendant Delivery、Corridor Standoff、Next Stop Deadline、Dining Car Recognition。  
 **荒诞**：普通商品被送错车厢后不断改变“它是谁的/是什么”的社会意义；Polite Escalation。  
 **喜剧**：Polite Misunderstanding、Attendant Deadpan、Wrong Owner Confidence、Elegant Overreaction、No Escape from Awkwardness。  
-**反转**：归属、身份、用途、专业、目的地、社交判断反转。  
+**反转兼容（仅R2）**：归属、身份、用途、专业、目的地、社交判断。  
 **动作DNA**：敲门、滑门、侧身让路、扶稳车厢、放行李、递商品、沿走廊快步、穿连接门、列车轻晃时补偿平衡。  
 **对白DNA**：礼貌短句：“Is this yours?”“No.”“You're certain?”“Next carriage.”“We're almost there.”  
 **表演DNA**：保持体面；发现拿错后笑容轻僵；明明急先整理外套再快步；Proof后轻点头。  
-**节奏DNA**：Object Moves→Meaning Changes→Truth Catches Up；Discover→Move→Reassign→Proof→Return。  
+**节奏DNA**：Object Moves→Meaning Changes→Truth Catches Up；Discover→Move→Reassign→Proof→Return；不等同自动R2。  
 **镜头DNA**：Linear Camera Grammar；走廊纵向跟拍、门框构图、包厢双人中景、交接特写、真主人从远端门靠近。  
 **光声DNA**：金色日光/傍晚+暖内灯；深木/黄铜/奶油色/深蓝/酒红；轨道节奏、滑门、行李扣、餐具。  
 **商品入口**：Misdelivered Item、Luggage Reveal、Personal Travel Item、Dining Table Discovery、Attendant Delivery、Lost-and-Found。  
