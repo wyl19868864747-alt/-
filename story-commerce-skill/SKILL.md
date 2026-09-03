@@ -1,10 +1,10 @@
 ---
 name: story-commerce-skill
-description: 面向短视频剧情带货广告的全品类消费者决策、Story Architecture路由、Reversal信息变化路由、可选Scene DNA世界路由、Performance/FACS表演编译、创意编剧、导演拆解、Seedance可执行提示词编译与静默QA。先锁定真实商业事实、消费者主决策问题与可证明Proof，再选择最合适的剧情因果骨架；随后从R0无反转、R1轻信息变化、R2真反转中保守路由，特殊Scene必须与NORMAL_LOCATION直接竞争并证明独特因果增益，只有确实增强商业表达时才调用强反转、Comedy、Absurdity、Scene DNA等模块；最终把抽象创意与人物Reaction编译成明确动作链、视线链、微表情链、道具链和镜头链。
+description: 面向短视频剧情带货广告的全品类消费者决策、Story Architecture路由、Reversal信息变化路由、可选Scene DNA世界路由、Performance/FACS表演编译、Camera×Action物理机位编译、创意编剧、导演拆解、Seedance可执行提示词编译与静默QA。先锁定真实商业事实、消费者主决策问题与可证明Proof，再选择最合适的剧情因果骨架；随后从R0无反转、R1轻信息变化、R2真反转中保守路由，特殊Scene必须与NORMAL_LOCATION直接竞争并证明独特因果增益；最终把抽象创意、人物Reaction和产品物理操作编译成明确动作链、机位链、视线链、微表情链、道具链和镜头链。
 ---
 
-# 剧情带货 Skill 3.4｜COMMERCIAL FREEZE
-## Commercial Decision × Story Architecture × Reversal Router × Optional Scene DNA × Performance/FACS
+# 剧情带货 Skill 3.4.1｜BENCHMARK HOTFIX 01
+## Commercial Decision × Story Architecture × Reversal Router × Optional Scene DNA × Performance/FACS × Camera/Action
 
 ## 0. 每次开始
 
@@ -16,9 +16,10 @@ description: 面向短视频剧情带货广告的全品类消费者决策、Stor
 6. **只有**用户明确指定特殊Scene，或Story/Creative Card判断Scene DNA能实质增强人物关系、冲突、Proof、Reaction或镜头时，才完整阅读 `references/scene-router.md`。用户未指定时，`NORMAL_LOCATION`与S01–S12从一开始共同竞争，普通现实场景可以合法胜出。
 7. 只有Scene Router最终选择特殊Scene DNA后，才读取 `references/scene-dna-library.md` 中对应Scene Card；普通真实生活场景不强制进入Scene Library。
 8. 在故事Beat、Proof、R-level与Scene/Location确定后，完整阅读 `references/performance-facs.md`，把需要的Reaction编译成可见、克制、景别可读的视线/面部/头部/身体动作。**FACS只负责表演动作，不得改写Story、Proof或R-level。**
-9. 用户本轮明确要求、真实商品事实、参考资产、平台规则与合规边界始终高于参考文件。
-10. 不因为历史RxPros/医药案例多，就默认账单、价格震惊、朋友核价、咨询问答、旧方案太贵、SA08价值核验或R2强反转。
-11. 当前Scene Library共12个Scene，全部为 `TESTING_CANDIDATE`；未经Seedance实测不得宣称 `VALIDATED`。
+9. 任何包含开盒、开盖、插拔、取出、放回、佩戴、拆装、倒入、递交等关键产品物理操作的提示词，完整执行 `references/camera-action-compiler.md`。**先锁人物操作方向与产品工作面，再锁机位；不得为了让观众看清Proof而让人物以不可能的方向操作产品。**
+10. 用户本轮明确要求、真实商品事实、参考资产、平台规则与合规边界始终高于参考文件。
+11. 不因为历史RxPros/医药案例多，就默认账单、价格震惊、朋友核价、咨询问答、旧方案太贵、SA08价值核验或R2强反转。
+12. 当前Scene Library共12个Scene，全部为 `TESTING_CANDIDATE`；未经Seedance实测不得宣称 `VALIDATED`。
 
 ---
 
@@ -28,7 +29,7 @@ description: 面向短视频剧情带货广告的全品类消费者决策、Stor
 
 核心任务：
 
-> **把真实消费者购买决策，选择最合适的剧情因果结构与信息变化强度，再把人物行为与Reaction编译成视频模型能够执行的商业短视频。**
+> **把真实消费者购买决策，选择最合适的剧情因果结构与信息变化强度，再把人物行为、Reaction和产品操作编译成视频模型能够执行的商业短视频。**
 
 总流程：
 
@@ -43,6 +44,7 @@ description: 面向短视频剧情带货广告的全品类消费者决策、Stor
 → `Scene Router：NORMAL_LOCATION vs S01–S12`
 → `Story`
 → `Performance Intent / FACS Compiler`
+→ `Camera × Action Compiler`
 → `Seedance动作编译`
 → `Silent QA`
 
@@ -51,13 +53,15 @@ description: 面向短视频剧情带货广告的全品类消费者决策、Stor
 - **商业决策是内核，Story Architecture是因果骨架，Proof是商业证据。**
 - Reversal只决定信息变化强度，不得改写商品事实、Primary Driver或Best Proof。
 - `R0`是默认且完全合格；`R1`是常见增强；`R2`是少数高价值真反转。
+- **R0不等于平。没有反转仍然必须有清楚的事件发动机、Hook和推进。**
 - Clarification、Reveal、Surprise不冒充True Reversal。
 - Reversal / Comedy / Absurdity / Escalation / Visual Spectacle都是可选增强，不是每条广告必备。
 - Scene DNA是可选世界增强；`NORMAL_LOCATION`是正式Candidate 0，不是失败方案。
 - 特殊Scene必须说得清 `UNIQUE_CAUSAL_GAIN`，不能靠“更有视觉奇观”获胜。
 - Performance/FACS只负责把已经确定的事件翻译成人物可见Reaction，不得凭表情重新发明剧情。
+- Camera/Action只负责让真实操作与Proof可见同时成立，不得为了Hero Angle破坏人物可操作性。
 - 如果拿掉商品后剧情仍能用完全相同方式解决，产品植入失败。
-- 如果为了故事、反转、Scene或表情修改商品事实，直接失败。
+- 如果为了故事、反转、Scene、表情或镜头修改商品事实，直接失败。
 - 如果简单结构已经最直接回答购买问题，不为了显得聪明升级复杂度。
 
 永远：
@@ -65,6 +69,8 @@ description: 面向短视频剧情带货广告的全品类消费者决策、Stor
 `PRODUCT TRUTH > STORY TRICK`
 `PROOF > REVERSAL`
 `PRIMARY ARCHITECTURE > OPTIONAL MODULES`
+`R0 ≠ FLAT`
+`ACTOR OPERABILITY > PRODUCT HERO ANGLE`
 `NORMAL LOCATION IS A VALID WINNER`
 `EVENT > PERFORMANCE DECORATION`
 `PRODUCT LOCK > SCENE STYLE`
@@ -86,9 +92,10 @@ description: 面向短视频剧情带货广告的全品类消费者决策、Stor
 9. 其他Creative Modules是否真正增益
 10. 若调用Scene：Scene Safety / DNA Activation / Unique Causal Gain与Scene原生因果
 11. 人物 / 产品 / 空间 / 物理连续
-12. Performance Intent / Reaction正确性
-13. 镜头 / 节奏 / 表演细节
-14. 风格与视觉炫技
+12. 关键操作的Actor Operability / Camera Side / Product Working Side
+13. Performance Intent / Reaction正确性
+14. 镜头 / 节奏 / 表演细节
+15. 风格与视觉炫技
 
 永远遵守：
 
@@ -101,6 +108,7 @@ description: 面向短视频剧情带货广告的全品类消费者决策、Stor
 `产品因果作用 > 产品露出次数`
 `动作事件 > 抽象形容词`
 `具体Reaction > “大家震惊”`
+`操作合理 > 正面展示产品`
 `商业匹配 > 特殊世界视觉炫技`
 `清晰转化 > 电影炫技`
 
@@ -194,7 +202,15 @@ Proof必须服务Primary Architecture：
 - SA08：Proof/Information解释价值结构
 - SA09：体验线索只支持偏好，不伪造科学结论
 
-后续Reversal、Comedy、Scene和Performance不得挤压Best Proof的清晰度和必要时长。
+后续Reversal、Comedy、Scene、Performance和Camera设计不得挤压Best Proof的清晰度和必要时长。
+
+关键产品操作的Proof还必须通过：
+
+`人物能真实操作`
++
+`机位能看清必要信息`
+
+两者冲突时先换机位/切镜，不旋转产品作弊。
 
 ---
 
@@ -207,6 +223,8 @@ Proof必须服务Primary Architecture：
 ### R0｜NO REVERSAL
 
 无反转。按Primary Architecture + Proof Plan直接写。
+
+**R0只表示没有信息反转，不表示没有冲突、Deadline、任务压力、社会关系或Hook。**
 
 ### R1｜LIGHT INFORMATION SHIFT
 
@@ -390,7 +408,7 @@ Architecture必须保持自己的发动机：
 
 ---
 
-# 10. HOOK
+# 10. HOOK｜R0也必须有观看动力
 
 Hook首先属于：
 
@@ -408,6 +426,12 @@ Hook首先属于：
 - 真实使用中的体验动作
 
 静音看前1秒至少能看出哪里不对、人物正在做什么、当前任务/选择/关系为何值得继续之一。
+
+**前1–3秒必须把Primary Driver视觉化，不能只靠一句台词告诉观众“现在很急/客户来了/时间不够”。**
+
+例如SA04：Deadline / Client / Goal必须至少通过人物闯入、门被推开、正在发生的任务、物体状态、声音、人物站位变化等一个可见事件成立。
+
+`R0 ≠ FLAT`：不需要反转，也可以有高事件密度、压力、冲突、轻喜剧或未完成任务。
 
 纯台词解释Hook失败。
 
@@ -545,20 +569,10 @@ R2：Wrong Answer阶段保持可信旧判断；Micro Anomaly才出现短暂停�
 默认不向Seedance输出AU编号。
 
 错误：
-
 `她很震惊，又很难以置信。`
 
 正确：
-
 `她先低头盯住结果，眉毛短促抬起，嘴唇轻分；停半秒后重新看向产品，眉心轻皱，再做一次验证。`
-
-错误：
-
-`所有人震惊。`
-
-正确：
-
-`最先看到结果的人停下动作；旁边的人顺着她的视线看过去，半秒后才放下手里的杯子，最后一人才抬头确认。`
 
 规则：
 - 表情只补画面细节，不抢主要动作指令。
@@ -568,6 +582,37 @@ R2：Wrong Answer阶段保持可信旧判断；Micro Anomaly才出现短暂停�
 - 表情不能领先事件泄露后续信息。
 - 大全景优先姿态/停步/转身；近景才写眉眼与嘴部细节。
 - Proof镜头若“认真核验”比情绪脸更准确，优先写专注操作。
+
+## 13.5 Camera × Action编译｜真实Benchmark新增硬规则
+
+所有关键产品交互执行：
+
+`Actor Orientation`
+→ `Product Working Side`
+→ `Camera Side`
+→ `Hand + Contact`
+→ `State Change`
+
+默认：
+- 拿起产品可用人物侧前30–45°中近景；
+- 开盒/开盖/内部结构优先人物肩后OTS或人物操作侧斜后方近景；
+- 小物体取出/放回尽量让产品有稳定支撑；
+- 一个镜头最多承担1个高风险精细接触；
+- 从产品内部操作切到佩戴人体，优先主动切镜；
+- 若当前机位无法同时满足“人物能真实操作”和“观众能看清Proof”，**换机位/拆镜，不旋转产品给镜头。**
+
+耳机等厘米级小物体默认：
+
+`盒子稳定 → 手指夹住明确部位 → 单一方向离开槽位 → 硬切下一动作`
+
+放回默认：
+
+`耳机先到槽位上方 → 单一方向进入槽位 → 手指松开 → 硬切`
+
+不要同镜强塞：
+`手持盒子 + 开盖 + 精细抓取 + 旋转 + 佩戴 + 保持精确结构`。
+
+完整规则见 `references/camera-action-compiler.md`。
 
 ---
 
@@ -579,6 +624,10 @@ R2：Wrong Answer阶段保持可信旧判断；Micro Anomaly才出现短暂停�
 
 明确必要的手、方向、接触和作用区域。
 
+关键产品操作还必须满足：
+
+`人物操作方向正确 → 产品工作面朝向正确 → 机位位于可操作/可见侧 → 接触路径清楚`
+
 禁止：
 - 人物/产品瞬移
 - 门/道具自己运动
@@ -588,6 +637,7 @@ R2：Wrong Answer阶段保持可信旧判断；Micro Anomaly才出现短暂停�
 - 远处人物的手突然进入另一近景
 - 状态变化无动作原因
 - 空间轴线/入口/左右关系跨镜漂移
+- 为了Hero Shot把产品工作面转到人物无法操作的方向
 
 复杂动作宁可拆镜。
 
@@ -602,7 +652,16 @@ R2：Wrong Answer阶段保持可信旧判断；Micro Anomaly才出现短暂停�
 
 镜头必须服务Primary Architecture和Proof；若R1/R2，再服务实际Information Shift。
 
-Product Proof镜头优先稳定、清晰、可读。
+Product Proof镜头优先稳定、清晰、可读，但**清楚不等于正面对镜头**。涉及操作时，真实操作面优先，必要时用OTS/操作侧近景证明。
+
+当出现以下任一情况，优先主动切镜：
+1. 从产品外观进入内部结构操作；
+2. 产品工作面发生变化；
+3. 需要看清接口/槽位/开口；
+4. 手指开始精细抓取厘米级小物体；
+5. 从产品操作进入人体佩戴；
+6. 当前机位无法同时满足人物可操作性与Proof可见性；
+7. 同一镜即将出现第二项高风险接触。
 
 禁止无动机环绕、持续漂移、每镜都推拉。
 
@@ -616,9 +675,9 @@ Architecture复杂度参考：
 - MEDIUM：SA04 / SA05
 - MEDIUM–HIGH：SA06 / SA07
 
-Reversal会额外消耗复杂度；R2通常至少需要4–6个剧情Beat。Performance细节同样占生成预算；若动作已经复杂，优先删减微表情描述，不牺牲主动作与Proof。
+Reversal会额外消耗复杂度；R2通常至少需要4–6个剧情Beat。Performance和精细产品交互同样占生成预算；若动作已经复杂，优先删减微表情、拆开高风险接触，不牺牲主动作与Proof。
 
-若人物、交互、空间或动作负载超预算，优先降级R-level、删减Performance细节或拆镜，不先牺牲Proof。
+若人物、交互、空间或动作负载超预算，优先降级R-level、删减Performance细节、换机位或拆镜，不先牺牲Proof。
 
 若调用Scene，再读取Scene Card的Camera/Tempo/Performance DNA。
 
@@ -628,15 +687,24 @@ Reversal会额外消耗复杂度；R2通常至少需要4–6个剧情Beat。Perf
 
 ## 【开场总控】
 
-只写虚化导演概念：
-- 广告类型
-- 平台原生感
-- 整体风格/调性
+**默认只写1句话，最多2句话。**
+
+只写：
+- 广告类型 / 平台原生感
+- 整体风格与调性
 - 节奏感觉
-- 观众情绪体验
+- 观众总体情绪体验
 - 镜头总体气质
 
-禁止复述具体剧情、人物动作、卖点步骤和画面事件。
+禁止：
+- 复述具体剧情
+- 人物动作
+- 卖点步骤
+- 产品尺寸/结构
+- “禁止穿模/禁止乱码/禁止变形”等生成控制
+- 把后面已有内容再说一遍
+
+开场总控的作用只是给整支片定导演气质，不承担执行约束。
 
 ## 【主体、空间与参考锁定】
 
@@ -654,6 +722,7 @@ Reversal会额外消耗复杂度；R2通常至少需要4–6个剧情Beat。Perf
 - Product Entry
 - Best Proof
 - Information Shift：按R0/R1/R2实际路由写，不能套错模板
+- 关键产品操作明确机位侧/人物操作侧/工作面；必要时主动切OTS或操作侧近景
 - 谁先看到结果
 - `Trigger → gaze → 最少必要Reaction → New Action`
 - 若调用Scene：加入Scene原生Reaction/节奏/镜头
@@ -662,7 +731,7 @@ Reversal会额外消耗复杂度；R2通常至少需要4–6个剧情Beat。Perf
 
 表情只在关键Beat补充，不作为每段提示词前置主信息。
 
-**R0禁止补反转；R1禁止伪装R2；R2必须完整动作化；Performance不得提前泄露后续Beat。**
+**R0禁止补反转；R1禁止伪装R2；R2必须完整动作化；Performance不得提前泄露后续Beat；产品操作不得为了镜头展示破坏人物真实方向。**
 
 ## 【生成控制】
 
@@ -670,13 +739,16 @@ Reversal会额外消耗复杂度；R2通常至少需要4–6个剧情Beat。Perf
 - consistent character identity
 - consistent product appearance
 - stable spatial continuity
+- actor-facing product operation
 - realistic physical interaction
+- one high-risk fine contact per shot
 - natural restrained facial/body reactions
 - reaction follows visible trigger
 - dialogue synchronized with correct speaker
-- motivated cuts based on action/reaction
+- motivated cuts based on action/reaction/product operation
 - PRODUCT TRUTH > STORY TRICK
 - PROOF > REVERSAL
+- ACTOR OPERABILITY > PRODUCT HERO ANGLE
 - EVENT > PERFORMANCE DECORATION
 - PRODUCT LOCK > SCENE STYLE（若调用Scene）
 
@@ -696,6 +768,7 @@ Reversal会额外消耗复杂度；R2通常至少需要4–6个剧情Beat。Perf
 - [ ] Product Causal Role真实存在
 - [ ] 没有更简单、更稳定且商业解释力相近的架构
 - [ ] 没有塌成万能“两人聊天→产品→震惊”
+- [ ] R0没有被误写成低事件强度；Primary Driver在前1–3秒至少有一个可见/可听事件载体
 
 ## B. Fact / Proof｜每条必检
 
@@ -705,6 +778,7 @@ Reversal会额外消耗复杂度；R2通常至少需要4–6个剧情Beat。Perf
 - [ ] V3没有被包装成客观科学Proof
 - [ ] V4没有被AI剧情画面伪造
 - [ ] Best Proof完整、可读，没有被创意或表演模块挤掉
+- [ ] Proof可见性没有通过不合理转动产品/错误操作方向获得
 
 ## C. Reversal Router｜每条必检
 
@@ -764,7 +838,7 @@ Reversal会额外消耗复杂度；R2通常至少需要4–6个剧情Beat。Perf
 - [ ] 多人Reaction有先后顺序，不同步触发
 - [ ] 人物表情没有暗示未被证明的医学/安全/金融/性能结论
 
-## F. Character / Product / Physical
+## F. Character / Product / Physical / Camera × Action
 
 - [ ] 每个人都有剧情职责
 - [ ] 使用最低必要人物数
@@ -773,6 +847,12 @@ Reversal会额外消耗复杂度；R2通常至少需要4–6个剧情Beat。Perf
 - [ ] 产品尺度稳定
 - [ ] 手/接触/方向/受力合理
 - [ ] 空间结构跨镜稳定
+- [ ] 每个关键产品操作都已判断Actor Orientation / Product Working Side / Camera Side
+- [ ] 人物从当前方向真的能看见并正常使用产品
+- [ ] 开盒/内部结构镜头没有为了镜头正面展示而背离人物
+- [ ] 一个镜头没有承担2项以上高风险精细接触
+- [ ] 小物体取出/放回有明确起点、抓取部位、运动方向与终点
+- [ ] 若精细接触不值得冒险，已使用动作匹配切镜或简化过程
 
 ## G. Seedance Executability
 
@@ -782,12 +862,14 @@ Reversal会额外消耗复杂度；R2通常至少需要4–6个剧情Beat。Perf
 - [ ] 单时间段不过载
 - [ ] 每镜有清楚主信息任务
 - [ ] Product Proof镜头干净可读
-- [ ] R0没有偷偷补反转模板
+- [ ] 关键产品操作在需要时主动切到OTS/操作侧机位
+- [ ] R0没有偷偷补反转模板，也没有因为R0而变成平铺展示
 - [ ] R1没有被编译成假R2
 - [ ] R2的每个反转Beat都有明确可见动作/信息
 - [ ] NORMAL_LOCATION获胜时没有为了展示Scene库增加特殊世界复杂度
+- [ ] 【开场总控】默认1句、最多2句，未混入剧情/产品/禁止项/生成控制
 
-关键项失败，返回对应层内部重写；Performance失败时优先删减或重编Reaction；Reversal失败时优先降级R-level；Scene失败时优先回退NORMAL_LOCATION。**任何下游模块都不得为了保住自己去改商品事实、Best Proof或Primary Architecture。**
+关键项失败，返回对应层内部重写；Performance失败时优先删减或重编Reaction；Reversal失败时优先降级R-level；Scene失败时优先回退NORMAL_LOCATION；关键操作失败时优先**换机位、拆动作、降低一次接触复杂度**，不先追加一串负面词。**任何下游模块都不得为了保住自己去改商品事实、Best Proof或Primary Architecture。**
 
 ---
 
@@ -797,7 +879,9 @@ Reversal会额外消耗复杂度；R2通常至少需要4–6个剧情Beat。Perf
 
 > **结构研发 + 横向差异QA + 跨3C/服装/日用品内部稳定性QA + Scene Index结构化迁移 + Router规则回归**
 
-尚未完成：
+真实Benchmark已经启动，但尚不足以让任何Scene升级VALIDATED。
+
+尚需完成：
 - Seedance实际跨商品生成
 - 连续空间稳定性
 - 商品锁定稳定性
@@ -811,7 +895,7 @@ Reversal会额外消耗复杂度；R2通常至少需要4–6个剧情Beat。Perf
 
 ---
 
-# 19. 模块权限边界｜FREEZE
+# 19. 模块权限边界｜FREEZE + EMPIRICAL HOTFIX
 
 下游模块只能**编译或增强**上游已经确定的内容，不能反向篡权：
 
@@ -850,6 +934,11 @@ Reversal会额外消耗复杂度；R2通常至少需要4–6个剧情Beat。Perf
 
 ↓
 
+`Camera × Action Compiler`
+只决定如何从真实可操作机位拍清产品动作，不改产品结构与人物行为目的
+
+↓
+
 `Seedance Compiler`
 只把上述内容翻译为可执行动作/镜头/声音/空间约束
 
@@ -857,7 +946,7 @@ Reversal会额外消耗复杂度；R2通常至少需要4–6个剧情Beat。Perf
 
 ---
 
-# 20. 最终判定｜3.4 COMMERCIAL FREEZE
+# 20. 最终判定｜3.4.1 BENCHMARK HOTFIX 01
 
 剧情带货商用版最低标准不是“必须有反转”，不是“必须使用Scene DNA”，也不是“每个人都必须表演得很满”。
 
@@ -871,7 +960,7 @@ Reversal会额外消耗复杂度；R2通常至少需要4–6个剧情Beat。Perf
 +
 `产品推动剧情`
 +
-`R-level选择正确且商业净收益为正 / 无需反转时保持R0`
+`R-level选择正确且商业净收益为正 / 无需反转时保持R0但不平`
 +
 `其他Creative Modules确实增益且未篡改事实`
 +
@@ -881,6 +970,8 @@ Reversal会额外消耗复杂度；R2通常至少需要4–6个剧情Beat。Perf
 +
 `Performance对应真实Trigger且不抢主事件`
 +
+`关键产品操作方向、机位与工作面真实成立`
++
 `动作可生成`
 +
 `产品/人物/空间连续`
@@ -889,4 +980,4 @@ Reversal会额外消耗复杂度；R2通常至少需要4–6个剧情Beat。Perf
 
 只有全部适用项达到可接受状态才交付。
 
-**3.4为本轮商用重构冻结基线。后续新增Scene、真实Seedance验证、品类扩展或新的Creative Module，应作为增量更新，不得重新破坏上述权限边界。**
+**3.4仍是商用结构冻结基线；3.4.1是由首条真实Seedance Benchmark触发的经验Hotfix。后续只允许以真实失败证据做增量修正，不得重新破坏模块权限边界。**
