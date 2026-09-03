@@ -137,10 +137,11 @@ MITIGATION:
 - 当前机位不能兼顾操作与Proof时主动切镜。
 
 RETEST EVIDENCE:
-- B1-S04-P1 Attempt 2：开盒已改为人物右肩后OTS，人物与镜头从同一工作面观察；首轮“盒子背对人物”的错误未复现。
+- Attempt 2：开盒已改为人物右肩后OTS，人物与镜头从同一工作面观察；首轮“盒子背对人物”的错误未复现。
+- Attempt 3：同类开盒镜头继续保持合理操作方向。
 
 ROUTER IMPACT:
-Seedance Compiler硬检查；继续跨Case监控，但目标问题已被本次复测修正。
+Seedance Compiler硬检查；继续跨Case监控。
 
 ---
 
@@ -149,8 +150,8 @@ Seedance Compiler硬检查；继续跨Case监控，但目标问题已被本次�
 STATUS: CONFIRMED
 
 TRIGGER CASES:
-- B1-S04-P1 Attempt 1：取出/放回均出现手指/产品穿插
-- B1-S04-P1 Attempt 2：25–26s收纳阶段仍出现精细接触/状态错误
+- Attempt 1：取出/放回均出现手指/产品穿插
+- Attempt 2：25–26s收纳阶段仍出现精细接触/状态错误
 
 SYMPTOMS:
 - 手指进入小物体或槽位几何内部；
@@ -171,89 +172,79 @@ MITIGATION:
 - 成对物体增加Object State Ledger。
 
 RETEST EVIDENCE:
-Attempt 2仍失败，因此**不能标MITIGATED**。
+- Attempt 3删除了非必要的“取下→放回仓”复杂收纳动作，全片未再出现明显手指/耳机穿插。由于本次没有重新测试槽位精细放回，**GF16仍保持CONFIRMED，不升级MITIGATED**。
 
 ROUTER IMPACT:
-Generation Risk提高；若后续在更简化方案仍复现，考虑标记MODEL_LIMIT。
+Generation Risk提高；后续用Technical Diagnostic Clip专门复测。
 
 ---
 
 # GF17｜Story Driver存在但没有被有效视觉化，剧情变平
 
-STATUS: CONFIRMED
+STATUS: MITIGATED
 
 TRIGGER CASES:
-- B1-S04-P1 Attempt 1
-- B1-S04-P1 Attempt 2
+- Attempt 1
+- Attempt 2
 
 SYMPTOMS:
 - 文本有Client/Deadline，但观众仍主要看到坐着工作→拿耳机→戴上→继续工作；
 - Hook没有形成强继续观看理由；
 - 事件存在，却没有与产品卖点形成强因果推进。
 
-ROOT CAUSE HYPOTHESIS:
-PROMPT_COMPILER + BENCHMARK_DESIGN
-
 MITIGATION:
 - `R0 ≠ FLAT`；
-- 前1–3秒必须以可见/可听事件建立Driver；
-- Driver必须直接连接真实Pain / Selling Point，而不是只制造“有人来催”。
+- 前1–3秒以可见/可听事件建立Driver；
+- Driver必须直接连接真实Pain / Selling Point。
 
 RETEST EVIDENCE:
-Attempt 2强化“提前客户”后仍然偏平，说明仅增加Deadline不足；必须回到Commercial Decision重做。
+- Attempt 3使用打印机、推车、办公室交谈声 + 客户提前通知，直接绑定“噪音干扰→主动降噪→专注”。开场Driver已明显可读，首轮问题基本解决。
+- Attempt 3中段仍变平，但属于新的`GF23 Post-Proof Plateau`，不再归咎于Hook没有发动。
 
 ROUTER IMPACT:
-Hook/Story层硬检查，不等于升级R1/R2。
+Hook/Story层继续监控。
 
 ---
 
 # GF18｜伪商业问题：把易生成的操作步骤当成卖点
 
-STATUS: CONFIRMED
+STATUS: MITIGATED
 
 TRIGGER CASES:
-- B1-S04-P1 Attempt 1
-- B1-S04-P1 Attempt 2
+- Attempt 1
+- Attempt 2
 
 SYMPTOMS:
 - 广告核心围绕“拿起→开盒→佩戴→放回”；
-- 观众无法判断是在卖降噪、续航、音质、通话、外观还是收纳；
-- 产品操作很多，但没有一个真实Why Buy被清楚表达。
-
-ROOT CAUSE HYPOTHESIS:
-BENCHMARK_DESIGN + SKILL_RULE_GAP
+- 观众无法判断是在卖降噪、续航、音质、通话、外观还是收纳。
 
 MITIGATION:
-- 新增Commercial Validity Gate；
+- Commercial Validity Gate；
 - 每条先锁`Why Buy + Pain/Hesitation + Confirmed Selling Point + Emotional Payoff`；
-- 产品操作只能是Proof载体，不能因“好拍”自动升级为Core Decision；
-- 纯物理稳定性测试改名`TECHNICAL DIAGNOSTIC CLIP`，与剧情带货Benchmark分开。
+- 产品操作只能是Proof载体。
+
+RETEST EVIDENCE:
+- Attempt 3只表达`Active Noise Cancellation`，以“嘈杂办公室→戴上→声音明显减弱→进入专注”为主因果。核心商业信息已可读。
 
 ROUTER IMPACT:
-必须在Story Architecture之前阻断；Gate失败时禁止继续镜头层修补。
+Story Architecture前硬阻断。
 
 ---
 
 # GF19｜把外部压力写成主角负面人格
 
-STATUS: CONFIRMED
+STATUS: MITIGATED
 
 TRIGGER CASES:
-- B1-S04-P1 Attempt 2｜开场助理提醒后，主角“不耐烦/嫌烦”式反应
-
-SYMPTOMS:
-- 本应是“工作事件紧迫”，却让主角显得对同事不耐烦；
-- 正常消费广告的代入感与愉悦感下降；
-- 张力来自人物让人不舒服，而不是事件本身。
-
-ROOT CAUSE HYPOTHESIS:
-PROMPT_COMPILER
+- Attempt 2｜开场助理提醒后，主角“不耐烦/嫌烦”式反应
 
 MITIGATION:
 - `TENSION SOURCE ≠ PROTAGONIST NEGATIVITY`；
 - 普通商用广告让压力来自环境、任务、Deadline、选择或外部问题；
-- 主角默认保持有能力、积极、可喜欢、值得代入；
-- 只有用户明确要荒诞/黑色/抓马/反转时才允许负面人格成为戏剧资产。
+- 主角默认保持有能力、积极、可喜欢、值得代入。
+
+RETEST EVIDENCE:
+- Attempt 3主角面对客户提前与办公室噪音时保持高效、平稳，没有明显嫌烦/丧气人格。
 
 ROUTER IMPACT:
 Performance/Dialogue QA。
@@ -262,23 +253,18 @@ Performance/Dialogue QA。
 
 # GF20｜简单微动作时间预算过长，产生“老年感”
 
-STATUS: CONFIRMED
+STATUS: MITIGATED
 
 TRIGGER CASES:
-- B1-S04-P1 Attempt 2｜约11–14s佩戴动作持续过久
-
-SYMPTOMS:
-- 简单抬手/佩戴被慢慢演满整个时间段；
-- 节奏拖沓、缺乏年轻利落与蓄力后的爆发感；
-- 观众知道下一步是什么却必须等动作完成。
-
-ROOT CAUSE HYPOTHESIS:
-PROMPT_TIMING / COMPILER
+- Attempt 2｜约11–14s佩戴动作持续过久
 
 MITIGATION:
-- 高能广告中简单微动作通常按约0.5–1.2s视觉节拍设计；
-- 需要蓄力时，把时间给前置事件/声音Cue/视线锁定，动作本身短促；
-- 使用动作匹配硬切，不用慢动作式完整展示换稳定。
+- 高能广告中简单微动作通常约0.5–1.2s视觉节拍；
+- 蓄力时间给事件Cue/视线，动作本身短促；
+- 动作匹配硬切，不用慢动作式完整展示。
+
+RETEST EVIDENCE:
+- Attempt 3约7–8.5s佩戴节拍明显加快，动作不再拖成“慢慢戴”的老年感。
 
 ROUTER IMPACT:
 Camera×Action / Timeline编译。
@@ -287,52 +273,78 @@ Camera×Action / Timeline编译。
 
 # GF21｜空间声音与听觉因果不成立
 
-STATUS: CONFIRMED
+STATUS: MITIGATED
 
 TRIGGER CASES:
-- B1-S04-P1 Attempt 2｜23–24s远处/画外助理讲话与佩戴耳机状态
-
-SYMPTOMS:
-- 画外人物虽视觉上有距离，声音缺少明确方向/房间空间感，主观上像贴近镜头说话；
-- 主角仍佩戴耳机，却自然、清晰地响应外部讲话，没有建立可听原因；
-- 声音逻辑和视觉空间脱节。
-
-ROOT CAUSE HYPOTHESIS:
-PROMPT_COMPILER + AUDIO_SPATIAL_RULE_GAP
+- Attempt 2｜23–24s远处/画外助理讲话与佩戴耳机状态
 
 MITIGATION:
-- 每句对白锁speaker位置、on/off-screen、距离、方向、相对音量与房间感；
-- 耳机、门、玻璃等改变听觉条件时，先做Hearing Plausibility Gate；
-- 若依赖Transparency / Conversation Awareness等产品功能，明确真实功能与触发条件；否则先摘耳机/视觉交流/不响应。
+- 锁speaker位置、on/off-screen、距离、方向、相对音量与房间感；
+- 耳机、门、玻璃等改变听觉条件时做Hearing Plausibility Gate；
+- 不需要外部人物被主角听见时，改用视觉手势。
+
+RETEST EVIDENCE:
+- Attempt 3佩戴耳机后不再安排远处助理直接讲话；助理通过玻璃后的视觉手势交流；ANC前后环境声层级也明显区分。
 
 ROUTER IMPACT:
 Seedance Audio/Physical QA。
 
 ---
 
-# GF22｜成对物体状态瞬移 / Hidden State Teleport
+# GF22｜成对物体状态瞬移 / 复制 / Hidden State Teleport
 
 STATUS: CONFIRMED
 
 TRIGGER CASES:
-- B1-S04-P1 Attempt 2｜25s两只耳机仍处于佩戴/手持连续状态，26s另一只已无动作地出现在充电仓
+- Attempt 2｜25s两只耳机仍处于佩戴/手持连续状态，26s另一只已无动作地出现在充电仓
+- Attempt 3｜27–30s女主仍明显佩戴耳机，但前景打开的充电盒又出现两只耳机，形成“耳朵一对 + 盒内一对”的复制状态
 
 SYMPTOMS:
 - 两件相似物体跨镜状态无法追踪；
 - 一只在手、一只在耳/盒的位置突然改变；
-- 模型用“看起来像收纳完成”替代真实状态过渡。
+- 同一对物体在两个位置同时存在；
+- 模型用“标准产品Hero Shot”覆盖前面已经建立的真实状态。
 
 ROOT CAUSE HYPOTHESIS:
-PROMPT_COMPILER + CONTINUITY_STATE_GAP
+PROMPT_COMPILER + CONTINUITY_STATE_GAP + HERO_SHOT_PRIOR
 
 MITIGATION:
 - 成对/多件物体使用Object State Ledger；
 - 每Beat分别记录L/R或A/B的位置；
 - 任一状态改变必须有可见动作或明确动作匹配切；
-- 非核心收纳过程可以直接切到“全部收好”的结果镜，但前一镜不得保留矛盾状态。
+- **Hero Shot也必须服从Object State Ledger**，不能因为“经典产品图”自动把配件补回盒内；
+- 若人物佩戴两只耳机，结尾盒内必须明确为空槽；若模型难稳定生成空槽，则改成闭合盒体Hero Shot，不展示内部。
 
 ROUTER IMPACT:
 Physical Continuity硬检查，适用于耳机、鞋、手套、成套配件等。
+
+---
+
+# GF23｜Proof过早完成后的中段平台期 / Post-Proof Plateau
+
+STATUS: CONFIRMED
+
+TRIGGER CASES:
+- B1-S04-P1 Attempt 3｜约8.5–10s已经完成“噪音明显减弱 + 主角进入专注”的核心ANC Benefit Expression；约11–23s主要持续为打字、记录、通话与背景助理手势，缺少新的剧情因果变化
+
+SYMPTOMS:
+- Hook和卖点都成立，但卖点证明完以后故事像“已经结束却还在继续播放”；
+- 中段连续多个镜头只是维持同一状态，例如继续工作、继续使用、继续微笑；
+- 观众已经知道产品有效，却没有新的期待、关系变化、选择、阻力、笑点或后果；
+- 30秒广告在10秒左右完成核心商业信息，后面变成填时长。
+
+ROOT CAUSE HYPOTHESIS:
+STORY_PACING / PROMPT_COMPILER
+
+MITIGATION:
+- 增加`POST-PROOF CONTINUATION CHECK`：如果Best Proof在总时长前40–50%已经完成，后续必须至少发生一个与该Benefit直接相关的新因果Beat；
+- 合法后续可以是：真实后果、关系变化、轻Surprise、Comedy Payoff、新选择、新目标、再次使用Benefit解决更具体事件；
+- **不要求强行R2**。R0仍可通过“Proof→后果→情绪Payoff”保持推进，R1 Surprise也可作为轻量增强；
+- 如果没有值得发生的新Beat，优先把广告缩短到15–20秒，而不是用“继续工作/继续使用”填满30秒；
+- 后续Beat必须继续服务同一个Selling Point，不能为了热闹突然换第二卖点。
+
+ROUTER IMPACT:
+Story Engine / Timeline QA。若跨更多Case复现，再升级为核心Skill硬规则。
 
 ---
 
