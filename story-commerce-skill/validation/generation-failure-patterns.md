@@ -118,233 +118,183 @@ STATUS: WATCHLIST
 ---
 
 # GF15｜Proof镜头与人物操作面冲突
-
 STATUS: MITIGATED
-
-TRIGGER CASES:
-- B1-S04-P1 Attempt 1｜AirPods Pro 2 × Office × Seedance 2.5 × 30s
-
-SYMPTOMS:
-- 为让观众正面看清盒内，模型把工作面朝镜头，人物面对盒盖背面。
-
-ROOT CAUSE HYPOTHESIS:
-PROMPT_COMPILER + SKILL_RULE_GAP
-
+TRIGGER CASES: Attempt 1
 MITIGATION:
-- 执行 `references/camera-action-compiler.md`；
 - 先锁人物操作面，再锁机位；
 - 开盒/内部结构优先人物肩后OTS / 操作侧斜后方；
 - 当前机位不能兼顾操作与Proof时主动切镜。
-
 RETEST EVIDENCE:
-- Attempt 2：开盒已改为人物右肩后OTS，人物与镜头从同一工作面观察；首轮“盒子背对人物”的错误未复现。
-- Attempt 3：同类开盒镜头继续保持合理操作方向。
-
-ROUTER IMPACT:
-Seedance Compiler硬检查；继续跨Case监控。
+- Attempt 2–4同类开盒镜头未再复现“盒内朝镜头、人物面对盒背面”。
 
 ---
 
 # GF16｜小物体 × 手指精细取放穿模
-
 STATUS: CONFIRMED
-
-TRIGGER CASES:
-- Attempt 1：取出/放回均出现手指/产品穿插
-- Attempt 2：25–26s收纳阶段仍出现精细接触/状态错误
-
+TRIGGER CASES: Attempt 1 / Attempt 2
 SYMPTOMS:
 - 手指进入小物体或槽位几何内部；
 - 抓取/放回边界模糊；
-- 成对小物体在收纳时发生不连续状态。
-
-ROOT CAUSE HYPOTHESIS:
-PROMPT_COMPILER + MODEL_HIGH_RISK_INTERACTION
-
-HIGH-RISK CONDITIONS:
-耳机/耳饰/小配件、紧槽取放、手持盒体同时抓取、多项厘米级接触。
-
+- 成对小物体在收纳时状态不连续。
 MITIGATION:
 - 一镜最多1项高风险接触；
 - 产品稳定支撑；
-- 明确抓取部位和单一运动方向；
+- 明确抓取部位/单一方向；
 - 非核心Proof允许动作匹配切镜；
-- 成对物体增加Object State Ledger。
-
+- 成对物体使用Object State Ledger。
 RETEST EVIDENCE:
-- Attempt 3删除了非必要的“取下→放回仓”复杂收纳动作，全片未再出现明显手指/耳机穿插。由于本次没有重新测试槽位精细放回，**GF16仍保持CONFIRMED，不升级MITIGATED**。
-
-ROUTER IMPACT:
-Generation Risk提高；后续用Technical Diagnostic Clip专门复测。
+- Attempt 3–4删除复杂收纳后没有明显槽位穿模，但尚未专门复测精细放回，因此保持CONFIRMED。
 
 ---
 
 # GF17｜Story Driver存在但没有被有效视觉化，剧情变平
-
 STATUS: MITIGATED
-
-TRIGGER CASES:
-- Attempt 1
-- Attempt 2
-
-SYMPTOMS:
-- 文本有Client/Deadline，但观众仍主要看到坐着工作→拿耳机→戴上→继续工作；
-- Hook没有形成强继续观看理由；
-- 事件存在，却没有与产品卖点形成强因果推进。
-
+TRIGGER CASES: Attempt 1 / Attempt 2
 MITIGATION:
-- `R0 ≠ FLAT`；
 - 前1–3秒以可见/可听事件建立Driver；
-- Driver必须直接连接真实Pain / Selling Point。
-
+- Driver直接连接真实Pain / Selling Point。
 RETEST EVIDENCE:
-- Attempt 3使用打印机、推车、办公室交谈声 + 客户提前通知，直接绑定“噪音干扰→主动降噪→专注”。开场Driver已明显可读，首轮问题基本解决。
-- Attempt 3中段仍变平，但属于新的`GF23 Post-Proof Plateau`，不再归咎于Hook没有发动。
-
-ROUTER IMPACT:
-Hook/Story层继续监控。
+- Attempt 3之后“办公室噪音→ANC→专注”Driver清楚成立。
 
 ---
 
 # GF18｜伪商业问题：把易生成的操作步骤当成卖点
-
 STATUS: MITIGATED
-
-TRIGGER CASES:
-- Attempt 1
-- Attempt 2
-
-SYMPTOMS:
-- 广告核心围绕“拿起→开盒→佩戴→放回”；
-- 观众无法判断是在卖降噪、续航、音质、通话、外观还是收纳。
-
+TRIGGER CASES: Attempt 1 / Attempt 2
 MITIGATION:
 - Commercial Validity Gate；
-- 每条先锁`Why Buy + Pain/Hesitation + Confirmed Selling Point + Emotional Payoff`；
+- 先锁Why Buy + Pain/Hesitation + Confirmed Selling Point + Emotional Payoff；
 - 产品操作只能是Proof载体。
-
 RETEST EVIDENCE:
-- Attempt 3只表达`Active Noise Cancellation`，以“嘈杂办公室→戴上→声音明显减弱→进入专注”为主因果。核心商业信息已可读。
-
-ROUTER IMPACT:
-Story Architecture前硬阻断。
+- Attempt 3–4只表达Active Noise Cancellation，商业信息可读。
 
 ---
 
 # GF19｜把外部压力写成主角负面人格
-
 STATUS: MITIGATED
-
-TRIGGER CASES:
-- Attempt 2｜开场助理提醒后，主角“不耐烦/嫌烦”式反应
-
+TRIGGER CASES: Attempt 2
 MITIGATION:
 - `TENSION SOURCE ≠ PROTAGONIST NEGATIVITY`；
-- 普通商用广告让压力来自环境、任务、Deadline、选择或外部问题；
-- 主角默认保持有能力、积极、可喜欢、值得代入。
-
+- 普通商用广告压力来自环境/任务/时间/关系，主角保持可喜欢、可代入。
 RETEST EVIDENCE:
-- Attempt 3主角面对客户提前与办公室噪音时保持高效、平稳，没有明显嫌烦/丧气人格。
-
-ROUTER IMPACT:
-Performance/Dialogue QA。
+- Attempt 3–4未复现不耐烦主角。
 
 ---
 
 # GF20｜简单微动作时间预算过长，产生“老年感”
-
 STATUS: MITIGATED
-
-TRIGGER CASES:
-- Attempt 2｜约11–14s佩戴动作持续过久
-
+TRIGGER CASES: Attempt 2
 MITIGATION:
-- 高能广告中简单微动作通常约0.5–1.2s视觉节拍；
-- 蓄力时间给事件Cue/视线，动作本身短促；
-- 动作匹配硬切，不用慢动作式完整展示。
-
+- 简单微动作约0.5–1.2s视觉节拍；
+- 蓄力给事件Cue/视线，动作本身短促；
+- 动作匹配硬切。
 RETEST EVIDENCE:
-- Attempt 3约7–8.5s佩戴节拍明显加快，动作不再拖成“慢慢戴”的老年感。
-
-ROUTER IMPACT:
-Camera×Action / Timeline编译。
+- Attempt 3–4佩戴节拍明显改善。
 
 ---
 
 # GF21｜空间声音与听觉因果不成立
-
 STATUS: MITIGATED
-
-TRIGGER CASES:
-- Attempt 2｜23–24s远处/画外助理讲话与佩戴耳机状态
-
+TRIGGER CASES: Attempt 2
 MITIGATION:
-- 锁speaker位置、on/off-screen、距离、方向、相对音量与房间感；
-- 耳机、门、玻璃等改变听觉条件时做Hearing Plausibility Gate；
-- 不需要外部人物被主角听见时，改用视觉手势。
-
+- 锁speaker位置、距离、方向、房间感；
+- 耳机/门/玻璃改变听觉条件时执行Hearing Plausibility Gate；
+- 不需要听见时改视觉手势。
 RETEST EVIDENCE:
-- Attempt 3佩戴耳机后不再安排远处助理直接讲话；助理通过玻璃后的视觉手势交流；ANC前后环境声层级也明显区分。
-
-ROUTER IMPACT:
-Seedance Audio/Physical QA。
+- Attempt 3–4未复现远处助理贴脸对白/戴耳机仍直接回应。
 
 ---
 
 # GF22｜成对物体状态瞬移 / 复制 / Hidden State Teleport
-
 STATUS: CONFIRMED
-
 TRIGGER CASES:
-- Attempt 2｜25s两只耳机仍处于佩戴/手持连续状态，26s另一只已无动作地出现在充电仓
-- Attempt 3｜27–30s女主仍明显佩戴耳机，但前景打开的充电盒又出现两只耳机，形成“耳朵一对 + 盒内一对”的复制状态
-
+- Attempt 2：一只耳机无动作进入充电仓
+- Attempt 3：女主耳朵一对 + 打开盒内又一对
 SYMPTOMS:
-- 两件相似物体跨镜状态无法追踪；
-- 一只在手、一只在耳/盒的位置突然改变；
+- 相似物体跨镜状态无法追踪；
 - 同一对物体在两个位置同时存在；
-- 模型用“标准产品Hero Shot”覆盖前面已经建立的真实状态。
-
-ROOT CAUSE HYPOTHESIS:
-PROMPT_COMPILER + CONTINUITY_STATE_GAP + HERO_SHOT_PRIOR
-
+- 标准Hero Shot覆盖真实状态。
 MITIGATION:
-- 成对/多件物体使用Object State Ledger；
-- 每Beat分别记录L/R或A/B的位置；
-- 任一状态改变必须有可见动作或明确动作匹配切；
-- **Hero Shot也必须服从Object State Ledger**，不能因为“经典产品图”自动把配件补回盒内；
-- 若人物佩戴两只耳机，结尾盒内必须明确为空槽；若模型难稳定生成空槽，则改成闭合盒体Hero Shot，不展示内部。
-
-ROUTER IMPACT:
-Physical Continuity硬检查，适用于耳机、鞋、手套、成套配件等。
+- Object State Ledger逐只追踪；
+- Hero Shot同样服从Ledger；
+- 人物仍佩戴耳机时，优先闭合盒体，不展示内部。
+RETEST EVIDENCE:
+- Attempt 4结尾使用闭合盒体，两次生成均未复现“耳朵+盒内重复一对”；但仍需跨Case复测后再考虑MITIGATED。
 
 ---
 
 # GF23｜Proof过早完成后的中段平台期 / Post-Proof Plateau
-
 STATUS: CONFIRMED
-
 TRIGGER CASES:
-- B1-S04-P1 Attempt 3｜约8.5–10s已经完成“噪音明显减弱 + 主角进入专注”的核心ANC Benefit Expression；约11–23s主要持续为打字、记录、通话与背景助理手势，缺少新的剧情因果变化
-
+- Attempt 3：约10s卖点已完成，11–23s维持“继续专注”
+- Attempt 4 Run A/B：加入更多背景事件后仍在10–21s形成长平台期
 SYMPTOMS:
-- Hook和卖点都成立，但卖点证明完以后故事像“已经结束却还在继续播放”；
-- 中段连续多个镜头只是维持同一状态，例如继续工作、继续使用、继续微笑；
-- 观众已经知道产品有效，却没有新的期待、关系变化、选择、阻力、笑点或后果；
-- 30秒广告在10秒左右完成核心商业信息，后面变成填时长。
-
+- Hook和卖点成立，但卖点证明后故事像“已经结束却继续播放”；
+- 继续工作/继续使用/背景路人事件占据时长；
+- 观众知道产品有效，却没有新的高价值商业变化。
 ROOT CAUSE HYPOTHESIS:
 STORY_PACING / PROMPT_COMPILER
-
 MITIGATION:
-- 增加`POST-PROOF CONTINUATION CHECK`：如果Best Proof在总时长前40–50%已经完成，后续必须至少发生一个与该Benefit直接相关的新因果Beat；
-- 合法后续可以是：真实后果、关系变化、轻Surprise、Comedy Payoff、新选择、新目标、再次使用Benefit解决更具体事件；
-- **不要求强行R2**。R0仍可通过“Proof→后果→情绪Payoff”保持推进，R1 Surprise也可作为轻量增强；
-- 如果没有值得发生的新Beat，优先把广告缩短到15–20秒，而不是用“继续工作/继续使用”填满30秒；
-- 后续Beat必须继续服务同一个Selling Point，不能为了热闹突然换第二卖点。
-
+- Proof在前40–50%完成时，后续必须有与同一Benefit直接相关的新因果Beat；
+- **Attempt 4新增教训：新Beat不能只是背景发生。必须改变主角动作、判断、产品状态或观众对Benefit的理解。**
+- 后续优先短促的Outcome / Contrast / Surprise / Comedy / Decision Change；
+- 没有高价值新Beat则缩短，不用自然主义场面填时长。
 ROUTER IMPACT:
-Story Engine / Timeline QA。若跨更多Case复现，再升级为核心Skill硬规则。
+Story Engine / Timeline QA。
+
+---
+
+# GF24｜亚秒多镜头插值 / False Hard Cut Morph
+STATUS: CONFIRMED
+TRIGGER CASES:
+- B1-S04-P1 Attempt 4 Run A
+- B1-S04-P1 Attempt 4 Run B
+SYMPTOMS:
+- 提示词要求0–3s多个0.7s左右独立噪音镜头，但模型没有稳定执行真正Hard Cut；
+- Run B约0.5–1.1s最明显，打印机/办公设备/移动物体横向模糊穿过画面，像不同空间被模型连续插值；
+- Run A较轻，但打印机→推车→人物/助理的空间重置仍有“突然出现/跳位”感；
+- 快节奏被错误表现成物体乱穿，而不是清楚剪辑。
+ROOT CAUSE HYPOTHESIS:
+PROMPT_COMPILER + MODEL_TEMPORAL_INTERPOLATION_RISK
+HIGH-RISK CONDITIONS:
+- 同一个生成片段内连续多个<1s独立物理场景
+- 每个微镜头都有大物体移动/空间重置
+- 硬切边界缺少稳定首尾状态
+- 1–2秒内同时要求门、人物移动、对白、物体运动
+MITIGATION:
+- **快节奏优先靠信息密度和声音层，不靠3–4个亚秒独立物理场景。**
+- Hook优先`1个强主镜头 + 同画面多噪音源/背景动作 + 声音叠加`；
+- 若必须切，尽量让独立镜头≥1.0–1.5s，减少空间重置次数；
+- 首镜需要人物互动时，让关键人物从首帧已经处于可执行位置，不在1秒内完成走门→靠近→说话；
+- 快切可用于稳定特写/Reaction/产品状态，不让大空间和大物体每0.7s重新生成。
+ROUTER IMPACT:
+Hook Compiler / Seedance Temporal QA。
+
+---
+
+# GF25｜商业Beat密度塌陷 / TV Drama Drift
+STATUS: CONFIRMED
+TRIGGER CASES:
+- B1-S04-P1 Attempt 4 Run A
+- B1-S04-P1 Attempt 4 Run B
+SYMPTOMS:
+- Prompt为了“继续剧情”加入掉文件、打印机、通话、会议结束等完整生活事件；
+- 两次生成约10–21s都长时间使用相似女主中近景打字/说话，观感像电视剧办公室戏；
+- 背景事件虽多，但没有快速改变主角目标、产品状态、商业判断；
+- Surprise/Nope直到20秒以后才到，核心有趣Beat太迟；
+- “故事更完整”反而让短视频广告的抓力下降。
+ROOT CAUSE HYPOTHESIS:
+STORY_CONTINUATION_OVERCORRECTION + PROMPT_COMPILER
+MITIGATION:
+- 新增`COMMERCIAL BEAT DENSITY GATE`：短视频广告通常每2–3秒至少出现一个新商业Beat：新信息 / 新动作 / 新产品状态 / 新反差 / 新Reaction / 新Payoff；
+- Beat不是“每2秒换背景”，而是观众理解或期待发生变化；
+- 单一自然主义行为（打字、听、说、走路）若超过约3秒且没有新商业信息，优先压缩；
+- Post-Proof Surprise/Comedy优先在Proof后2–4秒内到达，不拖到20秒以后；
+- **Audio Calm ≠ Visual Slow**：产品让声音安静，不代表摄影/信息节奏也要慢；
+- 背景事件只有在直接支持Contrast时才保留，并压成0.5–1.5s可读视觉证据，不单独演完整小剧情；
+- 30秒如果没有足够高价值Beat，缩短优于电视剧式填时长。
+ROUTER IMPACT:
+Story Engine / Timeline / Ad Pacing QA。
 
 ---
 
@@ -370,6 +320,7 @@ ROUTER IMPACT:
 
 - 单次偶发失败不自动升级CONFIRMED；但Prompt因果明显、同一Case内重复、或状态逻辑可直接验证的问题可以CONFIRMED。
 - 同类问题跨2个以上Case复现，优先视为系统性风险。
+- 同一Prompt连续2次复现相近结构问题，可作为强系统证据，但仍要跨产品/Scene继续监控。
 - 简化后仍稳定失败，应考虑MODEL_LIMIT，不无限加Prompt。
 - CONFIRMED问题复测解决目标问题后可升级MITIGATED，但继续跨Case监控。
 - Failure Pattern用于未来Router/Compiler提前避错，不是让Prompt越来越长。
