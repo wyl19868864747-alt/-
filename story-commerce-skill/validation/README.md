@@ -30,6 +30,7 @@
 - Prompt Compiler问题
 - Seedance能力边界
 - Scene-specific高风险动作
+- 稳定性与剧情吸引力之间的冲突
 
 ---
 
@@ -56,15 +57,16 @@
 - 同一基础生成设置
 - 不自行改Prompt结构
 
-这样失败才有比较价值。
+如果本次没有实际上传参考图，必须说明 `TEXT_ONLY`。这类结果仍有诊断价值，但不能证明Reference Product Lock已经通过。
 
 ## C. 把生成视频原文件上传回来
 最好同时说明：
 - 对应Case ID
 - 是否一次生成 / 是否重试
-- 若你肉眼已经看到明显问题，可顺手说一句
+- 是否使用参考图
+- 若肉眼已经看到明显问题，可顺手说一句
 
-不需要你自己写长复盘。
+不需要自己写长复盘。
 
 ---
 
@@ -75,28 +77,33 @@
 1. 从真实SKU建立Product Truth Card
 2. 选择该Benchmark需要验证的商业问题 / Story Architecture / Proof / R-level
 3. 按指定Scene编译故事与Seedance提示词
-4. 收到视频后逐项评分
-5. 判断失败属于：
+4. 所有关键产品操作执行 `references/camera-action-compiler.md`
+5. 收到视频后逐项评分
+6. 判断失败属于：
    - `SKILL_RULE`
    - `PROMPT_COMPILER`
    - `MODEL_LIMIT`
    - `RANDOM_GENERATION`
    - `PRODUCT_ASSET_LIMIT`
-6. 把新失败模式登记进 `generation-failure-patterns.md`
-7. 把本次结果写入 `results-registry.md`
-8. 只有确认属于Skill/Compiler问题时才修改SSOT
-9. 修改后只复测受影响Case，不无脑重跑全部12条
-10. 当证据足够时更新 `scene-validation-registry.md`
+7. 把新失败模式登记进 `generation-failure-patterns.md`
+8. 把本次结果写入 `results-registry.md`
+9. 只有确认属于Skill/Compiler问题时才修改SSOT
+10. 修改后只复测受影响Case，不无脑重跑全部12条
+11. 当证据足够时更新 `scene-validation-registry.md`
 
 核心原则：
 
 > **不把所有失败都怪Prompt，也不把所有失败都靠加词解决。**
 
+同时：
+
+> **Benchmark是稳定性测试，但仍然必须像剧情带货广告。R0不等于平，稳定不等于没有Hook。**
+
 ---
 
 # 4. 固定评分
 
-每条视频统一检查7项：
+每条视频统一检查8项：
 
 1. `SCENE_RECOGNITION`：一眼能否认出目标Scene，且不是只靠服装/背景
 2. `PRODUCT_LOCK`：外观、颜色、比例、结构、包装是否稳定
@@ -105,6 +112,7 @@
 5. `PERFORMANCE_REACTION`：Reaction是否自然、由Trigger触发、没有同步瞪眼/提前泄底
 6. `PROOF_FIDELITY`：Best Proof是否清楚、没有被剧情/Scene/特效挤掉或伪造
 7. `COMMERCIAL_CLARITY`：只看成片是否能理解人物为什么继续、产品在解决什么购买问题
+8. `STORY_ENGAGEMENT`：前1–3秒是否有继续观看理由，Primary Driver有没有真正被画面发动，剧情是否推进而不是平铺产品操作
 
 评分只用：
 - `PASS`
@@ -122,8 +130,11 @@
 - 首轮只找问题，不追求VALIDATED。
 - 出现FAIL时先归因，再决定是否改Skill。
 - 同一失败连续跨Case出现，优先升级为系统级Failure Pattern。
+- 同一Case内重复出现且因果非常明确的物理/机位错误，也可直接CONFIRMED。
 - 单次偶发畸变且Prompt/结构无明显诱因，可先标记 `RANDOM_GENERATION`，不立刻污染Skill。
 - `MODEL_LIMIT`问题优先通过降低人物数、拆动作、换镜头结构、避开高风险交接解决，不靠堆砌负面词硬顶。
+- 产品操作镜头若“观众看清”和“人物能正常操作”冲突，先改机位，禁止靠旋转产品作弊。
+- 开场总控默认1句、最多2句；禁止项和具体生成约束后移到生成控制，不在开场堆砌。
 
 ---
 
@@ -154,10 +165,12 @@ Benchmark V1通过不等于VALIDATED。
 
 - 哪些Scene真的稳定
 - 哪些动作Seedance经常失败
+- 哪些机位能让人物使用与Product Proof同时成立
 - 哪些Prompt写法实际有效
 - 哪些理论规则应该删掉
 - 哪些Generation Risk应该被Router提前规避
 - 哪些Scene可以从TESTING_CANDIDATE进入VALIDATED
+- 如何在不牺牲稳定性的情况下，仍然保持剧情带货应有的Hook与推进感
 
 最终Skill会从：
 
