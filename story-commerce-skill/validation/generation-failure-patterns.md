@@ -4,8 +4,6 @@
 
 只有真实生成中观察到的Failure Pattern才能升级为 `CONFIRMED`。
 
-当前初始条目全部为：`WATCHLIST`。
-
 状态：
 - `WATCHLIST`：理论/历史经验高风险，等待Benchmark验证
 - `CONFIRMED`：真实Case重复出现或证据明确
@@ -247,6 +245,123 @@ STATUS: WATCHLIST
 
 ---
 
+# GF15｜Proof镜头与人物操作面冲突
+
+STATUS: CONFIRMED
+
+TRIGGER CASES:
+- B1-S04-P1 Attempt 1｜AirPods Pro 2 × Office × Seedance 2.5 × 30s
+
+SYMPTOMS:
+- 为了让观众正面看清耳机盒内部，模型把打开后的盒内结构朝向镜头；
+- 人物坐在产品后方，实际面对盒盖背面，人物无法从自己的方向正常观察/取出耳机；
+- “产品展示正确”与“人物使用正确”发生冲突。
+
+ROOT CAUSE HYPOTHESIS:
+PROMPT_COMPILER + SKILL_RULE_GAP
+
+HIGH-RISK CONDITIONS:
+- 开盒/开盖
+- 屏幕/接口展示
+- 内部结构Proof
+- 人物与镜头分处产品两侧
+- 提示词只强调“让镜头清楚看到”，没有写机位侧与人物操作侧
+
+HIGH-RISK SCENES:
+ALL；产品操作近景普遍适用
+
+MITIGATION:
+- 执行 `references/camera-action-compiler.md`；
+- 关键操作优先人物肩后OTS / 人物操作侧斜后方；
+- 先锁人物操作面，再锁机位；
+- 观众看清Proof不能靠反转产品朝向实现；
+- 若当前机位无法同时满足操作合理与Proof可见，主动切镜。
+
+RETEST EVIDENCE:
+PENDING｜B1-S04-P1 Attempt 2
+
+ROUTER IMPACT:
+不是Scene Router问题；属于Seedance Compiler硬检查。
+
+---
+
+# GF16｜小物体 × 手指精细取放穿模
+
+STATUS: CONFIRMED
+
+TRIGGER CASES:
+- B1-S04-P1 Attempt 1｜取出耳机、放回耳机均出现手指/产品穿插或接触失真
+
+SYMPTOMS:
+- 手指进入耳机或槽位几何内部；
+- 抓取边界模糊；
+- 放回时耳机与手/盒体融合；
+- 同一条里“取出”和“放回”两次精细交互均出现问题。
+
+ROOT CAUSE HYPOTHESIS:
+PROMPT_COMPILER + MODEL_HIGH_RISK_INTERACTION
+
+HIGH-RISK CONDITIONS:
+- 耳机、耳饰、小配件等厘米级物体
+- 紧槽位取出/放回
+- 同时手持盒子并精细抓取
+- 一镜要求开盖+取出+旋转+佩戴
+
+HIGH-RISK SCENES:
+ALL；S12/S01等复杂空间会进一步放大
+
+MITIGATION:
+- 一镜最多1项高风险精细接触；
+- 产品尽量获得桌面/另一只手的稳定支撑；
+- 明确抓取部位与单一运动方向；
+- 取出/放回后立即切镜；
+- 精细接触不是核心Proof时允许动作匹配切镜，避免硬拍全过程。
+
+RETEST EVIDENCE:
+PENDING｜B1-S04-P1 Attempt 2
+
+ROUTER IMPACT:
+Generation Risk应提高；若跨Case复现且简化后仍失败，再评估MODEL_LIMIT。
+
+---
+
+# GF17｜Story Driver存在但没有被视觉化，剧情变平
+
+STATUS: CONFIRMED
+
+TRIGGER CASES:
+- B1-S04-P1 Attempt 1
+
+SYMPTOMS:
+- 文本上写了“Client call now”，但成片主要是人物平静坐桌前→拿耳机→戴耳机→继续工作；
+- S04的Deadline / Client / Professional Pressure没有形成明显可见事件；
+- 产品操作完成了，但观众缺少“为什么现在必须继续看”的动力。
+
+ROOT CAUSE HYPOTHESIS:
+PROMPT_COMPILER / BENCHMARK_DESIGN
+
+HIGH-RISK CONDITIONS:
+- 为了测试稳定性主动把剧情能量全部删掉
+- 把R0误解成“没有张力”
+- Story Driver只写台词，不写可见动作/关系/时间压力
+
+HIGH-RISK SCENES:
+ALL；S04尤其需要Deadline/Client/Competence至少一项真正发动
+
+MITIGATION:
+- `R0 ≠ FLAT`；无反转仍必须有明确事件发动机；
+- 前1–3秒用可见事件建立任务/冲突/未完成状态；
+- Driver必须至少通过动作、站位、人物介入、声音或空间变化之一被看见；
+- Benchmark新增 `STORY_ENGAGEMENT` 评分，稳定但无吸引力不能视为成功。
+
+RETEST EVIDENCE:
+PENDING｜B1-S04-P1 Attempt 2
+
+ROUTER IMPACT:
+不是要求升级R1/R2；优先强化当前Primary Architecture的Driver。
+
+---
+
 # 新Failure Pattern登记模板
 
 ```text
@@ -277,8 +392,8 @@ ROUTER IMPACT:
 
 # 规则
 
-- 单次偶发失败不自动升级CONFIRMED。
+- 单次偶发失败不自动升级CONFIRMED；但同一Case内重复出现、且物理/机位因果明确的问题可以直接CONFIRMED。
 - 同类问题跨2个以上Case复现，优先视为系统性风险。
 - 如果简化后仍稳定失败，应考虑MODEL_LIMIT，不继续无限加Prompt。
 - CONFIRMED失败若有稳定规避方案并复测通过，可升级MITIGATED。
-- Failure Pattern的价值是让未来Router提前避错，不是让Prompt越来越长。
+- Failure Pattern的价值是让未来Router/Compiler提前避错，不是让Prompt越来越长。
