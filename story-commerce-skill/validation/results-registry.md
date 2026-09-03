@@ -1,0 +1,119 @@
+# BENCHMARK RESULTS REGISTRY｜真实生成结果登记
+
+> 只记录真实生成结果。未生成不得填PASS。
+
+当前阶段：`BENCHMARK V1｜DIAGNOSTIC`
+
+评分：`PASS / PARTIAL / FAIL / N/A / NOT_RUN`
+
+---
+
+# 1. Summary
+
+| Case | Scene | Product | Scene Recognition | Product Lock | Action | Space/Physics | Performance | Proof | Commercial Clarity | Status |
+|---|---|---|---|---|---|---|---|---|---|---|
+| B1-S01-P1 | S01 | 3C | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN |
+| B1-S01-P2 | S01 | Apparel | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN |
+| B1-S01-P3 | S01 | Daily Goods | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN |
+| B1-S04-P1 | S04 | 3C | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN |
+| B1-S04-P2 | S04 | Apparel | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN |
+| B1-S04-P3 | S04 | Daily Goods | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN |
+| B1-S07-P1 | S07 | 3C | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN |
+| B1-S07-P2 | S07 | Apparel | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN |
+| B1-S07-P3 | S07 | Daily Goods | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN |
+| B1-S12-P1 | S12 | 3C | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN |
+| B1-S12-P2 | S12 | Apparel | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN |
+| B1-S12-P3 | S12 | Daily Goods | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN |
+
+---
+
+# 2. Case Records
+
+每生成一条，在下方追加完整记录。
+
+模板：
+
+```text
+## <CASE ID>｜Attempt <n>
+
+DATE:
+MODEL / VERSION:
+DURATION:
+ASSETS:
+PROMPT REVISION:
+
+SCENE_RECOGNITION:
+PASS / PARTIAL / FAIL
+Evidence:
+
+PRODUCT_LOCK:
+PASS / PARTIAL / FAIL
+Evidence:
+
+ACTION_EXECUTION:
+PASS / PARTIAL / FAIL
+Evidence:
+
+SPATIAL_PHYSICAL_CONTINUITY:
+PASS / PARTIAL / FAIL
+Evidence:
+
+PERFORMANCE_REACTION:
+PASS / PARTIAL / FAIL
+Evidence:
+
+PROOF_FIDELITY:
+PASS / PARTIAL / FAIL
+Evidence:
+
+COMMERCIAL_CLARITY:
+PASS / PARTIAL / FAIL
+Evidence:
+
+PRIMARY FAILURE TYPE:
+SKILL_RULE / PROMPT_COMPILER / MODEL_LIMIT / RANDOM_GENERATION / PRODUCT_ASSET_LIMIT / NONE
+
+FAILURE PATTERNS:
+GFxx...
+
+ROOT CAUSE:
+
+FIX:
+
+RETEST REQUIRED:
+YES / NO
+
+FINAL CASE STATUS:
+PASS / PARTIAL / FAIL / STOPPED
+```
+
+---
+
+# 3. 修改证据规则
+
+任何对SSOT的修改，建议在这里留下：
+
+```text
+CHANGE ID:
+TRIGGER CASE(S):
+OBSERVED FAILURE:
+ROOT CAUSE:
+FILES CHANGED:
+EXPECTED IMPROVEMENT:
+RETEST CASE(S):
+RETEST RESULT:
+```
+
+原则：
+
+> 没有真实Case证据，不因为单次“看起来可能更好”继续膨胀核心Skill。
+
+---
+
+# 4. 当前状态
+
+Benchmark尚未开始真实生成。
+
+所有Case：`NOT_RUN`
+
+不得根据理论回归结果填充真实生成PASS。
