@@ -1,8 +1,8 @@
-# SCENE ROUTER｜剧情带货场景路由 3.2
+# SCENE ROUTER｜剧情带货场景路由 3.4｜COMMERCIAL FREEZE
 
 > 目标：让特殊Scene只在真正增强商业表达时被调用，并严格保持：
 >
-> `Commercial Decision → Story Architecture → Proof Plan → Reversal Level → Scene Router → Scene DNA原生化 → Story → Seedance Prompt`
+> `Commercial Decision → Story Architecture → Proof Plan → Reversal Level → Scene Router → Scene DNA原生化 → Story → Performance → Seedance Prompt`
 
 Scene Router位于Story Architecture、Proof Plan和Reversal Router之后。
 
@@ -20,7 +20,7 @@ Scene不是美术风格标签，而是一套会改变人物身份、社会规则
 
 回答不清楚，Scene DNA不成立。
 
-Scene系统当前拆成三层：
+Scene系统拆成三层：
 
 - `scene-index.md`：路由索引，回答“哪些Scene值得候选”
 - `scene-dna-library.md`：执行DNA，回答“选中后这个世界具体怎么演、怎么拍”
@@ -28,49 +28,71 @@ Scene系统当前拆成三层：
 
 任何Scene都必须服从：
 
-`用户明确要求 > 商品事实/SKU/参考资产 > 合规与安全 > Core Decision Question > Best Proof > Primary Story Architecture > R0/R1/R2 > Scene增益 > 美术风格`
+`用户明确要求 > 商品事实/SKU/参考资产 > 合规与安全 > Core Decision Question > Best Proof > Primary Story Architecture > R0/R1/R2 > Scene增益 > Performance > 美术风格`
 
 永远：
 
 `PRODUCT TRUTH > SCENE TRICK`
 `PRIMARY ARCHITECTURE > SCENE`
 `PROOF > SCENE SPECTACLE`
+`NORMAL LOCATION IS A VALID WINNER`
 `PRODUCT LOCK > SCENE STYLE`
 
 现代商品进入历史/未来世界时，外观、颜色、比例、包装、结构和真实能力保持不变；Scene只能改变“这个世界的人为什么注意它、怎样行动、怎样验证、怎样反应、怎样拍”。
 
 ---
 
-# 1. Scene是可选模块，不是必经步骤
+# 1. Candidate 0｜普通真实生活场景是正式候选
 
-进入Scene Router前，已经具备：
+Scene Router不是“先从12个特殊世界里挑一个，再问要不要放弃”。
+
+用户未指定特殊Scene时，候选池从一开始就是：
+
+`CANDIDATE 0 = NORMAL_LOCATION`
++
+`S01–S12 SPECIAL_SCENE_DNA`
+
+`NORMAL_LOCATION`完全合格，尤其适合：
+- Proof本身已经足够强；
+- 真实使用情境比特殊世界更可信；
+- 高风险医疗/安全/金融/资格/价格信息；
+- 极短时长；
+- 特殊Scene只增加美术差异，不增加商业因果；
+- 特殊Scene会显著增加人物、空间、交接、文字或产品变形风险。
+
+如果普通生活场景已经更直接、更可信、更稳定：
+
+> **让NORMAL_LOCATION获胜。**
+
+特殊Scene不是Skill工作量证明。
+
+---
+
+# 2. 进入Scene Router前的已锁输入
+
+进入Scene Router前已经具备：
 
 - Product Decision Card
 - Core Decision Question
 - Top Hesitation
 - Best Proof / Proofability
 - Primary Story Architecture / Primary Driver
+- Product Causal Role
 - Reversal Card：R0 / R1 / R2
 - Platform / Duration / Constraints
 
-只有满足以下任一情况才考虑特殊Scene DNA：
+只有满足以下任一情况才认真评估特殊Scene：
 
 1. 用户明确指定特殊Scene；
 2. Story Architecture Card判断Scene DNA Value为MEDIUM/HIGH；
 3. 世界规则能明显增强人物身份、冲突、Product Entry、Proof、Reaction、Hook或镜头；
-4. 相比普通真实生活场景，特殊Scene能产生明确的商业或观看增益。
-
-如果普通真实生活场景已经更直接、更可信、更稳定：
-
-> **不调用特殊Scene DNA。**
-
-特殊Scene不是Skill工作量证明。
+4. 相比NORMAL_LOCATION，特殊Scene能产生明确商业或观看净增益。
 
 ---
 
-# 2. 数据读取顺序
+# 3. 数据读取顺序
 
-## 2.1 先读Index
+## 3.1 先读Index
 
 进入特殊Scene候选阶段时先读取 `scene-index.md`：
 
@@ -84,27 +106,27 @@ Scene系统当前拆成三层：
 - Creative Compatibility
 - Scene Class / Diversity信息
 
-**当前12个Scene均已完成结构化Index迁移。** 候选比较应优先读取 `scene-index.md`，不再依赖“未迁移Scene的Legacy补偿逻辑”。
+当前12个Scene均已完成结构化Index迁移。候选比较优先读取 `scene-index.md`。
 
-## 2.2 再读选中的DNA Card
+## 3.2 再读选中的DNA Card
 
-只有Scene进入最终候选或已经被用户明确指定后，才读取 `scene-dna-library.md` 对应Scene Card。
+只有Scene进入最终候选，或用户明确指定后，才读取 `scene-dna-library.md` 对应Scene Card。
 
-不要为了比较12个Scene而每次完整读取12张执行Card。
+不要为了比较12个Scene而完整读取12张执行Card。
 
-## 2.3 Validation只提供证据状态
+## 3.3 Validation只提供证据状态
 
 读取 `scene-validation-registry.md` 确认：
 
 - 当前Status
-- 哪些生成测试PASS/FAIL/PARTIAL/NOT_TESTED
+- PASS / FAIL / PARTIAL / NOT_TESTED
 - 是否可以声称VALIDATED
 
-Validation状态不能代替商业匹配度；但关键生成风险已明确FAIL时，应降权或避免使用。
+Validation状态不能代替商业匹配度；关键生成风险若已有FAIL证据，应降权或避免使用。
 
 ---
 
-# 3. Scene Status
+# 4. Scene Status
 
 当前正式候选库共12个Scene，全部为：
 
@@ -113,8 +135,6 @@ Validation状态不能代替商业匹配度；但关键生成风险已明确FAIL
 尚无任何Scene被证据支持为`VALIDATED`。
 
 状态真值以 `scene-validation-registry.md` 为准。
-
-当前12个：
 
 - S01 架空古装宫廷
 - S02 现代美国高中
@@ -131,109 +151,181 @@ Validation状态不能代替商业匹配度；但关键生成风险已明确FAIL
 
 ---
 
-# 4. Scene Selection｜选择规则
+# 5. Scene Selection｜冻结后的分层路由
 
-## 4.1 用户明确指定Scene
+**禁止把所有字段机械等权相加。**
 
-用户明确选择Scene时优先使用，不擅自换成历史高频模板。
+选择必须分层执行：
 
-但仍先执行Safety与Truth Gate。
+## Gate A｜HARD GATES
 
-仅在以下情况允许阻断或改路由：
+任一失败直接淘汰特殊Scene：
 
-- Scene与商品/受众存在明确合规冲突；
-- 商品无法自然进入，必须严重歪曲事实才能成立；
-- Scene会迫使不可证明卖点变成伪Proof；
-- Scene要求与真实参考资产/物理事实冲突；
-- 核心Scene机制必然破坏Primary Architecture或Best Proof。
+1. **Safety / Audience Gate**
+2. **Product Truth Gate**
+3. **Proofability Gate**
+4. **DNA Activation Gate**
 
-若用户只是指定“办公室/列车/宫廷”作为空间，但故事没有触发该Scene的 `DNA_ACTIVATION_CONDITION`：
-
-> 可以保留该Location，但不声称正在使用完整Scene DNA。
-
----
-
-## 4.2 用户未指定Scene
-
-先比较：
-
-`普通真实生活场景`
-VS
-`特殊Scene DNA`
-
-特殊Scene只有存在明确增益时才能胜出。
-
-### Step A｜Safety先淘汰
-
-任何BLOCKED或Safety Gate失败Scene直接淘汰。
-
-### Step B｜DNA Activation
+### DNA Activation Gate
 
 问：
 
-> 当前故事是否真的会触发该Scene的世界发动机/权力规则/空间逻辑？
+> 当前故事是否真的会触发该Scene的世界发动机、社会规则、权力结构或空间逻辑？
 
-如果NO，特殊Scene降级为普通Location，不参与完整Scene DNA排名。
+如果NO：
 
-### Step C｜Fit Scoring
+> 该空间最多保留为普通Location，不算调用Scene DNA。
 
-结构化Index统一使用：
+---
 
-`BLOCKED / LOW / MEDIUM / HIGH`
+## Gate B｜PRIMARY COMMERCIAL FIT
 
-运行时可映射：
-
-`LOW=0 / MEDIUM=1 / HIGH=2`
-
-重点比较：
+只有通过Hard Gates的候选继续比较：
 
 1. **Decision Fit**：是否放大Core Decision Question
 2. **Architecture Fit**：是否增强当前Primary Architecture，而非偷换Driver
-3. **Proof Fit**：是否能自然承载Best Proof
-4. **Native Conflict Fit**：无商品时是否已有真实世界冲突
-5. **Product Entry Fit**：商品是否无需硬塞即可进入
-6. **Character Fit**：目标人物是否能自然成为该世界角色（运行时动态计算）
-7. **Reaction Fit**：Scene原生Reaction是否增强Decision Change
-8. **Visual Distinctiveness**：是否带来有效而非纯装饰的视觉差异
-9. **Generation Risk**：人物、空间、交接、文字、尺度风险是否在Complexity Budget内
-10. **Safety Fit**
+3. **Proof Fit**：是否自然承载Best Proof
+4. **Product Entry Fit**：商品是否无需硬塞即可进入
 
-### Reversal Fit的条件调用
+这四项是Scene选择的主判断。
 
-- R0：不评分Reversal Fit；Scene不得主动添加误判/反转
-- R1：只检查Scene是否能自然表达已经确定的Clarification / Reveal / Surprise
-- R2：才检查 `REVERSAL_COMPATIBILITY` 与 `SUPPORTED_REVERSAL_TYPES`
+如果特殊Scene在这里明显弱于NORMAL_LOCATION：
 
-**Scene支持R2 ≠ 本条应该升级R2。**
+> 直接让NORMAL_LOCATION获胜，不允许靠视觉奇观追回。
 
-### Step D｜Diversity Penalty
+---
+
+## Gate C｜UNIQUE CAUSAL GAIN
+
+每个特殊Scene候选必须能用一句话回答：
+
+> **这个Scene提供了什么NORMAL_LOCATION和其他候选无法同样自然提供的因果优势？**
+
+例如：
+- S05不是“西部好看”，而是“商品通过社区公开实用测试改变人物信誉”；
+- S07不是“商场真实”，而是“消费者可以合法并列试用、比较并改选”；
+- S11不是“古代市场热闹”，而是“公开Claim、Rival挑战和群众判断共同改变价值判断”。
+
+写不出明确`UNIQUE_CAUSAL_GAIN`：
+
+> 特殊Scene降级；优先NORMAL_LOCATION。
+
+---
+
+## Gate D｜SECONDARY EXECUTION FIT
+
+商业核心通过后，再比较：
+
+1. **Character Fit**：目标人物是否自然成为该世界角色
+2. **Reaction Fit / Reaction Signature**：Scene原生Reaction是否增强Decision Change
+3. **Generation Risk**：人物、交接、空间、文字、尺度、产品变形风险是否在Complexity Budget内
+4. **Native Conflict Fit**：世界冲突能否自然持续，而不是一次性装饰
+
+若两个候选商业价值接近：
+
+> 选择人物更少、交互更简单、空间更稳定、Proof更清楚的候选。
+
+---
+
+## Gate E｜TIE BREAK ONLY
+
+只有前面接近时才看：
+
+- Visual Distinctiveness
+- Batch Diversity
+- Camera novelty
+- Optional Comedy / Absurdity compatibility
+
+**Visual Distinctiveness不得用来补偿Decision / Architecture / Proof / Product Entry的不匹配。**
+
+---
+
+# 6. Reaction Signature｜12 Scene差异化签名
+
+Reaction Signature用于Scene选择、Performance调制与Batch Diversity，不要求最终提示词原样输出。
+
+| Scene | REACTION_SIGNATURE | 核心传播方式 |
+|---|---|---|
+| S01 宫廷 | HIERARCHY_CHAIN | 下位者→权威→主位→等级传播 |
+| S02 高中 | PEER_SPREAD | 同伴快速扩散→老师/群体判断 |
+| S03 军营 | COMMAND_CHAIN | 结果→Commander→新命令→执行链 |
+| S04 办公室 | PROFESSIONAL_JUDGMENT | 结果→Manager/Client→职业判断改变 |
+| S05 西部 | LONG_SILENCE_PERSONAL_REVISION | 长静→个人先改口→社区跟进 |
+| S06 Gala | DISTRIBUTED_SOCIAL_GLANCES | 停杯/侧目/笑容轻僵→分布式认可 |
+| S07 Mall | FLOW_STOP_GATHER | 走路减速→停步→重新拿起/改选 |
+| S08 Future | SYSTEM_STOP_MANUAL_OVERRIDE | 系统停止→人工复核→Override/恢复 |
+| S09 Diner | LATERAL_OVERHEARD_SPREAD | booth→Server→counter横向传播 |
+| S10 Competition | HOST_RESULT_AUDIENCE | Result→Host/Judge→选手→Audience |
+| S11 Market | BUYER_RIVAL_CROWD | Buyer→Rival→Crowd→购买判断 |
+| S12 Train | LINEAR_CARRIAGE_SPREAD | 当前车厢→Attendant→相邻车厢→真主人 |
+
+同批广告即使Scene ID不同，若Reaction Signature、SPACE_TOPOLOGY和Product Entry高度重复，也要施加Diversity Penalty。
+
+---
+
+# 7. Reversal Fit｜严格条件调用
+
+- **R0**：不评分Reversal Fit；Scene不得主动添加误判、双证据、Micro Anomaly或180°
+- **R1**：只检查Scene是否能自然表达已经确定的Clarification / Reveal / Surprise
+- **R2**：才检查 `REVERSAL_COMPATIBILITY` 与 `SUPPORTED_REVERSAL_TYPES`
+
+永远：
+
+> **Scene支持R2 ≠ 本条应该R2。**
+
+Scene Card里的“反转”字段只视为兼容资产；没有Reversal Router的R2许可，不得调用完整强反转DNA。
+
+---
+
+# 8. Diversity Penalty
 
 同批多条广告对以下重复项降权：
 
 - Scene ID重复
 - PRIMARY_CLASS重复
 - SECONDARY_CLASS_TAGS高度重复
-- Reaction机制重复
-- 空间拓扑重复
+- REACTION_SIGNATURE重复
+- SPACE_TOPOLOGY重复
 - Product Entry机制重复
 
 但Diversity永远不能覆盖商业匹配度。
 
-### Step E｜Special Scene Value Check
+---
 
-最后问：
+# 9. Special Scene Value Check｜最终净收益
 
-> 使用这个特殊Scene，相比普通真实生活场景，是否明显增强了商业理解、Primary Architecture、Best Proof、Reaction或视觉记忆中的至少一项，同时没有显著损失生成稳定性？
+最后比较：
 
-如果NO：
+`NORMAL_LOCATION`
+VS
+`最佳SPECIAL_SCENE_DNA`
 
-> 使用普通真实生活场景。
+特殊Scene必须至少明显增强以下一项：
+
+- 商业理解
+- Primary Architecture
+- Best Proof
+- Product Entry因果
+- Reaction / Decision Change
+- 有效视觉记忆
+
+同时不能造成不可接受的：
+
+- Proof损失
+- Product Truth污染
+- 人物/空间/交接复杂度
+- 产品变形
+- 合规/IP风险
+
+如果净收益不明确：
+
+> **NORMAL_LOCATION获胜。**
 
 ---
 
-# 5. Router Prior｜人工Sanity Check
+# 10. Router Prior｜人工Sanity Check
 
-> 当前12个Scene均已完成结构化Index迁移。本节只用于快速人工理解与异常复核，**不能覆盖 `scene-index.md` 的结构化匹配结果**。
+> 当前12个Scene均已完成结构化Index迁移。本节只用于快速人工理解与异常复核，不能覆盖结构化路由。
 
 ## 身份、穿搭、品味、社交接受
 - S06 豪华晚宴
@@ -269,17 +361,9 @@ VS
 - S06 豪华晚宴
 - S12 豪华列车
 
-## 强时代错位/视觉奇观
-- S01 古装宫廷
-- S03 古代战争军营
-- S05 西部小镇
-- S08 未来商业世界
-- S11 古代市集
-- S12 豪华列车
-
 ---
 
-# 6. Scene Safety Gate｜硬阻断
+# 11. Scene Safety Gate｜硬阻断
 
 ## S02 现代美国高中
 
@@ -298,19 +382,16 @@ VS
 ## S03 架空古代战争军营
 
 战争感通过军帐、地图、补给、传令、队列、Deadline建立。
-
 禁止以刀枪、射击、砍杀、伤口、尸体、爆炸杀伤建立Scene；不用于真实武器/军火商品。
 
 ## S05 架空美国西部边疆贸易小镇
 
 保留Western Standoff Composition，不保留Gunfight。
-
 枪械、弹药、拔枪、射击、血腥不是商业Scene资产；不使用原住民族刻板印象或真实历史人物。
 
 ## S06 架空现代豪华上流晚宴
 
 不复制真实Gala、奢侈品牌、名人、慈善组织。
-
 不把贫穷、出身、族裔、口音当笑点；“高端”只表示社交规则和视觉质感。
 
 ## S08 架空未来都市·星际商业世界
@@ -332,7 +413,6 @@ Challenge必须：
 `Verified Product Fact → Visible Task → Fair Rule → Observable Result`
 
 禁止危险挑战、赌博、彩票、购买即抽奖、虚假比分、未经证实的百分比/#1/best声明。
-
 长期舒适、长期耐用、医学效果、精确续航等不可用短比赛伪证明。
 
 ## S11 架空古代地中海公共市集
@@ -342,16 +422,13 @@ Challenge必须：
 ## S12 架空复古豪华长途列车
 
 不复制Orient Express、Pullman等真实高识别品牌/车型/路线。
-
-默认可使用Social/Ownership Mystery，但**不得因为Scene本身自动添加R2，也不自动添加谋杀、侦探、枪械、毒药等犯罪悬疑。**
+默认可使用Social/Ownership Mystery，但不得因为Scene本身自动添加R2，也不自动添加谋杀、侦探、枪械、毒药等犯罪悬疑。
 
 ---
 
-# 7. Product × Scene Compilation｜世界原生化，不重写上游决策
+# 12. Product × Scene Compilation｜世界原生化，不重写上游决策
 
-选择特殊Scene后，不得直接套Scene故事模板。
-
-上游已经锁定：
+选择特殊Scene后，上游已经锁定：
 
 - Core Decision Question
 - Primary Driver
@@ -374,44 +451,27 @@ Scene只负责把这些内容**世界原生化**。
 → `选择Scene原生Product Entry`
 → `选择Scene原生动作 / Dialogue / Reaction / Camera / Pacing`
 → `锁Space Topology / Continuity Anchors`
+→ `Performance/FACS按Scene调制`
 → `CTA`
 
-## R0
+### R0
+Scene不得添加错误答案、双误导证据、Micro Anomaly或180°。
 
-Scene不得添加：
-- 错误答案
-- 双误导证据
-- Micro Anomaly
-- 180°反转
+### R1
+只世界原生化已经确定的Clarification / Reveal / Surprise，不升级R2。
 
-只把原Architecture与Proof变成该世界自然发生的事件。
-
-## R1
-
-保留Reversal Router已经决定的类型：
-- Clarification
-- Reveal
-- Surprise
-
-Scene只改变它在该世界里的呈现方式，不升级成R2。
-
-## R2
-
-只有Reversal Router已经确定R2时：
-- 从Scene Index / DNA Card寻找兼容的世界原生Reversal表达
-- 不改Wrong Answer的商业功能
-- 不增加新的第二套反转
-- 不为了Scene奇观挤压Best Proof
+### R2
+只有Reversal Router已经确定R2时，才从Scene兼容资产中寻找世界原生表达；不增加第二套反转，不挤压Best Proof。
 
 核心检查：
 
 > **同一个商品、同一个Primary Architecture换Scene后，人物身份、冲突呈现、Product Entry、动作、Dialogue、Reaction、节奏、镜头应明显改变；但Primary Driver、Best Proof和R-level不得被改写。**
 
-若只是背景从办公室换成宫廷，故事、动作、对白基本一样，Scene DNA调用失败。
+若只是换背景，Scene DNA调用失败。
 
 ---
 
-# 8. DNA Activation Test｜Location ≠ Scene DNA
+# 13. DNA Activation Test｜Location ≠ Scene DNA
 
 选定Scene后必须问：
 
@@ -425,13 +485,13 @@ Scene只改变它在该世界里的呈现方式，不升级成R2。
 > 保留Location可以，但退出完整Scene DNA调用。
 
 例：
-- “两个人坐办公室聊天” ≠ S04 Office DNA
-- “人物在豪华列车包厢聊天” ≠ S12 Train DNA
-- “穿古装站宫殿里介绍产品” ≠ S01 Court DNA
+- 两个人坐办公室聊天 ≠ S04 Office DNA
+- 人物在豪华列车包厢聊天 ≠ S12 Train DNA
+- 穿古装站宫殿里介绍产品 ≠ S01 Court DNA
 
 ---
 
-# 9. Scene Independence Test
+# 14. Scene Independence Test
 
 正式故事生成前回答：
 
@@ -441,15 +501,15 @@ Scene只改变它在该世界里的呈现方式，不升级成R2。
 
 若第1题答不出，或第3题为“是”：
 
-> 特殊Scene DNA失败；重写或回退普通生活场景。
+> 特殊Scene DNA失败；重写或回退NORMAL_LOCATION。
 
 ---
 
-# 10. Generation Complexity Gate
+# 15. Generation Complexity Gate
 
 Scene选择不能只看创意价值，还要看生成预算。
 
-重点读取/判断：
+重点判断：
 - 核心人物数量
 - 背景人群复杂度
 - Product Handoff
@@ -463,7 +523,7 @@ Scene选择不能只看创意价值，还要看生成预算。
 
 > **最低必要人物数优先。**
 
-Scene Card里的旧“2–4主角”“3–6近景人物”等只能作为历史研发参考，不得覆盖3.2主Skill的最低必要人物原则。
+Scene Card中的人物池只是可选角色资源，不是人数要求；任何旧固定人数描述都不得覆盖最低必要人物原则。
 
 如果两个Scene商业增益接近：
 
@@ -471,9 +531,10 @@ Scene Card里的旧“2–4主角”“3–6近景人物”等只能作为历史
 
 ---
 
-# 11. Cross-Product Stability Test
+# 16. Cross-Product Stability / Validation
 
 Scene进入VALIDATED前，至少使用三类差异商品实际测试：
+
 - 3C
 - 服装
 - 日用品
@@ -488,38 +549,15 @@ Scene进入VALIDATED前，至少使用三类差异商品实际测试：
 - 空间连续
 - Reaction Chain可执行
 
-测试结果统一写入 `scene-validation-registry.md`。
+测试结果写入 `scene-validation-registry.md`。
 
-`scene-dna-library.md`中的“跨商品结构QA”只算 `INTERNAL_PASS`，不等于实际生成PASS。
+`scene-dna-library.md`中的结构QA只算 `INTERNAL_PASS`，不等于实际生成PASS。
 
----
-
-# 12. VALIDATED升级条件
-
-单Scene只有满足 `scene-validation-registry.md` 的全部硬条件，才可从：
-
-`TESTING_CANDIDATE → VALIDATED`
-
-至少包括：
-- 三类跨商品实际生成PASS
-- Scene Recognition PASS
-- PRODUCT LOCK PASS
-- Space Continuity PASS
-- Physical Interaction PASS
-- 适用的多人/交接稳定性PASS
-- Scene-specific Reaction PASS
-- Safety Gate PASS
-- IP Distinctness PASS
-
-关键项FAIL或NOT_TESTED时继续保持TESTING。
-
-不得因为理论结构成熟、Index已迁移或内部QA通过就提前升级。
+VALIDATED升级必须满足Registry全部硬条件；关键项FAIL或NOT_TESTED时继续保持TESTING。
 
 ---
 
-# 13. Router最终输出｜内部
-
-Scene Router只需返回：
+# 17. Router最终输出｜内部
 
 ```text
 SCENE MODE:
@@ -529,13 +567,19 @@ SELECTED SCENE:
 <若SPECIAL则填Sxx>
 
 WHY:
-<为什么特殊Scene比普通生活场景有明确增益>
+<为什么它比其他候选更适合商业问题>
+
+UNIQUE CAUSAL GAIN:
+<该Scene不可替代的因果优势；NORMAL_LOCATION可写“无需特殊世界即可更清楚证明”>
 
 DNA ACTIVATION:
 <被触发的世界规则>
 
 PRODUCT ENTRY:
 <Scene原生入口>
+
+REACTION SIGNATURE:
+<若SPECIAL则填对应签名；NORMAL_LOCATION填NATURAL_RELATION_REACTION>
 
 R-LEVEL PRESERVATION:
 R0 / R1 Clarification / R1 Reveal / R1 Surprise / R2
@@ -551,13 +595,18 @@ GENERATION RISK:
 
 ---
 
-# 14. 最终原则
+# 18. 最终原则｜FREEZE
 
+- NORMAL_LOCATION是正式Candidate 0，不是失败方案。
 - Scene是可选增强，不是必经步骤。
+- Safety / Truth / Proofability / DNA Activation是Hard Gates。
+- Decision / Architecture / Proof / Product Entry是Primary Fit，不能被视觉分数抵消。
+- 每个特殊Scene必须说得清Unique Causal Gain。
+- Reaction Signature参与Scene选择、Performance调制与Batch Diversity。
 - Story Architecture决定因果骨架；Scene不能偷换Primary Driver。
 - Proof已经先锁；Scene不能为了视觉奇观挤压或伪造Proof。
 - R0/R1/R2已经先锁；Scene不能自动升级反转。
 - Location不等于Scene DNA；必须触发世界规则。
-- 特殊Scene必须赢过普通生活场景，才值得增加生成复杂度。
+- 特殊Scene必须赢过NORMAL_LOCATION，才值得增加生成复杂度。
 - Scene Index负责检索，DNA Library负责执行，Validation Registry负责证据状态。
 - **Scene的价值不是背景有多漂亮，而是换了这个世界以后，人物为什么行动、怎么行动、怎么反应、怎么拍都真正改变。**
