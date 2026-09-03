@@ -2,7 +2,7 @@
 
 > 目标：用最小测试集暴露最大结构问题。
 
-本Benchmark只验证真实生成表现，不重新设计3.4核心架构。
+本Benchmark验证真实生成表现，但**每个Case仍必须先是一条成立的剧情带货广告**。不能为了方便测试动作，把“开盒/拿起/佩戴/收纳”这种操作步骤冒充消费者购买理由。
 
 ---
 
@@ -55,26 +55,46 @@ Case ID：
 ## 2.2 Asset Mode必须登记
 
 每次Attempt必须写明：
-
 - `REFERENCE_ASSET`：实际上传产品参考图并参与生成；
 - `TEXT_ONLY`：纯文生，只靠型号/描述；
 - `PARTIAL_REFERENCE`：只有部分资产参与。
 
-`TEXT_ONLY` 可以用于测试故事、动作、机位和模型默认理解，但**不能作为Product Lock已验证通过的充分证据**。
+`TEXT_ONLY`可以测试故事、动作、机位和模型默认理解，但**不能作为Product Lock已验证通过的充分证据**。
 
-如果计划要求参考资产但实际未使用，保留Attempt，标记测试条件偏差，不伪装成正式资产锁定测试。
+## 2.3 Commercial Validity Gate｜先证明“这广告值得拍”
 
-## 2.3 每个Case只验证一个主要购买问题
+每个Case在Story Architecture之前必须回答：
+
+1. **真实Why Buy是什么？** 用户为什么会因为这个能力而想买？
+2. **真实Pain / Hesitation是什么？** 它解决什么麻烦、担忧或选择问题？
+3. **Confirmed Product Advantage是什么？** 必须来自真实产品事实。
+4. **Best Proof / Best Expression是什么？** 视频能否诚实表达这个利益？
+5. **Emotional Payoff是什么？** 观众最终应该感到爽、安心、轻松、惊喜、掌控、被理解，还是别的明确情绪？
+
+硬规则：
+
+> **产品操作步骤 ≠ 自动等于商业卖点。**
+
+“打开、拿起、戴上、放回、收纳”只有在它本身就是消费者重要购买理由时，才能成为Core Decision Question；否则只能是执行动作/Proof载体。
+
+如果只是想测手部穿模、开盒、佩戴等模型能力：
+
+> 可以做 `TECHNICAL DIAGNOSTIC CLIP`，但不能把它伪装成剧情带货Benchmark并据此评价广告创意能力。
+
+## 2.4 每个Case只验证一个主要购买问题
 
 每条只锁：
 - 1 Core Decision Question
-- 1 Best Proof
+- 1 Top Pain / Hesitation
+- 1 Confirmed Selling Point
+- 1 Best Proof / Expression
 - 1 Primary Architecture
 - 1 R-level
+- 1 Emotional Payoff
 
 不为了“Benchmark看起来厉害”塞多个卖点。
 
-## 2.4 R0不等于平
+## 2.5 R0不等于平
 
 Benchmark虽然优先诊断稳定性，但仍然是**剧情带货广告**。
 
@@ -91,9 +111,15 @@ Benchmark虽然优先诊断稳定性，但仍然是**剧情带货广告**。
 - 冲突/选择
 - 异常状态
 
+同时：
+
+> **Tension Source ≠ Protagonist Negativity**
+
+普通商用广告中，压力优先来自环境、任务、时间、关系或问题；主角应保持有能力、可喜欢、值得代入。除非用户明确要荒诞/黑色/抓马/反转，不用“不耐烦、丧气、嫌弃别人”承担Hook。
+
 **稳定但无吸引力，不算Benchmark成功。**
 
-## 2.5 Scene必须真正触发DNA
+## 2.6 Scene必须真正触发DNA
 
 S01至少触发礼仪/等级/公开呈递/权威判断之一。
 
@@ -105,15 +131,20 @@ S12至少触发Carriage order/Ownership/Attendant authority/Next-stop pressure/O
 
 否则测试无效，只是在对应背景生成产品广告。
 
-## 2.6 每条都必须包含真实Proof
+## 2.7 每条都必须包含真实Proof / Benefit Expression
 
 Proof必须来自真实商品事实。
 
-若产品没有适合某Scene直接验证的卖点：
-- 换购买问题；或
-- 该Case标记 `NOT_SUITABLE`，不为了填满12格编造Proof。
+若卖点属于主观/声音/长期/不可直接视觉证明：
+- 允许使用诚实的感官/声音/行为表达；
+- 不把代理表现写成精确客观测试；
+- 必要时用官方已确认事实作为商业依据，但不伪造实验数据。
 
-## 2.7 产品操作镜头必须通过Camera × Action Gate
+若产品没有适合某Scene表达的真实卖点：
+- 换购买问题；或
+- 该Case标记 `NOT_SUITABLE`。
+
+## 2.8 产品操作镜头必须通过Camera × Action Gate
 
 所有开盒、开盖、取出、放回、佩戴、插拔、拆装等关键动作执行 `references/camera-action-compiler.md`。
 
@@ -122,6 +153,52 @@ Proof必须来自真实商品事实。
 `人物操作方向 → 产品工作面 → 机位所在侧 → Proof可见性`
 
 不能为了“让镜头看清”把产品以人物无法使用的方向转给观众。
+
+## 2.9 Action Tempo Gate｜动作时长必须符合能量
+
+简单微动作不能因为分到3秒就被演员慢慢演满3秒。
+
+高能/利落广告中：
+- 拿起、抬手、单次佩戴、按一下、打开等简单动作，通常按约`0.5–1.2s`的视觉节拍设计；
+- 需要蓄力时，把时间给“事件预备/视线锁定/声音Cue”，动作本身仍应短促；
+- 复杂精细交互可以拆镜，但不要用“慢动作式完成”换稳定。
+
+`蓄力高能感 = 预备 → 快速动作 → 清楚结果/切镜`
+
+不是：`人物慢慢完成一个简单动作`。
+
+## 2.10 Audio Spatial Causality Gate
+
+任何对白/画外音必须锁：
+- Speaker位置
+- On-screen / Off-screen
+- 与镜头/听者距离
+- 声音方向
+- 相对音量/房间感
+
+如果人物佩戴耳机、隔着门/玻璃、处于远距离：
+
+> 必须解释为什么她能听清，或不要让她直接听清。
+
+不能靠“这是对白所以主角自动听见”。
+
+若依赖Transparency / Conversation Awareness等真实产品功能，必须明确产品模式/触发条件，并确保事实准确。
+
+## 2.11 Object State Ledger｜成对/多件商品逐Beat记账
+
+对耳机、鞋、手套、两件配件等，必须逐Beat记录每一件在哪里。
+
+例如：
+
+`L earbud = left ear`
+`R earbud = right ear`
+`case = desk closed/open`
+
+下一镜若状态改变，必须有：
+
+`可见动作` 或 `明确动作匹配切`。
+
+禁止：上一镜两只耳机都在耳朵，下一镜一只已经躺在盒里，没有任何取下过程。
 
 ---
 
@@ -147,10 +224,7 @@ Proof必须来自真实商品事实。
 11. B1-S12-P3
 12. B1-S01-P3
 
-理由：
-- 先从相对现实/自然适配Scene开始；
-- 再逐步增加空间与风格复杂度；
-- 如果前面已经发现产品资产锁定问题，不必浪费积分继续跑更复杂Scene。
+如果前面已经发现系统级问题，先修再继续，不为凑齐12条烧积分。
 
 ---
 
@@ -170,18 +244,18 @@ PRODUCT TRUTH:
 - Confirmed Claims:
 - Forbidden / Unknown Claims:
 
+WHY BUY:
+TOP PAIN / HESITATION:
+CONFIRMED SELLING POINT:
 CORE DECISION QUESTION:
+EMOTIONAL PAYOFF:
 
 PRIMARY ARCHITECTURE:
-
-BEST PROOF:
-
+BEST PROOF / BENEFIT EXPRESSION:
 R-LEVEL:
 
 TARGET SCENE:
-
 DNA ACTIVATION:
-
 PRODUCT ENTRY:
 
 KEY CONTINUITY ANCHORS:
@@ -192,6 +266,11 @@ CAMERA × ACTION PLAN:
 - Product working side:
 - Camera side:
 - Required cut:
+- Action tempo:
+
+OBJECT STATE LEDGER:
+
+AUDIO SPATIAL PLAN:
 
 PRIMARY GENERATION RISK:
 ```
@@ -208,36 +287,37 @@ ASSET MODE:
 
 1. SCENE_RECOGNITION:
 PASS / PARTIAL / FAIL
-Notes:
 
 2. PRODUCT_LOCK:
 PASS / PARTIAL / FAIL / N/A
-Notes:
 
 3. ACTION_EXECUTION:
 PASS / PARTIAL / FAIL
-Notes:
 
 4. SPATIAL_PHYSICAL_CONTINUITY:
 PASS / PARTIAL / FAIL
-Notes:
 
 5. PERFORMANCE_REACTION:
 PASS / PARTIAL / FAIL
-Notes:
 
 6. PROOF_FIDELITY:
 PASS / PARTIAL / FAIL
-Notes:
 
 7. COMMERCIAL_CLARITY:
 PASS / PARTIAL / FAIL
-Notes:
+是否一眼知道在卖哪个核心利益？
 
 8. STORY_ENGAGEMENT:
 PASS / PARTIAL / FAIL
-Notes:
-是否在前1–3秒建立继续观看的理由？Primary Driver是否被视觉化？剧情是否有推进而非平铺产品操作？
+前1–3秒是否有继续看的理由？剧情是否有推进？
+
+9. EMOTIONAL_PAYOFF:
+PASS / PARTIAL / FAIL
+是否能感到预设情绪，而不是只有人物动作？
+
+10. AUDIO_CAUSALITY:
+PASS / PARTIAL / FAIL / N/A
+距离、方向、耳机/门/空间遮挡与听觉逻辑是否成立？
 
 PRIMARY FAILURE TYPE:
 SKILL_RULE / PROMPT_COMPILER / MODEL_LIMIT / RANDOM_GENERATION / PRODUCT_ASSET_LIMIT / NONE
@@ -246,23 +326,26 @@ FAILURE PATTERN IDS:
 GFxx...
 
 NEXT ACTION:
-KEEP / PROMPT_FIX / SKILL_FIX / SIMPLIFY / SPLIT_SHOT / CHANGE_CAMERA / CHANGE_SCENE / RERUN / STOP
+KEEP / PROMPT_FIX / SKILL_FIX / COMMERCIAL_RESET / SIMPLIFY / SPLIT_SHOT / CHANGE_CAMERA / CHANGE_SCENE / RERUN / STOP
 ```
 
 ---
 
 # 6. 首轮停止条件
 
-出现以下情况可以暂停当前产品剩余复杂Case，先修问题：
+出现以下情况暂停当前产品剩余Case，先修问题：
 
+- Core Decision / Selling Point本身不成立
 - Product Lock连续2条FAIL
 - 同一物理交互连续2条FAIL
 - 同一Scene关键空间规则连续2条FAIL
-- Proof连续被Scene/表演挤掉
+- Commercial Clarity连续2条FAIL
 - Story Engagement连续2条FAIL
-- 同一个Prompt Compiler缺陷跨2条复现
+- 同一Prompt Compiler缺陷跨2条复现
 
-不要为了“凑齐12条”继续烧生成积分。
+尤其：
+
+> **如果Commercial Validity Gate失败，不允许继续在镜头层打补丁。回到商品决策层重做。**
 
 ---
 
@@ -270,7 +353,7 @@ KEEP / PROMPT_FIX / SKILL_FIX / SIMPLIFY / SPLIT_SHOT / CHANGE_CAMERA / CHANGE_S
 
 Benchmark V1 Diagnostic完成要求：
 - 12个Case全部有结果，或有明确NOT_SUITABLE/STOP理由
-- 每个Case都有统一8项评分
+- 每个Case执行统一评分
 - 所有FAIL/PARTIAL都有Failure Type
 - 可复用失败进入Failure Pattern库
 - Skill修改都有对应失败证据，不凭感觉加规则
