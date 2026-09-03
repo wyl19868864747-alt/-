@@ -1,9 +1,9 @@
 ---
 name: story-commerce-skill
-description: 面向短视频剧情带货广告的全品类消费者决策、Story Architecture路由、Reversal信息变化路由、可选Scene DNA世界路由、创意编剧、导演拆解、Seedance可执行提示词编译与静默QA。先锁定真实商业事实、消费者主决策问题与可证明Proof，再选择最合适的剧情因果骨架；随后从R0无反转、R1轻信息变化、R2真反转中保守路由，只有确实增强商业表达时才调用强反转、Comedy、Absurdity、Scene DNA等模块，最终把抽象创意编译成明确动作链、道具链、镜头链。
+description: 面向短视频剧情带货广告的全品类消费者决策、Story Architecture路由、Reversal信息变化路由、可选Scene DNA世界路由、Performance/FACS表演编译、创意编剧、导演拆解、Seedance可执行提示词编译与静默QA。先锁定真实商业事实、消费者主决策问题与可证明Proof，再选择最合适的剧情因果骨架；随后从R0无反转、R1轻信息变化、R2真反转中保守路由，只有确实增强商业表达时才调用强反转、Comedy、Absurdity、Scene DNA等模块；最终把抽象创意与人物Reaction编译成明确动作链、视线链、微表情链、道具链和镜头链。
 ---
 
-# 剧情带货 Skill 3.2｜Commercial Decision × Story Architecture × Reversal Router × Optional Scene DNA
+# 剧情带货 Skill 3.3｜Commercial Decision × Story Architecture × Reversal Router × Optional Scene DNA × Performance/FACS
 
 ## 0. 每次开始
 
@@ -14,9 +14,10 @@ description: 面向短视频剧情带货广告的全品类消费者决策、Stor
 5. 当商品属于明确实体品类、品类陌生、用户只给一句商品名，或需要跨品类稳定性时，阅读 `references/category-priors.md`；品类先验不能替代具体SKU、人群和购买问题。
 6. **只有**用户明确指定特殊Scene，或Story/Creative Card判断Scene DNA能实质增强人物关系、冲突、Proof、Reaction或镜头时，才完整阅读 `references/scene-router.md`。
 7. 只有Scene Router最终选择特殊Scene DNA后，才读取 `references/scene-dna-library.md` 中对应Scene Card；普通真实生活场景不强制进入Scene Library。
-8. 用户本轮明确要求、真实商品事实、参考资产、平台规则与合规边界始终高于参考文件。
-9. 不因为历史RxPros/医药案例多，就默认账单、价格震惊、朋友核价、咨询问答、旧方案太贵、SA08价值核验或R2强反转。
-10. 当前Scene Library共12个Scene，全部为 `TESTING_CANDIDATE`；未经Seedance实测不得宣称 `VALIDATED`。
+8. 在故事Beat、Proof、R-level与Scene/Location确定后，完整阅读 `references/performance-facs.md`，把需要的Reaction编译成可见、克制、景别可读的视线/面部/头部/身体动作。**FACS只负责表演动作，不得改写Story、Proof或R-level。**
+9. 用户本轮明确要求、真实商品事实、参考资产、平台规则与合规边界始终高于参考文件。
+10. 不因为历史RxPros/医药案例多，就默认账单、价格震惊、朋友核价、咨询问答、旧方案太贵、SA08价值核验或R2强反转。
+11. 当前Scene Library共12个Scene，全部为 `TESTING_CANDIDATE`；未经Seedance实测不得宣称 `VALIDATED`。
 
 ---
 
@@ -26,7 +27,7 @@ description: 面向短视频剧情带货广告的全品类消费者决策、Stor
 
 核心任务：
 
-> **把真实消费者购买决策，选择最合适的剧情因果结构与信息变化强度，再编译成视频模型能够执行的商业短视频。**
+> **把真实消费者购买决策，选择最合适的剧情因果结构与信息变化强度，再把人物行为与Reaction编译成视频模型能够执行的商业短视频。**
 
 总流程：
 
@@ -40,7 +41,7 @@ description: 面向短视频剧情带货广告的全品类消费者决策、Stor
 → `按需其他Creative Modules`
 → `按需Scene DNA`
 → `Story`
-→ `Performance`
+→ `Performance Intent / FACS Compiler`
 → `Seedance动作编译`
 → `Silent QA`
 
@@ -52,8 +53,9 @@ description: 面向短视频剧情带货广告的全品类消费者决策、Stor
 - Clarification、Reveal、Surprise不冒充True Reversal。
 - Reversal / Comedy / Absurdity / Escalation / Visual Spectacle都是可选增强，不是每条广告必备。
 - Scene DNA是可选世界增强，不是所有剧情的必经步骤。
+- Performance/FACS只负责把已经确定的事件翻译成人物可见Reaction，不得凭表情重新发明剧情。
 - 如果拿掉商品后剧情仍能用完全相同方式解决，产品植入失败。
-- 如果为了故事、反转或Scene修改商品事实，直接失败。
+- 如果为了故事、反转、Scene或表情修改商品事实，直接失败。
 - 如果简单结构已经最直接回答购买问题，不为了显得聪明升级复杂度。
 
 永远：
@@ -61,6 +63,7 @@ description: 面向短视频剧情带货广告的全品类消费者决策、Stor
 `PRODUCT TRUTH > STORY TRICK`
 `PROOF > REVERSAL`
 `PRIMARY ARCHITECTURE > OPTIONAL MODULES`
+`EVENT > PERFORMANCE DECORATION`
 `PRODUCT LOCK > SCENE STYLE`
 
 ---
@@ -80,8 +83,9 @@ description: 面向短视频剧情带货广告的全品类消费者决策、Stor
 9. 其他Creative Modules是否真正增益
 10. 若调用Scene：Scene Safety Fit与Scene原生因果
 11. 人物 / 产品 / 空间 / 物理连续
-12. 镜头 / 节奏 / 表演
-13. 风格与视觉炫技
+12. Performance Intent / Reaction正确性
+13. 镜头 / 节奏 / 表演细节
+14. 风格与视觉炫技
 
 永远遵守：
 
@@ -93,6 +97,7 @@ description: 面向短视频剧情带货广告的全品类消费者决策、Stor
 `有意义真反转 > 随机意外`
 `产品因果作用 > 产品露出次数`
 `动作事件 > 抽象形容词`
+`具体Reaction > “大家震惊”`
 `清晰转化 > 电影炫技`
 
 ---
@@ -185,7 +190,7 @@ Proof必须服务Primary Architecture：
 - SA08：Proof/Information解释价值结构
 - SA09：体验线索只支持偏好，不伪造科学结论
 
-后续Reversal、Comedy、Scene不得挤压Best Proof的清晰度和必要时长。
+后续Reversal、Comedy、Scene和Performance不得挤压Best Proof的清晰度和必要时长。
 
 ---
 
@@ -371,7 +376,7 @@ Hook与Best Proof必须属于同一商业因果链。
 
 ---
 
-# 11. 人物、对白与Reaction
+# 11. 人物、对白、Reaction与Performance/FACS
 
 > **最低必要人物数优先。**
 
@@ -389,9 +394,31 @@ Hook与Best Proof必须属于同一商业因果链。
 
 Reaction必须对应刚刚看到的Proof/信息变化/结果，禁止用“大家震惊”替代具体行为变化。
 
-R1只表现对应的Clarification/Reveal/Surprise；R2才使用完整反转后的Aftermath与情绪余震。
+所有需要Reaction的关键Beat执行 `references/performance-facs.md`：
 
-若调用Scene，Reaction读取Scene Card；否则使用当前现实关系最自然的反应路径。
+`Trigger`
+→ `Gaze Target`
+→ `Performance Intent`
+→ `最少必要的Facial Change`
+→ `Micro Pause / Release`
+→ `Head / Body Response`
+→ `Dialogue or New Action`
+
+必须遵守：
+- **事件先发生，表情后发生。**
+- FACS是动作词典，不是一个情绪对应一个唯一表情的真值表。
+- 最终Seedance提示词默认不写AU编号，只写可见动作。
+- 一个短Beat默认只保留1个视线变化、1–2个主要面部变化、0–1个必要身体变化。
+- 表情细节必须符合景别可见性；大全景不写精细眉眼。
+- Decision Change必须落到后续动作，不只停留在脸上。
+
+R0：表演只服务Problem / Proof / Choice / Task / Experience / Decision Change，不额外制造误会或反转。
+
+R1：只表现对应Clarification / Reveal / Surprise的轻信息变化，不演成R2。
+
+R2：Wrong Answer阶段保持可信旧判断；Micro Anomaly才出现短暂停顿/视线变化；Reveal后再发生认知重置与Aftermath。**不得通过提前表情泄底。**
+
+若调用Scene：Scene Performance DNA只调节Reaction的社会方式、强度和传播路径，不改Story事实与R-level；否则使用现实关系最自然的Reaction路径。
 
 ---
 
@@ -422,11 +449,11 @@ R1只表现对应的Clarification/Reveal/Surprise；R2才使用完整反转后�
 
 以下不能单独作为执行指令：
 
-`荒诞 / 抓马 / 狗血 / 搞笑 / 紧张 / 情绪升级 / 关系反转 / 180°反转 / 节奏加快 / 视觉冲击 / 夸张表演 / 高能 / 社交压力 / 权力变化`
+`荒诞 / 抓马 / 狗血 / 搞笑 / 紧张 / 情绪升级 / 关系反转 / 180°反转 / 节奏加快 / 视觉冲击 / 夸张表演 / 高能 / 社交压力 / 权力变化 / 震惊 / 难以置信 / 尴尬 / 开心`
 
-必须翻译为：
+这些情绪词若进入执行层，必须继续翻译为：
 
-`人物动作 / 道具动作 / 站位 / 路径 / 接触 / 视线 / 微表情 / 台词 / 镜头 / 声音 / 空间变化`
+`人物动作 / 道具动作 / 站位 / 路径 / 接触 / 视线 / 可见微表情 / 头部或身体反应 / 台词 / 镜头 / 声音 / 空间变化`
 
 ## 13.2 Beat动作编译
 
@@ -466,11 +493,38 @@ R1只表现对应的Clarification/Reveal/Surprise；R2才使用完整反转后�
 
 禁止直接写“此处反转”“观众发现”“180°反转”“更抓马”而不给具体动作。
 
-## 13.4 表情
+## 13.4 Performance / FACS编译
 
-表情只补画面细节，不抢主要动作指令；必须对应刚发生的事件，优先真实、短促、克制。
+所有关键Reaction按：
 
-不要用连续瞪眼/张嘴代替剧情。
+`Trigger → gaze → facial change → micro pause/release → body/new action → line（若必要）`
+
+默认不向Seedance输出AU编号。
+
+错误：
+
+`她很震惊，又很难以置信。`
+
+正确：
+
+`她先低头盯住结果，眉毛短促抬起，嘴唇轻分；停半秒后重新看向产品，眉心轻皱，再做一次验证。`
+
+错误：
+
+`所有人震惊。`
+
+正确：
+
+`最先看到结果的人停下动作；旁边的人顺着她的视线看过去，半秒后才放下手里的杯子，最后一人才抬头确认。`
+
+规则：
+- 表情只补画面细节，不抢主要动作指令。
+- 必须对应刚发生的事件。
+- 优先真实、短促、克制。
+- 不用连续瞪眼/张嘴/翻白眼代替剧情。
+- 表情不能领先事件泄露后续信息。
+- 大全景优先姿态/停步/转身；近景才写眉眼与嘴部细节。
+- Proof镜头若“认真核验”比情绪脸更准确，优先写专注操作。
 
 ---
 
@@ -519,9 +573,11 @@ Architecture复杂度参考：
 - MEDIUM：SA04 / SA05
 - MEDIUM–HIGH：SA06 / SA07
 
-Reversal会额外消耗复杂度；R2通常至少需要4–6个剧情Beat。若人物、交互、空间或动作负载超预算，优先降级R-level或拆镜，不先牺牲Proof。
+Reversal会额外消耗复杂度；R2通常至少需要4–6个剧情Beat。Performance细节同样占生成预算；若动作已经复杂，优先删减微表情描述，不牺牲主动作与Proof。
 
-若调用Scene，再读取Scene Card的Camera/Tempo DNA。
+若人物、交互、空间或动作负载超预算，优先降级R-level、删减Performance细节或拆镜，不先牺牲Proof。
+
+若调用Scene，再读取Scene Card的Camera/Tempo/Performance DNA。
 
 ---
 
@@ -556,12 +612,14 @@ Reversal会额外消耗复杂度；R2通常至少需要4–6个剧情Beat。若�
 - Best Proof
 - Information Shift：按R0/R1/R2实际路由写，不能套错模板
 - 谁先看到结果
-- 具体Reaction / Decision Change
+- `Trigger → gaze → 最少必要Reaction → New Action`
 - 若调用Scene：加入Scene原生Reaction/节奏/镜头
 - 情绪奖励/Punchline（若需要）
 - CTA
 
-**R0禁止补反转；R1禁止伪装R2；R2必须完整动作化。**
+表情只在关键Beat补充，不作为每段提示词前置主信息。
+
+**R0禁止补反转；R1禁止伪装R2；R2必须完整动作化；Performance不得提前泄露后续Beat。**
 
 ## 【生成控制】
 
@@ -570,11 +628,13 @@ Reversal会额外消耗复杂度；R2通常至少需要4–6个剧情Beat。若�
 - consistent product appearance
 - stable spatial continuity
 - realistic physical interaction
-- natural facial/body reactions
+- natural restrained facial/body reactions
+- reaction follows visible trigger
 - dialogue synchronized with correct speaker
 - motivated cuts based on action/reaction
 - PRODUCT TRUTH > STORY TRICK
 - PROOF > REVERSAL
+- EVENT > PERFORMANCE DECORATION
 - PRODUCT LOCK > SCENE STYLE（若调用Scene）
 
 禁止重复已经写清内容。
@@ -601,7 +661,7 @@ Reversal会额外消耗复杂度；R2通常至少需要4–6个剧情Beat。若�
 - [ ] Proofability判断正确
 - [ ] V3没有被包装成客观科学Proof
 - [ ] V4没有被AI剧情画面伪造
-- [ ] Best Proof完整、可读，没有被创意模块挤掉
+- [ ] Best Proof完整、可读，没有被创意或表演模块挤掉
 
 ## C. Reversal Router｜每条必检
 
@@ -638,7 +698,24 @@ Reversal会额外消耗复杂度；R2通常至少需要4–6个剧情Beat。若�
 
 未调用特殊Scene时整组跳过，不强制补Scene DNA。
 
-## E. Character / Product / Physical
+## E. Performance / FACS｜每条含人物Reaction时必检
+
+- [ ] 每个关键Reaction都有明确Trigger
+- [ ] 事件先发生，表情后发生
+- [ ] 表情没有提前泄露后续信息或R2真相
+- [ ] 表情动作与景别匹配，镜头实际看得见
+- [ ] 一个短Beat只保留最少必要表情动作
+- [ ] 没有连续瞪眼/张嘴/翻白眼/同步集体震惊
+- [ ] Gaze Target明确，不只写抽象情绪
+- [ ] Decision Change最终落到下一行动
+- [ ] R0没有被表演偷偷制造误会/反转
+- [ ] R1没有被表演升级成R2
+- [ ] R2在Micro Anomaly前没有表演泄底
+- [ ] 若调用Scene，Reaction方式符合Scene Performance DNA
+- [ ] 多人Reaction有先后顺序，不同步触发
+- [ ] 人物表情没有暗示未被证明的医学/安全/金融/性能结论
+
+## F. Character / Product / Physical
 
 - [ ] 每个人都有剧情职责
 - [ ] 使用最低必要人物数
@@ -648,10 +725,11 @@ Reversal会额外消耗复杂度；R2通常至少需要4–6个剧情Beat。若�
 - [ ] 手/接触/方向/受力合理
 - [ ] 空间结构跨镜稳定
 
-## F. Seedance Executability
+## G. Seedance Executability
 
 - [ ] 删除风格形容词后仍能看见完整视频
 - [ ] 没有“荒诞升级/更抓马/情绪加强”等空指令
+- [ ] 情绪词已被翻译成可见Reaction，或因不必要被删除
 - [ ] 单时间段不过载
 - [ ] 每镜有清楚主信息任务
 - [ ] Product Proof镜头干净可读
@@ -660,7 +738,7 @@ Reversal会额外消耗复杂度；R2通常至少需要4–6个剧情Beat。若�
 - [ ] R2的每个反转Beat都有明确可见动作/信息
 - [ ] 未调用Scene时没有增加不必要特殊世界复杂度
 
-关键项失败，返回对应层内部重写；Reversal失败时优先**降级R-level**，而不是为了保住反转去改商品事实或堆更多剧情。
+关键项失败，返回对应层内部重写；Performance失败时优先**删减或重编Reaction**，不为了保住表情去改Story、Proof或R-level。
 
 ---
 
@@ -686,7 +764,7 @@ Reversal会额外消耗复杂度；R2通常至少需要4–6个剧情Beat。若�
 
 # 19. 最终判定
 
-剧情带货商用版最低标准不是“必须有反转”，也不是“必须使用Scene DNA”。
+剧情带货商用版最低标准不是“必须有反转”，也不是“必须使用Scene DNA”，更不是“每个人都必须表演得很满”。
 
 必须同时成立：
 
@@ -703,6 +781,8 @@ Reversal会额外消耗复杂度；R2通常至少需要4–6个剧情Beat。若�
 `其他Creative Modules确实增益且未篡改事实`
 +
 `若调用Scene：Scene选择正确且真正改变剧情因果`
++
+`Performance对应真实Trigger且不抢主事件`
 +
 `动作可生成`
 +
