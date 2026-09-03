@@ -84,7 +84,7 @@ Scene系统当前拆成三层：
 - Creative Compatibility
 - Scene Class / Diversity信息
 
-当前过渡期只有S01、S04、S12完成结构化Pilot Index；其他Scene尚未迁移时，不得因为缺少Index分数而自动淘汰，继续结合现有Scene Card与本文件legacy priors判断。
+**当前12个Scene均已完成结构化Index迁移。** 候选比较应优先读取 `scene-index.md`，不再依赖“未迁移Scene的Legacy补偿逻辑”。
 
 ## 2.2 再读选中的DNA Card
 
@@ -231,9 +231,9 @@ VS
 
 ---
 
-# 5. Router Prior｜过渡期Legacy候选先验
+# 5. Router Prior｜人工Sanity Check
 
-> 仅用于尚未完成Index迁移的Scene；不是硬匹配。任务14完成12个迁移后，应逐步让位给结构化Index。
+> 当前12个Scene均已完成结构化Index迁移。本节只用于快速人工理解与异常复核，**不能覆盖 `scene-index.md` 的结构化匹配结果**。
 
 ## 身份、穿搭、品味、社交接受
 - S06 豪华晚宴
@@ -389,7 +389,6 @@ Scene不得添加：
 ## R1
 
 保留Reversal Router已经决定的类型：
-
 - Clarification
 - Reveal
 - Surprise
@@ -399,7 +398,6 @@ Scene只改变它在该世界里的呈现方式，不升级成R2。
 ## R2
 
 只有Reversal Router已经确定R2时：
-
 - 从Scene Index / DNA Card寻找兼容的世界原生Reversal表达
 - 不改Wrong Answer的商业功能
 - 不增加新的第二套反转
@@ -452,7 +450,6 @@ Scene只改变它在该世界里的呈现方式，不升级成R2。
 Scene选择不能只看创意价值，还要看生成预算。
 
 重点读取/判断：
-
 - 核心人物数量
 - 背景人群复杂度
 - Product Handoff
@@ -477,13 +474,11 @@ Scene Card里的旧“2–4主角”“3–6近景人物”等只能作为历史
 # 11. Cross-Product Stability Test
 
 Scene进入VALIDATED前，至少使用三类差异商品实际测试：
-
 - 3C
 - 服装
 - 日用品
 
 必须验证：
-
 - 世界发动机保持
 - 商品剧情不同但Scene原生
 - PRODUCT LOCK
@@ -506,7 +501,6 @@ Scene进入VALIDATED前，至少使用三类差异商品实际测试：
 `TESTING_CANDIDATE → VALIDATED`
 
 至少包括：
-
 - 三类跨商品实际生成PASS
 - Scene Recognition PASS
 - PRODUCT LOCK PASS
