@@ -15,7 +15,7 @@
 | B1-S01-P1 | S01 | 3C | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN |
 | B1-S01-P2 | S01 | Apparel | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN |
 | B1-S01-P3 | S01 | Daily Goods | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN |
-| B1-S04-P1 | S04 | AirPods Pro 2 | PASS | PARTIAL* | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS / CTA POLISH |
+| B1-S04-P1 | S04 | AirPods Pro 2 | PASS | PARTIAL* | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS / ACCEPTED |
 | B1-S04-P2 | S04 | Apparel | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN |
 | B1-S04-P3 | S04 | Daily Goods | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN |
 | B1-S07-P1 | S07 | 3C | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN |
@@ -171,10 +171,10 @@ Problem Cost与Product After之间有明显状态反差，整体比30s版本更�
 ### AUDIO_CAUSALITY: PASS
 ANC前后的环境声层级逻辑成立，没有远距离人物贴脸对白或佩戴耳机后错误响应外部声音的问题。
 
-### CTA SALIENCE: PARTIAL｜POLISH NEEDED
-13–15s画面仍然延续“女主继续工作”的同一视觉状态，CTA主要依赖结尾旁白，缺少一个独立、明显的视觉行动Beat。观众知道产品是什么，但“现在该做什么”的视觉提醒不够强。
+### CTA SALIENCE: PARTIAL｜ACCEPTED WITHOUT RERUN
+13–15s CTA视觉显著性仍有提升空间，但用户明确决定不再重新生成，本条按可交付版本接受。CTA优化作为未来通用经验保留，不阻断本Case通过。
 
-PRIMARY FAILURE TYPE: NONE｜CTA POLISH ONLY
+PRIMARY FAILURE TYPE: NONE
 
 RETEST EVIDENCE:
 - GF26 180°越轴：目标问题本版未复现；
@@ -183,12 +183,14 @@ RETEST EVIDENCE:
 - GF29 Duration-to-Story Misfit：15s版本解决；
 - GF30 Meta-camera Literalization：未复现。
 
-NEXT ACTION:
-- 保留0–13s主体；
-- 只重写最后约2s CTA为独立视觉Beat；
-- 不再改Commercial Decision / Architecture / ANC Proof / Axis Plan。
+USER ACCEPTANCE:
+- 2026-09-04：用户明确决定“不再重新生成了，这条算过”。
 
-FINAL CASE STATUS: PASS / CTA POLISH
+NEXT ACTION:
+- 本Case停止复测；
+- CTA视觉显著性作为后续广告通用优化项，不回滚本条已通过结论。
+
+FINAL CASE STATUS: PASS / ACCEPTED
 
 ---
 
@@ -230,7 +232,7 @@ FINAL CASE STATUS:
 - 连续空间镜头必须审核180°轴线。
 - 普通道具移动必须有可见/合理动力来源。
 - 单卖点若在前半自然讲完，优先缩短，不用“继续工作/继续使用”填满30秒。
-- **主体广告已经成立时，CTA弱只做CTA局部修正，不重新扰动已经验证通过的商业因果、轴线和产品动作。**
+- **主体广告已经成立时，CTA弱可以作为局部优化项；若用户接受当前成片，不需要为了边际CTA提升重新扰动已经验证通过的商业因果、轴线和产品动作。**
 
 ---
 
@@ -242,12 +244,13 @@ FINAL CASE STATUS:
 - Attempt 3｜PARTIAL / STORY RETEST
 - Attempt 4 Run A+B｜FAIL / AD PACING RESET
 - Attempt 5｜FAIL / STRUCTURE RESET
-- Attempt 6｜PASS / CTA POLISH
+- Attempt 6｜PASS / ACCEPTED
 
 B1-S04-P1当前结论：
+- 本Case已通过并停止复测；
 - 15s单卖点结构明显优于强行30s；
 - 180° Axis Lock、Motive Force、Benefit Decodability、Duration Fit与Meta-Camera Guard本次复测有效；
 - Product Lock仍未经过Reference Asset验证；
-- 唯一当前可见优化点是CTA视觉显著性。
+- CTA视觉显著性保留为未来通用优化项，但不阻断本Case结案。
 
 其他Case：`NOT_RUN`
