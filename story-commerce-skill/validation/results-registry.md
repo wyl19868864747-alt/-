@@ -15,7 +15,7 @@
 | B1-S01-P1 | S01 | 3C | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN |
 | B1-S01-P2 | S01 | Apparel | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN |
 | B1-S01-P3 | S01 | Daily Goods | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN |
-| B1-S04-P1 | S04 | AirPods Pro 2 | PASS | PARTIAL* | PARTIAL | FAIL | PARTIAL | PARTIAL | FAIL | FAIL | FAIL | PASS | FAIL / STRUCTURE RESET |
+| B1-S04-P1 | S04 | AirPods Pro 2 | PASS | PARTIAL* | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS / CTA POLISH |
 | B1-S04-P2 | S04 | Apparel | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN |
 | B1-S04-P3 | S04 | Daily Goods | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN |
 | B1-S07-P1 | S07 | 3C | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN |
@@ -25,7 +25,7 @@
 | B1-S12-P2 | S12 | Apparel | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN |
 | B1-S12-P3 | S12 | Daily Goods | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN |
 
-`*` B1-S04-P1 Attempt 1–5均为 `TEXT_ONLY`；Product Lock只能做模型默认外观观察，不能作为Reference Asset Lock验证证据。
+`*` B1-S04-P1 Attempt 1–6均为 `TEXT_ONLY`；Product Lock只能做模型默认外观观察，不能作为Reference Asset Lock验证证据。
 
 ---
 
@@ -35,18 +35,13 @@
 DATE: 2026-09-03
 MODEL / VERSION: Seedance 2.5
 DURATION: 30s
-PRODUCT: Apple AirPods Pro 2｜White
 ASSET MODE: TEXT_ONLY
 PROMPT REVISION: B1-v1
 
-SCENE_RECOGNITION: PARTIAL
-PRODUCT_LOCK: PARTIAL OBSERVATION ONLY
-ACTION_EXECUTION: PARTIAL
-SPATIAL_PHYSICAL_CONTINUITY: FAIL
-PERFORMANCE_REACTION: PARTIAL
-PROOF_FIDELITY: PARTIAL
-COMMERCIAL_CLARITY: PARTIAL
-STORY_ENGAGEMENT: FAIL
+RESULT:
+- 开盒工作面与人物方向冲突；
+- 取出/放回耳机穿模；
+- 商业与剧情都偏平。
 
 FAILURE PATTERNS: GF15 / GF16 / GF17
 FINAL CASE STATUS: FAIL / RETEST
@@ -57,20 +52,15 @@ FINAL CASE STATUS: FAIL / RETEST
 DATE: 2026-09-03
 MODEL / VERSION: Seedance 2.5
 DURATION: 30s
-PRODUCT: Apple AirPods Pro 2｜White
 ASSET MODE: TEXT_ONLY
 PROMPT REVISION: B1-v2
 
-SCENE_RECOGNITION: PARTIAL
-PRODUCT_LOCK: PARTIAL OBSERVATION ONLY
-ACTION_EXECUTION: PARTIAL
-SPATIAL_PHYSICAL_CONTINUITY: FAIL
-PERFORMANCE_REACTION: FAIL
-PROOF_FIDELITY: FAIL
-COMMERCIAL_CLARITY: FAIL
-STORY_ENGAGEMENT: FAIL
-EMOTIONAL_PAYOFF: FAIL
-AUDIO_CAUSALITY: FAIL
+RESULT:
+- OTS修正开盒方向；
+- 佩戴过慢、收纳状态瞬移；
+- 主角负面人格；
+- 声音距离与听觉因果错误；
+- 最严重：没有锁真实Why Buy，操作步骤被错当成卖点。
 
 FAILURE PATTERNS: GF15 / GF16 / GF17 / GF18 / GF19 / GF20 / GF21 / GF22
 FINAL CASE STATUS: FAIL / COMMERCIAL RESET
@@ -81,7 +71,6 @@ FINAL CASE STATUS: FAIL / COMMERCIAL RESET
 DATE: 2026-09-03
 MODEL / VERSION: Seedance 2.5
 DURATION: 30s
-PRODUCT: Apple AirPods Pro 2｜White
 ASSET MODE: TEXT_ONLY
 PROMPT REVISION: B1-v3｜Commercial Reset｜ANC
 
@@ -89,22 +78,13 @@ COMMERCIAL FOCUS:
 - Pain：开放办公室杂音干扰专注
 - Selling Point：Active Noise Cancellation
 - Architecture：SA01 Problem → Solution
-- R-level：R0
 - Emotional Payoff：混乱 → 专注 → 掌控
 
-SCENE_RECOGNITION: PASS
-PRODUCT_LOCK: PARTIAL OBSERVATION ONLY
-ACTION_EXECUTION: PASS
-SPATIAL_PHYSICAL_CONTINUITY: FAIL
-PERFORMANCE_REACTION: PASS
-PROOF_FIDELITY: PASS
-COMMERCIAL_CLARITY: PASS
-STORY_ENGAGEMENT: PARTIAL
-EMOTIONAL_PAYOFF: PASS
-AUDIO_CAUSALITY: PASS
-
-FAILURE PATTERNS:
-GF15 MITIGATED / GF16 CONFIRMED / GF17 MITIGATED / GF18 MITIGATED / GF19 MITIGATED / GF20 MITIGATED / GF21 MITIGATED / GF22 CONFIRMED / GF23 CONFIRMED
+RESULT:
+- ANC商业因果首次清楚成立；
+- 主体产品操作与表演明显改善；
+- 约10s以后进入Post-Proof Plateau；
+- 结尾出现耳机复制状态。
 
 FINAL CASE STATUS: PARTIAL / STORY RETEST
 
@@ -113,29 +93,16 @@ FINAL CASE STATUS: PARTIAL / STORY RETEST
 ## B1-S04-P1｜Attempt 4｜Run A + Run B
 DATE: 2026-09-03
 MODEL / VERSION: Seedance 2.5
-DURATION: 30s × 2 generations
-PRODUCT: Apple AirPods Pro 2｜White
+DURATION: 30s × 2
 ASSET MODE: TEXT_ONLY
 PROMPT REVISION: B1-v4｜R1 Surprise + Post-Proof Continuation
 
-SCENE_RECOGNITION: PASS
-PRODUCT_LOCK: PARTIAL OBSERVATION ONLY
-ACTION_EXECUTION: PARTIAL
-SPATIAL_PHYSICAL_CONTINUITY: FAIL
-PERFORMANCE_REACTION: PASS
-PROOF_FIDELITY: PASS
-COMMERCIAL_CLARITY: PASS
-STORY_ENGAGEMENT: FAIL
-EMOTIONAL_PAYOFF: PARTIAL
-AUDIO_CAUSALITY: PASS
+RESULT:
+- 两次生成均复现亚秒多物理镜头插值/假硬切；
+- 为修中段平台期加入过多自然主义事件，反而形成TV Drama Drift；
+- 商业卖点仍清楚，但广告抓力下降。
 
-FAILURE PATTERNS:
-GF22 / GF23 / GF24 / GF25
-
-Evidence:
-- 首3秒多个亚秒物理镜头被模型插值成False Hard Cut Morph；
-- 10–21s背景事件增加但主角/产品/观众理解没有高价值变化，出现TV Drama Drift。
-
+FAILURE PATTERNS: GF22 / GF23 / GF24 / GF25
 FINAL CASE STATUS: FAIL / AD PACING RESET
 
 ---
@@ -144,76 +111,84 @@ FINAL CASE STATUS: FAIL / AD PACING RESET
 DATE: 2026-09-04
 MODEL / VERSION: Seedance 2.5
 DURATION: 30s
-PRODUCT: Apple AirPods Pro 2｜White
 ASSET MODE: TEXT_ONLY
 PROMPT REVISION: B1-v5｜Ad Density Reset
 
-COMMERCIAL INTENT:
-- Pain：开放办公室噪音干扰专注
-- Intended Selling Point：Active Noise Cancellation
+RESULT:
+- 开场情绪感染不足；
+- 明显180°越轴；
+- 普通无动力手推车自行移动；
+- 元机位语言被字面生成成摄影机/三脚架；
+- Prompt锁了ANC，但成片Benefit仍不够可解码；
+- 单一卖点被强行拉成30s，继续出现时长不匹配。
+
+FAILURE PATTERNS: GF26 / GF27 / GF28 / GF29 / GF30
+FINAL CASE STATUS: FAIL / STRUCTURE RESET
+
+---
+
+## B1-S04-P1｜Attempt 6
+DATE: 2026-09-04
+MODEL / VERSION: Seedance 2.5
+DURATION: 15s
+PRODUCT: Apple AirPods Pro 2｜White
+ASSET MODE: TEXT_ONLY
+PROMPT REVISION: B1-v6｜15s Benefit-Decoding + Axis-Lock Reset
+
+COMMERCIAL FOCUS:
+- Pain：开放办公室噪音持续打断专注
+- Selling Point：Active Noise Cancellation
 - Architecture：SA01 Problem → Solution
-- Intended Emotional Payoff：噪音压力 → 戴耳机 → 专注掌控
+- Emotional Payoff：被打断 → 戴上 → 噪音退远 → 恢复掌控
 
 ### SCENE_RECOGNITION: PASS
-现代开放办公室清楚可读。
+现代开放办公室清楚成立，打印机、电脑、背景员工与工作状态都服务真实办公语境。
 
 ### PRODUCT_LOCK: PARTIAL OBSERVATION ONLY
-纯文生下AirPods Pro 2大体可识别，但仍无Reference Asset，不能验证真正Product Lock。
+白色AirPods Pro 2外观与充电盒大体稳定可识别；仍为纯文生，因此不能验证Reference Asset Lock。
 
-### ACTION_EXECUTION: PARTIAL
-拿起、打开、佩戴等大动作总体执行，但5–6s出现一台并非剧情所需的真实摄影机/三脚架，被模型从元机位描述字面生成进场景。
+### ACTION_EXECUTION: PASS
+拿起、开盒、佩戴的主动作清楚，未观察到前几版明显的小物体穿模或状态瞬移。
 
-### SPATIAL_PHYSICAL_CONTINUITY: FAIL
-1. 连续镜头机位先后落在女主左前、右前/右侧、左后/OTS等不同半区，没有中性镜头或可见过轴过程，形成明显180°越轴；
-2. 约22s普通无动力办公手推车无人推动却自行滑过，违反动力来源；
-3. 5–6s可见摄影器材进入画面，破坏场景真实性。
+### SPATIAL_PHYSICAL_CONTINUITY: PASS
+全片机位基本保持在同一拍摄半区，未观察到Attempt 5那种明显左前→右前→左后的越轴；未出现无人手推车、摄影设备入镜或明显无动力物体运动。
 
-### PERFORMANCE_REACTION: PARTIAL
-人物自然，但开场并没有把“噪音压力”真正演到人物身上。女主从第一秒就偏冷静、稳定，缺少可感知的困扰/目标受阻，因此没有形成强情绪感染。
+### PERFORMANCE_REACTION: PASS
+开场噪音能够真实打断女主注意力；产品介入后，视线重新锁定电脑、动作恢复，情绪从被干扰到重新掌控可读。
 
-### PROOF_FIDELITY: PARTIAL
-Prompt意图是ANC，但成片只表现“戴耳机后继续工作”。前后声音/行为状态的差异不够强，产品作用没有形成不可错认的因果Proof。
+### PROOF_FIDELITY: PASS
+同一办公室视觉在前后保持，变化集中在声音层与人物注意力状态，ANC Benefit Expression清楚且没有引入第二卖点。
 
-### COMMERCIAL_CLARITY: FAIL
-即使Prompt只锁ANC，观众仍很难仅靠成片明确回答“这条到底在卖什么”。说明`Selling Point存在于Prompt`不等于`Benefit被观众解码`。
+### COMMERCIAL_CLARITY: PASS
+不依赖最后旁白也能基本理解：办公室噪音持续打断工作，戴上AirPods后干扰退远、专注恢复。
 
-### STORY_ENGAGEMENT: FAIL
-开场虽然有助理+办公室噪音，但没有形成强可感知情绪或紧迫动作；中后段仍以人物办公状态展示为主，广告抓力不足。
+### STORY_ENGAGEMENT: PASS
+15s时长与单一卖点匹配，删除了前几版长时间“继续办公”的填充段，故事因果在短时间内完成。
 
-### EMOTIONAL_PAYOFF: FAIL
-“混乱→掌控”的预设情绪没有真正建立，因为开场人物几乎没有被噪音影响，后段自然也没有足够的释放/爽感。
+### EMOTIONAL_PAYOFF: PASS
+Problem Cost与Product After之间有明显状态反差，整体比30s版本更有释放感与广告效率。
 
 ### AUDIO_CAUSALITY: PASS
-没有复现Attempt 2的远处对白/耳机听觉矛盾；主要问题是Benefit表达不够可感，而不是声音物理因果明显错误。
+ANC前后的环境声层级逻辑成立，没有远距离人物贴脸对白或佩戴耳机后错误响应外部声音的问题。
 
-PRIMARY FAILURE TYPE:
-SKILL_RULE + PROMPT_COMPILER + DURATION_FIT
+### CTA SALIENCE: PARTIAL｜POLISH NEEDED
+13–15s画面仍然延续“女主继续工作”的同一视觉状态，CTA主要依赖结尾旁白，缺少一个独立、明显的视觉行动Beat。观众知道产品是什么，但“现在该做什么”的视觉提醒不够强。
 
-FAILURE PATTERNS:
-- GF26｜180° Axis Crossing / Camera Hemisphere Drift
-- GF27｜Unmotivated Prop Motion / Missing Motive Force
-- GF28｜Benefit Decodability Failure / Pain-to-Payoff Contrast弱
-- GF29｜Duration-to-Story Misfit / 单卖点被强行拉30秒
-- GF30｜Meta-camera Instruction Literalized as Prop
+PRIMARY FAILURE TYPE: NONE｜CTA POLISH ONLY
 
-ROOT CAUSE:
-1. Skill此前只有“机位侧/操作面”规则，没有正式180°主轴线与允许机位半区；
-2. Prompt为了画面忙碌写“推车经过”，却没有明确“谁推/什么动力”；
-3. Commercial Decision虽然锁了ANC，但没有强制检查观众能否通过成片清楚解码Benefit；
-4. 开场只有噪音事件，没有先让噪音造成一个清楚、可见的任务阻力，因此情绪不感染；
-5. 单一ANC利益在约8–12s就能表达完成，连续多次证明30s会诱发填时长、电视剧化、重复状态；
-6. “摄影机和人物看向同一方向”等元语言被SD字面解释成场景摄影器材。
+RETEST EVIDENCE:
+- GF26 180°越轴：目标问题本版未复现；
+- GF27 无动力道具运动：未复现；
+- GF28 Benefit Decodability：明显改善并PASS；
+- GF29 Duration-to-Story Misfit：15s版本解决；
+- GF30 Meta-camera Literalization：未复现。
 
-FIX:
-- Camera×Action加入180° Axis Lock / Axis Ledger；
-- 加入Motive Force Gate；普通推车必须有人推，自驱则明确机器人底盘；
-- 加入Meta-Camera Guard，机位用“画面从…观察/OTS”表达，避免把摄影机写成动作主体；
-- 新增Benefit Decodability Gate：产品前必须有可感知Problem Cost，产品后必须有立即可读State Change；
-- 新增Duration Fit Gate：单一卖点在12–18s自然完成时，不为模型支持30s强行拉长；30s必须有第二个真实高价值商业Beat，否则缩短。
+NEXT ACTION:
+- 保留0–13s主体；
+- 只重写最后约2s CTA为独立视觉Beat；
+- 不再改Commercial Decision / Architecture / ANC Proof / Axis Plan。
 
-RETEST REQUIRED: YES
-RETEST TARGET: B1-S04-P1 Attempt 6｜15s Benefit-Decoding + Axis-Lock Reset
-FINAL CASE STATUS: FAIL / STRUCTURE RESET
+FINAL CASE STATUS: PASS / CTA POLISH
 
 ---
 
@@ -237,6 +212,7 @@ COMMERCIAL_CLARITY:
 STORY_ENGAGEMENT:
 EMOTIONAL_PAYOFF:
 AUDIO_CAUSALITY:
+CTA_SALIENCE:
 
 PRIMARY FAILURE TYPE:
 FAILURE PATTERNS:
@@ -251,9 +227,10 @@ FINAL CASE STATUS:
 # 4. 修改证据规则
 
 - 商业信息写在Prompt里，不代表观众能从成片解码出来；必须以观众视角复核。
-- 任何连续空间镜头必须审核180°轴线。
-- 任何普通道具移动必须有可见/合理动力来源。
-- 单卖点若在前半已经自然讲完，优先缩短，不用“继续工作/继续使用”填满30秒。
+- 连续空间镜头必须审核180°轴线。
+- 普通道具移动必须有可见/合理动力来源。
+- 单卖点若在前半自然讲完，优先缩短，不用“继续工作/继续使用”填满30秒。
+- **主体广告已经成立时，CTA弱只做CTA局部修正，不重新扰动已经验证通过的商业因果、轴线和产品动作。**
 
 ---
 
@@ -265,8 +242,12 @@ FINAL CASE STATUS:
 - Attempt 3｜PARTIAL / STORY RETEST
 - Attempt 4 Run A+B｜FAIL / AD PACING RESET
 - Attempt 5｜FAIL / STRUCTURE RESET
+- Attempt 6｜PASS / CTA POLISH
 
-下一步：
-- Attempt 6改为约15秒，锁单一180°机位半区，强化Pain→Benefit的可感知情绪/行为反差，不再继续强做30秒。
+B1-S04-P1当前结论：
+- 15s单卖点结构明显优于强行30s；
+- 180° Axis Lock、Motive Force、Benefit Decodability、Duration Fit与Meta-Camera Guard本次复测有效；
+- Product Lock仍未经过Reference Asset验证；
+- 唯一当前可见优化点是CTA视觉显著性。
 
 其他Case：`NOT_RUN`
