@@ -1,8 +1,8 @@
 # 30S BENCHMARK HOTFIX 01｜长剧情证据、Reaction与交互负载修正
 
-> 来源：30秒服装双人剧情首轮真实Seedance测试。
+> 来源：30秒服装双人剧情首轮与真实Reference羽毛裙测试。
 >
-> 目标：修正“Beat齐全但证据不够硬、Reaction早于可见Trigger、连续Proof物理过载、R2证据重复”等问题。
+> 目标：修正“Beat齐全但证据不够硬、Reaction早于可见Trigger、连续Proof物理过载、R2证据重复、穿戴商品角色归属混乱、Reveal前状态泄漏”等问题。
 
 ---
 
@@ -148,3 +148,86 @@ PROP C: wallet | state | location
 如果必须在“第三个复杂交互”和“Reaction / Payoff”之间选择：
 
 > **优先Reaction / Payoff。**
+
+---
+
+# 8. WEARABLE OWNERSHIP LOCK｜穿戴商品角色归属锁
+
+真实服装、鞋、珠宝、腕表等穿戴商品，在每一个剧情Beat都必须只有一个明确状态与归属。
+
+内部至少记录：
+```text
+PRODUCT SKU:
+CURRENT LOCATION: rack / hand / fitting room / body
+CURRENT WEARER: NONE / Character A / Character B
+NON-WEARER WARDROBE:
+```
+
+硬规则：
+- 同一件真实SKU不能同时挂在衣架上又穿在人物身上；
+- 同一件SKU不能同时穿在两个主要人物身上；
+- 非产品人物必须有明确的非产品服装状态，不能因为参考图里有人穿产品就被模型自动套上同款；
+- 穿戴归属变化必须经过明确剧情状态转换或合法换装Match Cut。
+
+推荐链：
+`GARMENT ON RACK / WEARER NONE → Character A takes garment → fitting-room hidden transition → GARMENT ON Character A / rack empty`
+
+---
+
+# 9. REVEAL STATE RESERVATION｜Reveal前禁止泄漏最终状态
+
+如果剧情高潮依赖“第一次完整看到某个状态”，该状态在Reveal之前必须被保留，不能提前泄漏。
+
+例如：
+- 挂着看夸张 → 上身后意外高级；
+- 盒子打开才揭示内部结构；
+- 结果屏幕出现才揭示答案。
+
+若Reveal目标是“Character A第一次完整穿上产品”，则Reveal前：
+- 任何主角/配角都不得提前穿同一SKU；
+- 镜子、背景人物、衣架旁的Reference泄漏都不得出现完整上身状态；
+- 可以展示产品挂着、材质微距、局部下摆、手持等未完成状态。
+
+公式：
+`PRE-REVEAL STATES ≠ FINAL REVEAL STATE`
+
+否则即使后面有全身Hero镜头，R2的惊喜也已经被提前花掉。
+
+---
+
+# 10. REFERENCE-WEARER SEPARATION｜参考图中的模特不是剧情角色
+
+当产品参考图包含真人模特时，必须把“产品身份”和“参考图人物”拆开。
+
+参考图只锁：
+- 商品结构；
+- 尺寸/长度关系；
+- 材质；
+- 颜色；
+- 局部动态与上身比例。
+
+默认不继承：
+- 参考图模特身份；
+- 发型/脸；
+- 配饰；
+- 姿势；
+- 其他搭配单品；
+- 谁应该在剧情里穿产品。
+
+剧情层必须另外明确：
+`WHO MAY WEAR PRODUCT = Character X only after Beat N`
+
+如果产品Reveal依赖换装，优先把这句状态约束写入人物/产品锁定，而不是只写“不要让另一个人穿”。
+
+---
+
+# 11. REVEAL-FIRST QA｜30秒服装R2额外检查
+
+- [ ] Reveal前产品没有以最终穿戴状态提前出现
+- [ ] 同一SKU任一时刻只有一个Location / Wearer
+- [ ] 非产品人物有清楚的Wardrobe Lock
+- [ ] 衣架上的产品被拿走后，衣架状态同步为空
+- [ ] Full-body Reveal真的第一次完整给出答案
+- [ ] Reaction晚于完整Reveal
+- [ ] Second Proof验证新的疑问，不重复第一次Reveal
+- [ ] 最终Decision Change来自看到产品结果，而不是台词自行宣告
