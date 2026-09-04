@@ -343,3 +343,21 @@
 - 本层没有提前锁反转或Scene。
 - 产品外观、SKU、尺寸、结构、配件与参考资产一致。
 - 物理动作与使用语境合理。
+
+---
+
+## 10. VISUAL REALITY HANDOFF｜中优先级画面质感预检
+
+本层完成商业决策后，**不要在这里改写Story Architecture、Proof、R-level或Scene**。但只要后续任务会形成任何视频画面，在进入具体Scene美术、Performance、Camera、风格化、超现实、设备/镜头身份或VFX设计前，必须完整读取：
+
+`references/physical-reality-lock.md`
+
+执行顺序：
+
+`Commercial Decision / Story Architecture / Proof先正确`
+→ `Physical Reality Lock建立真实摄影底座`
+→ `再叠加Reversal / Scene / Performance / Camera / Style / VFX`
+
+该模块只框定**光源逻辑、真实材质、摄影机物理、动作重量、空间/接触连续、环境生活密度、光学与色彩克制**，优先级属于中级：不允许它覆盖商品事实、Best Proof、主剧情因果或用户明确风格，但任何泛化“电影感、高级感、视觉炫技、设备名堆叠”都必须先通过它。
+
+最终提示词不重复整套规则，只提取当前广告最有杠杆的可见结果，并优先压缩进全片【生成控制】/视觉基线；局部镜头只有在真实感依赖特殊光源、材质、接触、惯性或光学变化时再补充。
