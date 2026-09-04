@@ -9,7 +9,7 @@
 禁止为了“这个动作比较好生成”，把产品操作步骤冒充购买理由。
 
 核心链：
-`商品事实 → 人群与任务 → Why Buy → Why Hesitate → 主决策家族 → 可证明度 → Best Proof / Benefit Expression → 情绪奖励 → 剧情化`
+`商品事实 → 人群与任务 → Why Buy → Why Hesitate → 主决策家族 → 可证明度 → Best Proof / Benefit Expression → Perceived Value Contrast → 情绪奖励 → 剧情化`
 
 商业决策是内核；Story Architecture、Reversal、Scene、Comedy、Performance都是后续表达层。
 
@@ -50,6 +50,19 @@
 ### Cannot Prove
 列出不能由单条画面/AI视频直接证明的属性。
 
+### Perception Framing｜感知价值反差
+完整执行 `references/perceived-value-contrast-routing.md`，至少锁定：
+- `PHYSICAL SCALE CLASS`：SMALL / MEDIUM / LARGE
+- `MARKET VALUE POSITION`：VALUE / MID / PREMIUM / UNKNOWN
+- `NATURAL FIRST IMPRESSION`：观众第一眼天然会怎么感知它
+- `DESIRED REFRAMING`：广告希望把它重新定义成什么
+- `CONTRAST DIRECTION`：MAGNIFY / VALUE_ELEVATION / LUXURY_NORMALIZATION / BALANCED / NONE
+- `REALITY PRESENTATION`：真实剧情段如何保持产品尺度、价格与生活逻辑真实
+- `COMMERCIAL HERO PRESENTATION`：Hero段如何放大、微距、悬浮/旋转或环境化
+- `PERCEPTION PAYOFF`：观众看完后应该产生什么新的价值判断
+
+这一步只决定**视觉价值方向与感知反差**，不能改写Product Truth、Best Proof、Story Architecture或R-level。
+
 ### Story Focus
 最终只锁：
 - 1个Core Decision Question
@@ -59,6 +72,7 @@
 - 1个Product Causal Role
 - 1个Conversion Goal
 - 1个Emotional Payoff
+- 1个Perception Reframing
 
 **本层不选择R0/R1/R2，不选择“主反转”，不先选Scene，不先写剧情。**
 
@@ -107,6 +121,104 @@
 - 普通 → 想拥有
 
 除非用户明确要黑色、抓马、荒诞、讽刺或强反转，不能用主角持续不耐烦、丧气、嫌弃别人代替戏剧张力。
+
+---
+
+## 1.2 PERCEIVED VALUE CONTRAST GATE｜产品天然感知必须先决定“怎么反着拍”
+
+完整读取：
+
+`references/perceived-value-contrast-routing.md`
+
+这是进入Story Architecture前的必做感知策略，不是可选美术点缀。
+
+### 默认三条高价值先验
+
+#### A. 小产品往大了拍
+耳机、手表、戒指、珠宝、小型美妆、小型3C配件等，真实使用画面中视觉占比天然小。
+
+默认增加：
+- 微距 / Extreme Close-up；
+- 结构、材质、边缘、接口细节；
+- 产品独立Hero；
+- STYLIZED COMMERCIAL MODE中的受控悬浮、慢旋转、拆解或放大展示。
+
+但Reality剧情段仍保持真实尺寸，不把小产品无理由生成成巨物。
+
+核心：
+`SMALL → VISUALLY BIG`
+
+#### B. 便宜/基础产品往贵了拍
+低价、基础、普通品类默认考虑 `VALUE_ELEVATION`：
+- 高级但可信的环境；
+- 精致生活方式；
+- 高颜值人物与造型；
+- 仪式感；
+- 细节与材质被认真观看；
+- 把“简单”重新表达成“克制、经典、好搭、值得留在生活里”。
+
+例如基础白T，可以进入高级衣帽间、精致搭配体系、私人住宅或高级旅行语境，让它成为“衣柜里最简单、却最常被拿起的那件”。
+
+注意：只能通过**环境、审美、搭配和叙事**抬感知价值，不能虚构品牌、材质、价格、认证或奢侈身份。
+
+核心：
+`VALUE → PERCEIVED PREMIUM`
+
+#### C. 本来就贵的往舒服、生活、实用拍
+高价/奢侈产品本身已经拥有“贵、稀缺、高级”的预期，继续单纯堆豪宅、黄金、红毯，信息增益往往低。
+
+默认考虑 `LUXURY_NORMALIZATION`：
+- 真实使用；
+- 舒服状态；
+- 日常生活；
+- 旅行 / 通勤 / 私人晚餐 / 家庭空间；
+- 实用性；
+- 人与产品自然融合；
+- 高级感来自克制、材质、动作、秩序和生活氛围。
+
+真正的反差是：
+> **这么贵的东西，不是供起来看的，而是真的舒服、顺手、好用、愿意一直穿/戴/用。**
+
+核心：
+`LUXURY → LIVED-IN USEFULNESS`
+
+### 两个轴同时判断
+
+产品同时按：
+1. **视觉尺度**：SMALL / MEDIUM / LARGE；
+2. **品类内价值位置**：VALUE / MID / PREMIUM / UNKNOWN；
+
+组合路由。
+
+例如：
+- 小 + 便宜：`MAGNIFY + VALUE_ELEVATION`
+- 小 + 贵：`MAGNIFY + LUXURY_NORMALIZATION`
+- 中型 + 便宜：`VALUE_ELEVATION + VERSATILITY`
+- 中型 + 贵：`LIVED-IN LUXURY + PRACTICAL ELEGANCE`
+- 大 + 贵：`QUIET UTILITY`
+
+若真实价格/定位未知：
+> 标记 `UNKNOWN`，不自行判定“便宜/奢侈”。
+
+### 权限边界
+
+Perceived Value Contrast只改变：
+- 画面尺度；
+- 场景价值感；
+- 生活距离；
+- 产品Hero策略；
+- 观众对产品的感知框架。
+
+它不允许改变：
+- 真实售价；
+- 品牌层级事实；
+- 材质；
+- 功能；
+- Best Proof；
+- Core Decision Question。
+
+若“拍得更贵/更大/更生活化”损害商业Proof或造成事实误导：
+> **Product Truth与Best Proof优先。**
 
 ---
 
@@ -285,6 +397,8 @@
 2. 选择次高权重、但可被视频诚实表达的问题；
 3. 不可证明事实只作为已确认信息，或不讲。
 
+Perceived Value Contrast不参与抢夺Core Decision，只负责在同一个真实商业问题上寻找更有反差、更有价值感的视觉表达。
+
 ---
 
 ## 7. REVERSION HANDOFF｜本层禁止预选反转
@@ -304,6 +418,7 @@
 - Selling Point
 - Best Proof / Expression
 - Emotional Payoff
+- Perception Reframing
 
 然后由Reversal Router保守决定：
 - R0 NO REVERSAL
@@ -323,6 +438,8 @@
 4. Proof/Benefit Expression是否是这个品类真正有诊断性的表达？
 5. 人物/宠物/场景是否帮助理解购买问题，而不是装饰？
 6. 如果删除具体Selling Point，故事是否还完全成立？若是，说明产品因果太弱。
+7. 产品天然“太小/太普通/已经很贵”的感知特点是否被正确转化为视觉反差，而不是被机械照拍？
+8. 如果是小产品，是否给了足够Hero/微距存在感；如果是基础低价产品，是否考虑价值抬升；如果本就高价，是否考虑生活化/实用性反差？
 
 任一失败，返回商品决策层重写。
 
@@ -337,6 +454,10 @@
 - Confirmed Selling Point明确。
 - Best Proof / Benefit Expression确实支持本条结论。
 - Emotional Payoff明确且来自商品解决问题后的结果。
+- Perception Framing已完成：尺度、价格定位、天然第一印象、目标重构与Hero策略明确。
+- 小产品没有因真实尺寸小而在广告里失去存在感。
+- 基础/低价产品的价值提升来自环境与审美，不来自虚假品牌/材质/价格事实。
+- 高价产品若采用生活化策略，仍保留足够高级感与品牌价值，不被拍成普通廉价商品。
 - 高风险声明有真实依据或主动排除。
 - 剧情冲突来自产品决策问题。
 - Product Causal Role真实存在。
@@ -348,15 +469,16 @@
 
 ## 10. VISUAL REALITY HANDOFF｜中优先级画面质感预检
 
-本层完成商业决策后，**不要在这里改写Story Architecture、Proof、R-level或Scene**。但只要后续任务会形成任何视频画面，在进入具体Scene美术、Performance、Camera、风格化、超现实、设备/镜头身份或VFX设计前，必须完整读取：
+本层完成商业决策与Perceived Value Contrast后，**不要在这里改写Story Architecture、Proof、R-level或Scene**。但只要后续任务会形成任何视频画面，在进入具体Scene美术、Performance、Camera、风格化、超现实、设备/镜头身份或VFX设计前，必须完整读取：
 
 `references/physical-reality-lock.md`
 
 执行顺序：
 
-`Commercial Decision / Story Architecture / Proof先正确`
+`Commercial Decision / Proof先正确`
+→ `Perceived Value Contrast锁定感知方向`
 → `Physical Reality Lock建立真实摄影底座`
-→ `再叠加Reversal / Scene / Performance / Camera / Style / VFX`
+→ `再叠加Story / Reversal / Scene / Performance / Camera / Style / VFX`
 
 该模块只框定**光源逻辑、真实材质、摄影机物理、动作重量、空间/接触连续、环境生活密度、光学与色彩克制**，优先级属于中级：不允许它覆盖商品事实、Best Proof、主剧情因果或用户明确风格，但任何泛化“电影感、高级感、视觉炫技、设备名堆叠”都必须先通过它。
 
