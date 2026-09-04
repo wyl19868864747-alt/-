@@ -15,7 +15,7 @@
 | B1-S01-P1 | S01 | 3C | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN |
 | B1-S01-P2 | S01 | Apparel | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN |
 | B1-S01-P3 | S01 | Daily Goods | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN |
-| B1-S04-P1 | S04 | AirPods Pro 2 | PASS | PARTIAL* | PARTIAL | FAIL | PASS | PASS | PASS | FAIL | PARTIAL | PASS | FAIL / AD PACING RESET |
+| B1-S04-P1 | S04 | AirPods Pro 2 | PASS | PARTIAL* | PARTIAL | FAIL | PARTIAL | PARTIAL | FAIL | FAIL | FAIL | PASS | FAIL / STRUCTURE RESET |
 | B1-S04-P2 | S04 | Apparel | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN |
 | B1-S04-P3 | S04 | Daily Goods | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN |
 | B1-S07-P1 | S07 | 3C | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN |
@@ -25,14 +25,13 @@
 | B1-S12-P2 | S12 | Apparel | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN |
 | B1-S12-P3 | S12 | Daily Goods | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN |
 
-`*` B1-S04-P1 Attempt 1–4均为 `TEXT_ONLY`；Product Lock只能做模型默认外观观察，不能作为Reference Asset Lock验证证据。
+`*` B1-S04-P1 Attempt 1–5均为 `TEXT_ONLY`；Product Lock只能做模型默认外观观察，不能作为Reference Asset Lock验证证据。
 
 ---
 
 # 2. Case Records
 
 ## B1-S04-P1｜Attempt 1
-
 DATE: 2026-09-03
 MODEL / VERSION: Seedance 2.5
 DURATION: 30s
@@ -49,22 +48,12 @@ PROOF_FIDELITY: PARTIAL
 COMMERCIAL_CLARITY: PARTIAL
 STORY_ENGAGEMENT: FAIL
 
-PRIMARY FAILURE TYPE: PROMPT_COMPILER
-SECONDARY ROOT CAUSE: SKILL_RULE_GAP + BENCHMARK_DESIGN
 FAILURE PATTERNS: GF15 / GF16 / GF17
-
-FIX:
-- 新增Camera×Action Compiler；
-- 关键开盒改OTS；
-- 精细动作拆分；
-- Attempt 2强化Story Driver。
-
 FINAL CASE STATUS: FAIL / RETEST
 
 ---
 
 ## B1-S04-P1｜Attempt 2
-
 DATE: 2026-09-03
 MODEL / VERSION: Seedance 2.5
 DURATION: 30s
@@ -83,22 +72,12 @@ STORY_ENGAGEMENT: FAIL
 EMOTIONAL_PAYOFF: FAIL
 AUDIO_CAUSALITY: FAIL
 
-PRIMARY FAILURE TYPE: SKILL_RULE
-SECONDARY ROOT CAUSE: BENCHMARK_DESIGN + PROMPT_COMPILER
 FAILURE PATTERNS: GF15 / GF16 / GF17 / GF18 / GF19 / GF20 / GF21 / GF22
-
-ROOT CAUSE:
-Commercial Decision被技术测试目的取代；拿取/佩戴/收纳被误当成消费者购买理由。
-
-FIX:
-Commercial Validity Gate；Why Buy/Pain/Selling Point/Emotional Payoff前置；动作Tempo、声音因果、Object State Ledger。
-
 FINAL CASE STATUS: FAIL / COMMERCIAL RESET
 
 ---
 
 ## B1-S04-P1｜Attempt 3
-
 DATE: 2026-09-03
 MODEL / VERSION: Seedance 2.5
 DURATION: 30s
@@ -124,26 +103,14 @@ STORY_ENGAGEMENT: PARTIAL
 EMOTIONAL_PAYOFF: PASS
 AUDIO_CAUSALITY: PASS
 
-Evidence:
-- 0–10s“办公室噪音→戴AirPods→噪音减弱→进入专注”商业因果清楚；
-- 主体操作没有明显穿模，动作节拍明显改善；
-- 11–23s连续维持“已经专注”，出现Post-Proof Plateau；
-- 27–30s女主耳朵仍有一对耳机，但打开盒内又生成一对，GF22复制问题。
-
 FAILURE PATTERNS:
 GF15 MITIGATED / GF16 CONFIRMED / GF17 MITIGATED / GF18 MITIGATED / GF19 MITIGATED / GF20 MITIGATED / GF21 MITIGATED / GF22 CONFIRMED / GF23 CONFIRMED
-
-FIX:
-- Post-Proof Continuation Check；
-- Hero Shot服从Object State Ledger；
-- Attempt 4只修中后段推进与Hero State。
 
 FINAL CASE STATUS: PARTIAL / STORY RETEST
 
 ---
 
 ## B1-S04-P1｜Attempt 4｜Run A + Run B
-
 DATE: 2026-09-03
 MODEL / VERSION: Seedance 2.5
 DURATION: 30s × 2 generations
@@ -151,84 +118,102 @@ PRODUCT: Apple AirPods Pro 2｜White
 ASSET MODE: TEXT_ONLY
 PROMPT REVISION: B1-v4｜R1 Surprise + Post-Proof Continuation
 
-COMMERCIAL FOCUS:
-- Pain：开放办公室噪音干扰专注
-- Selling Point：Active Noise Cancellation
-- Architecture：SA01 Problem → Solution
-- R-level：R1 Surprise
-- Intended Payoff：噪音→ANC→专注→摘一只噪音回归→“Nope.”→重新戴回
-
-### SCENE_RECOGNITION: PASS
-Evidence:
-两次生成都能清楚识别开放式美国办公室；打印机、办公设备、同事与桌面工作状态继续支持S04语境。
-
-### PRODUCT_LOCK: PARTIAL OBSERVATION ONLY
-Evidence:
-两次纯文生都保持白色AirPods Pro 2的大体识别；仍无Reference Asset输入，不能验证参考锁定。
-
-### ACTION_EXECUTION: PARTIAL
-Evidence:
-拿起、开盒、佩戴、单只摘下、重新戴回的大动作总体被执行；后半单耳取下/戴回没有复现Attempt 2的明显耳机仓状态瞬移。但开场多微镜头和助理进入没有稳定按“独立硬切镜头”执行。
-
-### SPATIAL_PHYSICAL_CONTINUITY: FAIL
-Evidence:
-Run B在约0.5–1.1s尤其明显：打印机/办公设备/移动物体被模型做成连续横向模糊与空间插值，而不是提示词要求的独立硬切，产生“物体穿过画面/镜头”的穿模感。Run A较轻，但0–3s仍存在微镜头之间空间重置过快、助理几乎直接出现在女主身后的跳跃感。两次同Prompt都说明首3秒微镜头负载过高。
-
-### PERFORMANCE_REACTION: PASS
-Evidence:
-女主整体仍保持专业、积极，没有退回“不耐烦主角”；单耳摘下后的短促反应和重新戴回基本可读。
-
-### PROOF_FIDELITY: PASS
-Evidence:
-ANC作为唯一卖点仍然清楚；戴上后环境声/工作状态变化，以及后段单耳摘下再重新戴回，继续围绕同一利益，没有换卖点。
-
-### COMMERCIAL_CLARITY: PASS
-Evidence:
-两版仍然能理解“办公室噪音→AirPods Pro 2主动降噪→恢复专注”。商业决策没有回退。
-
-### STORY_ENGAGEMENT: FAIL
-Evidence:
-虽然Attempt 4增加了掉文件、打印机再次提示、通话、会议结束、摘耳机、Nope等事件，但从约10s到21s两次生成都长时间停留在女主同一中近景中打字/说话，事件多数发生在背景且没有改变女主的即时目标或动作。观感从短视频广告变成自然主义办公室电视剧覆盖，广告的即时抓力反而弱于Attempt 3。
-
-### EMOTIONAL_PAYOFF: PARTIAL
-Evidence:
-“Nope→重新戴回”的轻Surprise/Comedy方向成立，但发生得太晚（约23–27s），此前十多秒已经掉出广告节奏，Payoff无法挽回中段流失。
-
-### AUDIO_CAUSALITY: PASS
-Evidence:
-没有复现Attempt 2的远处助理贴脸对白/戴耳机仍直接回应问题；主要声音逻辑仍围绕ANC主观听觉变化。
-
-PRIMARY FAILURE TYPE:
-PROMPT_COMPILER / AD_PACING
-
-SECONDARY ROOT CAUSE:
-HOOK_MICRO_SHOT_OVERLOAD + STORY_CONTINUATION_OVERCORRECTION
+SCENE_RECOGNITION: PASS
+PRODUCT_LOCK: PARTIAL OBSERVATION ONLY
+ACTION_EXECUTION: PARTIAL
+SPATIAL_PHYSICAL_CONTINUITY: FAIL
+PERFORMANCE_REACTION: PASS
+PROOF_FIDELITY: PASS
+COMMERCIAL_CLARITY: PASS
+STORY_ENGAGEMENT: FAIL
+EMOTIONAL_PAYOFF: PARTIAL
+AUDIO_CAUSALITY: PASS
 
 FAILURE PATTERNS:
-- GF22｜本版未复现结尾复制，但仍需跨Case复测后才能MITIGATED
-- GF23｜仍CONFIRMED：Attempt 4证明“增加更多背景事件”本身不能解决Post-Proof Plateau
-- GF24｜新增：Sub-second Micro-shot Interpolation / False Continuity
-- GF25｜新增：Commercial Beat Density Collapse / TV Drama Drift
+GF22 / GF23 / GF24 / GF25
+
+Evidence:
+- 首3秒多个亚秒物理镜头被模型插值成False Hard Cut Morph；
+- 10–21s背景事件增加但主角/产品/观众理解没有高价值变化，出现TV Drama Drift。
+
+FINAL CASE STATUS: FAIL / AD PACING RESET
+
+---
+
+## B1-S04-P1｜Attempt 5
+DATE: 2026-09-04
+MODEL / VERSION: Seedance 2.5
+DURATION: 30s
+PRODUCT: Apple AirPods Pro 2｜White
+ASSET MODE: TEXT_ONLY
+PROMPT REVISION: B1-v5｜Ad Density Reset
+
+COMMERCIAL INTENT:
+- Pain：开放办公室噪音干扰专注
+- Intended Selling Point：Active Noise Cancellation
+- Architecture：SA01 Problem → Solution
+- Intended Emotional Payoff：噪音压力 → 戴耳机 → 专注掌控
+
+### SCENE_RECOGNITION: PASS
+现代开放办公室清楚可读。
+
+### PRODUCT_LOCK: PARTIAL OBSERVATION ONLY
+纯文生下AirPods Pro 2大体可识别，但仍无Reference Asset，不能验证真正Product Lock。
+
+### ACTION_EXECUTION: PARTIAL
+拿起、打开、佩戴等大动作总体执行，但5–6s出现一台并非剧情所需的真实摄影机/三脚架，被模型从元机位描述字面生成进场景。
+
+### SPATIAL_PHYSICAL_CONTINUITY: FAIL
+1. 连续镜头机位先后落在女主左前、右前/右侧、左后/OTS等不同半区，没有中性镜头或可见过轴过程，形成明显180°越轴；
+2. 约22s普通无动力办公手推车无人推动却自行滑过，违反动力来源；
+3. 5–6s可见摄影器材进入画面，破坏场景真实性。
+
+### PERFORMANCE_REACTION: PARTIAL
+人物自然，但开场并没有把“噪音压力”真正演到人物身上。女主从第一秒就偏冷静、稳定，缺少可感知的困扰/目标受阻，因此没有形成强情绪感染。
+
+### PROOF_FIDELITY: PARTIAL
+Prompt意图是ANC，但成片只表现“戴耳机后继续工作”。前后声音/行为状态的差异不够强，产品作用没有形成不可错认的因果Proof。
+
+### COMMERCIAL_CLARITY: FAIL
+即使Prompt只锁ANC，观众仍很难仅靠成片明确回答“这条到底在卖什么”。说明`Selling Point存在于Prompt`不等于`Benefit被观众解码`。
+
+### STORY_ENGAGEMENT: FAIL
+开场虽然有助理+办公室噪音，但没有形成强可感知情绪或紧迫动作；中后段仍以人物办公状态展示为主，广告抓力不足。
+
+### EMOTIONAL_PAYOFF: FAIL
+“混乱→掌控”的预设情绪没有真正建立，因为开场人物几乎没有被噪音影响，后段自然也没有足够的释放/爽感。
+
+### AUDIO_CAUSALITY: PASS
+没有复现Attempt 2的远处对白/耳机听觉矛盾；主要问题是Benefit表达不够可感，而不是声音物理因果明显错误。
+
+PRIMARY FAILURE TYPE:
+SKILL_RULE + PROMPT_COMPILER + DURATION_FIT
+
+FAILURE PATTERNS:
+- GF26｜180° Axis Crossing / Camera Hemisphere Drift
+- GF27｜Unmotivated Prop Motion / Missing Motive Force
+- GF28｜Benefit Decodability Failure / Pain-to-Payoff Contrast弱
+- GF29｜Duration-to-Story Misfit / 单卖点被强行拉30秒
+- GF30｜Meta-camera Instruction Literalized as Prop
 
 ROOT CAUSE:
-1. 把“短视频节奏快”错误翻译成0–3s连续多个0.7s左右独立物理镜头；SD2.5有时不会真正硬切，而会在不同空间/物体间插值，产生穿模感；
-2. 为修GF23，加入太多完整的自然主义办公室事件，但这些事件多数只是背景发生，没有直接改变主角行动、产品状态或商业判断；
-3. “ANC后镜头稳定”被过度执行成10秒以上同类中近景，声音安静被错误映射成视觉也要安静；
-4. R1 Surprise本身方向没错，但被安排到约21s以后，广告最有趣的第二次声音反差来得过晚；
-5. 30秒被按电视剧式“铺事件→演完整→再下一个事件”填满，而不是广告式高密度商业Beat压缩。
+1. Skill此前只有“机位侧/操作面”规则，没有正式180°主轴线与允许机位半区；
+2. Prompt为了画面忙碌写“推车经过”，却没有明确“谁推/什么动力”；
+3. Commercial Decision虽然锁了ANC，但没有强制检查观众能否通过成片清楚解码Benefit；
+4. 开场只有噪音事件，没有先让噪音造成一个清楚、可见的任务阻力，因此情绪不感染；
+5. 单一ANC利益在约8–12s就能表达完成，连续多次证明30s会诱发填时长、电视剧化、重复状态；
+6. “摄影机和人物看向同一方向”等元语言被SD字面解释成场景摄影器材。
 
 FIX:
-- Hook改用`一个强主镜头 + 多声音/背景事件同时发生`，不再用3个亚秒级独立物理镜头硬拼；
-- 关键首镜人物/助理若需要互动，人物从首帧即处于可执行位置，避免1秒内再走门、靠近、说长句；
-- 新增Commercial Beat Density Gate：通常每2–3秒必须出现新信息、新动作、新产品状态、新反差或Payoff；
-- `Audio Calm ≠ Visual Slow`：ANC后的声音可以安静，镜头/信息节奏仍可快速；
-- Post-Proof新事件必须直接改变主角动作、判断、产品状态或观众对Benefit的理解；纯背景掉文件/路人忙碌不能独占长Beat；
-- R1 Surprise提前到Proof后2–4秒内，而不是拖到20秒以后；
-- 30秒若没有足够高价值商业Beat，宁可缩短，不用电视剧式场面填时长。
+- Camera×Action加入180° Axis Lock / Axis Ledger；
+- 加入Motive Force Gate；普通推车必须有人推，自驱则明确机器人底盘；
+- 加入Meta-Camera Guard，机位用“画面从…观察/OTS”表达，避免把摄影机写成动作主体；
+- 新增Benefit Decodability Gate：产品前必须有可感知Problem Cost，产品后必须有立即可读State Change；
+- 新增Duration Fit Gate：单一卖点在12–18s自然完成时，不为模型支持30s强行拉长；30s必须有第二个真实高价值商业Beat，否则缩短。
 
 RETEST REQUIRED: YES
-RETEST TARGET: B1-S04-P1 Attempt 5｜Ad Density Reset
-FINAL CASE STATUS: FAIL / AD PACING RESET
+RETEST TARGET: B1-S04-P1 Attempt 6｜15s Benefit-Decoding + Axis-Lock Reset
+FINAL CASE STATUS: FAIL / STRUCTURE RESET
 
 ---
 
@@ -240,7 +225,6 @@ DATE:
 MODEL / VERSION:
 DURATION:
 ASSET MODE:
-ASSETS:
 PROMPT REVISION:
 
 SCENE_RECOGNITION:
@@ -255,7 +239,6 @@ EMOTIONAL_PAYOFF:
 AUDIO_CAUSALITY:
 
 PRIMARY FAILURE TYPE:
-SKILL_RULE / PROMPT_COMPILER / MODEL_LIMIT / RANDOM_GENERATION / PRODUCT_ASSET_LIMIT / NONE
 FAILURE PATTERNS:
 ROOT CAUSE:
 FIX:
@@ -267,25 +250,23 @@ FINAL CASE STATUS:
 
 # 4. 修改证据规则
 
-没有真实Case证据，不继续膨胀核心Skill。
-
-如果失败发生在Commercial Decision层：
-> 停止镜头级补丁，回到商品决策重新设计。
-
-如果商业问题、Proof和情绪成立，但观感变成电视剧：
-> 检查Commercial Beat Density、镜头信息变化与Post-Proof事件是否真正改变人物/产品/判断。不要用更多自然主义场面填时长。
+- 商业信息写在Prompt里，不代表观众能从成片解码出来；必须以观众视角复核。
+- 任何连续空间镜头必须审核180°轴线。
+- 任何普通道具移动必须有可见/合理动力来源。
+- 单卖点若在前半已经自然讲完，优先缩短，不用“继续工作/继续使用”填满30秒。
 
 ---
 
 # 5. 当前状态
 
 已运行：
-- B1-S04-P1 Attempt 1｜FAIL / RETEST
-- B1-S04-P1 Attempt 2｜FAIL / COMMERCIAL RESET
-- B1-S04-P1 Attempt 3｜PARTIAL / STORY RETEST
-- B1-S04-P1 Attempt 4 Run A + B｜FAIL / AD PACING RESET
+- Attempt 1｜FAIL / RETEST
+- Attempt 2｜FAIL / COMMERCIAL RESET
+- Attempt 3｜PARTIAL / STORY RETEST
+- Attempt 4 Run A+B｜FAIL / AD PACING RESET
+- Attempt 5｜FAIL / STRUCTURE RESET
 
 下一步：
-- B1-S04-P1 Attempt 5｜保留已验证的ANC商业决策，但重做Hook镜头策略与整条Commercial Beat Density；不再用多个亚秒物理镜头制造“快”，不再用完整电视剧式办公室事件填满中段。
+- Attempt 6改为约15秒，锁单一180°机位半区，强化Pain→Benefit的可感知情绪/行为反差，不再继续强做30秒。
 
 其他Case：`NOT_RUN`
