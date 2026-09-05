@@ -302,3 +302,30 @@ PERCEPTION PAYOFF:
 但永远：
 
 `PRODUCT TRUTH > PERCEPTION CONTRAST`
+
+---
+
+# 7. PRODUCT-CENTERED NARRATIVE HANDOFF｜反差策略完成后必须重新绑回产品
+
+完成本模块后、进入Story Architecture之前，必须完整读取：
+
+`references/product-centered-narrative-gate.md`
+
+原因：
+- “往大了拍 / 往贵了拍 / 往生活里拍”只决定价值感知方向；
+- 生活氛围、人物关系和剧情完整度不能因此抢走产品主角位置；
+- 剧情带货广告最终仍必须以商品、购买问题、Product Detail、Proof、Value Reframe和Decision Change为主线。
+
+执行顺序：
+
+`Commercial Decision`
+→ `Perceived Value Contrast`
+→ `Product-Centered Narrative Gate`
+→ `Story Architecture`
+→ `Proof / Reversal / Scene / Performance / Camera`
+
+若“生活化”“高级氛围”“人物小戏”与产品中心性冲突：
+
+`PRODUCT CENTRALITY > LIFESTYLE ATMOSPHERE`
+
+生活氛围只能托举产品，不能变成广告真正的主角。
