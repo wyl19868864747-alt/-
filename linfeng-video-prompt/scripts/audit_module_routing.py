@@ -39,13 +39,13 @@ def main() -> int:
                 errors.append(f"broken local link in {markdown.relative_to(ROOT)}: {link}")
 
     required_core = [
-        "references/rule-governance-and-module-routing.md",
-        "references/user-operating-contract.md",
-        "references/direction-routing.md",
+        "references/camera-light-quality-baseline.md",
+        "references/prompt-compilation-and-consistency.md",
+        "references/output-contract-and-validation.md",
     ]
     for path in required_core:
         if skill_text.count(path) < 2:
-            errors.append(f"always-read core is not declared in both workflow and routing table: {path}")
+            errors.append(f"required writing entry points is not declared in both workflow and routing table: {path}")
 
     if "并列勾选项" not in skill_text or "不得命中第一项后停止" not in skill_text:
         errors.append("parallel additive routing invariant is missing from SKILL.md")
@@ -59,7 +59,7 @@ def main() -> int:
     print(
         "Routing audit passed: "
         f"{len(actual_references)} references are directly routed; "
-        "all local links resolve; always-read core and additive routing are present."
+        "all local links resolve; required writing entry points and additive routing are present."
     )
     return 0
 

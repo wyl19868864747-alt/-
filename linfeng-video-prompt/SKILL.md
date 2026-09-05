@@ -3,111 +3,72 @@ name: linfeng-video-prompt
 description: 把产品Brief、脚本、分镜、故事板、参考视频或成片问题转为精炼、一读成像、可直接生成的视频提示词、导演分析或分镜，并校验资产职责、创意幅度、节奏/风格一致、空间物理、声音、时长与模型容量。用于TVC、商业广告、UGC、短剧、产品演示、视觉奇观/超现实、复杂运镜、连续性返修、画质诊断及Seedance等视频模型工作流；用户说“林枫视频提示词skill”或要求写、改、检查视频提示词时使用。
 ---
 
+
 # 林枫视频提示词
 
-## 全局优先级与不可降级原则
+把导演判断编译为一读成像、能直接执行的视频提示词。主文件负责入口与优先级；详细规则各有一个归属文件，命中条件才读取，读过且未变更的文件本轮不重复读。
 
-### 冲突裁决顺序
+## 工作顺序
 
-发生规则冲突时，按以下顺序裁决：
+1. **确定交付**：分析、方案、脚本/分镜、可复制提示词、实际生成或局部返修。沿用用户已给的语言、格式、模型、时长和资产；只缺少会改变事实或核心结果的信息时才问一个关键问题。只要提示词就交成品，不附内部推理。
+2. **确定主次**：第一轴选商业记忆或剧情关系；第二轴选人物表演或环境/产品体验。混合任务确定主导层，同时叠加必要模块。主次不明时读 `references/direction-routing.md`；阶段、默认审美和交接不明时读 `references/user-operating-contract.md`。
+3. **锁事实与动作**：后台用 F/I/P/U 区分已确认事实、创作推断、偏好与未知；推断不变成产品事实。先定核心事件、人物目的、关键结果、资产职责和动作因果，再定运镜。多镜只记需要继承的状态；简单片段直接写起点、路径、接触与完成态。
+4. **先定光影，再写镜头**：每次新写、完整重写或光影/质感返修，读取 `references/camera-light-quality-baseline.md`。它是固定入口，不等用户提醒“电影感”。编辑继承原片，只有变动的光源、材质或场景重新设计；光影服务主体与叙事，不改变商品本色。
+5. **编译**：写或重写视频提示词时读取 `references/prompt-compilation-and-consistency.md` 与 `references/output-contract-and-validation.md`。完整提示词采用“概念开场—资产—表演—空间—光影—分镜—反向”的结构，分镜采用连续自然句；简单动作和局部编辑用对应短格式。
+6. **检查并交付**：依输出合同做一次集中检查，失败只回到相应归属文件修正。默认给一版最佳结果；要求多版才给多版。实际生成只有工具可用且用户请求时执行，提示词通过检查不等于成片已验证。
 
-`用户本轮显式硬约束 → 已确认项目事实与素材 → 身份/物理/空间/声音正确 → 叙事与信息任务 → 摄影/构图/剪辑连续性 → 命中的专项创作机制 → 风格化与视觉炫技 → 稳定默认与最小合理假设`
+## 执行优先级
 
-低层规则不得为了“更电影、更高级、更刺激”覆盖高层正确性。专项模块只能增加细节和严格度，不能关闭全局底线。
+`用户明确要求 → 已确认事实与资产 → 身份、产品、空间/动作/声音一致性 → 叙事与关键证据 → 光影、成像与色彩 → 运镜/特效装饰 → 默认偏好`。
 
-1. **先判阶段、再做双轴、再并行路由**：先区分可行性分析、直接生成、返修复盘和技能维护；再判断成片最终服务产品/品牌还是人物/剧情，以及提示词主要带宽由表演关系还是氛围/体验/视觉证据主导。双轴只决定验收重点和主带宽，不形成互斥分支；广告、剧情、UGC、食品、美妆、群像、声音、长时、连续性、运镜、画质、模型工作流及专项机制必须按语义逐项并行匹配。用户本轮要求覆盖稳定默认。
+- 用户选手机随拍、粗糙手绘、动画或超现实，就保留该媒介与创意。真实感指该世界内的接触、遮挡、重量和因果可信，不把所有片子改成干净电影摄影。
+- 正向先写谁在什么位置、做什么、接触哪里、造成什么结果；把“不要乱、不要穿模、要高级”翻译成具体关系。少量负面项只处理当前严重误读。
+- 主光按世界位置继承，人物转身或机位换侧不让灯跟着脸转。每镜只补发生变化或决定叙事的局部光影。
+- 关键交互保留接近、接触、受力、响应、释放与完成态；人物/道具换位可见可达。产品身份、数量、真实尺度和持有权连续，精确声音/文字只有一个真源。
+- 生成单元与剪辑镜头分开：本工作流默认独立生成单元不少于4秒，内部镜头可更短；这是制作默认，不是所有模型的技术下限，用户明确要求且平台支持时按用户要求。
+- 普通项目只使用当前事实与资产，不自动带入历史品牌、价格、人设、平台禁区、场景或CTA。完整预算不足时保住核心看点、反应和结果可读性，先减少同时竞争的动作。
 
-2. **先建六项导演合同与事实世界，再拆镜**：任何片型先在后台锁定 `成片任务｜核心画面｜视觉母机制｜摄影与质感｜节奏曲线｜创意幅度`，再建立必要的氛围、色彩、主光、成像、声音和事实世界。按 `F=已确认事实｜I=强推断｜P=导演提案｜U=未定/冲突` 管理人物、产品、空间、数量、几何、比例、道具、接触和素材职责；事实可靠与创意大胆分开判断，创意不得改写事实、身份和物理，但也不得因用户表达模糊自动退回保守画面。详细编译见 `references/prompt-compilation-and-consistency.md`。
+## 按需调用表
 
-3. **空间连续性是多镜头硬约束，剧情对话把轴线前置**：人物对话、正反打、动作交互、追逐及具有明确空间方向的连续镜头，先建立并锁定180°轴线、人物左右关系、视线、动作方向和主运动方向；尤其短剧、剧情对话、关系戏在拆镜前即把这些写入全局/段落总控，后续镜头继承，不逐镜重复。不得为了丰富机位、构图、电影感或炫技无因越轴。改变轴线必须通过摄影机可见跨轴、人物主动穿轴、中性机位或重新建立空间完成，使观众能够读懂新方向。360°连续环绕、连续弧线、视觉奇观、大场面调度等若跨轴过程本身清晰可见，可不受“始终同侧”限制，但跨轴后的空间仍须可读。空间连续性优先于普通景别、机位、构图、焦段、运镜和风格化选择。
+下表是**并列勾选项**，不得命中第一项后停止；每个命中模块只应用与当前段落有关的内容。这里是路由，不要求全部展开进提示词。
 
-4. **每镜先回答“为什么存在”，再联合决定怎样拍**：两个及以上镜头、故事板、时间轴、参考视频反推或一镜到底连续节拍，必须先确定每镜唯一主信息任务，再联合反推景别、关系机位、高度/角度、构图、必要焦段/透视与运镜；机位和构图必须强化同一关系，不把“低角度=强、高角度=弱、近景=悲伤”等当固定映射。双人/多人同时检查轴线、视线与视觉优势，运动主体检查lead room与动态重心，相邻镜头检查景别、重心、动作和构图承接。删除某项摄影选择后信息、关系、感知或证据完全不变，就删除它；没有信息变化时固定等待通常优于无因运动。
+| 任务信号 | 规则归属 |
+|---|---|
+| 新写/重写提示词、压缩、解决前后矛盾 | `references/prompt-compilation-and-consistency.md`、`references/output-contract-and-validation.md` |
+| 光影、设备、材质、色彩；每次新写的固定入口 | `references/camera-light-quality-baseline.md` |
+| 阶段、稳定默认、跨技能资产交接 | `references/user-operating-contract.md` |
+| 混合任务主次、商业/剧情和表演/体验双轴 | `references/direction-routing.md` |
+| 模块冲突、规则归属或维护 | `references/rule-governance-and-module-routing.md` |
+| 商业任务、产品事实与比例、购买犹豫 | `references/commercial-contract.md`、`references/product-preflight-and-category-routing.md`、`references/decision-driven-ad-creative.md` |
+| 短视频首屏停留、强Hook | `references/golden-3s-hook-engine.md`；按目标区分标准Hook与 `attention-first-hook` |
+| 多镜、连续节拍、参考反推、每镜为什么拍 | `references/director-information-control.md` |
+| 剧情对话、关系戏、抢话、人物目的与认知变化 | `references/drama-performance-control.md` |
+| 已有剧情需细写情绪、微表情、反应 | `references/facial-expression-action-library.md`；全局写情绪轨迹，局部写触发后的动作 |
+| 多人换位、交接、正反打、复杂空间或穿模返修 | `references/spatial-optics-physics-control.md`；跨镜叠加 `references/continuity.md`，群像叠加 `references/ensemble-continuity.md` |
+| 复杂运镜、动作戏、一镜到底、镜头注意力 | `references/director-camera-attention.md` |
+| 构图选择、主次不清、关系或信息揭示 | `references/camera-composition-decision-layer.md`、`references/composition-story-engine.md` |
+| 设备家族、摄影者身份、媒介成像差异 | `references/camera-identity-selection-engine.md` |
+| 需要具体摄影光学方案 | `references/cinematography-toolkit.md` |
+| IMAX、UE5、Octane、VFX、东方奇幻等质感栈 | `references/visual-quality-stack.md`；先读光影入口，再选有实际职责的部分 |
+| 实拍可信度、塑料感、失重动作、环境空洞 | `references/physical-reality-lock.md` |
+| 模糊、过锐、脏灰、压缩或输出规格问题 | `references/visual-quality-diagnostics.md` |
+| 写实与异常结合、物体自行运动、产品世界化 | `references/grounded-surreal-product-spectacle.md`，标签 `grounded-surreal` |
+| A→B变形过程是核心看点 | `references/visual-transformation-spectacle.md`，标签 `transformation-spectacle` |
+| 物体、门、屏幕等接管画面形成转场 | `references/physical-takeover-transitions.md` |
+| 随拍、纪录、家庭录像、延迟追拍 | `references/observational-camera-authenticity.md`，标签 `observational-camera` |
+| UGC、生活分享、原生产品体验 | `references/ugc-ad-rules.md`；美妆社媒风格叠加 `references/stylized-social-beauty-ugc.md` |
+| 食品、味觉、蒸汽与食欲 | `references/food-flavor-direction.md` |
+| 选角、妆发、美感与人物呈现 | `references/casting-and-beauty-direction.md` |
+| 品牌宣言、主题蒙太奇 | `references/brand-manifesto-montage.md` |
+| TVC完整创作、生产交付、长片运行 | 分别读取 `references/tvc-full-workflow.md`、`references/tvc-production-operations.md`、`references/tvc-runtime-control.md` |
+| 长片节奏、局部补拍、跨单元承接 | `references/longform-rhythm-and-retake.md` |
+| 配音、精确台词、发音返修、有声/无声转换 | `references/voiceover-control.md` |
+| Seedance生成/参考/编辑/延长与能力边界 | `references/seedance-2.5-workflows.md`；以当前入口为准 |
+| 常见故障、跨工具交接 | `references/design-rules.md` |
+| 视觉语言术语与基础例子 | `references/visual-language.md` |
 
-5. **证据、动作与声音必须有真因果**：广告与UGC把卖点写成“初始状态 → 操作 → 接触/变化 → 完成态 → 即时反应”的可见证据链，效果只发生在真实接触或作用区域；涉及手、人物、产品或道具交互时先锁关键 `Interaction Anchor`，即抓握/接触位置、朝向、受力与作用区域，避免动作正确但接触关系错误。车门与上下车属于高风险大型道具交互：必须先出现人物接近、手部接触与施力、门体绕铰链响应，再依次完成身体跨越、重心落座/落地、收脚与关门；按动作完成态切换景别并继承同一手、同一脚、门体角度、身体朝向和重心，不得用遮挡省略尚未发生的因果。剧情事件必须改变人物认知、反应、决定或关系。精确对白、旁白和口型只在有真实音频，或有精确台词、时间和节奏时承诺；同步声由可见动作触发，精确文字、Logo、法务与正式配音交给可靠资产或后期。
+## 维护
 
-6. **控制方式服从难度，返修保护成功层**：文字控制失败、参考角度不足或三维路径过复杂时，优先减少变量、拆镜或升级为多角度资产、独立关键帧、动作参考、故事板、白模、编辑或后期，不用同义词堆叠掩盖输入层问题。用户只改一处时保留未涉及的方向、事实、母规则、成功镜头与声音，只修改唯一主问题层及必要承接；同层连续失败时升级控制方式或回到上游。
+用户授权更新时才修改规则。详细归属与升级条件见治理文件；验证运行 `python3 scripts/audit_module_routing.py` 和 Skill Creator 结构检查，再选受影响行为案例，不把未生成的案例说成成片测试。
 
-7. **先判编译复杂度，再按最小充分信息输出**：典型4–10秒、单人、单场景、单一清楚动作链，且没有对话轴线、人物/道具交接、跨区域移动、复杂运镜或跨镜状态继承时，使用简单直写模式，以1–2个高密度句写清主体、场景、起点、动作路径、完成态和必要摄影反应；不建立人物编号、俯视站位、三层空间协议或状态表。只要存在多人相对关系、正反打、长时间连续调度、复杂一镜到底、交接、跨区移动或高风险空间继承，即使总时长较短也进入结构化模式：场景拓扑只定义一次，人物/产品编号只映射身份，镜头时码只写当前画面的局部关系与变化。每条事实只在最高有效层出现一次，后文只写变化；每句话必须改变可见或可听结果，删除后画面不变的句子直接删除。详细编译见 `references/prompt-compilation-and-consistency.md`，三层空间方法唯一归属 `references/spatial-optics-physics-control.md`。
-
-8. **默认一版最优、资产最小化**：除非用户明确要求多个方向或版本，只交付判断后的单一最佳整合方案；只建议会实质提高身份、结构、动作、构图、连续性或生成稳定度的最少资产，并为每个资产绑定唯一职责。角色/产品/道具有年龄、受伤、变形、换装、破损等连续状态时，建立最小 `Asset Dependency`：先锁基础母资产，再从已确认上游派生下游状态，普通表情、临时污渍或模型可稳定完成的变化不拆独立资产。最终可复制提示词的第三部分仅用一句 `【全片视觉与技术基线】` 呈现全片共用的可见技术结果，不在每镜重复。
-
-9. **专项机制按条件触发，高创意请求先增幅再收敛**：`grounded-surreal`、`transformation-spectacle`、`observational-camera`、`golden-3s-hook`、`attention-first-hook` 等按任务语义加载。用户明确要求视觉奇观、超现实、惊艳、大胆或高概念时，后台至少探索三种不同的尺度/材质/空间/现实边界机制，再按任务关联度、新鲜度、可读性、情绪强度和可执行性选择一版；不得把高创意要求缩成普通漂浮、发光、粒子或无因旋转。若传播目标明确优先获取停留、品类允许延迟产品揭示，可在 `golden-3s-hook` 内启用 `attention-first-hook`：开场允许暂时弱化产品显性关联，但必须形成一个具体未完成事件、保持事实与安全边界，并在后续用结果、品牌世界、能力证明或视听接力完成回收。最终仍保持事实、物理、连续性、声音真源和产品/剧情证据。
-
-10. **通用规则上浮，详细知识唯一归属**：跨两个及以上片型，或遗漏会造成事实、身份、物理、声音、画质、合规或交付根本失败的规则，必须在主文件或公共治理层保留最低可执行基线；专项reference负责展开，不能成为关键规则唯一入口。同一详细规则只保留一个权威归属，其他位置只做短交叉引用，新增知识优先升级现有规则而不是继续平铺新原则。
-
-11. **单次视频生成时长下限是全局硬约束**：无论使用 Seedance 2.0/2.5、LibTV、MiniMax、Veo、Kling、Runway、Higgsfield 或其他任何视频模型，任何作为独立生成任务交付给模型的单条视频提示词，时长都必须 `>=4秒`。禁止输出 1 秒、2 秒、3 秒或任何 `<4秒` 的独立视频生成提示词。成片剪辑中的镜头、动作节拍、Hook节点或内部时间段可以短于4秒，但它们必须被包含在一个总时长至少4秒的生成单元中。若原分镜存在 `<4秒` 的独立生成单元，必须在输出前自动选择最合理方式修正：与相邻镜头合并生成、延长动作链或环境余韵、扩展前后承接，或重新划分生成单元；不得为了保持原始分镜时长而绕过该下限。该规则属于不可降级生成约束，高于普通节奏、镜头数量、快切需求和模型默认时长。
-
-12. **全文一致性是输出硬门**：两个及以上镜头、同镜多个时段或存在状态变化时，后台建立最小时间轴状态账本；输出前运行 `Consistency Gate`，检查总控对分镜、同一时段互斥、跨时段状态继承、单镜可成立性、叙事/证据/声音因果与素材职责。局部节奏、风格或世界规则变化只有在写清触发、目的、持续区间和恢复/新规则时才成立；Skill自行造成的矛盾必须自动裁决并重写，未通过不得输出。
-
-## 每次调用工作流
-
-1. 先读取 `references/user-operating-contract.md` 判断对话阶段；仅在主轴/带宽含混、混合任务、跨模块冲突或技能维护时再完整读取 `references/rule-governance-and-module-routing.md` 与 `references/direction-routing.md`。只有缺失信息会实质改变成片时，才问一个最高杠杆问题。
-2. 新写、重写和分镜转提示词先读取 `references/prompt-compilation-and-consistency.md`，建立六项导演合同、事实世界与创意幅度；让摄影、质感、节奏和核心画面先明确，再拆镜。
-3. 确认任务模式：从零生成、普通参考、首帧/首尾帧、关键帧、故事板、动作/运镜参考、白模、编辑、延长、转场、音频或成片复盘；为每个素材绑定唯一职责，先做输入素材 A/B/C 质量分级，再确定完成任务所需的最小资产集；存在多状态继承时再建立最小资产依赖，不为轻微变化额外造资产。
-4. 先在后台建立模块覆盖单：`对话阶段｜第一轴｜第二轴｜能力标签（含grounded-surreal、transformation-spectacle、observational-camera、golden-3s-hook、attention-first-hook等可多选标签）｜必须读取｜可省略及理由`；再把下方所有条件视为并列勾选项逐行匹配并加载专项 references，不得命中第一项后停止。两个及以上镜头必须先完成整片信息设计，再逐镜完成“为什么存在 → 怎样拍”的双层反问；一镜到底把每个连续节拍当作无切镜的信息镜头处理。
-5. 若任务依赖首屏停留、社媒传播、短视频转化或用户明确要求强 Hook，先运行黄金3秒后台链路：`普通开头 → 观众预测 → 主要预测偏差 → 具体观众问题 → 未完成状态 → Hook模式判断 → Bridge → Payoff → 事实/安全检查`。默认选择与产品或剧情同因果的标准 Hook；仅当传播目标明确优先获取停留、品类允许延迟产品揭示时启用 `attention-first-hook`，并同步建立首屏色彩分离与视觉主次。最终只保留被选中的可见成片，不外显后台推理。
-6. 商业任务先锁商业主目标、产品事实、真实比例、单一传播命题、主决策/首要犹豫、可见证据、产品进入、Hero Shot/End Frame与事实边界；剧情任务先锁人物关系、诉求、冲突、知情差、转折和情绪落点；若为短剧/剧情对话/关系戏，再建立人物表演状态与空间总控后拆镜。只有节奏复杂或时长较长时，后台增加轻量节奏图：剧情看情绪起伏，广告看注意力×信息密度×情绪，UGC看好奇×证据×信任；不为短而简单的任务强制建表。
-7. 在后台建立完整技术方案与画质风险定位；若输入或交付层是主问题，优先修输入、高清模式、真实输出规格、码率、编码、平台压缩或后期超分，不污染创意提示词。
-8. 先通过编译复杂度门：简单片段直接压成1–2句；结构化任务再按“首帧构图 → 可见事件 → 摄影机反应 → 完成态/承接”编译时间轴，复杂空间额外启用三层空间协议。依次运行方向测试、人脑成像测试、`Consistency Gate`、模型容量、物理连续性、画质交付和 `Duration Gate`；任何未解决的总控/时码/状态矛盾或 `<4秒` 独立生成单元都必须先重写。
-9. 用户只要视频提示词时，隐藏内部问答并按 `references/output-contract-and-validation.md` 输出；用户要分镜表、导演分析或参考视频反推时，再展示每镜的“镜头核心表达”和“承接”。
-10. 用户返回成片时先按时间码取证，区分成功层、失败层、必须保留和唯一主修层；只做证据驱动局部重试，同层两次失败时升级控制方式或回到上游。
-
-## 强制读取条件
-
-| 条件 | 完整读取 |
-| --- | --- |
-| 每次调用 | `references/user-operating-contract.md` |
-| 新写、重写、分镜转提示词或检查提示词 | `references/prompt-compilation-and-consistency.md`、`references/output-contract-and-validation.md` |
-| 主轴/带宽含混、混合任务、跨模块冲突或技能维护 | `references/rule-governance-and-module-routing.md`、`references/direction-routing.md` |
-| 多人相对站位、正反打、长时间连续场景、复杂一镜到底、人物/道具交接、跨区域移动、高风险空间继承，或摄影/空间/物理需要重新设计与返修 | 读取 `references/spatial-optics-physics-control.md`，并按问题叠加 `references/camera-light-quality-baseline.md`、`references/camera-composition-decision-layer.md`；4–10秒单人单场景单动作的简单片段不因此加载三层空间协议 |
-| 两个及以上镜头、故事板、分镜表、时间轴、一镜到底连续节拍、参考视频反推；或单镜“为什么这样拍/怎样设置” | `references/director-information-control.md` |
-| 创意、脚本、剧情大纲、时间轴、分镜、故事板、构图设计，或需要用视觉重量、负空间、引导线、框中框表达关系、悬念、产品地位 | `references/composition-story-engine.md`；正式分镜与提示词继续叠加 `references/camera-composition-decision-layer.md`，若用于首屏 Hook 同时读取 `references/golden-3s-hook-engine.md` |
-| 短剧、剧情对话、关系戏、双人/多人情绪对白、抢话/打断/重叠对白、微表演或克制表演 | `references/drama-performance-control.md`；同时读取 `references/director-information-control.md`，多镜连续再叠加 `references/continuity.md` |
-| 复杂运镜、动作戏、一镜到底、空间揭示、镜头语言设计或运镜失败返修 | `references/director-camera-attention.md` |
-| TVC、商业广告、UGC、产品演示或平台品宣 | `references/commercial-contract.md` |
-| 任一商业商品任务，尤其只有商品图/名称、品类未知、角度不足、尺寸风险、卖点或功效证据不清 | `references/product-preflight-and-category-routing.md` |
-| 强节奏前三秒、首秒钩子、开场留存、短视频/社媒广告/UGC/短剧的首屏注意力、结果前置、延迟揭示、真假二选一或要求强化Hook | `references/golden-3s-hook-engine.md` |
-| 从产品/卖点生成Hook、降低犹豫、设计功能证明或转化创意 | `references/decision-driven-ad-creative.md`；若依赖首屏停留同时叠加 `references/golden-3s-hook-engine.md` |
-| UGC、电商口播、开箱、真实体验、生活化产品演示 | `references/ugc-ad-rules.md`；依赖首屏停留时同时读取 `references/golden-3s-hook-engine.md` |
-| 食品、饮料、调味品、餐饮，且需要表达口味、香气、清爽、浓郁或余韵 | `references/food-flavor-direction.md` |
-| 美妆、护肤、香氛、时尚、人物主导生活方式广告，或人物显老/模板化/时代感不对 | `references/casting-and-beauty-direction.md`；高风格化社媒任务再叠加 `references/stylized-social-beauty-ugc.md` |
-| 明星/影视角色/平台风格、夜店感、TikTok感、Euphoria感或高风格化社媒美妆 | `references/casting-and-beauty-direction.md`、`references/stylized-social-beauty-ugc.md`，同时读取 `references/ugc-ad-rules.md` |
-| 画面模糊、噪点、过曝、脏灰、塑料皮肤、材质假、拖影、重影、果冻、对焦/白平衡漂移、720p/码率/压缩问题 | `references/visual-quality-diagnostics.md` |
-| 细化镜头语言、连续变形、去AI腔或画面不成像返修 | `references/design-rules.md`、`references/visual-language.md` |
-| 跨镜动作、复杂空间、人物/道具进出画、产品状态或轴线风险 | `references/continuity.md` |
-| 三人以上、多人逐一登场后集结、围桌、递接商品或多双手进入近景 | `references/ensemble-continuity.md`，同时读取 `references/continuity.md` |
-| 真假虚实结合、写实超现实、视觉奇观、真人与不可能事件结合、微缩小人、微缩工厂、微缩产品世界、巨物原料世界、产品世界化、包装变建筑或工厂、产品拆解悬浮、卖点视觉隐喻或真实摄影与CG/AIGC合成 | `references/grounded-surreal-product-spectacle.md`；标记 `grounded-surreal` 后继续逐项叠加商业、食品、导演信息、运镜、连续性、转场、画质与模型工作流，不得独占路由 |
-| 高概念、唯美、新奇、惊艳、模型能力展示、产品/材质/服装/空间重构，或存在明确A→B且“如何变化”有机会比结果本身更值得看；尤其要求绽放、生长、流动、缠绕、凝结、结晶、塑形、连续包裹或从局部向世界扩散 | `references/visual-transformation-spectacle.md`；标记 `transformation-spectacle`，先做适配判断再启用。若发生在真人/实景/真实产品中，同时叠加 `grounded-surreal`；若承担首屏留存，同时叠加 `golden-3s-hook`；UGC、纪录感、自然口播和现实对话默认降低优先级，不因“更高级”强行触发 |
-| 纪实、真人秀、幕后花絮、派对/街头抓拍、新闻采集、家庭录像、档案电视、早期DV、广播ENG、手机现场记录、特定年代摄影，或要求摄影者有限注意力与身体反应 | `references/observational-camera-authenticity.md`；标记 `observational-camera` 后继续叠加导演信息、群像、UGC、年代选角/美术、写实超现实、产品事实、连续性与画质。精密产品Hero、标签/UI读取、稳定对白和高端机械运动只局部使用或跳过该模块 |
-| 摄影媒介身份、具体机型或手机/电影机/MiniDV/ENG/年代家用摄影的成像差异会实质改变可信度 | `references/camera-identity-selection-engine.md`；先选摄影身份，再按需选机型，并转译为稳定度、对焦、曝光、景深、运动与质感等可见结果 |
-| 需要详细摄影、光学、灯光、运动、渲染或VFX选型 | `references/cinematography-toolkit.md`；胶片/IMAX/UE5/Octane/大型VFX再读 `references/visual-quality-stack.md` |
-| 完整Brief创意、2–3方向、导演阐述、品牌世界或完整资产规划 | `references/tvc-full-workflow.md` |
-| 品牌宣言、愿景、时尚/艺术/教育或高密度视觉蒙太奇 | `references/brand-manifesto-montage.md` |
-| 强节奏前三秒、长时结构、精确旁白、复杂包装交互或成片时间码复盘 | `references/tvc-runtime-control.md`；前三秒同时读取 `references/golden-3s-hook-engine.md` |
-| 20秒以上、多场景、反重复节奏、视觉元素回收、短剧/群像长时任务或局部返修 | `references/longform-rhythm-and-retake.md` |
-| 旁白、商业口播、画外音、精确广告文案、精确对嘴、多说话者口播或有声/无声双版本 | `references/voiceover-control.md` |
-| Seedance 2.5、编辑、延长、首尾帧、故事板、关键帧、动作参考或白模 | `references/seedance-2.5-workflows.md` |
-| 实体遮挡、扫屏、玻璃/镜面反射接管式换景 | `references/physical-takeover-transitions.md` |
-| 端到端TVC、PPM、团队交接、批次版本、客户审片或Excel交付 | `references/tvc-production-operations.md` |
-
-## 片型调用深度
-
-以下仅说明主控制带宽，不构成模块排除。完成片型判断后，仍须继续检查商品、食品、美妆、群像、写实超现实、声音、长时、连续性、运镜、画质与模型任务标签。
-
-- **短剧、冒险、悬疑、品牌剧情**：先在开场总控锁定180°轴线、人物左右/视线/主动作方向，再建立人物 `Performance State`；随后完整执行整片信息设计和逐镜双层反问。表演优先写“内在诉求/掩饰 → 触发 → 生理或语言变化 → 可见行为”，优先未完成行为而非表情堆砌；抢话由语义或动作触发，语言结构随情绪改变，跨镜继承手部、视线、呼吸和情绪状态。若为连续可见环绕、大场面调度或主动重建空间，则允许跨轴，不机械锁死机位。若依赖短视频首屏停留，再用黄金3秒建立一个主要未知并进入人物关系或事件因果。
-- **TVC、产品广告**：把信息控制转译为产品是什么、如何自然进入、如何使用、材质/功能怎样被证明、为什么相信、最终记住什么；人物和运镜都服务产品证据与品牌记忆。强Hook必须可桥接到首要犹豫、产品证据或品牌命题。商业调度不默认套用剧情式180°锁轴，只有明确人物对话/关系戏段落才局部启用；环绕、视觉奇观和大场面运动以空间可读为准。
-- **UGC、电商演示**：轻量执行，只锁首秒钩子、真实地点和动机、产品自然进入、一次清楚使用证据、同步现场声、即时反应和结尾记忆；首秒优先动作中途进入、异常结果、判断题或真实反应，不用电影级奇观破坏原生感。
-- **一镜到底**：逐节拍运行问答，但所有承接发生在同一摄影机路径、同一物理镜头、连续空间与连续光线中。
-- **参考视频反推**：除景别、机位、运镜和切点外，反推每镜控制的信息、情绪和注意力；首 1–5 秒额外反推“首帧确定信息 → 观众预测 → 预测偏差 → 具体问题 → 答案延迟 → Bridge → Payoff”，只迁移导演逻辑，不复制原片人物、场景、美术、台词或专属画面。
-
-## 输出边界
-
-- 用户只要可复制提示词：只输出问答后的有效结论，不展示内部分析表。
-- 用户未要求多个方向或版本：只输出一版最优整合结果；不得用多个近似方案转移创作判断。
-- 用户要分镜/导演分析/参考反推：每镜增加“镜头核心表达”和“承接”，说明新增信息/关系/感知/产品证据，以及回答上一镜什么、用何种视觉或声音变量接向下一镜。
-- 简单直写模式输出一个1–2句的可复制提示词块，不为凑格式增加固定前三部分；结构化模式的第三部分固定为一句 `【全片视觉与技术基线】`，其余技术方案留在后台，镜头段只写真实变化项。
-- 每个结构化的新写、重写、降级版、安全版或备选版都保留固定前三部分，不把结构化备用提示词压成失去控制信息的一段话。
-- 默认沿用用户的语言、模型和格式硬约束；字符数、时长、镜头数、素材引用数、比例与输出格式在交付前主动校验。时长校验必须执行全局 `Duration Gate`：任何独立视频生成提示词 `<4秒` 均不得输出，必须先修正为 `>=4秒`。
-- 所有多镜、多时段或状态变化提示词必须通过 `Consistency Gate`；总控承诺、时码状态、叙事因果、摄影/声音与素材职责存在未解决矛盾时不得输出。
-
-仅在用户明确要求更新本技能时，先依照 `references/rule-governance-and-module-routing.md` 判断新增知识应进入公共层、跨域层还是专用层，再用 `python3 scripts/audit_module_routing.py` 检查失联引用，并使用 `evaluation-cases/director-and-quality-cases.md`、`evaluation-cases/portable-behavior-cases.md`、`evaluation-cases/cross-module-routing-cases.md`、`evaluation-cases/grounded-surreal-cases.md`、`evaluation-cases/transformation-spectacle-cases.md`、`evaluation-cases/observational-camera-cases.md` 与 `evaluation-cases/spatial-prompt-compression-cases.md` 做回归验证，最后通过 Skill Creator 的结构验证后保存；普通视频任务不运行维护流程。
+案例入口：`evaluation-cases/director-and-quality-cases.md`、`evaluation-cases/portable-behavior-cases.md`、`evaluation-cases/cross-module-routing-cases.md`、`evaluation-cases/grounded-surreal-cases.md`、`evaluation-cases/transformation-spectacle-cases.md`、`evaluation-cases/observational-camera-cases.md`、`evaluation-cases/product-identity-handoff-cases.md`、`evaluation-cases/spatial-prompt-compression-cases.md`、`evaluation-cases/lighting-and-format-cases.md`。
