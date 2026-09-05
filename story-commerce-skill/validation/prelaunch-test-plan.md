@@ -1,251 +1,178 @@
 # PRELAUNCH TEST PLAN｜上架前最小高价值测试计划
 
-目标：停止低信息增益的“每个Scene × 每个SKU”穷举生成，把剩余预算集中在尚未被真实验证的能力边界。
+当前阶段：`FINAL COLD-START GATE`
 
-当前新增重点：`30秒剧情 / 表演 / 持续冲突 / 对白 / Reaction / Delay→Burst / 质疑→Proof→信服 / R1-R2完整执行`。
-
----
-
-# 1. 已基本验证，不再继续重复烧生成成本
-
-已通过真实Seedance案例获得有效证据：
-- 15s单卖点广告结构已经基本稳定；
-- NORMAL_LOCATION与特殊Scene都能发动；
-- 现代办公室、购物中心、豪华列车、欧美古典宫廷均可形成Scene原生商业因果；
-- Reference Product Lock可用于现代实体商品；
-- 180°轴线、Meta-Camera Guard、Motive Force、Benefit Decodability、Duration Fit均已有真实修复证据；
-- SUPPORT / ORIENTATION / STATE CONSERVATION / PROOF ISOLATION已形成新的Physical Logic DNA；
-- 特殊世界不应改写现代产品材质/结构；
-- CTA不再作为独立Scene重复生成文字测试。
-
-这些能力后续只在新测试中顺带回归，不单独再测。
+目标：停止实验室穷举。真实视频回归、跨品类文本压力与Registry收口已经完成；上架前只剩普通用户冷启动验证。
 
 ---
 
-# 2. 默认时长方向｜30秒首推，15秒可建议
+# 1. 已完成验证
 
-后续剧情带货产品设计，用户未指定时长时：
+## 15秒单卖点
+已通过真实AirPods案例证明：
+- 单一强卖点在15s内可完成商业因果；
+- Duration Fit有效；
+- 180°轴线、Motive Force、Meta-Camera Guard、Benefit Decodability有效；
+- 不再为了默认30s强行填时长。
 
+## 30秒剧情广告
+真实服装、羽毛裙、7-Eleven与容器案例已经覆盖并暴露/修复：
+- Hook与持续冲突；
+- 对白负载与Speaker Lock；
+- Reaction与FACS；
+- Delay → Burst；
+- Product Pivot / Product Takeover；
+- Proof Ladder；
+- TV SHORT DRIFT；
+- Prompt Attention稀释；
+- Camera × Emotion；
+- Audio Event Map；
+- Scene Staging；
+- Wearable Ownership / Reveal State；
+- Physical Logic / State Conservation。
+
+## 三种物理产品形态
+已有真实视频证据：
+- 刚性小物：AirPods；
+- 柔性服装：旅行夹克 / Reference羽毛裙；
+- 容器与液体：沙拉酱摇摇瓶。
+
+## Product Reference / Product Lock
+Reference服装测试证明产品外观可以跨剧情保持主要识别特征，同时暴露并修复穿戴Ownership与Reveal泄漏问题。
+
+## CTA
+多轮真实生成已确认默认：
+`最后约1.5–3s → 高清放大Product Hero → 无生成CTA文字`
+是稳定基线。
+
+## 文本压力测试
+`text-stress-benchmark-v1.md`已完成20类实体商品：
+- 20/20有效路由；
+- 无Story Architecture结构性崩坏；
+- 无R2滥用；
+- 无30s强迫症；
+- 高风险/不可见Proof能被Guard；
+- Perceived Value Contrast跨品类工作正常；
+- Product-Centered Gate没有明显TV SHORT DRIFT。
+
+---
+
+# 2. 当前默认时长
+
+用户未指定时长：
 > **首推约30秒。**
 
-15秒仍保留为合法短版，当以下情况出现时可主动建议：
-- 单一卖点 + 单一强Proof在12–18秒内已经自然讲完；
-- 没有足够高价值剧情Beat支撑30秒；
-- 继续拉长会出现Post-Proof Plateau / TV Drama Drift；
-- 平台或用户明确更适合短版。
+但如果：
+- 单一卖点；
+- 单一强Proof；
+- 12–18秒已经自然讲完；
+- 继续延长只会重复使用/Reaction/背景事件；
 
-因此：
+则主动建议15秒。
 
-`30s = DEFAULT RECOMMENDATION`
-
-但：
-
-`30s ≠ 15s内容强行拉长`
-
-30秒必须有真实剧情与表演价值，不能靠继续使用、继续走路、背景热闹来填时长。
-
-30秒实验规则见：
-`references/30s-narrative-engine.md`
+`DEFAULT 30s`不能覆盖`DURATION FIT`。
 
 ---
 
-# 3. 30秒上架前必须补测的能力
+# 3. 当前30秒执行基线
 
-15秒已经证明“商业因果能成立”，现在真正缺的是30秒剧情承载力。
+不是完整短剧，而是：
 
-重点测试：
-- 开场强Hook；
-- Hook后的持续冲突事件；
-- 双人/多人对白镜头；
-- 独立Reaction镜头；
-- 延迟画面 / Hold；
-- 爆发画面 / Payoff；
-- 产品自然介入；
-- Top Hesitation剧情化；
-- 质疑 → 验证 → Proof；
-- R1 Reveal / Surprise；
-- 若通过R2 Gate，再测试强反转；
-- 打破旧判断/旧规则后的信服与Decision Change；
-- 30秒内保持Commercial Beat Density，不电视剧化；
-- 长时长下Physical Logic / Product Lock仍稳定。
+`DRAMA EARNS ATTENTION`
+→ `PRODUCT PIVOT`
+→ `PRODUCT TAKES OVER`
+→ `PROOF ESCALATES DESIRE`
+→ `CTA`
 
-30秒允许更多表演，但不能把“情绪词”当剧情：
-
-`事件 → 对白/动作 → Reaction → 新行动`
+中前段允许剧情与人物吸引注意力，但产品出现后必须成为广告视觉与因果主角。
 
 ---
 
-# 4. 默认CTA基线
+# 4. 当前核心导演链
 
-剧情广告结尾默认：
+`Commercial Decision`
+→ `Perceived Value Contrast`
+→ `Product-Centered Narrative Gate`
+→ `Story Architecture`
+→ `Proof Plan`
+→ `Reversal Router`
+→ `Paid-Social Rhythm`
+→ `Scene Staging`
+→ `Physical Logic`
+→ `Performance / FACS`
+→ `Camera × Emotion / Action`
+→ `Audio Event Map`
+→ `Prompt Attention Compression`
+→ `Seedance Prompt`
 
-`最后约1.5–2s → 放大的高清产品Hero Shot → 干净背景/浅景深 → 极轻推近或稳定定格`
-
-默认不要求视频模型生成CTA文字。
-
-原因：
-- 生成文字增加乱码/模板感；
-- 投放按钮/平台UI/后期通常更可靠；
-- Hero Shot更利于保持产品高级感。
-
-除非用户明确要求，默认：
-- 不生成`Learn More`；
-- 不生成复杂价格/按钮/长文案；
-- CTA可进入STYLIZED COMMERCIAL MODE；
-- 但SKU、产品结构与数量仍不可复制或变种。
-
----
-
-# 5. 美国市场人物/世界基线
-
-Skill默认服务美国市场时：
-- 真人剧情优先高颜值、自然、现代商业审美的欧美/美国受众可自然代入人物；
-- 英语对白优先英语母语语境与自然身份匹配；
-- 用户未指定其他文化背景时，历史/古代/宫廷/西部/幻想等特殊Scene优先使用欧美/西方文化语境或架空西方世界；
-- 不默认使用“明显中国历史人物/中国宫廷 + 英语母语对白”的组合；
-- 若用户明确指定东方、中国、日本、韩国等文化世界，则服从用户指定，不强行欧美化。
-
-这属于Audience/Scene Fit，不属于Product Truth。
+下游不能为了风格、情绪、镜头或反转改写Product Truth和Best Proof。
 
 ---
 
-# 6. 上架前真实视频测试压缩为两条30秒主测试
+# 5. 不再继续做的测试
 
-## TEST A｜30秒服装 × 双人剧情 × 强剧情压力
+上架前停止：
+- 12 Scene × 多SKU穷举；
+- 每个商品分别测试R0/R1/R2；
+- 继续反复AirPods；
+- 继续反复服装；
+- 再生成多个容器案例；
+- 为边际CTA或单次随机AI瑕疵重新扰动已通过结构。
 
-这条同时覆盖原“服装跨品类”和“双人剧情”两个测试，避免再单独烧第三条。
-
-建议SKU：
-- 结构清楚、卖点可视觉证明的女士旅行外套 / 运动夹克；
-- 优先可测隐藏拉链口袋、容量、便利性、活动自由度；
-- 避免首测医学塑形、体型承诺或大幅复杂换装。
-
-必须覆盖：
-- 2名欧美女性主要人物；
-- 0–3秒强Hook；
-- 持续冲突，不在5秒内解决；
-- 至少一次有效对白交锋；
-- 至少2个Reaction Beat；
-- Delay → Burst；
-- 产品不是硬插入，而是改变事件；
-- 一次真实质疑；
-- Proof；
-- R1或R2信息变化（以Router结果为准）；
-- Decision Change；
-- 最后高清产品Hero，无文字。
-
-同时验证：
-- 柔性布料；
-- 人体贴合；
-- 拉链/口袋；
-- 产品跨镜一致；
-- 双人身份/对白/轴线；
-- Commercial Beat Density。
-
-通过标准：
-- 30秒不像15秒拉长；
-- Hook后冲突持续推进；
-- 人物真的在“演剧情”，不是轮流念卖点；
-- 对白与Reaction推动下一行动；
-- 产品介入有因果；
-- 质疑与Proof清楚；
-- 高潮/反转后有Decision Change；
-- 布料不粘皮、不穿体、状态不乱；
-- 无明显5秒以上平台期。
-
-## TEST B｜30秒日用品/容器 × Physical Logic压力
-
-目的：验证长时长情况下：
-- 开盖；
-- 容器；
-- 内容物；
-- 倾倒/使用；
-- 重力；
-- 支撑；
-- Containment；
-- State Conservation；
-- 同时保持剧情、对白、Reaction和商业节奏。
-
-优先SKU：
-- 保温杯；
-- 护肤泵瓶；
-- 清洁容器；
-- 厨房容器。
-
-必须覆盖：
-- 强Hook；
-- 持续事件；
-- 产品中段因果介入；
-- 至少一次质疑/验证；
-- Proof前后控制变量；
-- Delay → Burst；
-- R1/R2按Router决定；
-- Product Hero CTA无文字。
-
-通过标准：
-- 开合结构真实；
-- 内容物不穿壁、不凭空出现；
-- 倾倒/流动有真实重力和路径；
-- 前后状态可追踪；
-- Proof控制变量成立；
-- 30秒剧情不靠物理复杂度填时长。
+除非冷启动暴露结构性缺陷，否则不新增3.4.3 Hotfix。
 
 ---
 
-# 7. 30秒测试特别关注的失败模式
+# 6. 最后唯一上架Gate｜普通用户冷启动
 
-如果真实生成出现以下任一，优先升级规则：
-- Hook强，但3秒后事件直接死亡；
-- 10秒以后开始电视剧化、背景填充；
-- 对白镜头太长，人物站着念台词；
-- Reaction没有Trigger，只靠瞪眼；
-- Delay变成慢动作拖沓；
-- Burst只写“爆发”却没有具体动作；
-- 产品出现太晚，像结尾中插；
-- 产品一出现人物立刻无条件相信；
-- 为了强反转编造商品事实；
-- R2证据不够却硬反转；
-- 30秒中多次重复同一个Proof；
-- 长时长导致产品/人物/状态漂移；
-- CTA又开始生成乱码文字。
+模拟一个完全不了解内部Skill结构的真实用户。
+
+用户只给：
+- 一个商品名称，或
+- 一组商品参考图，或
+- 一个简单商品卖点；
+
+再说类似：
+> “帮我做一条美国TikTok剧情带货广告。”
+
+Skill必须在不要求用户理解以下内部概念的情况下自动完成：
+- Duration Router；
+- Direct / Need-led；
+- Perceived Value Contrast；
+- Story Architecture；
+- R0/R1/R2；
+- Product Pivot / Takeover；
+- Proof Ladder；
+- Scene Staging；
+- FACS；
+- Camera × Emotion；
+- Audio Event Map；
+- Prompt Attention。
+
+## 冷启动PASS标准
+
+1. 不先追问一堆内部参数；
+2. 自动识别真实购买问题；
+3. 不编造产品事实；
+4. 时长选择合理，必要时主动从30s降15s；
+5. 剧情删除产品后不能原样成立；
+6. 产品中后段有明确Takeover；
+7. Proof真实可见；
+8. 人物情绪、表情和运镜真正配合；
+9. 场面调度没有明显方向/元素关系错误；
+10. 最终Prompt已经压缩，不把Skill全文倾倒给视频模型；
+11. 用户拿到即可直接生成，而无需理解内部路由。
+
+如果以上通过：
+
+> `PRELAUNCH CANDIDATE → LISTING READY`
+
+然后停止实验室研发，进入真实用户案例驱动迭代。
 
 ---
 
-# 8. 大量剩余测试改为文本Benchmark
+# 7. 当前结论
 
-上架前不再用视频穷举以下问题，优先用文本压力测试：
-- 20+不同商品的Story Architecture路由；
-- 30秒与15秒何时选择；
-- 30秒是否有足够高价值Beat；
-- R0/R1/R2是否保守正确；
-- 30秒是否因为时长错误强行R2；
-- 不适合剧情时是否安全EXIT；
-- 不同Proofability是否被正确处理；
-- 高风险医疗/金融/安全/认证事实是否被拒绝伪造Proof；
-- Scene Router是否让NORMAL_LOCATION公平竞争；
-- 是否乱编商品事实；
-- 是否为了特殊Scene改变Product Truth；
-- 是否把抽象“更抓马/更荒诞/爆发/强反转”直接丢给视频模型。
+真实视频验证、三类产品形态、20类文本压力、3.4.2导演Hotfix与Registry收口均已完成。
 
----
-
-# 9. 上架门槛
-
-不是要求“零AI错误”。
-
-达到以下即可进入上架候选：
-- 商业决策与Architecture稳定；
-- 15秒单卖点结构已有真实通过证据；
-- 至少2条30秒真实剧情广告证明持续冲突、对白、Reaction、Delay→Burst与商业节奏可执行；
-- 至少3种物理/产品形态有真实视频证据（刚性小物 + 柔性服装 + 容器/日用品）；
-- 单人与双人剧情都至少有可接受案例；
-- 至少一条30秒案例验证R1/R2信息变化；
-- 若R2未自然适用，不为了上架测试强造R2，文本Benchmark覆盖R2路由即可；
-- NORMAL_LOCATION和至少2类特殊Scene有真实证据；
-- Reference Product Lock真实可用；
-- Physical Logic DNA能提前约束已知高频错误；
-- CTA默认高清产品Hero、无生成文字策略稳定；
-- 高风险事实与Proof边界明确；
-- 用户不需要理解内部路由也能得到可执行提示词。
-
-达到门槛后停止实验室穷举，转入真实用户案例驱动迭代。
+**剩余工作只有：1次普通用户冷启动测试。**
