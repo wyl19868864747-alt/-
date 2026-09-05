@@ -1,0 +1,26 @@
+name: Package Story Commerce Skill
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/package-story-commerce-skill.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build zip
+        run: |
+          mkdir -p dist
+          zip -r dist/story-commerce-skill-3.4.2-latest.zip story-commerce-skill -x '*/.DS_Store'
+      - name: Upload package
+        uses: actions/upload-artifact@v4
+        with:
+          name: story-commerce-skill-3.4.2-latest
+          path: dist/story-commerce-skill-3.4.2-latest.zip
+          if-no-files-found: error
