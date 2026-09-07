@@ -1,8 +1,8 @@
 # PRELAUNCH TEST PLAN｜上架前最小高价值测试计划
 
-当前阶段：`FINAL COLD-START GATE`
+当前阶段：`LISTING READY`
 
-目标：停止实验室穷举。真实视频回归、跨品类文本压力与Registry收口已经完成；上架前只剩普通用户冷启动验证。
+目标：停止实验室穷举。真实视频回归、跨品类文本压力、Style最小回归、ST05超现实专项修复与普通用户冷启动均已完成；后续进入真实用户案例驱动迭代。
 
 ---
 
@@ -31,6 +31,16 @@
 - Wearable Ownership / Reveal State；
 - Physical Logic / State Conservation。
 
+## Style Lock最小回归
+ST01 美式原生手机实拍风、ST02 高端静奢广告风、ST05 超现实创意广告风已完成最小高价值真实测试。
+
+已验证：
+- 同一产品可在不同Style下形成明显视觉距离；
+- Style可以强锁，但不能削弱完成Proof所需的真实动作；
+- ST05需要产品语义、卖点因果、真实世界锚点、Reality Hold、世界状态连续性与明确Return Trigger；
+- `REAL + IMPOSSIBLE = SURREAL`，背景替换/拼图不等于超现实视觉奇观；
+- `SPECTACLE CAUSAL MEANING > SPECTACLE BEAUTY`。
+
 ## 三种物理产品形态
 已有真实视频证据：
 - 刚性小物：AirPods；
@@ -40,10 +50,20 @@
 ## Product Reference / Product Lock
 Reference服装测试证明产品外观可以跨剧情保持主要识别特征，同时暴露并修复穿戴Ownership与Reveal泄漏问题。
 
-## CTA
-多轮真实生成已确认默认：
-`最后约1.5–3s → 高清放大Product Hero → 无生成CTA文字`
-是稳定基线。
+## CTA / Audio Close
+已形成稳定规则：
+`CTA IS A TERMINAL STATE, NOT A NEW ACTION START`
+
+最终CTA必须停止启动新事件，画面和音频同时完成收束：
+`IMAGE CLOSE + AUDIO CLOSE = AD CLOSE`
+
+## English Promotional Voiceover
+当用户未要求无旁白、也未提供完整VO时：
+- 根据已确认Product Truth与卖点自动生成英文宣传旁白；
+- 旁白分布在前/中/后关键节点；
+- 不逐镜解说；
+- 不新增产品事实；
+- 不与关键人物对白抢权重。
 
 ## 文本压力测试
 `text-stress-benchmark-v1.md`已完成20类实体商品：
@@ -74,15 +94,15 @@ Reference服装测试证明产品外观可以跨剧情保持主要识别特征�
 
 ---
 
-# 3. 当前30秒执行基线
+# 3. 当前执行基线
 
 不是完整短剧，而是：
 
-`DRAMA EARNS ATTENTION`
+`DRAMA / HOOK EARNS ATTENTION`
 → `PRODUCT PIVOT`
 → `PRODUCT TAKES OVER`
 → `PROOF ESCALATES DESIRE`
-→ `CTA`
+→ `CTA TERMINAL STATE`
 
 中前段允许剧情与人物吸引注意力，但产品出现后必须成为广告视觉与因果主角。
 
@@ -96,83 +116,87 @@ Reference服装测试证明产品外观可以跨剧情保持主要识别特征�
 → `Story Architecture`
 → `Proof Plan`
 → `Reversal Router`
-→ `Paid-Social Rhythm`
+→ `Style Lock`
+→ `Location Router`
 → `Scene Staging`
 → `Physical Logic`
 → `Performance / FACS`
 → `Camera × Emotion / Action`
-→ `Audio Event Map`
+→ `Audio / English Promotional Voiceover`
 → `Prompt Attention Compression`
+→ `CTA Terminal State`
 → `Seedance Prompt`
 
-下游不能为了风格、情绪、镜头或反转改写Product Truth和Best Proof。
+ST05额外：
+`Selling Point → Spectacle Decision Gate → Surreal Visual Compiler`
+
+下游不能为了风格、情绪、镜头、奇观或反转改写Product Truth和Best Proof。
 
 ---
 
-# 5. 不再继续做的测试
+# 5. 最终普通用户冷启动
+
+已执行：`final-cold-start-gate-v1.md`
+
+模拟输入：
+> “这是我的产品，一款黑色真皮女包，帮我做一条美国TikTok剧情带货广告。”
+
+用户没有提供时长、Router、R-level、场景、FACS、运镜、BGM等内部参数。
+
+Skill自动完成：
+- Truth Lock / Unknown Guard；
+- Core Decision；
+- Best Proof / Expression；
+- 15s Duration Fit；
+- Direct Product Route；
+- Story Architecture；
+- R0；
+- 默认ST01 Style；
+- Location；
+- Performance / Camera；
+- English Promotional Voiceover；
+- CTA Terminal State；
+- 可直接生成的Seedance Prompt。
+
+## 冷启动11项结果
+
+1. 不先追问一堆内部参数：`PASS`
+2. 自动识别真实购买问题：`PASS`
+3. 不编造产品事实：`PASS`
+4. 时长选择合理：`PASS`
+5. 删除产品后剧情不能原样成立：`PASS`
+6. 产品明确Takeover：`PASS`
+7. Proof / Expression真实可见：`PASS`
+8. 情绪、表情和运镜配合：`PASS`
+9. 场面调度方向清楚：`PASS`
+10. Prompt已压缩：`PASS`
+11. 用户拿到即可直接生成：`PASS`
+
+`FINAL COLD-START GATE = PASS`
+
+---
+
+# 6. 不再继续做的实验室测试
 
 上架前停止：
-- 12 Scene × 多SKU穷举；
+- 12 Style × 多SKU穷举；
 - 每个商品分别测试R0/R1/R2；
 - 继续反复AirPods；
 - 继续反复服装；
 - 再生成多个容器案例；
-- 为边际CTA或单次随机AI瑕疵重新扰动已通过结构。
+- 继续反复伯牙绝弦/ST05；
+- 为单次随机AI瑕疵重新扰动已通过结构。
 
-除非冷启动暴露结构性缺陷，否则不新增3.4.3 Hotfix。
-
----
-
-# 6. 最后唯一上架Gate｜普通用户冷启动
-
-模拟一个完全不了解内部Skill结构的真实用户。
-
-用户只给：
-- 一个商品名称，或
-- 一组商品参考图，或
-- 一个简单商品卖点；
-
-再说类似：
-> “帮我做一条美国TikTok剧情带货广告。”
-
-Skill必须在不要求用户理解以下内部概念的情况下自动完成：
-- Duration Router；
-- Direct / Need-led；
-- Perceived Value Contrast；
-- Story Architecture；
-- R0/R1/R2；
-- Product Pivot / Takeover；
-- Proof Ladder；
-- Scene Staging；
-- FACS；
-- Camera × Emotion；
-- Audio Event Map；
-- Prompt Attention。
-
-## 冷启动PASS标准
-
-1. 不先追问一堆内部参数；
-2. 自动识别真实购买问题；
-3. 不编造产品事实；
-4. 时长选择合理，必要时主动从30s降15s；
-5. 剧情删除产品后不能原样成立；
-6. 产品中后段有明确Takeover；
-7. Proof真实可见；
-8. 人物情绪、表情和运镜真正配合；
-9. 场面调度没有明显方向/元素关系错误；
-10. 最终Prompt已经压缩，不把Skill全文倾倒给视频模型；
-11. 用户拿到即可直接生成，而无需理解内部路由。
-
-如果以上通过：
-
-> `PRELAUNCH CANDIDATE → LISTING READY`
-
-然后停止实验室研发，进入真实用户案例驱动迭代。
+后续只有真实用户高频、可复现、因果清楚的问题，才进入母版迭代。
 
 ---
 
-# 7. 当前结论
+# 7. 上架裁决
 
-真实视频验证、三类产品形态、20类文本压力、3.4.2导演Hotfix与Registry收口均已完成。
+真实视频验证、三类产品形态、20类文本压力、Style Lock最小回归、ST05专项视觉决策、英文旁白、CTA收束与普通用户冷启动均已形成有效证据或明确规则。
 
-**剩余工作只有：1次普通用户冷启动测试。**
+> **`PRELAUNCH CANDIDATE → LISTING READY`**
+
+从现在开始停止实验室研发，进入：
+
+`商业上架 → 真实用户输入 → 失败归因 → 只修高频可复现问题`
