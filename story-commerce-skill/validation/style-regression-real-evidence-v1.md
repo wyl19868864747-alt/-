@@ -16,7 +16,7 @@
 
 不因单次产品结构漂移改写整个 Style DNA；后续用最小状态锁处理。
 
-## TEST 2｜ST02 高端静奢广告风
+## TEST 2｜ST02 高端静奢广告风｜Attempt 1
 
 真实生成：PARTIAL / STYLE PASS, PROOF FAIL
 
@@ -41,5 +41,38 @@
 - 但产品操作必须达到完成状态变化所需的真实幅度、速度和持续时间；
 - Proof 完成后再恢复风格节奏。
 
+## TEST 2｜ST02 高端静奢广告风｜Attempt 2 最小重测
+
+真实生成：PASS / ACCEPTED
+
+本次只强化产品操作幅度与 Proof 状态闭环，未改 Style、产品、地点、Core Decision 或 Best Proof。
+
+结论：
+- STYLE RECOGNITION：PASS。静奢视觉仍稳定成立：低饱和米白体系、整洁厨房、稳定构图、微距材质观察和克制节奏均未因动作强化而丢失。
+- VISUAL DISTANCE VS ST01：STRONG PASS。与 ST01 美式原生手机实拍保持显著视觉距离。
+- ACTION AMPLITUDE：PASS。摇瓶动作明显加强，连续且有足够幅度，没有被“静奢=轻动作”再次削弱。
+- MIXING PROOF：PASS。开场金黄色油层与深色醋汁分界清楚；摇动过程中两层持续卷入并逐渐融合；约 6s 后原水平分层消失，近景中液体整体成为一致棕金色状态。
+- POST-POUR STATE：PASS。倒液后瓶内上方出现的是正常液位下降后的空气头部空间，不是油层重新分离。
+- POUR PHYSICS：PASS。顶部翻盖开启后从真实开口连续倒液，液流方向自然。
+- END STATE：PASS。倒液后瓶身回正并执行翻盖关闭动作；产品 Hero 保持单瓶、结构稳定。
+
+### 回归结论
+这次证明：
+`QUIET CAMERA / PREMIUM STYLE` 与 `FULL-STRENGTH PRODUCT ACTION` 可以同时成立。
+
+因此保留可迁移规则：
+`STYLE MAY CONTROL CAMERA ENERGY, NOT REQUIRED PRODUCT ACTION AMPLITUDE.`
+
+不再继续测试该容器 / ST02 组合。
+
 ## 下一步
-只对 ST02 做一次最小重测：保持 Style 不变，只强化 2.5–7s 的摇动与 `分层彻底消失` 状态闭环。若通过，再进入用户真实产品 × ST05 超现实创意广告风测试。
+进入 TEST 3：`用户真实产品 + 用户提供的一个核心卖点 × ST05 超现实创意广告风`。
+
+目的不是再验证容器，而是验证：
+1. 强 Style 是否能迁移到真实用户商品；
+2. 超现实奇观是否可以围绕真实卖点建立，而不篡改产品事实；
+3. Style 强度提高后，Product Truth / Best Proof / Product Lock 是否仍能保持。
+
+输入只需要：
+- 用户真实产品图片；
+- 一个已确认、最核心的卖点。
