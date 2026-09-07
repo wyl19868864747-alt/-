@@ -1,17 +1,17 @@
 ---
 name: story-commerce-skill
-description: 面向短视频剧情带货广告的全品类商用导演Skill。先锁商品事实、受众购买问题与Best Proof，再选择一个主Hook和Primary Story Architecture；随后把商业判断编译成产品中心的剧情、可见状态变化、合理场面调度、真实物理状态、人物表演、情绪驱动运镜、光影、声音与Seedance高权重精简提示词。默认30秒首推，15秒在单一Proof已足够时主动建议。核心不是“拍一个短剧再塞产品”，而是让剧情为产品服务、Proof推动剧情、产品在中后段接管注意力。
+description: 面向短视频剧情带货广告的全品类商用导演Skill。先锁商品事实、受众购买问题与Best Proof，再选择一个主Hook和Primary Story Architecture；随后把商业判断编译成产品中心剧情，并把用户选择的视觉Style稳定翻译进合理地点、场面调度、真实物理状态、人物表演、情绪驱动运镜、光影、声音与Seedance高权重精简提示词。默认30秒首推，15秒在单一Proof已足够时主动建议。核心不是“拍一个短剧再塞产品”，也不是“先选场景再塞商品”，而是让剧情为产品服务、Style只决定怎么拍、Location自动服务产品与Proof。
 ---
 
-# 剧情带货 Skill 4.0｜Router Architecture
+# 剧情带货 Skill 4.1｜STYLE LOCK PRODUCTIZATION
 
-主文件只负责：**Truth Lock → Single Core Decision → Hook → Story/Proof → Scene/Performance → Prompt Compile → Independent Judge**。
+主文件只负责：**Truth Lock → Single Core Decision → Hook → Story/Proof → Style Lock → Location → Performance → Prompt Compile → Independent Judge**。
 
-原有商业决策、Story Architecture、Scene DNA、FACS、物理、运镜、节奏、光影与Prompt专业知识继续保留在 references 中；只有命中任务时才读取，不再把所有规则重复写进总控。
+原有商业决策、Story Architecture、Scene Staging、FACS、物理、运镜、节奏、光影与Prompt专业知识继续保留在 references 中；新增Style Router / Style DNA / Location Router作为商业上架前台选择层。只有命中任务时才读取，不把所有规则重复写进总控。
 
 ## 固定链路
 
-`Truth Lock → Single Core Decision → Hook Router → Story / Proof Router → Scene / Performance / Visual → Prompt Compiler → Independent Judge`
+`Truth Lock → Single Core Decision → Hook Router → Story / Proof Router → Style Lock → Location Router → Scene Staging / Performance / Visual → Prompt Compiler → Independent Judge`
 
 下游不得越权改写上游事实与商业核心。
 
@@ -27,16 +27,17 @@ description: 面向短视频剧情带货广告的全品类商用导演Skill。�
 - 用户本轮必须出现与禁止出现的内容
 
 优先级：
-`用户明确要求 > 产品事实/参考资产 > 合规/平台 > Core Decision > Best Proof > Product Centrality > Story > Scene/Performance/Camera > 风格炫技`
+`用户明确要求 > 产品事实/参考资产 > 合规/平台 > Core Decision > Best Proof > Product Centrality > Story > Style/Location/Staging/Performance/Camera > 风格炫技`
 
 固定裁决：
 `PRODUCT TRUTH > STORY TRICK`
 `PROOF > REVERSAL`
+`STYLE ≠ LOCATION`
 `EVENT MEANING > ELEMENT PRESENCE`
 `BLOCKING BEFORE CAMERA`
 `CLARITY > PROMPT VOLUME`
 
-不因历史案例多就自动带入账单、价格震惊、朋友核价、旧人物、旧CTA、某个Scene或R2。
+不因历史案例多就自动带入账单、价格震惊、朋友核价、旧人物、旧CTA、旧Scene或R2。
 
 ## 2. Single Core Decision
 
@@ -79,16 +80,62 @@ Proof先于反转。核心Proof写成：
 ### 4.3 Reversal
 形成Proof Plan后再读取 `references/reversal-router.md`。从R0开始判断，R1/R2只有在真的增加商业价值和剧情可读性时使用；不能为了“必须反转”牺牲Best Proof、产品事实或生成稳定。
 
-## 5. Scene / Performance / Visual
+## 5. Style / Location / Performance / Visual
 
-### 5.1 Scene选择
-用户未指定特殊Scene时，普通真实生活场景与Scene DNA共同竞争。只有特殊Scene确实增加因果、冲突、Proof或视觉记忆时，读取：
-- `references/scene-router.md`
-- `references/scene-dna-library.md`
+### 5.1 Style Lock｜前台锁风格，不锁场景
 
-不为了展示场景库而强行套Scene。
+用户在前台选择Style时，读取：
+- `references/style-router.md`
+- `references/style-dna-library.md`
 
-### 5.2 时长与节奏
+当前正式前台Style：
+- ST01 美式原生手机实拍风
+- ST02 高端静奢广告风
+- ST03 欧美高定时尚大片风
+- ST04 好莱坞动作大片风
+- ST05 超现实创意广告风
+- ST06 未来科幻科技风
+- ST07 70年代复古美式胶片风
+- ST08 Y2K千禧流行风
+- ST09 日系清透生活风
+- ST10 地中海阳光假日风
+- ST11 美式西部荒野风
+- ST12 黑色电影暗黑风
+
+用户Style选择属于 `HARD STYLE LOCK`：不得因为产品品类、价格带、实体/虚拟形态或传统行业习惯而拒绝、替换或自动改掉。
+
+Style只负责：
+- 视觉质感
+- 色彩/光影
+- 构图/焦段
+- 镜头与成像气质
+- 大概环境材质/年代/地域视觉倾向
+
+Style不负责：
+- 选择Core Decision
+- 改写Best Proof
+- 决定Story Architecture
+- 强制固定地点
+- 改写产品外观/功能/价格
+
+固定：
+`STYLE DECIDES HOW IT FEELS`
+`STYLE DOES NOT DECIDE WHERE IT HAPPENS`
+
+旧 `scene-router.md / scene-dna-library.md` 不再作为前台一级选择系统；只保留为历史内部参考资产或特殊任务参考，不能覆盖Style Lock与Location Router。
+
+### 5.2 Location Router｜自动决定具体地点
+
+Style锁定后读取 `references/location-router.md`。
+
+Location优先服务：
+`产品真实使用/理解 → Best Proof清晰 → 剧情动作合理 → 调度稳定 → Style视觉翻译`
+
+不得因为用户选择某个Style，就机械把广告塞进该Style最典型的固定场地。
+
+同一Style可以发生在完全不同地点；具体Location只要能同时保证产品、Proof、剧情和Style成立即可。
+
+### 5.3 时长与节奏
 默认首推约30秒。30秒及以上读取：
 - `references/30s-narrative-engine.md`
 - `references/paid-social-rhythm-dna.md`
@@ -98,7 +145,7 @@ Proof先于反转。核心Proof写成：
 产品出现后，剧情逐步让位给产品：
 `Hook earns attention → Product takes over attention → Proof escalates desire → CTA converts desire`
 
-### 5.3 Scene Staging
+### 5.4 Scene Staging
 只要涉及进出门、上下车、接近/离开、跨空间、品牌场所或同镜多个关键元素，读取 `references/scene-staging-compiler.md`。
 
 先确定：
@@ -106,13 +153,13 @@ Proof先于反转。核心Proof写成：
 
 元素都出现但关系错误，仍判失败。
 
-### 5.4 Physical State
+### 5.5 Physical State
 关键人物/商品/道具状态变化读取 `references/physical-logic-dna.md`：
 `BUILD STATE FIRST → CHANGE STATE WITH CAUSE → THEN WRITE SHOT`
 
-真实摄影再读取 `references/physical-reality-lock.md`，它只做物理与摄影可信底座，不覆盖商业决策和Story。
+真实摄影再读取 `references/physical-reality-lock.md`，它只做物理与摄影可信底座，不覆盖商业决策、Story或Style Lock。
 
-### 5.5 Performance / FACS
+### 5.6 Performance / FACS
 所有关键情绪、Reaction、冲突、Reveal读取 `references/performance-facs.md`。FACS只负责把当前关键情绪编译成可见动作，不把眉眼鼻嘴清单塞满每一镜。
 
 抽象词如“荒诞升级、震惊、紧张、压迫、崩溃”必须变成：
@@ -120,14 +167,16 @@ Proof先于反转。核心Proof写成：
 
 升级必须出现新Evidence、新动作、新阻力或新状态，不能只是把“更震惊”重复三遍。
 
-### 5.6 Camera / Light
+### 5.7 Camera / Light
 关键产品操作和情绪Beat读取 `references/camera-action-compiler.md`。Camera先服从Blocking、真实操作面和轴线，再服从情绪强度。
 
-光影/真实摄影沿用现有摄影底座与用户参考：主光必须有世界来源，产品证据和人物关键反应可读；设备名只在能带来可见结果时保留，不堆质量词。
+光影/真实摄影沿用现有摄影底座与用户参考；Style可以决定总体光线气质和成像方向，但主光必须有世界来源，产品证据和人物关键反应可读。设备名只在能带来可见结果时保留，不堆质量词。
 
 ## 6. Prompt Compiler
 
-输出Seedance Prompt前读取 `references/prompt-attention-compiler.md`。
+输出Seedance Prompt前读取：
+- `references/prompt-attention-compiler.md`
+- `references/style-injection-budget.md`
 
 内部可以复杂，最终Prompt必须压缩。优先保留：
 1. 商品/人物/参考事实
@@ -136,10 +185,13 @@ Proof先于反转。核心Proof写成：
 4. 关键Reaction / 表演
 5. 场面与运镜
 6. 光影/声音节点
-7. 少量高风险反向限制
+7. Style压缩句
+8. 少量高风险反向限制
+
+Style属于P3，不得挤掉P0/P1。最终只从Style Card提取2–3个视觉锚点、1个光影/色彩锚点、1个镜头/成像锚点，通常压成1句，最多2句；不得把整张Style DNA复制进最终Prompt。
 
 完整Prompt默认结构继续保持：
-1. 【开场总控】只写风格、调性、观感、平台感，不写具体事件。
+1. 【开场总控】只写锁定Style、调性、观感、平台感，不写具体事件；默认1句，最多2句。
 2. 【主体、空间与参考锁定】
 3. 【表演与状态】
 4. 【光影与成像基线】
@@ -153,9 +205,11 @@ Proof先于反转。核心Proof写成：
 
 交付前读取 `references/independent-judge.md`。
 
-Judge只检查：Truth、Single Core Decision、Hook、Product Centrality、Proof、State Change、Scene/Performance、Camera/Light、Prompt Attention。
+Judge检查：Truth、Single Core Decision、Hook、Product Centrality、Proof、State Change、Style Fidelity、Location合理性、Scene Staging/Performance、Camera/Light、Prompt Attention。
 
-FAIL时指出最早或影响最大的失败点，返回对应模块修正；不因局部问题整条推倒重来。Truth与Commercial Core一旦锁定，下游不能为了剧情更好看擅自改写。
+Style Fidelity只检查“用户选中的视觉风格是否可见”，不能因为Style不典型而要求改商品、Proof或剧情核心。
+
+FAIL时指出最早或影响最大的失败点，返回对应模块修正；不因局部问题整条推倒重来。Truth与Commercial Core一旦锁定，下游不能为了剧情更好看或风格更强擅自改写。
 
 真实成片出问题时优先定位最小问题片段：定位异常 → 判断问题层 → 局部修复 → 检查前后承接 → 再替换。Prompt文字PASS不等于成片PASS。
 
@@ -169,7 +223,10 @@ FAIL时指出最早或影响最大的失败点，返回对应模块修正；不�
 | Reversal R0/R1/R2 | `references/reversal-router.md` |
 | 陌生品类/跨品类先验 | `references/category-priors.md` |
 | 感知价值反差 | `references/perceived-value-contrast-routing.md`，不能抢Core Decision/Best Proof |
-| 特殊Scene | `references/scene-router.md`、`references/scene-dna-library.md` |
+| 前台视觉Style锁定 | `references/style-router.md`、`references/style-dna-library.md` |
+| Style到具体地点的翻译 | `references/location-router.md` |
+| Style最终Prompt压缩 | `references/style-injection-budget.md` |
+| 旧特殊Scene内部参考 | `references/scene-router.md`、`references/scene-dna-library.md`；不得作为前台一级入口 |
 | 30秒剧情与买量节奏 | `references/30s-narrative-engine.md`、`references/paid-social-rhythm-dna.md` |
 | 复杂场面调度 | `references/scene-staging-compiler.md` |
 | 商品/人物/道具状态 | `references/physical-logic-dna.md` |
@@ -188,3 +245,4 @@ FAIL时指出最早或影响最大的失败点，返回对应模块修正；不�
 - 反复出现且因果清楚，或用户明确批准后，才晋升为长期规则。
 - 新规则优先写入对应专业reference，不继续把主 `SKILL.md` 变回百科全书。
 - 保留现有 validation / regression 体系做回归检查；没有真实生成证据时，不把文字推演说成模型能力结论。
+- 商业上架后的Style新增必须先通过明显视觉差异检查；如果只换地点、道具或同义形容词，不新增一级Style。
