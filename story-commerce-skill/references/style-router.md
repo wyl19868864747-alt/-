@@ -1,12 +1,13 @@
-# STYLE ROUTER｜商业上架风格锁定路由 V1.2
+# STYLE ROUTER｜商业上架风格锁定路由 V1.3
 
-> 目标：把前台用户选择的视觉风格稳定传入广告导演链，而不是把风格误解成固定场景。
+> 目标：把前台用户选择的视觉风格稳定传入广告导演链，而不是把风格误解成固定场景；同时让声音设计服从Style，而不是给所有风格统一强塞英文旁白。
 
 核心：
 `USER STYLE CHOICE = HARD STYLE LOCK`
 `STYLE ≠ LOCATION`
 `STYLE ≠ STORY TEMPLATE`
 `PRODUCT TRUTH / BEST PROOF > STYLE`
+`VOICEOVER IS STYLE-CONDITIONAL`
 
 ---
 
@@ -71,9 +72,29 @@ Style在以下内容之后锁定：
 
 然后：
 
-`Style Lock → Location Router → Scene Staging → Performance → Camera/Light → Prompt Compile`
+`Style Lock → Location Router → Scene Staging → Performance → Camera/Light → Audio / Voiceover Fit → Prompt Compile`
 
-因此Style可以改变“怎么拍”，不能改变“卖什么、证明什么、发生什么核心事件”。
+因此Style可以改变“怎么拍、声音怎么呈现”，不能改变“卖什么、证明什么、发生什么核心事件”。
+
+### 3.1 Voiceover Fit｜旁白不是默认必选
+
+进入声音设计阶段时读取：
+- `references/english-promotional-voiceover.md`
+
+规则：
+- 用户明确要求无旁白：`OFF`；
+- 用户明确要求旁白：`ON`；
+- 用户未指定：根据Style和商业信息缺口自动决定。
+
+特别是：
+- `ST02 高端静奢广告风` 默认 `VOICEOVER OFF`，优先使用留白、材质声、环境声、极简BGM和产品Hero维持高级感；
+- 其他Style不是强制ON，而是 `AUTO`；只有旁白确实提升卖点理解、产品记忆或成片完整度时才加入；
+- 若人物对白已经把核心卖点讲清，不再额外叠英文宣传旁白；
+- 旁白一旦使用，默认英文，并且只能来自已确认Product Truth与卖点。
+
+固定：
+`STYLE FEEL > FORCED NARRATION`
+`NO VO IS A VALID DIRECTOR CHOICE`
 
 ### ST05 专项路由
 
@@ -115,6 +136,7 @@ VISUAL ANCHORS: 2–3个
 LIGHT/COLOR ANCHOR: 1个
 CAMERA/TEXTURE ANCHOR: 1个
 ENVIRONMENT TENDENCY: 1个非强制方向
+VOICEOVER TENDENCY: OFF / AUTO / LOW DENSITY
 COMPRESSED STYLE LINE: 1句
 ```
 
@@ -148,10 +170,11 @@ Style只负责视觉表达；产品进入方式与Proof由原商业链决定。
 - 禁止因为用户选ST12就自动增加犯罪、危险、恐怖剧情。
 - 禁止为了风格把产品外观、功能、价格或结果改写。
 - 禁止同时自动混入多个一级Style。
+- 禁止给所有Style统一强塞英文旁白。
 - ST05禁止使用与产品原料、材质、颜色、品类认知或卖点没有关系的随机视觉元素充当主奇观。
 - ST05禁止用“产品相关元素 + 与卖点相反的奇观动作”强行制造冲击，例如清爽柔和类卖点默认不用无因爆裂、破坏、震荡来表达。
 - ST05禁止把真实场景整体替换成一张完整奇幻背景来冒充超现实；应优先保留真实空间锚点，让不可能现象发生在现实内部。
 
 最终原则：
 
-> **用户锁风格，Skill锁商业正确性，Location负责找到能让两者同时成立的具体空间。**
+> **用户锁风格，Skill锁商业正确性，Location负责找到能让两者同时成立的具体空间，声音也必须服从风格。**
