@@ -1,4 +1,4 @@
-# STYLE ROUTER｜商业上架风格锁定路由 V1
+# STYLE ROUTER｜商业上架风格锁定路由 V1.1
 
 > 目标：把前台用户选择的视觉风格稳定传入广告导演链，而不是把风格误解成固定场景。
 
@@ -75,6 +75,21 @@ Style在以下内容之后锁定：
 
 因此Style可以改变“怎么拍”，不能改变“卖什么、证明什么、发生什么核心事件”。
 
+### ST05 专项路由
+
+当 `STYLE ID = ST05 超现实创意广告风` 时，在进入 Location / Staging / Camera 前必须额外读取：
+
+- `references/surreal-visual-compiler.md`
+
+ST05不得只靠光带、粒子、雾、颜色变化制造“超现实”。必须先通过该模块完成：
+
+`产品语义来源 → 相关原料/材质 → 唯一奇观机制 → 0.1–0.5s真实蓄力 → 不可能尺度/空间变化 → 同一事件多机位覆盖 → 卖点回收 → 产品回收`
+
+固定：
+`PRODUCT SEMANTICS BEFORE SPECTACLE`
+`ONE EVENT, MANY ANGLES`
+`SURREAL ≠ RANDOM VFX`
+
 ---
 
 ## 4. Style Card｜内部最小输出
@@ -92,6 +107,8 @@ COMPRESSED STYLE LINE: 1句
 ```
 
 不要把整张Style DNA继续传给下游。
+
+ST05除上述Style Card外，再由 `surreal-visual-compiler.md` 生成一个最小Surreal Card，但同样不能把模块全文复制进最终Prompt。
 
 ---
 
@@ -119,6 +136,7 @@ Style只负责视觉表达；产品进入方式与Proof由原商业链决定。
 - 禁止因为用户选ST12就自动增加犯罪、危险、恐怖剧情。
 - 禁止为了风格把产品外观、功能、价格或结果改写。
 - 禁止同时自动混入多个一级Style。
+- ST05禁止使用与产品原料、材质、颜色、品类认知或卖点没有关系的随机视觉元素充当主奇观。
 
 最终原则：
 
