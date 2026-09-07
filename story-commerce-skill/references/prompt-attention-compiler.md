@@ -79,8 +79,10 @@ P3不得重复进入每个Beat；开场总控统一一次即可。
 只保留跨镜必须持续的身份与状态。
 不重复剧情。
 
-## ③【对白锁】
-只有台词确实重要时单独列：
+## ③【对白 / Voiceover锁】
+角色台词确实重要时单独列；用户未明确要求无旁白且没有完整Voiceover时，读取 `references/english-promotional-voiceover.md`，自动生成贯穿关键节点的英文宣传旁白。
+
+角色对白使用：
 
 ```text
 0–3s｜EMMA｜“You are NOT wearing that to dinner.”
@@ -89,6 +91,9 @@ P3不得重复进入每个Beat；开场总控统一一次即可。
 
 使用：
 `SPEAKER + EXACT LINE + TIME WINDOW`
+
+Voiceover使用：
+`TIME WINDOW + VO + EXACT ENGLISH LINE`
 
 不提供同义句，不写“类似表达”。
 
@@ -122,6 +127,33 @@ P3不得重复进入每个Beat；开场总控统一一次即可。
 
 ---
 
+# 3.1 ENGLISH PROMOTIONAL VOICEOVER｜默认英文宣传旁白
+
+如果用户没有明确要求“无旁白/纯音乐”，且没有提供完整可用Voiceover：
+
+> 读取 `references/english-promotional-voiceover.md`，根据已确认产品特征、核心卖点与CTA自动生成英文宣传旁白。
+
+旁白默认规则：
+- 英文输出；
+- 基于已确认Product Truth和卖点，不新增事实；
+- 在前/中/后关键节点分布，形成商业主线；
+- 不是逐镜解说；
+- 不与角色关键对白重叠；
+- 15秒通常2–4个短语义段，总词数约12–28词；
+- 30秒通常3–6个短语义段，总词数约25–50词；
+- 视觉负责展示事件，旁白负责说价值。
+
+优先级：
+`用户Exact Dialogue > 关键角色对白 > Promotional Voiceover > BGM装饰`
+
+如果当前Beat已有关键对白，Voiceover移到下一无对白窗口，不强行叠音。
+
+固定：
+`SHOW THE EVENT, SAY THE VALUE`
+`VOICEOVER MUST COME FROM CONFIRMED PRODUCT TRUTH`
+
+---
+
 # 4. SPEAKER LOCK｜对白与画面绑定
 
 每句关键对白内部必须确定：
@@ -143,6 +175,8 @@ NEXT ACTION:
 > **谁在镜头里说，就让这一镜只服务这个说话人；Reaction另切。**
 
 这样优先于两个人同一镜里快速抢话。
+
+Voiceover不是画面内角色说话，不占Speaker Lock，但必须有明确时间窗，不能和关键Speaker抢同一时段。
 
 ---
 
@@ -166,6 +200,8 @@ NEXT ACTION:
 - BGM变化
 
 必须拆Beat，不许继续堆文本。
+
+Voiceover若进入当前Beat，属于Audio Cue预算的一部分；不要在同一Beat再塞长对白和复杂SFX堆叠。
 
 ---
 
@@ -244,7 +280,27 @@ reference dress only
 
 ---
 
-# 9. NO REDUNDANT NEGATIVE PATCHING｜不靠重复禁词加权
+# 9. CTA TERMINAL STATE｜CTA必须真正结束
+
+CTA不是下一动作的开头，而是整条广告的终止状态。
+
+进入最终CTA后：
+- 不再启动新的拿取、喝、走动、转身、对话、奇观或剧情事件；
+- 摄影机逐渐稳定或在最后落点完全稳定；
+- 产品/品牌/核心CTA获得单一视觉中心；
+- BGM减少复杂节奏，完成最后一个明确音乐句；
+- 最后End Hit / Tail与画面终止发生在同一个终点；
+- 结尾不能像“下一镜马上要来”一样继续上扬。
+
+固定：
+`CTA IS A TERMINAL STATE, NOT A NEW ACTION START`
+`IMAGE CLOSE + AUDIO CLOSE = AD CLOSE`
+
+如果用户给出CTA文案，优先使用用户原文；若未给CTA，不自行编造强行动承诺。
+
+---
+
+# 10. NO REDUNDANT NEGATIVE PATCHING｜不靠重复禁词加权
 
 如果内部已经通过：
 - Product Lock
@@ -262,7 +318,7 @@ reference dress only
 
 ---
 
-# 10. PROMPT ATTENTION QA
+# 11. PROMPT ATTENTION QA
 
 输出Seedance Prompt前静默检查：
 
@@ -271,9 +327,12 @@ reference dress only
 - [ ] 一个镜头是否只有一个明确说话人？
 - [ ] 2–4秒Beat是否超过2句核心对白？
 - [ ] 对白是否使用Speaker + Exact Line绑定？
+- [ ] 若用户未禁旁白且未提供完整VO，是否已生成基于真实卖点的英文Promotional Voiceover？
+- [ ] Voiceover是否避开关键角色对白，并在前/中/后形成连续商业主线？
 - [ ] 情绪是否动作化，而不是态度形容？
 - [ ] 每个Beat是否最多1个主表情链、1个主运镜、1个主要Audio Cue？
 - [ ] 前后状态改变是否明确结束旧State而不是叠加？
+- [ ] CTA进入后是否停止启动新动作，并且音频与画面一起完成收束？
 - [ ] 同一规则是否在3个地方重复？若是，删除重复。
 - [ ] 生成控制是否约8–12条，而不是长负面清单？
 - [ ] 删除所有风格形容词后，视频主事件、对白、状态仍然完整吗？
