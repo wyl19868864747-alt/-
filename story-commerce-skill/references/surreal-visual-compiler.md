@@ -1,4 +1,4 @@
-# SURREAL VISUAL COMPILER｜超现实视觉奇观编译器 V1
+# SURREAL VISUAL COMPILER｜超现实视觉奇观编译器 V1.1
 
 > 仅在 `ST05 超现实创意广告风` 命中时读取。
 >
@@ -15,6 +15,8 @@
 `REALITY HOLD → HIGH-ENERGY CHARGE → WORLD BREAK → PRODUCT PAYOFF`
 
 `ONE EVENT, MANY ANGLES`
+
+`SURREAL STATE MUST PERSIST UNTIL RETURN TRIGGER`
 
 `SURREAL ≠ RANDOM VFX`
 
@@ -95,7 +97,7 @@ ST05主视觉至少需要一个明确的不可能视觉变化：
 例如同样是饮料：
 - 清爽茶饮：优先清透绿叶、茶园、浅茶汤、奶白丝带、空气、水汽；
 - 冰红茶：可用红棕茶汤、冰、烈日/冷感反差；
-- 咖啡：可用深棕咖啡液、烘焙豆、 crema、蒸汽；
+- 咖啡：可用深棕咖啡液、烘焙豆、crema、蒸汽；
 - 果汁：可用真实水果、果肉、对应果汁色。
 
 禁止用与产品真实感官相反的元素制造错误联想。
@@ -151,6 +153,35 @@ ST05主视觉至少需要一个明确的不可能视觉变化：
 
 如果镜头之间像五张互不相关的广告图：
 > 判定 `EVENT CONTINUITY FAIL`。
+
+---
+
+## 5.1 SURREAL STATE PERSISTENCE｜世界状态必须连续
+
+一旦唯一主奇观由 `REAL` 进入 `SURREAL ON`，它就成为当前世界状态，而不是某一镜头的背景装饰。
+
+默认状态链：
+
+`REAL → REALITY HOLD → SURREAL ON → SURREAL ON (multi-angle coverage) → RETURN TRIGGER → REAL`
+
+强制：
+- `SURREAL ON` 后的Reaction、产品ECU、人物中近景、二次使用、不同机位都必须继续处于同一个超现实世界；
+- 切近景不能自动切回真实背景；
+- Camera Angle变化不能重置World State；
+- 只有明确写出的 `RETURN TRIGGER` 才允许 `SURREAL ON → REAL`；
+- 回到REAL后不得再次无因进入SURREAL ON；
+- ST05默认只有一个主机制，不用 `REAL → SURREAL → REAL → SURREAL → REAL` 来制造剪辑变化。
+
+内部必须额外记录：
+
+```text
+CURRENT WORLD STATE: REAL / HOLD / SURREAL ON / RETURNING / REAL
+RETURN TRIGGER:
+RETURN COMPLETION SHOT:
+```
+
+如果某个Reaction镜头、产品特写或新机位与上一镜世界状态不同，却没有因果触发：
+> 判定 `WORLD-STATE CONTINUITY FAIL`。
 
 ---
 
@@ -237,6 +268,8 @@ REALITY HOLD:
 TRIGGER:
 ACTION SPINE:
 CHARACTER + PRODUCT ANCHOR:
+CURRENT WORLD STATE:
+RETURN TRIGGER:
 3 CAMERA COVERAGE ANGLES:
 SURREAL HIT:
 SELLING-POINT PAYOFF:
@@ -256,6 +289,8 @@ RETURN TO PRODUCT:
 - [ ] 是否只有一个主超现实机制？
 - [ ] 整条片是否围绕同一人物+同一产品+同一事件连续推进？
 - [ ] 每次切镜是否继承上一镜动作和状态？
+- [ ] SURREAL ON后是否保持世界状态，直到明确Return Trigger？
+- [ ] 是否避免无因 `REAL ↔ SURREAL` 来回切换？
 - [ ] 是否通过不同机位覆盖同一事件，而不是生成独立广告画面？
 - [ ] 奇观是否直接解释/放大当前卖点？
 - [ ] 奇观是否高能、短促、可读，而不是缓慢TVC展示？
@@ -266,5 +301,7 @@ RETURN TO PRODUCT:
 > **奇观必须从产品里长出来。**
 >
 > **先让观众相信世界是真的，再用0.1–0.5秒蓄力把这个世界打破。**
+>
+> **一旦世界被打破，就保持这个世界，直到明确的返回触发。**
 >
 > **所有镜头都在拍同一个事件，不是在拼不同广告图。**
