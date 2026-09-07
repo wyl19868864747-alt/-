@@ -1,4 +1,4 @@
-# STYLE ROUTER｜商业上架风格锁定路由 V1.1
+# STYLE ROUTER｜商业上架风格锁定路由 V1.2
 
 > 目标：把前台用户选择的视觉风格稳定传入广告导演链，而不是把风格误解成固定场景。
 
@@ -77,17 +77,29 @@ Style在以下内容之后锁定：
 
 ### ST05 专项路由
 
-当 `STYLE ID = ST05 超现实创意广告风` 时，在进入 Location / Staging / Camera 前必须额外读取：
+当 `STYLE ID = ST05 超现实创意广告风` 时，在进入 Location / Staging / Camera 前必须按顺序额外读取：
 
-- `references/surreal-visual-compiler.md`
+1. `references/surreal-spectacle-decision-gate.md`
+2. `references/surreal-visual-compiler.md`
 
-ST05不得只靠光带、粒子、雾、颜色变化制造“超现实”。必须先通过该模块完成：
+先做“为什么是这个奇观”的商业决策，再做“这个奇观怎么拍”的视觉编译。
 
-`产品语义来源 → 相关原料/材质 → 唯一奇观机制 → 0.1–0.5s真实蓄力 → 不可能尺度/空间变化 → 同一事件多机位覆盖 → 卖点回收 → 产品回收`
+ST05不得只靠光带、粒子、雾、颜色变化制造“超现实”，也不得只因为奇观元素来自产品，就默认奇观因果正确。
+
+必须先通过决策层完成：
+
+`当前卖点 → 期望观众理解 → 产品相关元素 → 奇观动作/事件 → 错误联想检查 → 因果通过`
+
+再进入视觉层：
+
+`0.1–0.5s真实蓄力 → 真实世界内的不可能现象 → 尺度/空间冲击 → 同一事件多机位覆盖 → 卖点回收 → 产品回收`
 
 固定：
+`SPECTACLE CAUSAL MEANING > SPECTACLE BEAUTY`
+`PRODUCT SEMANTICS ARE NECESSARY, NOT SUFFICIENT`
 `PRODUCT SEMANTICS BEFORE SPECTACLE`
 `ONE EVENT, MANY ANGLES`
+`REAL + IMPOSSIBLE = SURREAL`
 `SURREAL ≠ RANDOM VFX`
 
 ---
@@ -108,7 +120,7 @@ COMPRESSED STYLE LINE: 1句
 
 不要把整张Style DNA继续传给下游。
 
-ST05除上述Style Card外，再由 `surreal-visual-compiler.md` 生成一个最小Surreal Card，但同样不能把模块全文复制进最终Prompt。
+ST05除上述Style Card外，先由 `surreal-spectacle-decision-gate.md` 形成最小Spectacle Decision Card，再由 `surreal-visual-compiler.md` 生成最小Surreal Card；两者都不能把模块全文复制进最终Prompt。
 
 ---
 
@@ -137,6 +149,8 @@ Style只负责视觉表达；产品进入方式与Proof由原商业链决定。
 - 禁止为了风格把产品外观、功能、价格或结果改写。
 - 禁止同时自动混入多个一级Style。
 - ST05禁止使用与产品原料、材质、颜色、品类认知或卖点没有关系的随机视觉元素充当主奇观。
+- ST05禁止用“产品相关元素 + 与卖点相反的奇观动作”强行制造冲击，例如清爽柔和类卖点默认不用无因爆裂、破坏、震荡来表达。
+- ST05禁止把真实场景整体替换成一张完整奇幻背景来冒充超现实；应优先保留真实空间锚点，让不可能现象发生在现实内部。
 
 最终原则：
 
