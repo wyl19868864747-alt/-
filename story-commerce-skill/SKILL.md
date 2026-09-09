@@ -1,35 +1,36 @@
 ---
 name: story-commerce-skill
-description: 面向短视频剧情带货广告的全品类商用导演Skill。先锁商品事实、受众购买问题与Best Proof，再选择一个主Hook和Primary Story Architecture；随后把商业判断编译成产品中心剧情，并把用户选择的视觉Style稳定翻译进合理地点、场面调度、真实物理状态、人物表演、情绪驱动运镜、光影、声音与Seedance高权重精简提示词。默认30秒首推，15秒在单一Proof已足够时主动建议。核心不是“拍一个短剧再塞产品”，也不是“先选场景再塞商品”，而是让剧情为产品服务、Style只决定怎么拍、Location自动服务产品与Proof。
+description: Product-centered short-form story advertising director skill for commercial video. Locks product truth, audience decision, Best Proof, one primary Hook, and one primary Story Architecture before translating them into a coherent product-led narrative. User-selected visual style controls how the ad feels, while location, staging, performance, camera, light, sound, and final Seedance prompts must serve product clarity, proof, and conversion. Default recommendation is about 30 seconds; suggest about 15 seconds when one clear Proof can complete the selling logic without filler.
 ---
 
-# 剧情带货 Skill 4.1｜STYLE LOCK PRODUCTIZATION
+# 剧情产品广告 | Story Product Ad
 
-主文件只负责：**Truth Lock → Single Core Decision → Hook → Story/Proof → Style Lock → Location → Performance → Prompt Compile → Independent Judge**。
+This skill turns commercial product truth into a **product-centered story ad**, not a short drama with a product inserted afterward.
 
-原有商业决策、Story Architecture、Scene Staging、FACS、物理、运镜、节奏、光影与Prompt专业知识继续保留在 references 中；新增Style Router / Style DNA / Location Router作为商业上架前台选择层。只有命中任务时才读取，不把所有规则重复写进总控。
+Core chain:
 
-## 固定链路
+`Truth Lock → Single Core Decision → Hook → Story / Proof → Style Lock → Location → Staging / Performance / Visual → Prompt Compile → Independent Judge`
 
-`Truth Lock → Single Core Decision → Hook Router → Story / Proof Router → Style Lock → Location Router → Scene Staging / Performance / Visual → Prompt Compiler → Independent Judge`
-
-下游不得越权改写上游事实与商业核心。
+Downstream creative decisions must never rewrite upstream product truth or the locked commercial core.
 
 ## 1. Truth Lock
 
-先读取 `references/commerce-decision-routing.md`，锁定：
-- Product / SKU / Reference Asset
-- Audience / Job
+Read `references/commerce-decision-routing.md` first and lock only confirmed facts:
+
+- Product / SKU / reference assets
+- Audience / job to be done
 - Why Buy / Why Hesitate
-- Conversion Goal
-- 已确认卖点、价格、CTA、平台/合规边界
-- Best Proof / Proofability
-- 用户本轮必须出现与禁止出现的内容
+- Conversion goal
+- Confirmed claims, price, CTA, platform and compliance boundaries
+- Best Proof / proofability
+- Required and forbidden content for this task
 
-优先级：
-`用户明确要求 > 产品事实/参考资产 > 合规/平台 > Core Decision > Best Proof > Product Centrality > Story > Style/Location/Staging/Performance/Camera > 风格炫技`
+Priority:
 
-固定裁决：
+`User explicit requirement > Product truth / reference asset > Compliance / platform > Core Decision > Best Proof > Product Centrality > Story > Style / Location / Staging / Performance / Camera > Visual spectacle`
+
+Hard rulings:
+
 `PRODUCT TRUTH > STORY TRICK`
 `PROOF > REVERSAL`
 `STYLE ≠ LOCATION`
@@ -37,212 +38,276 @@ description: 面向短视频剧情带货广告的全品类商用导演Skill。�
 `BLOCKING BEFORE CAMERA`
 `CLARITY > PROMPT VOLUME`
 
-不因历史案例多就自动带入账单、价格震惊、朋友核价、旧人物、旧CTA、旧Scene或R2。
+Do not import old bills, price-shock scenes, friend-dialogue patterns, characters, CTA, locations, or reversal structures unless the current task supports them.
 
 ## 2. Single Core Decision
 
-每条广告先静默回答：
-1. 观众这一条广告只需要改变哪一个主要购买判断？
-2. 最强的一个Proof是什么？
-3. 最后希望得到什么情绪释放、欲望或行动？
+Before writing the story, silently answer:
 
-如果同时存在多个并列核心，先收敛，不进入剧情。其他卖点只能作为Proof Ladder或支撑信息，不能和主判断抢注意力。
+1. What single buying judgment should this ad change?
+2. What is the strongest Proof available?
+3. What final emotion, desire, or action should the viewer reach?
 
-继续读取 `references/product-centered-narrative-gate.md`：决定 `DIRECT PRODUCT ROUTE` 或 `NEED-LED STORY ROUTE`。如果删除产品后故事仍完整成立，判定剧情漂移，返回重写。
+If several ideas compete as equal cores, reduce them to one primary decision before continuing. Other selling points may support a Proof Ladder but cannot compete with the main decision.
+
+Read `references/product-centered-narrative-gate.md` and choose either `DIRECT PRODUCT ROUTE` or `NEED-LED STORY ROUTE`.
+
+If the story still works almost unchanged after removing the product, the narrative has drifted and must be rebuilt.
 
 ## 3. Hook Router
 
-读取 `references/hook-router.md`。
+Read `references/hook-router.md`.
 
-先判断当前最强注意力资产，只选**一个主Hook**，最多一个辅助Hook。Hook可以来自利益/价格、事件中冲突、视觉异常、错误预判、结果前置或人物反应，但必须由本条广告事实和正片内容兑现。
+Choose **one primary Hook** and at most one supporting Hook. The strongest available attention asset may come from:
 
-Hook生成后先做Hook Judge；如果素材本身没有抓力，回到Commercial Core或Proof补内容，不靠同时堆多个Hook技巧硬救。
+- benefit or price
+- conflict already in progress
+- visible anomaly
+- false assumption / misread
+- result shown first
+- character reaction
+
+The Hook must be paid off by the actual ad. Do not stack several hook techniques to compensate for a weak commercial idea.
+
+If the Hook Judge fails, repair the Commercial Core or Proof rather than adding more spectacle.
 
 ## 4. Story / Proof Router
 
 ### 4.1 Story Architecture
-读取 `references/story-architecture-router.md`，只选一个Primary Architecture或安全EXIT。
 
-允许的主结构继续由原模块管理；Tie Break保持：
-`商业匹配 > Proof自然 > 产品因果 > 简单 > 生成稳定`
+Read `references/story-architecture-router.md` and select one Primary Architecture or a safe EXIT.
 
-禁止塌成万能模板：
-`两个人聊天 → 一个人不信 → 举产品 → 震惊 → CTA`
+Tie-break:
+
+`Commercial fit > Natural Proof > Product causality > Simplicity > Generation stability`
+
+Never collapse into the default pattern:
+
+`two people talk → one doubts → product is shown → surprise → CTA`
 
 ### 4.2 Proof First
-Proof先于反转。核心Proof写成：
-`初始状态 → 人物操作 → 接触/作用 → 可见过程 → 可见结果 → Reaction / Decision Change`
 
-感官、长期效果、精确测试或高风险声明不能靠人物Reaction伪造客观证据。
+Proof comes before reversal.
 
-30秒后半需要多层证据时，再形成 `Proof Ladder`；每一层必须增加新信息，不重复同一个“很好用”。
+Build the primary Proof as:
+
+`Initial state → Human action → Product contact / effect → Visible process → Visible result → Reaction / decision change`
+
+A character reaction cannot substitute for objective evidence of sensory claims, long-term effects, precise measurements, medical claims, certifications, or other high-risk conclusions.
+
+For longer ads, use a Proof Ladder only when each new Proof adds genuinely new information.
 
 ### 4.3 Reversal
-形成Proof Plan后再读取 `references/reversal-router.md`。从R0开始判断，R1/R2只有在真的增加商业价值和剧情可读性时使用；不能为了“必须反转”牺牲Best Proof、产品事实或生成稳定。
+
+After the Proof Plan is stable, read `references/reversal-router.md`.
+
+Start from R0. Use R1 / R2 only when reversal improves commercial value and story readability. Never sacrifice Best Proof, product truth, or generation stability just to force a twist.
 
 ## 5. Style / Location / Performance / Visual
 
-### 5.1 Style Lock｜前台锁风格，不锁场景
+### 5.1 Style Lock
 
-用户在前台选择Style时，读取：
+When the user selects a visual style, read:
+
 - `references/style-router.md`
 - `references/style-dna-library.md`
 
-当前正式前台Style：
-- ST01 美式原生手机实拍风
-- ST02 高端静奢广告风
-- ST03 欧美高定时尚大片风
-- ST04 好莱坞动作大片风
-- ST05 超现实创意广告风
-- ST06 未来科幻科技风
-- ST07 70年代复古美式胶片风
-- ST08 Y2K千禧流行风
-- ST09 日系清透生活风
-- ST10 地中海阳光假日风
-- ST11 美式西部荒野风
-- ST12 黑色电影暗黑风
+Current front-end styles:
 
-用户Style选择属于 `HARD STYLE LOCK`：不得因为产品品类、价格带、实体/虚拟形态或传统行业习惯而拒绝、替换或自动改掉。
+- ST01 Native American Phone-Camera Realism
+- ST02 Quiet-Luxury Premium Advertising
+- ST03 Western High-Fashion Editorial
+- ST04 Hollywood Action Blockbuster
+- ST05 Surreal Creative Advertising
+- ST06 Futuristic Sci-Fi Technology
+- ST07 1970s American Film
+- ST08 Y2K Pop
+- ST09 Japanese Airy Lifestyle
+- ST10 Mediterranean Sun Holiday
+- ST11 American Western Frontier
+- ST12 Film-Noir Dark Cinema
 
-Style只负责：
-- 视觉质感
-- 色彩/光影
-- 构图/焦段
-- 镜头与成像气质
-- 大概环境材质/年代/地域视觉倾向
+A user-selected style is a `HARD STYLE LOCK`. Do not replace it because of category, price tier, product type, or conventional industry taste.
 
-Style不负责：
-- 选择Core Decision
-- 改写Best Proof
-- 决定Story Architecture
-- 强制固定地点
-- 改写产品外观/功能/价格
+Style controls:
 
-固定：
+- image texture and visual character
+- color and lighting direction
+- composition and lens behavior
+- camera / imaging character
+- broad material, era, or regional visual cues
+
+Style does **not** control:
+
+- Core Decision
+- Best Proof
+- Story Architecture
+- fixed location
+- product appearance, function, price, or facts
+
+Hard rule:
+
 `STYLE DECIDES HOW IT FEELS`
 `STYLE DOES NOT DECIDE WHERE IT HAPPENS`
 
-旧 `scene-router.md / scene-dna-library.md` 不再作为前台一级选择系统；只保留为历史内部参考资产或特殊任务参考，不能覆盖Style Lock与Location Router。
+`scene-router.md` and `scene-dna-library.md` remain historical / special-case references only. They must not override Style Lock or Location Router.
 
-### 5.2 Location Router｜自动决定具体地点
+### 5.2 Location Router
 
-Style锁定后读取 `references/location-router.md`。
+After Style Lock, read `references/location-router.md`.
 
-Location优先服务：
-`产品真实使用/理解 → Best Proof清晰 → 剧情动作合理 → 调度稳定 → Style视觉翻译`
+Location priority:
 
-不得因为用户选择某个Style，就机械把广告塞进该Style最典型的固定场地。
+`Real product use / understanding → Clear Best Proof → Logical story action → Stable staging → Style translation`
 
-同一Style可以发生在完全不同地点；具体Location只要能同时保证产品、Proof、剧情和Style成立即可。
+Do not mechanically place the ad in the most stereotypical location for the selected style. The same style can work across different locations as long as product logic, Proof, action, and visual identity all remain coherent.
 
-### 5.3 时长与节奏
-默认首推约30秒。30秒及以上读取：
+### 5.3 Duration and Rhythm
+
+Default recommendation: about 30 seconds.
+
+For 30s+ ads, read:
+
 - `references/30s-narrative-engine.md`
 - `references/paid-social-rhythm-dna.md`
 
-如果单一卖点/单一Proof在12–18秒已经自然完成，主动建议15秒，不为30秒填剧情。
+If one selling point and one Proof naturally complete the ad in about 12–18 seconds, recommend a 15-second version instead of filling time.
 
-产品出现后，剧情逐步让位给产品：
+Attention should progressively transfer to the product:
+
 `Hook earns attention → Product takes over attention → Proof escalates desire → CTA converts desire`
 
 ### 5.4 Scene Staging
-只要涉及进出门、上下车、接近/离开、跨空间、品牌场所或同镜多个关键元素，读取 `references/scene-staging-compiler.md`。
 
-先确定：
-`EVENT MEANING → START/END → FROM/THROUGH/TO → BLOCKING → DEPTH → CAMERA → BRAND`
+For entrances, exits, vehicles, approach / departure, cross-space movement, branded spaces, or multiple critical elements in one shot, read `references/scene-staging-compiler.md`.
 
-元素都出现但关系错误，仍判失败。
+Build in this order:
+
+`EVENT MEANING → START / END → FROM / THROUGH / TO → BLOCKING → DEPTH → CAMERA → BRAND`
+
+A shot still fails if all required elements appear but their spatial or causal relationship is wrong.
 
 ### 5.5 Physical State
-关键人物/商品/道具状态变化读取 `references/physical-logic-dna.md`：
+
+For product, prop, packaging, or character state changes, read `references/physical-logic-dna.md`:
+
 `BUILD STATE FIRST → CHANGE STATE WITH CAUSE → THEN WRITE SHOT`
 
-真实摄影再读取 `references/physical-reality-lock.md`，它只做物理与摄影可信底座，不覆盖商业决策、Story或Style Lock。
+For live-action realism, also read `references/physical-reality-lock.md`. It provides a physical and photographic credibility floor but must not override product truth, Story, or Style Lock.
 
 ### 5.6 Performance / FACS
-所有关键情绪、Reaction、冲突、Reveal读取 `references/performance-facs.md`。FACS只负责把当前关键情绪编译成可见动作，不把眉眼鼻嘴清单塞满每一镜。
 
-抽象词如“荒诞升级、震惊、紧张、压迫、崩溃”必须变成：
-`刺激 → 感知 → 可见动作/接触 → 状态变化 → 反应 → 决定/行动`
+For critical emotion, conflict, reaction, or reveal, read `references/performance-facs.md`.
 
-升级必须出现新Evidence、新动作、新阻力或新状态，不能只是把“更震惊”重复三遍。
+Convert abstract direction into visible behavior:
+
+`Stimulus → Perception → Visible action / contact → State change → Reaction → Decision / action`
+
+Do not dump facial-muscle checklists into every shot. Escalation must introduce new evidence, action, resistance, or state change—not simply "more shocked" or "more intense."
 
 ### 5.7 Camera / Light
-关键产品操作和情绪Beat读取 `references/camera-action-compiler.md`。Camera先服从Blocking、真实操作面和轴线，再服从情绪强度。
 
-光影/真实摄影沿用现有摄影底座与用户参考；Style可以决定总体光线气质和成像方向，但主光必须有世界来源，产品证据和人物关键反应可读。设备名只在能带来可见结果时保留，不堆质量词。
+For key product actions and emotional beats, read `references/camera-action-compiler.md`.
+
+Camera follows blocking, real interaction surfaces, and axis continuity before emotional intensity.
+
+Lighting and imaging follow the selected style and real-world source logic. Product evidence and key reactions must remain readable. Keep equipment names only when they materially change the visible result; do not stack prestige camera or VFX terms as decoration.
 
 ## 6. Prompt Compiler
 
-输出Seedance Prompt前读取：
+Before writing the final Seedance prompt, read:
+
 - `references/prompt-attention-compiler.md`
 - `references/style-injection-budget.md`
 
-内部可以复杂，最终Prompt必须压缩。优先保留：
-1. 商品/人物/参考事实
-2. 核心事件与Best Proof
-3. 关键动作、接触和状态变化
-4. 关键Reaction / 表演
-5. 场面与运镜
-6. 光影/声音节点
-7. Style压缩句
-8. 少量高风险反向限制
+Internal reasoning may be complex. The final prompt must be compact and high-signal.
 
-Style属于P3，不得挤掉P0/P1。最终只从Style Card提取2–3个视觉锚点、1个光影/色彩锚点、1个镜头/成像锚点，通常压成1句，最多2句；不得把整张Style DNA复制进最终Prompt。
+Priority:
 
-完整Prompt默认结构继续保持：
-1. 【开场总控】只写锁定Style、调性、观感、平台感，不写具体事件；默认1句，最多2句。
-2. 【主体、空间与参考锁定】
-3. 【表演与状态】
-4. 【光影与成像基线】
-5. 【分镜描述】按观看顺序写可执行动作和结果。
-6. 【声音】对白/环境声/SFX/BGM只写真正有作用的节点。
-7. 【反向限制】只处理当前严重误读，不做长禁词墙。
+1. Product / character / reference truth
+2. Core event and Best Proof
+3. Key actions, contact, and state changes
+4. Critical reaction / performance
+5. Staging and camera movement
+6. Light and sound beats
+7. Compressed Style line
+8. A few task-specific high-risk negatives
 
-模型收到画面，不收到“荒诞升级、高级一点、情绪加强、一次成功”等管理语言；这些必须先在导演层转成可见结果。
+Style is lower priority than product truth and action. Extract only the visual cues that materially change the result—normally 2–3 visual anchors, one light / color anchor, and one camera / imaging anchor, compressed into one sentence and rarely more than two.
+
+Default final prompt structure:
+
+1. **Opening Control** — selected style, tone, viewing feel, and platform feel only; no shot events. Usually one sentence, maximum two.
+2. **Subject / Space / Reference Lock**
+3. **Performance / State**
+4. **Lighting / Imaging Baseline**
+5. **Shot Description** — executable actions and results in viewing order
+6. **Sound** — only useful dialogue, ambience, SFX, or music beats
+7. **Negative Constraints** — only current high-risk misreads; no long blacklist
+
+The generation model receives visible instructions, not management language. Do not pass abstract directives such as "strong hook," "premium," "more emotional," "surreal impact," or "make it intense" without first translating them into concrete visual events, actions, framing, light, sound, or state change.
 
 ## 7. Independent Judge
 
-交付前读取 `references/independent-judge.md`。
+Before delivery, read `references/independent-judge.md`.
 
-Judge检查：Truth、Single Core Decision、Hook、Product Centrality、Proof、State Change、Style Fidelity、Location合理性、Scene Staging/Performance、Camera/Light、Prompt Attention。
+Judge:
 
-Style Fidelity只检查“用户选中的视觉风格是否可见”，不能因为Style不典型而要求改商品、Proof或剧情核心。
+- Truth
+- Single Core Decision
+- Hook
+- Product Centrality
+- Proof
+- State Change
+- Style Fidelity
+- Location logic
+- Scene Staging / Performance
+- Camera / Light
+- Prompt Attention
 
-FAIL时指出最早或影响最大的失败点，返回对应模块修正；不因局部问题整条推倒重来。Truth与Commercial Core一旦锁定，下游不能为了剧情更好看或风格更强擅自改写。
+Style Fidelity asks only whether the selected visual style is visibly present. It must not force changes to product truth, Best Proof, or commercial logic merely because the execution is unconventional for the category.
 
-真实成片出问题时优先定位最小问题片段：定位异常 → 判断问题层 → 局部修复 → 检查前后承接 → 再替换。Prompt文字PASS不等于成片PASS。
+On FAIL, identify the earliest or highest-impact failure and return to that module. Do not rebuild the entire ad for a local error.
 
-## 专项路由
+Once Truth and Commercial Core are locked, downstream modules cannot rewrite them for a stronger story or more dramatic style.
 
-| 条件 | 读取模块 |
+If a generated video fails, repair the smallest causal unit first:
+
+`Locate anomaly → Identify failure layer → Repair locally → Check continuity → Replace`
+
+A prompt passing review does not mean the generated video has passed review.
+
+## Reference Routing
+
+| Need | Module |
 |---|---|
-| 商品决策/受众/Why Buy/Why Hesitate/Best Proof | `references/commerce-decision-routing.md` |
-| 产品是否真正驱动剧情 | `references/product-centered-narrative-gate.md` |
-| Story结构 | `references/story-architecture-router.md` |
-| Reversal R0/R1/R2 | `references/reversal-router.md` |
-| 陌生品类/跨品类先验 | `references/category-priors.md` |
-| 感知价值反差 | `references/perceived-value-contrast-routing.md`，不能抢Core Decision/Best Proof |
-| 前台视觉Style锁定 | `references/style-router.md`、`references/style-dna-library.md` |
-| Style到具体地点的翻译 | `references/location-router.md` |
-| Style最终Prompt压缩 | `references/style-injection-budget.md` |
-| 旧特殊Scene内部参考 | `references/scene-router.md`、`references/scene-dna-library.md`；不得作为前台一级入口 |
-| 30秒剧情与买量节奏 | `references/30s-narrative-engine.md`、`references/paid-social-rhythm-dna.md` |
-| 复杂场面调度 | `references/scene-staging-compiler.md` |
-| 商品/人物/道具状态 | `references/physical-logic-dna.md` |
-| 真实摄影底座 | `references/physical-reality-lock.md` |
-| 表演/FACS | `references/performance-facs.md` |
+| Audience / Why Buy / Why Hesitate / Best Proof | `references/commerce-decision-routing.md` |
+| Product-centered narrative gate | `references/product-centered-narrative-gate.md` |
+| Story structure | `references/story-architecture-router.md` |
+| Reversal R0 / R1 / R2 | `references/reversal-router.md` |
+| Category priors | `references/category-priors.md` |
+| Perceived-value contrast | `references/perceived-value-contrast-routing.md` |
+| Visual Style Lock | `references/style-router.md`, `references/style-dna-library.md` |
+| Style → location | `references/location-router.md` |
+| Style prompt compression | `references/style-injection-budget.md` |
+| Legacy special Scene reference | `references/scene-router.md`, `references/scene-dna-library.md` |
+| 30s narrative / paid-social rhythm | `references/30s-narrative-engine.md`, `references/paid-social-rhythm-dna.md` |
+| Complex staging | `references/scene-staging-compiler.md` |
+| Product / prop / character state | `references/physical-logic-dna.md` |
+| Live-action physical realism | `references/physical-reality-lock.md` |
+| Performance / FACS | `references/performance-facs.md` |
 | Camera × Action | `references/camera-action-compiler.md` |
-| Prompt注意力压缩 | `references/prompt-attention-compiler.md` |
-| Hook选型/检查 | `references/hook-router.md` |
-| 最终独立QC | `references/independent-judge.md` |
+| Prompt attention compression | `references/prompt-attention-compiler.md` |
+| Hook selection / judge | `references/hook-router.md` |
+| Final independent QC | `references/independent-judge.md` |
 
-## 经验维护
+## Learning Maintenance
 
-不要因为一次生成就继续往母版塞规则。
+Do not add permanent rules after one generation failure.
 
-- 单次失败先记录为案例/观察。
-- 反复出现且因果清楚，或用户明确批准后，才晋升为长期规则。
-- 新规则优先写入对应专业reference，不继续把主 `SKILL.md` 变回百科全书。
-- 保留现有 validation / regression 体系做回归检查；没有真实生成证据时，不把文字推演说成模型能力结论。
-- 商业上架后的Style新增必须先通过明显视觉差异检查；如果只换地点、道具或同义形容词，不新增一级Style。
+- Record one-off failures as observations first.
+- Promote a rule only after repeated evidence, clear causality, or explicit user approval.
+- Put new stable rules in the correct specialist reference instead of expanding the main `SKILL.md` into an encyclopedia.
+- Keep the existing validation / regression system for behavioral checks.
+- Do not present text-only reasoning as confirmed model behavior without generation evidence.
+- A new front-end Style must show a materially distinct visual language; changing only location, props, or synonymous adjectives is not enough.
