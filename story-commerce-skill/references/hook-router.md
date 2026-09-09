@@ -1,31 +1,37 @@
 # Hook Router
 
-目标：先选对Hook，再写Hook；不要把所有Hook技巧一次塞进前5秒。
+Purpose: choose the right Hook DNA after Product Truth, Style, and Commercial Core are resolved.
 
-## 先问一句
-这条广告当前最强的注意力资产是什么？只选一个主Hook，最多叠加一个辅助Hook。
+Read `references/hooks/hook-index.md`, then load one Primary Hook DNA file. Use at most one supporting Hook when it adds a different functional role.
 
-- `BENEFIT SHOCK`：核心利益本身足够强。
-- `PRICE SHOCK`：明确数字/价格是最强信息。
-- `IN-MEDIA-RES CONFLICT`：开场即事件中，人物正在处理问题。
-- `VISUAL ANOMALY`：第一眼有异常物理/视觉事件。
-- `MISBELIEF`：观众会形成一个明确但错误的预判。
-- `RESULT FIRST`：结果本身比过程更抓人。
-- `REACTION FIRST`：人物真实反应是最强入口。
+## Selection Inputs
 
-## 约束
-- Hook必须由当前产品事实、剧情事件或可见证据支撑。
-- Hook承诺必须在正片兑现。
-- 不因“前5秒要强”同时塞价格、产品、反转、视觉奇观和多句解释。
-- 如果素材本身没有抓力，回到商业核心/Proof补内容，不靠空洞夸张词硬救。
+`Core Decision + Best Proof + resolved Style + available visible evidence + platform attention behavior`
 
-## Hook Judge
-生成后检查：
-1. 0–1秒能否知道正在发生什么；
-2. 静音是否仍有可读信息；
-3. 是否已经进入事件而不是解释背景；
-4. 是否产生一个未解决问题/期待；
-5. 是否过早把答案讲完；
-6. 正片是否兑现开头承诺。
+Do not choose a Hook because it is trendy if the product cannot honestly pay it off.
 
-失败只重做Hook，不推翻已经锁定的产品事实和核心决策。
+## Current Hook Families
+
+- H01 Benefit Shock
+- H02 Price Shock
+- H03 In-Media-Res Conflict
+- H04 Visual Anomaly
+- H05 Misbelief
+- H06 Result First
+- H07 Reaction First
+
+## Style Adaptation
+
+The selected Style may change timing, camera grammar, performance intensity, visual texture, sound, and how the Hook is staged. It cannot change the Hook's truth requirement or payoff obligation.
+
+## Global Hook Judge
+
+1. Is a meaningful event or question readable in the first beat?
+2. Does the opening work with sound off when appropriate?
+3. Has the ad entered an event instead of explaining background?
+4. Is there an unresolved question, tension, desire, or visual curiosity?
+5. Does the opening avoid giving away the entire answer too early?
+6. Does the body of the ad pay off exactly what the Hook promised?
+7. Is the Hook supported by product truth, story event, or visible evidence?
+
+If the Hook fails, repair or replace the Hook module first. Do not automatically rewrite Style, Product Truth, or the whole Story.

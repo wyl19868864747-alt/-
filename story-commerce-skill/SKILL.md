@@ -1,313 +1,194 @@
 ---
 name: story-commerce-skill
-description: Product-centered short-form story advertising director skill for commercial video. Locks product truth, audience decision, Best Proof, one primary Hook, and one primary Story Architecture before translating them into a coherent product-led narrative. User-selected visual style controls how the ad feels, while location, staging, performance, camera, light, sound, and final Seedance prompts must serve product clarity, proof, and conversion. Default recommendation is about 30 seconds; suggest about 15 seconds when one clear Proof can complete the selling logic without filler.
+description: Product-centered short-form story advertising director skill. It locks product truth, resolves one visual Style early, then builds one commercial decision, one primary Hook, product-led Story/Proof, a truthful CTA, and a concise Seedance-ready execution. Each Style, Hook, and CTA family is modular so individual creative DNA can be added, removed, or tuned without rewriting the whole skill.
 ---
 
 # 剧情产品广告 | Story Product Ad
 
-This skill turns commercial product truth into a **product-centered story ad**, not a short drama with a product inserted afterward.
+Turn verified product truth into a product-centered story ad. The product must cause the story, not appear after the story is already complete.
 
-Core chain:
+## Core Chain
 
-`Truth Lock → Single Core Decision → Hook → Story / Proof → Style Lock → Location → Staging / Performance / Visual → Prompt Compile → Independent Judge`
+`Product Truth Lock → Style Resolve → Commercial Core → Hook DNA → Story / Proof / Reversal → CTA DNA → Location / Staging / Performance / Camera / Light / Audio → Prompt Compile → Independent Judge`
 
-Downstream creative decisions must never rewrite upstream product truth or the locked commercial core.
+The user may choose a Style at entry. If no Style is chosen, auto-select one Style after Product Truth is known. Once resolved, Style may shape the expression of the Hook, narrative rhythm, performance, camera, light, sound, and CTA presentation. It may never rewrite product facts, claims, price, function, Best Proof, or the true conversion action.
 
-## 1. Truth Lock
+## 1. Product Truth Lock
 
-Read `references/commerce-decision-routing.md` first and lock only confirmed facts:
+Read `references/product-truth-lock.md` first.
 
-- Product / SKU / reference assets
-- Audience / job to be done
+Lock only what the available evidence supports. Separate every relevant product fact into `CONFIRMED`, `VISIBLE`, `SUPPORTED_INFERENCE`, or `UNKNOWN`. Never promote inference or category knowledge into a product fact.
+
+The lock covers identity, SKU/variant, packaging, shape/proportion, visible color/material, labels/logo/text, components/accessories, interfaces, physical state, price/offer/service facts, claims, use conditions, and CTA destination when known.
+
+If evidence conflicts, mark the conflict and do not silently choose a side. If an unknown fact is not required for the ad, omit it rather than asking. If it is required for a commercial claim, Proof, product operation, or CTA, resolve it before using it.
+
+Hard rule: `UNCERTAINTY MUST STAY UNCERTAIN`.
+
+## 2. Style Resolve — before Hook and Story
+
+Read `references/style-router.md`, then `references/styles/style-index.md` and exactly one selected Style DNA file.
+
+Two routes:
+
+- `USER STYLE LOCK`: the user explicitly selects a Style or clearly describes one. Preserve it.
+- `AUTO STYLE FIT`: no Style is selected. Choose one Primary Style that best fits the verified product, audience, platform, Best Proof needs, desired perception, and generation stability.
+
+Style is resolved before Hook design. It can influence **how** attention, conflict, proof, emotion, rhythm, dialogue, sound, and CTA are expressed.
+
+Style cannot invent **what** the product does or what the viewer should believe.
+
+Only one Primary Style by default. Add a secondary influence only when the user explicitly requests a blend.
+
+## 3. Commercial Core
+
+Read `references/commerce-decision-routing.md` and `references/product-centered-narrative-gate.md`.
+
+Silently lock:
+
+- Audience / Job to be Done
 - Why Buy / Why Hesitate
-- Conversion goal
-- Confirmed claims, price, CTA, platform and compliance boundaries
-- Best Proof / proofability
-- Required and forbidden content for this task
+- one Core Decision Question
+- one Confirmed Selling Point
+- one Best Proof / Benefit Expression
+- one Product Causal Role
+- one Conversion Goal
+- one Emotional Payoff
 
-Priority:
-
-`User explicit requirement > Product truth / reference asset > Compliance / platform > Core Decision > Best Proof > Product Centrality > Story > Style / Location / Staging / Performance / Camera > Visual spectacle`
-
-Hard rulings:
+If several ideas compete as equal cores, reduce them to one primary buying decision before writing the ad.
 
 `PRODUCT TRUTH > STORY TRICK`
 `PROOF > REVERSAL`
-`STYLE ≠ LOCATION`
-`EVENT MEANING > ELEMENT PRESENCE`
-`BLOCKING BEFORE CAMERA`
-`CLARITY > PROMPT VOLUME`
 
-Do not import old bills, price-shock scenes, friend-dialogue patterns, characters, CTA, locations, or reversal structures unless the current task supports them.
+## 4. Hook DNA
 
-## 2. Single Core Decision
+Read `references/hook-router.md`, then load exactly one primary Hook DNA from `references/hooks/` and at most one supporting Hook only when it adds a distinct role.
 
-Before writing the story, silently answer:
+Hook selection considers:
 
-1. What single buying judgment should this ad change?
-2. What is the strongest Proof available?
-3. What final emotion, desire, or action should the viewer reach?
+`Commercial Core + resolved Style + available visible evidence + platform attention behavior`
 
-If several ideas compete as equal cores, reduce them to one primary decision before continuing. Other selling points may support a Proof Ladder but cannot compete with the main decision.
+A Style may change a Hook's visual grammar, performance intensity, timing, or framing. It must not make an unsupported Hook valid.
 
-Read `references/product-centered-narrative-gate.md` and choose either `DIRECT PRODUCT ROUTE` or `NEED-LED STORY ROUTE`.
+Every Hook must create an immediate readable event or question and must be paid off by the body of the ad.
 
-If the story still works almost unchanged after removing the product, the narrative has drifted and must be rebuilt.
+If one Hook underperforms, repair that Hook DNA or select another Hook. Do not rewrite unrelated Style or Story modules.
 
-## 3. Hook Router
-
-Read `references/hook-router.md`.
-
-Choose **one primary Hook** and at most one supporting Hook. The strongest available attention asset may come from:
-
-- benefit or price
-- conflict already in progress
-- visible anomaly
-- false assumption / misread
-- result shown first
-- character reaction
-
-The Hook must be paid off by the actual ad. Do not stack several hook techniques to compensate for a weak commercial idea.
-
-If the Hook Judge fails, repair the Commercial Core or Proof rather than adding more spectacle.
-
-## 4. Story / Proof Router
-
-### 4.1 Story Architecture
+## 5. Story / Proof / Reversal
 
 Read `references/story-architecture-router.md` and select one Primary Architecture or a safe EXIT.
 
 Tie-break:
 
-`Commercial fit > Natural Proof > Product causality > Simplicity > Generation stability`
+`Commercial fit > Natural Proof > Product causality > Style compatibility > Simplicity > Generation stability`
 
-Never collapse into the default pattern:
-
-`two people talk → one doubts → product is shown → surprise → CTA`
-
-### 4.2 Proof First
-
-Proof comes before reversal.
-
-Build the primary Proof as:
+Build the main Proof as:
 
 `Initial state → Human action → Product contact / effect → Visible process → Visible result → Reaction / decision change`
 
-A character reaction cannot substitute for objective evidence of sensory claims, long-term effects, precise measurements, medical claims, certifications, or other high-risk conclusions.
+A character reaction cannot substitute for objective evidence of high-risk, long-term, certified, medical, sensory, or precisely measured claims.
 
-For longer ads, use a Proof Ladder only when each new Proof adds genuinely new information.
+After the Proof Plan is stable, read `references/reversal-router.md`. Start from R0. Use R1/R2 only when reversal improves commercial value and readability.
 
-### 4.3 Reversal
+Style should shape scene behavior and storytelling tone after the commercial causality is valid; it must not turn every Style into a fixed story template.
 
-After the Proof Plan is stable, read `references/reversal-router.md`.
+## 6. CTA DNA
 
-Start from R0. Use R1 / R2 only when reversal improves commercial value and story readability. Never sacrifice Best Proof, product truth, or generation stability just to force a twist.
+Read `references/cta/cta-router.md`, then load one CTA DNA file from `references/cta/`.
 
-## 5. Style / Location / Performance / Visual
+CTA is not an afterthought. It converts the already-earned decision into one truthful next action.
 
-### 5.1 Style Lock
+Select CTA from:
 
-When the user selects a visual style, read:
+`Conversion Goal + real destination/action + audience friction + resolved Style + platform context`
 
-- `references/style-router.md`
-- `references/style-dna-library.md`
+Style may control CTA tone, density, performance, graphic treatment, or how quietly/aggressively it lands. Style may never invent a discount, deadline, scarcity, eligibility, destination, or service promise.
 
-Current front-end styles:
+Use one primary CTA. A supporting line is allowed only when it reduces genuine friction.
 
-- ST01 Native American Phone-Camera Realism
-- ST02 Quiet-Luxury Premium Advertising
-- ST03 Western High-Fashion Editorial
-- ST04 Hollywood Action Blockbuster
-- ST05 Surreal Creative Advertising
-- ST06 Futuristic Sci-Fi Technology
-- ST07 1970s American Film
-- ST08 Y2K Pop
-- ST09 Japanese Airy Lifestyle
-- ST10 Mediterranean Sun Holiday
-- ST11 American Western Frontier
-- ST12 Film-Noir Dark Cinema
+## 7. Location and Visual Execution
 
-A user-selected style is a `HARD STYLE LOCK`. Do not replace it because of category, price tier, product type, or conventional industry taste.
+### Location
+Read `references/location-router.md` after Style, Hook, Story, Proof, and CTA intent are known.
 
-Style controls:
+Priority:
+`Real product use / understanding → Best Proof clarity → Story logic → Style translation → Stable staging`
 
-- image texture and visual character
-- color and lighting direction
-- composition and lens behavior
-- camera / imaging character
-- broad material, era, or regional visual cues
+Style is not a fixed location.
 
-Style does **not** control:
+### Staging / Physical State
+For entrances, exits, cross-space actions, multi-person blocking, or complex object relations, read `references/scene-staging-compiler.md`.
 
-- Core Decision
-- Best Proof
-- Story Architecture
-- fixed location
-- product appearance, function, price, or facts
+For packaging, object, prop, or body state changes, read `references/physical-logic-dna.md` and `references/physical-reality-lock.md`.
 
-Hard rule:
+### Performance
+For key emotion, reaction, conflict, reveal, or persuasion beats, read `references/performance-facs.md`.
 
-`STYLE DECIDES HOW IT FEELS`
-`STYLE DOES NOT DECIDE WHERE IT HAPPENS`
-
-`scene-router.md` and `scene-dna-library.md` remain historical / special-case references only. They must not override Style Lock or Location Router.
-
-### 5.2 Location Router
-
-After Style Lock, read `references/location-router.md`.
-
-Location priority:
-
-`Real product use / understanding → Clear Best Proof → Logical story action → Stable staging → Style translation`
-
-Do not mechanically place the ad in the most stereotypical location for the selected style. The same style can work across different locations as long as product logic, Proof, action, and visual identity all remain coherent.
-
-### 5.3 Duration and Rhythm
-
-Default recommendation: about 30 seconds.
-
-For 30s+ ads, read:
-
-- `references/30s-narrative-engine.md`
-- `references/paid-social-rhythm-dna.md`
-
-If one selling point and one Proof naturally complete the ad in about 12–18 seconds, recommend a 15-second version instead of filling time.
-
-Attention should progressively transfer to the product:
-
-`Hook earns attention → Product takes over attention → Proof escalates desire → CTA converts desire`
-
-### 5.4 Scene Staging
-
-For entrances, exits, vehicles, approach / departure, cross-space movement, branded spaces, or multiple critical elements in one shot, read `references/scene-staging-compiler.md`.
-
-Build in this order:
-
-`EVENT MEANING → START / END → FROM / THROUGH / TO → BLOCKING → DEPTH → CAMERA → BRAND`
-
-A shot still fails if all required elements appear but their spatial or causal relationship is wrong.
-
-### 5.5 Physical State
-
-For product, prop, packaging, or character state changes, read `references/physical-logic-dna.md`:
-
-`BUILD STATE FIRST → CHANGE STATE WITH CAUSE → THEN WRITE SHOT`
-
-For live-action realism, also read `references/physical-reality-lock.md`. It provides a physical and photographic credibility floor but must not override product truth, Story, or Style Lock.
-
-### 5.6 Performance / FACS
-
-For critical emotion, conflict, reaction, or reveal, read `references/performance-facs.md`.
-
-Convert abstract direction into visible behavior:
-
+Translate abstract direction into:
 `Stimulus → Perception → Visible action / contact → State change → Reaction → Decision / action`
 
-Do not dump facial-muscle checklists into every shot. Escalation must introduce new evidence, action, resistance, or state change—not simply "more shocked" or "more intense."
+### Camera / Light / Audio
+Read `references/camera-action-compiler.md` for key action and emotion beats. Camera follows blocking and readable product operation before spectacle.
 
-### 5.7 Camera / Light
+Light must have a believable world source and preserve product/face readability. Equipment names are used only when they create a visible result.
 
-For key product actions and emotional beats, read `references/camera-action-compiler.md`.
+Voiceover is conditional. Do not force narration when dialogue, performance, product sound, or silence works better for the resolved Style.
 
-Camera follows blocking, real interaction surfaces, and axis continuity before emotional intensity.
+## 8. Prompt Compile
 
-Lighting and imaging follow the selected style and real-world source logic. Product evidence and key reactions must remain readable. Keep equipment names only when they materially change the visible result; do not stack prestige camera or VFX terms as decoration.
-
-## 6. Prompt Compiler
-
-Before writing the final Seedance prompt, read:
+Before final Seedance prompt, read:
 
 - `references/prompt-attention-compiler.md`
 - `references/style-injection-budget.md`
 
-Internal reasoning may be complex. The final prompt must be compact and high-signal.
+Keep internal reasoning rich and final prompt lean.
 
-Priority:
+Prompt priority:
 
-1. Product / character / reference truth
-2. Core event and Best Proof
-3. Key actions, contact, and state changes
-4. Critical reaction / performance
-5. Staging and camera movement
-6. Light and sound beats
-7. Compressed Style line
-8. A few task-specific high-risk negatives
+1. product / person / reference truth
+2. core event and Best Proof
+3. action, contact, state change
+4. key reaction / performance
+5. staging and camera
+6. light / sound nodes
+7. compressed Style signal
+8. only the highest-risk negative constraints
 
-Style is lower priority than product truth and action. Extract only the visual cues that materially change the result—normally 2–3 visual anchors, one light / color anchor, and one camera / imaging anchor, compressed into one sentence and rarely more than two.
+Do not send management language such as “strong hook”, “premium”, “high energy”, “more emotional”, or “cinematic” without first converting it into visible, executable direction.
 
-Default final prompt structure:
+## 9. Independent Judge
 
-1. **Opening Control** — selected style, tone, viewing feel, and platform feel only; no shot events. Usually one sentence, maximum two.
-2. **Subject / Space / Reference Lock**
-3. **Performance / State**
-4. **Lighting / Imaging Baseline**
-5. **Shot Description** — executable actions and results in viewing order
-6. **Sound** — only useful dialogue, ambience, SFX, or music beats
-7. **Negative Constraints** — only current high-risk misreads; no long blacklist
-
-The generation model receives visible instructions, not management language. Do not pass abstract directives such as "strong hook," "premium," "more emotional," "surreal impact," or "make it intense" without first translating them into concrete visual events, actions, framing, light, sound, or state change.
-
-## 7. Independent Judge
-
-Before delivery, read `references/independent-judge.md`.
+Read `references/independent-judge.md`.
 
 Judge:
 
-- Truth
-- Single Core Decision
-- Hook
-- Product Centrality
-- Proof
-- State Change
+- Product Truth
 - Style Fidelity
-- Location logic
-- Scene Staging / Performance
-- Camera / Light
-- Prompt Attention
+- Core Decision
+- Hook readability and payoff
+- Product Centrality
+- Proof validity
+- Story causality
+- CTA truth and fit
+- Physical state
+- Performance
+- Camera / Light / Audio
+- Prompt attention
 
-Style Fidelity asks only whether the selected visual style is visibly present. It must not force changes to product truth, Best Proof, or commercial logic merely because the execution is unconventional for the category.
+When one module fails, repair the earliest or highest-impact failing module. Do not push a local issue into unrelated modules.
 
-On FAIL, identify the earliest or highest-impact failure and return to that module. Do not rebuild the entire ad for a local error.
+## Modular Maintenance Contract
 
-Once Truth and Commercial Core are locked, downstream modules cannot rewrite them for a stronger story or more dramatic style.
+Each creative family has a stable address:
 
-If a generated video fails, repair the smallest causal unit first:
+- Product truth: `references/product-truth-lock.md`
+- Style routing: `references/style-router.md`
+- Individual Styles: `references/styles/STxx-*.md`
+- Hook routing: `references/hook-router.md`
+- Individual Hooks: `references/hooks/Hxx-*.md`
+- CTA routing: `references/cta/cta-router.md`
+- Individual CTAs: `references/cta/Cxx-*.md`
 
-`Locate anomaly → Identify failure layer → Repair locally → Check continuity → Replace`
+To add a new Style, Hook, or CTA: create one new DNA file and register it in its index/router. To tune one item, edit only that item's DNA unless the routing logic itself is wrong.
 
-A prompt passing review does not mean the generated video has passed review.
-
-## Reference Routing
-
-| Need | Module |
-|---|---|
-| Audience / Why Buy / Why Hesitate / Best Proof | `references/commerce-decision-routing.md` |
-| Product-centered narrative gate | `references/product-centered-narrative-gate.md` |
-| Story structure | `references/story-architecture-router.md` |
-| Reversal R0 / R1 / R2 | `references/reversal-router.md` |
-| Category priors | `references/category-priors.md` |
-| Perceived-value contrast | `references/perceived-value-contrast-routing.md` |
-| Visual Style Lock | `references/style-router.md`, `references/style-dna-library.md` |
-| Style → location | `references/location-router.md` |
-| Style prompt compression | `references/style-injection-budget.md` |
-| Legacy special Scene reference | `references/scene-router.md`, `references/scene-dna-library.md` |
-| 30s narrative / paid-social rhythm | `references/30s-narrative-engine.md`, `references/paid-social-rhythm-dna.md` |
-| Complex staging | `references/scene-staging-compiler.md` |
-| Product / prop / character state | `references/physical-logic-dna.md` |
-| Live-action physical realism | `references/physical-reality-lock.md` |
-| Performance / FACS | `references/performance-facs.md` |
-| Camera × Action | `references/camera-action-compiler.md` |
-| Prompt attention compression | `references/prompt-attention-compiler.md` |
-| Hook selection / judge | `references/hook-router.md` |
-| Final independent QC | `references/independent-judge.md` |
-
-## Learning Maintenance
-
-Do not add permanent rules after one generation failure.
-
-- Record one-off failures as observations first.
-- Promote a rule only after repeated evidence, clear causality, or explicit user approval.
-- Put new stable rules in the correct specialist reference instead of expanding the main `SKILL.md` into an encyclopedia.
-- Keep the existing validation / regression system for behavioral checks.
-- Do not present text-only reasoning as confirmed model behavior without generation evidence.
-- A new front-end Style must show a materially distinct visual language; changing only location, props, or synonymous adjectives is not enough.
+Do not keep adding one-off fixes to this main file. The main file defines order and authority; specialized creative behavior lives in its own module.
