@@ -13,6 +13,10 @@ Turn verified product truth into a product-centered story ad. The product must c
 
 The user may choose a Style at entry. If no Style is chosen, auto-select one Style after Product Truth is known. Once resolved, Style may shape the expression of the Hook, narrative rhythm, performance, camera, light, sound, and CTA presentation. It may never rewrite product facts, claims, price, function, Best Proof, or the true conversion action.
 
+## iMA Runtime Entry
+
+When this Skill is packaged or executed for iMA, follow `references/ima-runtime-orchestration.md` for the user-facing interaction order, native choice cards, outline approval loop, hidden prompt compile, and video-generation confirmation. That orchestration file controls **interaction timing only**; the creative and commercial decisions still come from the business modules below.
+
 ## 1. Product Truth Lock
 
 Read `references/product-truth-lock.md` first.
@@ -188,6 +192,7 @@ Each creative family has a stable address:
 - Individual Hooks: `references/hooks/Hxx-*.md`
 - CTA routing: `references/cta/cta-router.md`
 - Individual CTAs: `references/cta/Cxx-*.md`
+- iMA user-flow orchestration: `references/ima-runtime-orchestration.md`
 
 To add a new Style, Hook, or CTA: create one new DNA file and register it in its index/router. To tune one item, edit only that item's DNA unless the routing logic itself is wrong.
 
