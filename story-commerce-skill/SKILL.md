@@ -150,14 +150,22 @@ For the current ad, derive only the minimum Product Reality Profile actually nee
 
 and:
 
-`Reality Chain + Camera Reality + Product Truth + State Inheritance + Perceptible Proof`
+`Reality Chain + Camera Reality + Product Truth + Entity/Quantity/State Conservation + Perceptible Proof`
+
+For two or more recurring characters, also establish a compact `Character Differentiation Lock`: each role gets only enough distinct visual anchors to remain clearly different on screen and keep dialogue bound to the correct person. Do not spend prompt budget on detailed facial biographies.
+
+For products/props with a fixed small count, paired items, or sets, lock `TOTAL INVENTORY = N`; each unit can occupy only one location/owner/state at a time.
+
+For explicit time jumps or scene changes, define a `NEW SCENE ENTRY STATE` for critical product/prop states instead of blindly inheriting the previous scene or letting the model guess.
 
 The Gate must answer:
 - What does the audience need to know?
 - What would the person actually do in the real world?
 - What can the camera truly see from this position?
+- Are recurring characters clearly different people with stable roles?
 - How is this product actually operated or worn according to confirmed facts?
-- What state must carry into the next shot?
+- Is the total quantity of each critical product/prop conserved?
+- What state must carry into the next shot, or what new entry state is established after a time/scene jump?
 - How does the audience actually see or hear the selling point rather than merely being told it?
 
 If one answer fails, preserve Product Truth, Core Decision and Best Proof, then repair the execution method before Prompt Compile.
@@ -171,9 +179,15 @@ Before final Seedance prompt, read:
 - `references/prompt-attention-compiler.md`
 - `references/style-injection-budget.md`
 
-Only compile Beats that have passed `REALITY LOGIC GATE`. Prompt Compile may compress a valid execution, but it must not invent missing product operation, repair unresolved camera visibility, or silently reset product/person state.
+Only compile Beats that have passed `REALITY LOGIC GATE`. Prompt Compile may compress a valid execution, but it must not invent missing product operation, repair unresolved camera visibility, duplicate characters/products, or silently reset product/person state.
 
 Keep internal reasoning rich and final prompt lean.
+
+When 2+ recurring characters appear, include one compact `CHARACTER LOCK` near the top of the final prompt. Give each character no more than a few high-value distinguishing anchors (for example hair silhouette/color + clothing silhouette/color + stable speaker role). The goal is only to prevent clone/twin collapse and self-dialogue; character description must not become the visual focus.
+
+When a fixed-count product/set is at risk of duplication, include one compact `INVENTORY LOCK`, e.g. `TOTAL INVENTORY = N`, and keep each unit's owner/location/state unambiguous across the relevant Beats.
+
+When a time/scene jump changes a critical worn/held/open/closed state, state the new scene entry condition explicitly in that Beat instead of relying on hidden inference.
 
 Prompt priority:
 
