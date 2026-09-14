@@ -9,7 +9,7 @@ Turn verified product truth into a product-centered story ad. The product must c
 
 ## Core Chain
 
-`Product Truth Lock → Style Resolve → Commercial Core → Hook DNA → Story / Proof / Reversal → CTA DNA → Location / Staging / Performance / Camera / Light / Audio → Prompt Compile → Independent Judge`
+`Product Truth Lock → Style Resolve → Commercial Core → Hook DNA → Story / Proof / Reversal → CTA DNA → Location / Staging / Performance / Camera / Light / Audio → Reality Logic Gate → Prompt Compile → Independent Judge`
 
 The user may choose a Style at entry. If no Style is chosen, auto-select one Style after Product Truth is known. Once resolved, Style may shape the expression of the Hook, narrative rhythm, performance, camera, light, sound, and CTA presentation. It may never rewrite product facts, claims, price, function, Best Proof, or the true conversion action.
 
@@ -138,12 +138,40 @@ Light must have a believable world source and preserve product/face readability.
 
 Voiceover is conditional. Do not force narration when dialogue, performance, product sound, or silence works better for the resolved Style.
 
-## 8. Prompt Compile
+## 8. Reality Logic Gate
+
+Read `references/reality-logic-gate.md` after Story / Proof and visual execution decisions are stable, but before final Prompt Compile.
+
+This Gate is cross-category. It does not contain fixed earbud, apparel, beauty, food, appliance, or software operation templates.
+
+For the current ad, derive only the minimum Product Reality Profile actually needed from Product Truth, then validate each key Beat through:
+
+`Information Intent ≠ Human Action ≠ Camera Expression`
+
+and:
+
+`Reality Chain + Camera Reality + Product Truth + State Inheritance + Perceptible Proof`
+
+The Gate must answer:
+- What does the audience need to know?
+- What would the person actually do in the real world?
+- What can the camera truly see from this position?
+- How is this product actually operated or worn according to confirmed facts?
+- What state must carry into the next shot?
+- How does the audience actually see or hear the selling point rather than merely being told it?
+
+If one answer fails, preserve Product Truth, Core Decision and Best Proof, then repair the execution method before Prompt Compile.
+
+Output internally as a `Reality-Resolved Beat`; do not expose the reasoning chain unless the user asks for analysis.
+
+## 9. Prompt Compile
 
 Before final Seedance prompt, read:
 
 - `references/prompt-attention-compiler.md`
 - `references/style-injection-budget.md`
+
+Only compile Beats that have passed `REALITY LOGIC GATE`. Prompt Compile may compress a valid execution, but it must not invent missing product operation, repair unresolved camera visibility, or silently reset product/person state.
 
 Keep internal reasoning rich and final prompt lean.
 
@@ -160,7 +188,7 @@ Prompt priority:
 
 Do not send management language such as “strong hook”, “premium”, “high energy”, “more emotional”, or “cinematic” without first converting it into visible, executable direction.
 
-## 9. Independent Judge
+## 10. Independent Judge
 
 Read `references/independent-judge.md`.
 
@@ -173,6 +201,7 @@ Judge:
 - Product Centrality
 - Proof validity
 - Story causality
+- Reality Logic
 - CTA truth and fit
 - Physical state
 - Performance
@@ -186,6 +215,7 @@ When one module fails, repair the earliest or highest-impact failing module. Do 
 Each creative family has a stable address:
 
 - Product truth: `references/product-truth-lock.md`
+- Reality logic: `references/reality-logic-gate.md`
 - Style routing: `references/style-router.md`
 - Individual Styles: `references/styles/STxx-*.md`
 - Hook routing: `references/hook-router.md`
