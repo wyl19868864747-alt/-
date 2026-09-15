@@ -1,6 +1,6 @@
 ---
 name: story-commerce-skill
-description: Product-centered short-form story advertising director skill. It locks product truth, resolves one visual Style early, then builds one commercial decision, one primary Hook, product-led Story/Proof, a truthful CTA, and a concise Seedance-ready execution. Each Style, Hook, and CTA family is modular so individual creative DNA can be added, removed, or tuned without rewriting the whole skill.
+description: Product-centered short-form story advertising director skill. It locks product truth, resolves one visual Style early, then builds one commercial decision, one primary Hook, product-led Story/Proof, a truthful CTA, a rhythm-function map, and a concise Seedance-ready execution. Each Style, Hook, and CTA family is modular so individual creative DNA can be added, removed, or tuned without rewriting the whole skill.
 ---
 
 # 剧情产品广告 | Story Product Ad
@@ -9,7 +9,7 @@ Turn verified product truth into a product-centered story ad. The product must c
 
 ## Core Chain
 
-`Product Truth Lock → Style Resolve → Commercial Core → Hook DNA → Story / Proof / Reversal → CTA DNA → Location / Staging / Performance / Camera / Light / Audio → Reality Logic Gate → Prompt Compile → Independent Judge`
+`Product Truth Lock → Style Resolve → Commercial Core → Hook DNA → Story / Proof / Reversal → CTA DNA → Rhythm Function Map → Location / Staging / Performance / Camera / Light / Audio → Reality Logic Gate → Prompt Compile → Independent Judge`
 
 The user may choose a Style at entry. If no Style is chosen, auto-select one Style after Product Truth is known. Once resolved, Style may shape the expression of the Hook, narrative rhythm, performance, camera, light, sound, and CTA presentation. It may never rewrite product facts, claims, price, function, Best Proof, or the true conversion action.
 
@@ -110,10 +110,29 @@ Style may control CTA tone, density, performance, graphic treatment, or how quie
 
 Use one primary CTA. A supporting line is allowed only when it reduces genuine friction.
 
-## 7. Location and Visual Execution
+## 7. Rhythm and Visual Execution
+
+### Rhythm Function Map
+Read `references/paid-social-rhythm-dna.md` for short-form story ads before finalizing the timeline.
+
+Do not design rhythm as “all fast” or “all premium/slow”. Silently assign the key Beats a dominant rhythm function as needed:
+
+`ESTABLISH → ACCELERATE → ANTICIPATE/DELAY → REVEAL → SPECTACLE HOLD → PROOF/VERIFY → RELEASE → CLOSE`
+
+This is not a fixed order or mandatory checklist. Its purpose is to prevent flat tempo and meaningless cutting.
+
+Core rules:
+- rhythm comes from information/action state changes, not shot count alone;
+- fast sections must keep adding new information, action completion, Reaction or Proof;
+- a Delay/quiet beat must prepare a reveal, decision, product read or next escalation;
+- major visual results, product Reveals, surreal spectacles, important Proof and decisive Reactions must receive enough screen time to be understood;
+- once a major result becomes fully readable, camera motion and competing action should reduce before the next Beat;
+- quiet/premium performance may stay restrained, but `QUIET PERFORMANCE ≠ FLAT RHYTHM`.
+
+Internal labels such as `DELAY / REVEAL / HOLD` never go directly into the final generation prompt. They must be translated into visible timing, action, pause, camera speed and sound changes.
 
 ### Location
-Read `references/location-router.md` after Style, Hook, Story, Proof, and CTA intent are known.
+Read `references/location-router.md` after Style, Hook, Story, Proof, CTA intent and rhythm needs are known.
 
 Priority:
 `Real product use / understanding → Best Proof clarity → Story logic → Style translation → Stable staging`
@@ -125,6 +144,8 @@ For entrances, exits, cross-space actions, multi-person blocking, or complex obj
 
 For packaging, object, prop, or body state changes, read `references/physical-logic-dna.md` and `references/physical-reality-lock.md`.
 
+The physical-reality module must treat realism as a combined result of camera perspective, information-led depth of field, believable light/material response, action weight/secondary motion, spatial contact, and lived-in environmental evidence. Do not mechanically add all of these to the final prompt; compile only the highest-leverage failure risk.
+
 ### Performance
 For key emotion, reaction, conflict, reveal, or persuasion beats, read `references/performance-facs.md`.
 
@@ -134,7 +155,11 @@ Translate abstract direction into:
 ### Camera / Light / Audio
 Read `references/camera-action-compiler.md` for key action and emotion beats. Camera follows blocking and readable product operation before spectacle.
 
-Light must have a believable world source and preserve product/face readability. Equipment names are used only when they create a visible result.
+Depth of field serves information hierarchy rather than defaulting to shallow focus: spatial/multi-person beats preserve more readable depth; expression/product/material close-ups may narrow focus when useful.
+
+Light must have a believable world source and preserve product/face readability. Equipment names are used only when they create a visible result. Material realism should be expressed, when necessary, as a visible surface-light interaction rather than as generic words like “realistic metal” or “premium glass”.
+
+For fast body/object movement, add secondary motion only when it proves weight or inertia: the primary action happens first, then hair, fabric, straps or soft components follow and settle naturally.
 
 Voiceover is conditional. Do not force narration when dialogue, performance, product sound, or silence works better for the resolved Style.
 
@@ -167,6 +192,7 @@ The Gate must answer:
 - Is the total quantity of each critical product/prop conserved?
 - What state must carry into the next shot, or what new entry state is established after a time/scene jump?
 - How does the audience actually see or hear the selling point rather than merely being told it?
+- Does each major Reveal/Proof have enough readable time before the next competing action begins?
 
 If one answer fails, preserve Product Truth, Core Decision and Best Proof, then repair the execution method before Prompt Compile.
 
@@ -179,7 +205,7 @@ Before final Seedance prompt, read:
 - `references/prompt-attention-compiler.md`
 - `references/style-injection-budget.md`
 
-Only compile Beats that have passed `REALITY LOGIC GATE`. Prompt Compile may compress a valid execution, but it must not invent missing product operation, repair unresolved camera visibility, duplicate characters/products, or silently reset product/person state.
+Only compile Beats that have passed `REALITY LOGIC GATE`. Prompt Compile may compress a valid execution, but it must not invent missing product operation, repair unresolved camera visibility, duplicate characters/products, silently reset product/person state, or replace a designed rhythm function with vague words like “strong rhythm” or “cinematic impact”.
 
 Keep internal reasoning rich and final prompt lean.
 
@@ -200,7 +226,7 @@ Prompt priority:
 7. compressed Style signal
 8. only the highest-risk negative constraints
 
-Do not send management language such as “strong hook”, “premium”, “high energy”, “more emotional”, or “cinematic” without first converting it into visible, executable direction.
+Do not send management language such as “strong hook”, “strong rhythm”, “premium”, “high energy”, “more emotional”, “breathing rhythm”, “visual impact”, or “cinematic” without first converting it into visible, executable direction.
 
 ## 10. Independent Judge
 
@@ -215,6 +241,7 @@ Judge:
 - Product Centrality
 - Proof validity
 - Story causality
+- Rhythm Function / readable Reveal-Hold timing
 - Reality Logic
 - CTA truth and fit
 - Physical state
@@ -230,6 +257,8 @@ Each creative family has a stable address:
 
 - Product truth: `references/product-truth-lock.md`
 - Reality logic: `references/reality-logic-gate.md`
+- Rhythm / paid-social timing: `references/paid-social-rhythm-dna.md`
+- Physical realism: `references/physical-reality-lock.md`
 - Style routing: `references/style-router.md`
 - Individual Styles: `references/styles/STxx-*.md`
 - Hook routing: `references/hook-router.md`
