@@ -54,7 +54,7 @@ description: 把产品Brief、脚本、分镜、故事板、参考视频或成�
 | 抽象词、动作不落地、状态升级 | `references/state-change-compiler.md` |
 | 商业任务、产品事实/比例、购买犹豫 | `references/commercial-contract.md`、`references/product-preflight-and-category-routing.md`、`references/decision-driven-ad-creative.md` |
 | 首屏停留、强Hook | `references/golden-3s-hook-engine.md` |
-| 多镜、连续节拍、参考反推 | `references/director-information-control.md` |
+| 多镜、连续节拍、参考反推、节奏调性/呼吸 | `references/director-information-control.md`、`references/rhythm-function-control.md` |
 | 剧情对话、关系戏、人物目的/认知变化 | `references/drama-performance-control.md` |
 | 已有剧情需细写微表情/FACS | `references/facial-expression-action-library.md` |
 | 多人换位、正反打、交接、复杂空间 | `references/spatial-optics-physics-control.md`；跨镜再叠加 `references/continuity.md` |
@@ -63,7 +63,7 @@ description: 把产品Brief、脚本、分镜、故事板、参考视频或成�
 | 摄影媒介/设备身份 | `references/camera-identity-selection-engine.md` |
 | 具体摄影光学方案 | `references/cinematography-toolkit.md` |
 | IMAX/UE5/Octane/VFX等质感栈 | `references/visual-quality-stack.md`；只选有职责的一项或少量组合 |
-| 实拍可信度、塑料感、失重、环境空洞 | `references/physical-reality-lock.md` |
+| 实拍可信度、塑料感、失重、景深失控、环境空洞 | `references/physical-reality-lock.md` |
 | 模糊、过锐、脏灰、压缩/输出问题 | `references/visual-quality-diagnostics.md` |
 | 写实+异常、产品世界化 | `references/grounded-surreal-product-spectacle.md` |
 | A→B连续变形 | `references/visual-transformation-spectacle.md` |
@@ -97,6 +97,18 @@ description: 把产品Brief、脚本、分镜、故事板、参考视频或成�
 
 关键交互保留必要因果：`接近 → 接触 → 响应/变化 → 完成态`。不为“严谨”自动描述每个手指、每厘米路径或全部中间态。
 
+### Rhythm Function Check｜多镜任务静默执行
+
+两个及以上镜头时，不只排“镜头长短”，还要判断每个关键Beat承担什么节奏功能。按需从以下功能中选择：
+
+`ESTABLISH → ACCELERATE → ANTICIPATE/DELAY → REVEAL → SPECTACLE HOLD → PROOF/VERIFY → RELEASE → CLOSE`
+
+它不是固定顺序。核心是避免全片同速：快段靠新信息和动作完成态加速；答案前可以减速；重大视觉结果出现后主动减少竞争动作，让画面真正落地。
+
+视觉奇观、完整产品Reveal、关键变形完成态、重要Reaction或Proof到达最可读状态时，先让主体完整进入构图，再让摄影机减速/稳定，等观众完成识别后再继续。不要把“节奏快”机械翻译成疯狂切镜，也不要把“高级克制”机械翻译成长镜头。
+
+内部可以使用 `DELAY / REVEAL / HOLD` 等标签，最终Prompt必须翻译成可见动作、停顿、镜头速度和信息变化，不能直接把抽象节奏词扔给生成模型。
+
 ## 4. Signal Budget｜信息权重
 
 最终Prompt不是知识展示。默认把文字预算优先给：
@@ -117,12 +129,14 @@ description: 把产品Brief、脚本、分镜、故事板、参考视频或成�
 常见补丁：
 - 漂浮：`鞋底紧贴地面，保留轻微接触阴影。`
 - 产品失真：`产品尺寸和包装结构在推进中保持稳定。`
+- 高速动作僵硬：`身体先完成转向，头发和衣摆稍后跟随并自然停住。`
 - 玻璃塑料感：`玻璃边缘保持透明折射，高光不过曝成死白。`
 - 横移平面感：`近景移动快于远景，形成自然空间视差。`
-- 焦点混乱：`眼睛清晰，背景自然退焦。`
+- 景深失控：`人物与关键环境关系同时可读，只有远背景自然退焦。`
+- 环境空洞：`保留少量真实使用痕迹与自然摆放，不做空舞台式背景。`
 - 环境脱节：`火光只轻微影响人物朝向火源的一侧。`
 
-这些属于**按需补丁，不是固定字段，不得机械全加。**
+材质、景深与物理真实性优先写成**可见结果**：景深服务当前信息层级；材质需要时写“表面 + 受光反馈”；高速动作需要时补 `Primary Motion → Secondary Motion → Settle`。这些仍属于按需补丁，不得机械全加。
 
 ## 5. Global Baseline｜Global Once
 
@@ -137,6 +151,8 @@ description: 把产品Brief、脚本、分镜、故事板、参考视频或成�
 设备名必须对应可见结果；不把 IMAX、ARRI、UE5、Octane、VFX、8K、HDR 堆成“高级套餐”。
 
 如果光线只是普通场景条件，不必独立写【光影】；人物、产品、服装、空间、主光没有变化时，分镜不得重复介绍。
+
+真实生活、剧情或UGC空间中，允许少量合理使用痕迹、自然摆放和非绝对对称；它们只负责证明空间被真实使用过，不得抢主体。高端不等于无生活痕迹，棚拍/极简/无菌环境则不机械添加杂物。
 
 ## 6. Prompt Compile｜Shot Specific
 
@@ -161,9 +177,11 @@ description: 把产品Brief、脚本、分镜、故事板、参考视频或成�
 - 每镜先问“这镜唯一最重要的事是什么？”只围绕它写。
 - 镜头信息默认只写**一个必要响应**：推近、后拉、跟随、固定等待、甩镜、环绕等。没有叙事价值就不写。
 - 构图、焦段、景深、灯位只有在它们决定当前结果时才出现。
+- 景深服务信息层级，不默认把“电影感”编译成全片浅景深。
 - 光影属于加分控制，不得占用比主体、事件、动作更高的信息权重，除非本轮任务本身就是灯光/画质。
 - 不重复“真实、电影级、专业、高清、高端、自然光学”等同义词。
 - 正向先写主体和动作结果；反向限制只处理当前高风险误读。
+- 内部节奏标签必须转成动作、停顿、镜头速度与信息变化，不输出“强节奏、节奏呼吸、视觉冲击”等管理词。
 - 模型收到画面和声音，不收到“仔细分析、保证一次成功、增强高级感”等管理话。
 
 ## 7. Prompt Pollution Audit
@@ -175,6 +193,7 @@ description: 把产品Brief、脚本、分镜、故事板、参考视频或成�
 4. 是否为了显得专业加入设备/摄影术语？
 5. 是否把模型本可自由完成的镜头实现锁得过细？
 6. 光影/真实感文字是否已经开始抢主体和事件的信息权重？
+7. 是否把“节奏快/有呼吸/高级/震撼”等内部判断词直接写给模型，而没有转成可见变化？
 
 重复、解释性、低价值信息删除。**视频可以详细，但详细应该花在“发生什么、怎么变化、如何承接”，不是花在术语数量。**
 
@@ -182,7 +201,7 @@ description: 把产品Brief、脚本、分镜、故事板、参考视频或成�
 
 交付前读取 `references/independent-judge.md`。
 
-Judge只检查失败点：事实、核心主体、核心事件、可见状态变化、空间/接触/连续性、必要的光影可读、镜头负载、Prompt冲突与冗余。FAIL时只修对应模块，不因局部问题整条推倒重来。
+Judge只检查失败点：事实、核心主体、核心事件、可见状态变化、空间/接触/连续性、节奏功能是否有层次、重大Reveal/奇观是否获得足够可读停留、必要的光影可读、镜头负载、Prompt冲突与冗余。FAIL时只修对应模块，不因局部问题整条推倒重来。
 
 返修成片时优先定位最早或影响最大的可见问题，修最小相关片段，再检查前后承接。Prompt文字PASS不等于成片PASS。
 
