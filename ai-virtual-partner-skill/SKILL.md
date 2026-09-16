@@ -1,5 +1,5 @@
 ---
-name: ai-virtual-partartner-skill
+name: ai-virtual-partner-skill
 description: AI virtual partner image and video generation skill. Current verified scope is user portrait identity locking: extract stable identity anchors from uploaded adult portraits, build a canonical identity representation, optionally build a four-view reference sheet, preserve identity across downstream image generation, reject drift, and only promote identity-stable outputs as references. Partner matching, partner archetypes, intimacy pose/scene routing, realism, and image-to-video continuity are added only after separate research and validation.
 ---
 
