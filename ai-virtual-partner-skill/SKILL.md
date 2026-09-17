@@ -1,317 +1,382 @@
 ---
 name: ai-virtual-partner-skill
-description: AI virtual partner image and video generation skill. Current verified scope covers user portrait identity locking, partner archetype resolution, matching modes, partner identity locking, sweet-couple moment routing, validated relation actions / scenes, camera realism controls, model-specific image routing, and a validated Seedance 2.5 short couple-video start strategy.
+description: AI virtual partner generation workflow for adult users. The production flow locks the uploaded user identity, resolves a suitable multi-orientation partner from curated partner libraries, selects relationship actions/scenes/colors from validated asset libraries, generates a sweet intimate couple image, then converts the user-approved image into a 10-second Seedance 2.5 flirtatious interaction video while preserving both identities.
 ---
 
 # AI 虚拟伴侣｜AI Virtual Partner
 
-Create a believable adult virtual-partner experience from the user's uploaded portrait. The result should feel like a captured sweet relationship moment with a highly attractive, plausible partner—not a formal couple portrait.
+## Product Goal
 
-## Current Verified Flow
+Turn one adult user's uploaded real photo into a believable fantasy relationship experience:
+
+> preserve the real user → find a suitable attractive virtual partner → create a captured sweet / intimate relationship moment → after user approval, animate that approved image into a short flirtatious couple video.
+
+The product is **not** a benchmark demo and not a formal couple-portrait generator.
+
+The desired first impression is:
+
+> “This looks like the best partner I somehow have not met yet.”
+
+---
+
+# 1. Production Runtime Flow｜正式编排
 
 ```text
 USER UPLOAD
 ↓
-PORTRAIT IDENTITY LOCK
+① USER IDENTITY LOCK
 ↓
-USER_IDENTITY_CARD / USER REFERENCE SHEET
+USER_IDENTITY_CARD / USER_REFERENCE_PACKAGE
 ↓
-PARTNER ARCHETYPE RESOLVE
+USER PREFERENCE ROUTE (optional / explicit user choice wins)
 ↓
-MATCHING ENGINE
+② PARTNER LIBRARY LOOKUP + MATCHING
 ↓
-APPROVED PARTNER CANDIDATE
+APPROVED PARTNER IDENTITY / PARTNER_REFERENCE_PACKAGE
 ↓
-PARTNER IDENTITY LOCK / PARTNER REFERENCE PACKAGE
+ACTION + MOMENT + SCENE + COLOR LIBRARY LOOKUP
 ↓
-COUPLE MOMENT ROUTER
+③ COUPLE IMAGE GENERATION
 ↓
-RELATION ACTION / SCENE ROUTER
+USER REVIEW
+├─ NOT SATISFIED → reroute partner / action / scene / relationship temperature with minimum necessary change
+└─ APPROVED → freeze APPROVED_COUPLE_IMAGE
 ↓
-MODEL ROUTER
+④ VIDEO GENERATION
+APPROVED_COUPLE_IMAGE = FIRST FRAME
++ USER_REFERENCE_PACKAGE
++ PARTNER_REFERENCE_PACKAGE
 ↓
-MODEL-SPECIFIC IMAGE PROMPT
+SEEDANCE 2.5
 ↓
-APPROVED COUPLE FRAME
+10-SECOND FLIRTATIOUS / INTIMATE INTERACTION VIDEO
 ↓
-SEEDANCE COUPLE-VIDEO START ROUTER
-↓
-IDENTITY + CHEMISTRY + REALISM + MOTION QC
+IDENTITY + BODY CONTACT + REALISM + MOTION QC
 ```
 
-## Required Knowledge Modules
+The user-approved couple image is the visual truth for the video. Do not rebuild the couple from text after approval.
 
-Read only the modules needed by the current stage:
-
-- `references/portrait-identity-lock.md` — lock uploaded user identity, four-view logic, drift prevention.
-- `references/partner-archetype-library.md` — adult partner appearance archetypes.
-- `references/matching-engine.md` — Harmony / Preference / Complementary Contrast routing.
-- `references/partner-identity-lock.md` — freeze an approved partner into a reusable identity / reference package.
-- `references/couple-moment-dna.md` — sweet, intimate, non-formal couple-image DNA.
-- `references/moment-type-library.md` — validated sweet-moment types and their use cases.
-- `references/relation-action-library.md` — physical couple-action grammar and validated contact patterns.
-- `references/scene-tension-library.md` — validated window / sofa / bedroom scene behavior and tension routing.
-- `references/model-routing-rules.md` — choose image 2.5 vs Banana2 Pro by product target.
-- `references/model-adaptation.md` — compile different prompts for image 2.5 / Banana2 Pro / Seedance 2.5.
-- `references/camera-realism-layer.md` — real skin / exposure / camera texture controls.
-- `references/seedance-couple-video-start.md` — validated Seedance 2.5 first-frame and 3–5s approach logic.
-
-Do not copy entire knowledge files into the final model prompt. Resolve the structured decision first, then compile only the minimum effective instructions for the chosen model.
+All people generated or transformed by this Skill are adults.
 
 ---
 
-## 1. User Identity Gate
+# 2. Stage ① — User Identity Lock
 
-Before any partner generation:
+Read:
 
-1. inspect user portrait evidence;
-2. build `USER_IDENTITY_CARD`;
-3. separate identity traits from photo conditions;
-4. build / infer the identity reference sheet when needed;
-5. lock hard identity anchors;
-6. reject identity drift.
+- `references/portrait-identity-lock.md`
 
-Core rule:
+Goal:
 
-`IDENTITY FIRST`
+`LOCK WHO THE USER IS BEFORE ANY FANTASY GENERATION`
 
-If beautification conflicts with the user's identity, preserve identity.
+Build:
+
+- `USER_IDENTITY_CARD`
+- `USER_REFERENCE_PACKAGE` when identity risk / downstream video complexity justifies it
+
+Preserve hard identity anchors. Beautification, partner matching, pose, scene, color and video motion may not overwrite the user's face identity.
+
+The four-view logic is an identity-support asset, not a mandatory visible product step. It may be inferred / generated internally only when useful.
 
 ---
 
-## 2. Partner Resolve
+# 3. Stage ② — Partner Resolve from Libraries
 
-Read `partner-archetype-library.md`.
+Read only what is needed:
+
+- `references/partner-archetype-library.md`
+- `references/matching-engine.md`
+- `references/partner-identity-lock.md`
+
+Partner resolution must support multiple adult orientation routes, including at minimum:
+
+- Woman × Man
+- Man × Woman
+- Woman × Woman
+- Man × Man
+
+User explicit choices override system priors, including:
+
+- partner gender
+- heritage appearance
+- visual age range
+- body-build preference
+- masculinity / femininity direction
+- attraction archetype
+- relationship temperature
 
 Keep:
 
-`HERITAGE_APPEARANCE` independent from `ARCHETYPE_ID`.
+`HERITAGE_APPEARANCE ≠ ARCHETYPE_ID`
 
-Do not use heritage ranking, skin-tone ranking, golden-ratio formulas, or one universal beauty face.
+Do not rank ethnic / racial groups by attractiveness. Do not output fake compatibility percentages.
 
-Create a distinct `PARTNER_APPEARANCE_CARD` before generating the partner.
+The matching engine exists to choose plausible, attractive candidates and avoid obvious visual mismatch—not to claim scientific destiny.
 
----
-
-## 3. Matching Engine
-
-Read `matching-engine.md`.
-
-Supported validated modes:
-
-- `HARMONY_MATCH` — strongest natural couple-likeness.
-- `PREFERENCE_MATCH` — explicit user attraction preference first.
-- `COMPLEMENTARY_CONTRAST` — controlled visual / aura contrast with social-role risk checks.
-
-User explicit preference overrides system priors.
-
-Do not output fake compatibility percentages.
-
-Matching logic is internal. Use a `VISIBLE SUBJECT FILTER` before prompt compilation so solo partner prompts do not accidentally render the user.
+After a partner is selected, freeze that partner into a reusable identity package when needed for complex image / video generation.
 
 ---
 
-## 4. Partner Identity Lock
+# 4. Asset Library Lookup｜动作 / 场景 / 色彩不是临场乱写
 
-After the user approves a partner candidate, read `partner-identity-lock.md`.
+The production image should be assembled from validated asset libraries.
 
-Create:
+Read as needed:
 
-`PARTNER_IDENTITY_CARD`
+- `references/couple-moment-dna.md`
+- `references/moment-type-library.md`
+- `references/relation-action-library.md`
+- `references/scene-tension-library.md`
+- future `references/color-scene-library.md`
+
+Resolve the relationship image from:
+
+```text
+COUPLE MOMENT
 +
-`PARTNER_REFERENCE_PACKAGE`
+RELATION ACTION
++
+SCENE
++
+COLOR / WARDROBE PALETTE
++
+EXPRESSION / GAZE
++
+RELATIONSHIP TEMPERATURE
+```
 
-The current validated P1 workflow prefers image 2.5 for canonical partner reference-sheet construction because it preserved cross-angle identity better than Banana2 Pro in the tested front / 45° / profile / close-up set.
+Do not default every couple to one pose, one neutral room or one black / white / grey wardrobe.
 
-Banana2 Pro remains a realism-support route, not the current default partner canonicalizer.
+The current visual direction favors captured relationship moments:
 
-Do not mix structurally conflicting identity views from different models into one partner reference package.
+- direct / meaningful eye contact
+- natural body contact
+- weight transfer / leaning
+- clear romantic partner geometry
+- unresolved near-contact when tension is desired
+- non-formal, non-passport, non-wedding-photo posing
 
-Partner reference authority:
+Current validated action families include:
 
-`ORIGINAL_APPROVED_PARTNER > PARTNER_IDENTITY_CARD > APPROVED_REFERENCE_PACKAGE > APPROVED_COUPLE_FRAME > TEXT`
+- `FACE-TO-FACE WAIST HOLD + BREATH-CLOSE`
+- `PROTECTIVE SIDE EMBRACE`
+- `BACK HUG`
+- `SHOULDER / SIDE LEAN`
 
----
-
-## 5. Couple Moment + Relation Action Router
-
-Read `couple-moment-dna.md`, `moment-type-library.md`, and `relation-action-library.md`.
-
-Default product goal:
-
-> The first impression should be sweet, intimate and slightly heart-fluttering—“this is what my unknown best partner looks like.”
-
-Validated moment / action findings:
-
-- `SOFT_ALMOST_KISS` — strongest static Hero moment.
-- `CLOSE_EYE_CONTACT` — default realistic sweet moment.
-- `SHOULDER_LEAN` — safe long-term sweetness.
-- `FACE-TO-FACE WAIST HOLD + BREATH-CLOSE` — strongest current physical chemistry route.
-- `PROTECTIVE SIDE EMBRACE` — safe protective sweetness.
-- `BACK HUG` — clear affection / safety but currently more conservative.
-
-Core rule:
-
-`MORE TENSION ≠ MORE CONTACT`
-
-Prefer controlled approach, gaze and unresolved distance over immediately completing contact.
-
-Avoid stiff, front-facing formal couple portraits.
+These are library assets, not the complete future pose inventory.
 
 ---
 
-## 6. Scene Router
+# 5. Stage ③ — Couple Image Generation
 
-Read `scene-tension-library.md`.
+## Current Delivery Image Route
 
-Current validated scene behavior:
-
-- `WINDOW-SIDE` — strongest current romantic-tension environment and best current Seedance start base.
-- `SOFA CORNER` — strongest realistic everyday-couple environment.
-- `BEDROOM EDGE` — private-space signal only; does not automatically create stronger chemistry.
-
-Do not use a private location as a substitute for relationship direction.
-
-Color-rich scene families remain under test; do not lock one neutral palette as the product default.
-
----
-
-## 7. Model Router
-
-Read `model-routing-rules.md` and `model-adaptation.md`.
-
-### Default Hero / Canonical Asset Route
-
-`image 2.5`
-
-Use for:
-
-- highest partner attractiveness
-- hero / cover result
-- strongest best-partner fantasy
-- Soft Almost-Kiss / heart-flutter moments
-- current preferred partner canonical reference-sheet construction
-
-Apply validated compensation for noise / grey / dark rendering and anti-redesign controls during identity completion.
-
-### Real / Candid Image Route
+Default current real-photo couple generation route:
 
 `Banana2 Pro`
 
-Use for:
+Use it for the user-facing couple image when the target is believable candid photography, real skin / material feel and captured intimacy.
 
-- stronger real-photo feel
-- candid couple photography
-- low generation noise
-- natural heritage appearance
-- photographic realism support
-- current real-couple first-frame exploration
+Read:
 
-Current Banana prompt compensation may include real pores / microtexture, `not overexposed`, and avoidance of a white hazy veil when observed. Do not over-stack tonal-control phrases if they flatten the image.
+- `references/model-routing-rules.md`
+- `references/model-adaptation.md`
+- `references/camera-realism-layer.md`
 
-Never mechanically reuse one prompt across models.
+Current Banana2 Pro compensation may include:
 
----
+- high-attractiveness adult couple
+- visible real skin pores / fine skin texture
+- slight natural imperfections
+- realistic photography
+- non-posed relationship moment
+- image not overexposed
+- avoid milky / foggy white veil when observed
+- clear, transparent image rendering
 
-## 8. Camera Realism
+Do not over-stack tonal restrictions when they make the image flat.
 
-Read `camera-realism-layer.md`.
+## image 2.5 Role
 
-Distinguish:
+Use image 2.5 when its strengths are specifically needed, especially:
 
-`GENERATION NOISE` from `PHOTOGRAPHIC TEXTURE`.
+- attractive partner exploration
+- archetype differentiation
+- canonical partner identity-sheet construction
+- high-attraction fantasy / hero alternatives
 
-Realism should come from:
-
-- real skin microtexture
-- natural tonal irregularity
-- believable exposure
-- restrained optical softness
-- real materials / hair / fabric
-
-not from dirty noise or decorative grain.
-
----
-
-## 9. Seedance 2.5 Couple Video Start
-
-Read `seedance-couple-video-start.md` before compiling short relationship-motion prompts.
-
-Current validated start:
-
-`LEAN-IN MOMENT → SLOW APPROACH → MICRO-PAUSE → PRE-KISS PAUSE`
-
-Use `LEAN-IN MOMENT` as the default first frame because it preserves motion room and lowers face-collision risk.
-
-Use `PRE-KISS PAUSE` as a later tension beat / second keyframe rather than automatically starting at minimum face distance.
-
-A current 5-second A/B generation showed that stronger romantic tension came from unresolved distance, pause and dimensional side/back light—not from using more aggressive “more intimate” wording or completing contact faster.
-
-Do not complete a kiss unless that beat is explicitly requested.
+Current image 2.5 compensation remains model-specific and should not be copied mechanically into Banana2 Pro.
 
 ---
 
-## 10. Couple Identity Isolation
+# 6. User Review Gate
+
+After the couple image is generated, stop and let the user decide whether it is acceptable.
+
+If the user is not satisfied, do **not** restart the whole pipeline automatically.
+
+Apply the smallest relevant reroute, for example:
+
+- keep user identity, change partner
+- keep both identities, change action
+- keep identities + action, change scene / color
+- keep composition, adjust relationship temperature / gaze / expression
+
+Only rebuild an identity when identity itself failed.
+
+If the user approves the image, freeze it as:
+
+`APPROVED_COUPLE_IMAGE`
+
+That approved image becomes the first-frame anchor for video.
+
+---
+
+# 7. Stage ④ — 10-Second Seedance 2.5 Video
+
+Read:
+
+- `references/seedance-couple-video-start.md`
+- `references/model-adaptation.md`
+
+Default target duration:
+
+`10 seconds`
+
+Inputs:
+
+```text
+APPROVED_COUPLE_IMAGE = FIRST FRAME
++
+USER_REFERENCE_PACKAGE
++
+PARTNER_REFERENCE_PACKAGE
+```
+
+Video goal:
+
+- preserve both faces / hairlines / ages / body identities
+- continue the relationship already visible in the approved image
+- create a sweet, flirtatious, intimate interaction
+- increase chemistry through motion, gaze, pauses, proximity and natural touch
+- allow stronger sensuality only within the platform / model's permitted adult-content range
+- do not turn the video into a generic montage unrelated to the approved first frame
+
+Current validated motion-start principle:
+
+`LEAN-IN → SLOW APPROACH → MICRO-PAUSE → UNRESOLVED PRE-KISS DISTANCE`
+
+Current tests show that unresolved distance + pause can feel more intimate than rushing to completed contact.
+
+The full 10-second interaction grammar is the next asset module to build; do not pretend the current 3–5 second start test already validates every 10-second behavior.
+
+---
+
+# 8. Identity Isolation
 
 Always maintain:
 
-`PERSON_A = USER_REFERENCE_PACKAGE`
+`PERSON_A = USER`
 
-`PERSON_B = PARTNER_REFERENCE_PACKAGE`
+`PERSON_B = PARTNER`
 
-No face swap, feature fusion, hair / skin contamination, or identity convergence.
+No:
 
-For multiple partner candidates, enforce candidate identity separation; do not reuse the same idealized attractive face with only styling / body changes.
+- face swap
+- facial feature fusion
+- skin / hair contamination
+- candidate identity convergence
+- rebuilding identities from text after an approved image exists
 
 ---
 
-## 11. QC Gate
+# 9. QC Gate
 
-A final image / short video must pass the relevant checks:
+## Image QC
+
+Check:
 
 - user identity stability
 - partner identity stability
-- sweetness
-- couple-likeness
-- romantic chemistry
 - partner attractiveness
-- photorealism
-- fantasy / shareability value
-- natural contact geometry
-- motion continuity when video is used
-- no face fusion / hand-body penetration
+- couple-likeness
+- sweetness / romantic chemistry
+- natural body-contact geometry
+- photographic realism
+- shareability / fantasy value
+
+## Video QC
+
+Also check:
+
+- first-frame continuity
+- no identity drift during motion
+- no face fusion at close distance
+- no hand / limb penetration
+- continuous contact geometry
+- physically plausible motion
+- relationship action remains readable
+- ending does not accidentally switch people / scene / wardrobe
+
+---
+
+# 10. Asset Libraries vs Product Runtime
+
+**Benchmarking is not a product step.**
+
+All current research / generation tests exist only to improve the reusable asset libraries:
+
+- what attractive partner archetypes work
+- whether uploaded real users can be identity-locked
+- which partner matches plausibly with which user / preference
+- which actions create sweetness / tension
+- which scenes / colors increase visual appeal
+- which model best executes each asset type
+- which motion patterns Seedance can preserve reliably
+
+Read:
+
+- `references/asset-library-governance.md`
+
+Do not expose internal benchmark complexity to normal product users.
+
+---
+
+# 11. Knowledge Modules
+
+Current modular knowledge base:
+
+- `references/portrait-identity-lock.md`
+- `references/partner-archetype-library.md`
+- `references/matching-engine.md`
+- `references/partner-identity-lock.md`
+- `references/couple-moment-dna.md`
+- `references/moment-type-library.md`
+- `references/relation-action-library.md`
+- `references/scene-tension-library.md`
+- `references/model-routing-rules.md`
+- `references/model-adaptation.md`
+- `references/camera-realism-layer.md`
+- `references/seedance-couple-video-start.md`
+- `references/asset-library-governance.md`
+
+Future libraries should stay modular. `SKILL.md` remains the orchestration layer.
+
+---
+
+# 12. Expansion Rule
 
 Use:
 
-- `validation/portrait-identity-lock-cases.md`
-- `validation/archetype-benchmark.md`
-- `validation/matching-moment-model-benchmark.md`
-- `validation/partner-identity-lock-benchmark.md`
-- `validation/seedance-couple-start-benchmark.md`
+`Research / Reference → Distill into Asset → Small Representative Validation → Record Reusable Failure / Compensation → Add to Library`
 
-Only behavior supported by real generation evidence may be labeled runtime-validated.
+Do **not** repeatedly isolate-test tiny variables once practical evidence is sufficient.
 
----
+When safe and interpretable, combine multiple creative variables in one representative test, such as:
 
-## 12. Not Yet Verified / Future Modules
+`partner type + action + scene + color + expression + relationship state`
 
-Do not invent production rules for these until separately researched and tested:
+Only run additional A/B tests when the result would change a concrete routing or library decision.
 
-- large relation-action / pose library beyond the current validated core
-- color-rich scene / wardrobe palette library
-- stronger sensuality escalation system
-- longer multi-shot Seedance 2.5 continuity
-- automatic-cut relationship video grammar
-- long multi-session partner identity persistence across many generations
-
----
-
-## 13. Expansion Rule
-
-Every new module follows:
-
-`Research → Evidence / Reference Set → Distillation → Benchmark → Failure Analysis → Prompt Compensation → Validation → Add to Knowledge Module → Route from SKILL.md`
-
-Do not over-test one module once practical evidence is sufficient. Advance when the current asset passes operational QC.
-
-Keep `SKILL.md` as orchestration. Store heavy rules, libraries, model behavior and domain knowledge in modular `references/` files.
+The goal is a strong production library, not an endless benchmark set.
