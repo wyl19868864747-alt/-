@@ -1,6 +1,6 @@
 ---
 name: ai-virtual-partner-skill
-description: AI virtual partner generation workflow for adult users. The production flow locks the uploaded user identity, resolves a suitable multi-orientation partner from curated partner libraries, selects relationship actions/scenes/colors from validated asset libraries, generates a sweet intimate couple image, then converts the user-approved image into a 10-second MiniMax H3 flirtatious interaction video while preserving both identities.
+description: Standalone AI virtual partner production skill for adult users. It can independently lock an uploaded user identity, resolve a suitable multi-orientation partner from curated libraries, select relationship actions/scenes/colors, write model-specific image prompts, and after image approval write a 10-second MiniMax H3 flirtatious interaction video prompt while preserving both identities.
 ---
 
 # AI 虚拟伴侣｜AI Virtual Partner
@@ -16,6 +16,106 @@ The product is **not** a benchmark demo and not a formal couple-portrait generat
 The desired first impression is:
 
 > “This looks like the best partner I somehow have not met yet.”
+
+---
+
+# Standalone Operating Contract｜独立运行总则
+
+This Skill must work independently in a fresh session.
+
+It must not depend on:
+
+- this week's benchmark context;
+- temporary chat memory;
+- unstated earlier prompt experiments;
+- phrases such as `same as before` or `continue the previous route`.
+
+Read:
+
+- `references/standalone-prompt-routing.md`
+
+The Skill must independently support three modes:
+
+### MODE A — IMAGE PROMPT ONLY
+
+When the user asks only for a still-image prompt:
+
+- lock the real user identity when a real photo is supplied;
+- resolve / match a partner when needed;
+- route moment + action + scene + color + expression;
+- choose the current image model route;
+- output one self-contained, directly copyable final image prompt.
+
+Do not require video planning in this mode.
+
+### MODE B — VIDEO PROMPT ONLY
+
+When the user asks only for a video prompt:
+
+- prefer an approved couple image as first-frame visual truth;
+- inherit USER and PARTNER identity references separately;
+- compile a time-based interaction rather than rewriting a still-image prompt;
+- output one self-contained, directly copyable MiniMax H3 prompt by current production default.
+
+If identity continuity matters and no stable first frame exists, route first to image / first-frame creation instead of pretending video continuity is already solved.
+
+### MODE C — END-TO-END
+
+When the user wants the full workflow:
+
+```text
+USER PHOTO
+→ USER IDENTITY LOCK
+→ PARTNER RESOLVE / MATCH
+→ ACTION + MOMENT + SCENE + COLOR + EXPRESSION ROUTE
+→ FINAL IMAGE PROMPT / IMAGE
+→ USER APPROVAL
+→ APPROVED_COUPLE_IMAGE = VIDEO VISUAL TRUTH
+→ FINAL 10s MINIMAX H3 VIDEO PROMPT / VIDEO
+```
+
+## Prompt Self-Containment
+
+Every final image or video prompt must restate all production information the target model needs.
+
+Do not rely on hidden project history.
+
+Image prompts should include, when relevant:
+
+- visible subject assignments;
+- identity preservation;
+- partner identity / appearance route;
+- relationship moment;
+- concrete action / contact geometry;
+- scene;
+- physical color / wardrobe sources;
+- expression / gaze;
+- camera / framing when useful;
+- realism controls;
+- model-specific compensation.
+
+Video prompts should include, when relevant:
+
+- first-frame / visual-truth authority;
+- USER / PARTNER identity isolation;
+- duration;
+- Beat progression;
+- body-action progression;
+- shot size;
+- camera position and camera movement for each explicit shot;
+- cut logic;
+- contact continuity;
+- scene / wardrobe continuity;
+- ending / closing hold;
+- model-specific controls.
+
+## Direct Prompt Request Rule
+
+If the user explicitly asks for a prompt rather than asking the Skill to generate the media itself, output the final copyable prompt directly.
+
+Do not require the user to know internal library names.
+
+The internal libraries make the decision; the final user-facing output should remain simple.
 
 ---
 
@@ -36,13 +136,13 @@ APPROVED PARTNER IDENTITY / PARTNER_REFERENCE_PACKAGE
 ↓
 ACTION + MOMENT + SCENE + COLOR LIBRARY LOOKUP
 ↓
-③ COUPLE IMAGE GENERATION
+③ COUPLE IMAGE GENERATION / IMAGE PROMPT OUTPUT
 ↓
 USER REVIEW
 ├─ NOT SATISFIED → reroute partner / action / scene / relationship temperature with minimum necessary change
 └─ APPROVED → freeze APPROVED_COUPLE_IMAGE
 ↓
-④ VIDEO GENERATION
+④ VIDEO GENERATION / VIDEO PROMPT OUTPUT
 APPROVED_COUPLE_IMAGE = FIRST FRAME
 + USER_REFERENCE_PACKAGE
 + PARTNER_REFERENCE_PACKAGE
@@ -168,7 +268,35 @@ These are library assets, not the complete future pose inventory.
 
 ---
 
-# 5. Stage ③ — Couple Image Generation
+# 5. Stage ③ — Couple Image Generation / Image Prompt Writer
+
+## Independent Image Prompt Writer
+
+When the user asks for a still-image prompt, compile independently from:
+
+```text
+USER_IDENTITY_CARD
++
+PARTNER_IDENTITY / PARTNER_APPEARANCE_CARD
++
+MOMENT_TYPE
++
+RELATION_ACTION
++
+SCENE
++
+COLOR / WARDROBE
++
+EXPRESSION / GAZE
++
+CAMERA REALISM
++
+IMAGE MODEL ADAPTER
+```
+
+Apply the `VISIBLE SUBJECT FILTER` before the final prompt. Internal matching rationale must not accidentally become visible scene content.
+
+The final prompt must be directly copyable and may not rely on prior chat shorthand.
 
 ## Current Delivery Image Route
 
@@ -183,6 +311,7 @@ Read:
 - `references/model-routing-rules.md`
 - `references/model-adaptation.md`
 - `references/camera-realism-layer.md`
+- `references/standalone-prompt-routing.md`
 
 Current Banana2 Pro compensation may include:
 
@@ -233,12 +362,13 @@ That approved image becomes the first-frame anchor for video.
 
 ---
 
-# 7. Stage ④ — 10-Second MiniMax H3 Video
+# 7. Stage ④ — 10-Second MiniMax H3 Video / Video Prompt Writer
 
 Read:
 
 - `references/minimax-h3-couple-video.md`
 - `references/model-adaptation.md`
+- `references/standalone-prompt-routing.md`
 
 Default target duration:
 
@@ -253,6 +383,22 @@ USER_REFERENCE_PACKAGE
 +
 PARTNER_REFERENCE_PACKAGE
 ```
+
+## Independent Video Prompt Writer
+
+When the user asks for a video prompt, compile independently from the approved first frame and current identity packages.
+
+The prompt must explicitly include:
+
+- who each person is / which reference belongs to which person;
+- first-frame visual truth;
+- current body and hand geometry;
+- 10-second Beat progression;
+- camera / cut progression;
+- continuity rules;
+- closing beat.
+
+Do not merely append motion words to the still-image prompt.
 
 Video goal:
 
@@ -365,6 +511,7 @@ Current modular knowledge base:
 - `references/model-adaptation.md`
 - `references/camera-realism-layer.md`
 - `references/minimax-h3-couple-video.md`
+- `references/standalone-prompt-routing.md`
 - `references/seedance-couple-video-start.md` — historical Seedance test evidence only; not current production runtime.
 - `references/asset-library-governance.md`
 
@@ -387,3 +534,19 @@ When safe and interpretable, combine multiple creative variables in one represen
 Only run additional A/B tests when the result would change a concrete routing or library decision.
 
 The goal is a strong production library, not an endless benchmark set.
+
+---
+
+# 13. Fresh-Session Requirement｜新会话可独立工作
+
+A fresh-session invocation of this Skill must be sufficient to perform the production workflow.
+
+Runtime requirement:
+
+`CURRENT USER INPUT + CURRENT SKILL KNOWLEDGE BASE = COMPLETE PROMPT OUTPUT`
+
+The Skill may read its own knowledge files and the user's current assets, but it must not require knowledge of how the rules were discovered or what temporary conversation produced them.
+
+When asked only for a prompt, the Skill must be able to stop at the prompt-delivery stage without requiring media generation.
+
+When asked for end-to-end work, it should continue through the approval gate and then compile the video prompt from the approved couple image.
