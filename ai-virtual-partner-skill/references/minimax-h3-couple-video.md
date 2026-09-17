@@ -6,7 +6,15 @@ Turn the user-approved couple image into a short, visually evolving 10-second ad
 
 This file is the current production video route for the AI Virtual Partner Skill.
 
-Current status: `CANDIDATE / FIRST-RUN VALIDATION` until the first H3 clip is reviewed.
+Current status: `VALIDATED — FIRST PRODUCTION ROUTE`
+
+Validation scope:
+
+- one real 10-second MiniMax H3 generation using an approved Man × Man Night City Window couple image;
+- identity, wardrobe and scene remained operationally stable across the clip;
+- the clip executed visible action progression and shot / framing changes;
+- the result was judged usable for production by the user;
+- therefore the grammar is promoted for current production use without expanding into a new large benchmark campaign.
 
 ---
 
@@ -26,7 +34,7 @@ Do not rebuild either identity from text.
 
 ---
 
-## Default 10s Grammar
+## Validated 10s Grammar
 
 Avoid a ten-second single action.
 
@@ -38,12 +46,15 @@ Use:
 → `CUT / FRAMING CHANGE`
 → `BEAT 3 — PAYOFF / HOLD / CLOSE`
 
-Default target:
+Current production target:
 
 - 3 distinct relationship beats;
-- ~2 purposeful cuts / shot changes;
+- approximately 2 purposeful cuts / shot changes;
 - changing body relationship, not only changing camera;
+- reciprocal reaction from both partners;
 - final 0.8–1.2s readable closing hold.
+
+The first H3 production run showed that this structure can produce a more engaging 10-second interaction than the earlier single-shot Seedance slow-approach route.
 
 ---
 
@@ -82,29 +93,30 @@ Do not stack every action into one clip.
 
 ## Shot Design
 
-Every explicit shot should state why / how the camera moves.
-
-Suggested 10s pattern:
+Every explicit shot should state the visible relationship purpose and how the camera follows it.
 
 ### Shot 1｜0–3s｜Medium Two-Shot
 
 - show both identities clearly;
-- establish current first-frame relationship;
+- establish the approved first-frame relationship;
 - one partner initiates a visible action;
-- subtle lateral slide / short push-in can follow the movement.
+- subtle lateral slide / short push-in may follow the movement.
 
-### Shot 2｜3–6.5s｜Side Medium-Close / Close Reaction
+### Shot 2｜3–6.5s｜Side Medium-Close / Reaction
 
 - cut on movement;
 - show hand contact / gaze / reaction from a new angle;
-- allow one stronger intimate action;
-- camera follows the face / upper-body relation, not random orbiting.
+- execute one stronger intimate action;
+- camera follows the face / upper-body relation rather than orbiting randomly.
 
 ### Shot 3｜6.5–10s｜Tighter Two-Shot / Close Hold
 
-- cut back or to 3/4 angle;
+- cut to a tighter or 3/4 angle;
 - execute payoff / near-contact / affectionate beat;
-- hold final state for ~1s before ending.
+- preserve both identities at close distance;
+- hold the final relationship state for about 1 second before ending.
+
+The camera change must support a relationship beat. Do not add cuts only for visual decoration.
 
 ---
 
@@ -123,17 +135,21 @@ Throughout all shots:
 
 Use cuts to reduce transition stress when one continuous transformation would risk anatomy failure.
 
+The validated H3 run kept the two male identities visually distinguishable through changing proximity and framing, which is sufficient for the current production route. Continue runtime QC on every final delivery.
+
 ---
 
 ## Chemistry Rule
 
-Do not confuse `more sensual` with `less movement` or with `complete the kiss immediately`.
+Do not confuse `more sensual` with `less movement` or with `complete contact immediately`.
 
 Build chemistry from:
 
 `INITIATION + RECIPROCAL REACTION + TOUCH CHANGE + GAZE + DISTANCE CHANGE + PAUSE`
 
 A useful clip should show that both people are actively responding to each other.
+
+For a 10-second product video, chemistry should evolve. Avoid holding one almost-kiss pose for most of the clip.
 
 ---
 
@@ -151,17 +167,23 @@ Rich color is encouraged when physically grounded in:
 
 Avoid forcing one grey / black / white palette across every couple.
 
+The validated H3 run preserved the Night City Window warm-amber / cool-blue scene relationship well enough for production use.
+
 ---
 
-## Current First Production Candidate
+## Current Production Default
 
-For a Western-market Golden Terrace couple first frame:
+Compile from the approved image rather than from a fixed gender-specific script.
 
-`0–3s waist pull + direct gaze`
-→ cut to side close-up
-→ `3–6.5s reaction smile + upper-back / shoulder contact + intimate lean`
-→ cut to tighter 3/4 close-up
-→ `6.5–9s near-kiss / affectionate contact within platform allowance`
-→ `9–10s slight pullback + eye contact / smile hold`
+Default pattern:
 
-This candidate should be tested once. If identity / anatomy / cutting are operationally good, promote the reusable grammar and stop benchmarking.
+`0–3s visible initiation`
+→ cut / angle change
+→ `3–6.5s reciprocal reaction + stronger body-contact change`
+→ cut / tighter framing
+→ `6.5–9s near-contact / affectionate payoff within platform allowance`
+→ `9–10s slight release + eye contact / smile / stable close`
+
+Adapt the exact action to the approved image, partner orientation, scene, hand availability and body geometry.
+
+Do not reopen broad H3 benchmarking unless a real production failure exposes a specific routing decision.
