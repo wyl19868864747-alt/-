@@ -223,6 +223,8 @@ Common failure cases:
 
 Rejected views must not enter the partner reference pool.
 
+If any rejected or previously promoted reference is discovered to be identity-drifted, route to `references/identity-failure-recovery.md` for invalidation and recovery. Do not keep the bad view active merely because it is attractive.
+
 ---
 
 # 7. Validated Model Choice for Reference Assets
@@ -273,6 +275,8 @@ For the current validated P1 case:
 
 `image 2.5 package = preferred`
 
+If a cross-model conflict is detected later, use `references/identity-failure-recovery.md`; do not average conflicting facial structures into a hybrid identity.
+
 ---
 
 # 9. Downstream Couple / Video Use
@@ -288,6 +292,16 @@ The two packages remain isolated.
 Do not merge facial traits, swap features, or let the partner reference package overwrite the user identity.
 
 Once a partner identity is locked, downstream prompts should reference the locked identity rather than recompile a new person from the archetype card.
+
+If the approved partner later drifts, is replaced, or becomes a different person of the same archetype, **do not return to the Archetype Library**. Recover from:
+
+`ORIGINAL_APPROVED_PARTNER → PARTNER_IDENTITY_CARD → BEST QC-PASSED APPROVED_REFERENCE_PACKAGE`
+
+Read:
+
+- `references/identity-failure-recovery.md`
+
+Only an explicit `CHANGE PARTNER / 换伴侣` request may release the identity lock and reopen Matching.
 
 ---
 
@@ -307,3 +321,21 @@ Not yet claimed as universally validated:
 - every archetype's four-view behavior.
 
 Do not require expensive A/B testing for every partner. Use four-view reference construction when downstream complexity or identity risk justifies it, then validate by practical output quality.
+
+---
+
+# 11. Failure Recovery Hook
+
+When a locked partner has already been approved and any of the following occurs:
+
+- face replacement / recast;
+- age / hairline / skin-tone drift;
+- distinctive-feature loss;
+- USER / PARTNER feature contamination;
+- face fusion / swap;
+- video cut identity switch;
+- reference-pool contamination;
+
+route to `references/identity-failure-recovery.md`.
+
+Recovery must preserve the approved specific person and change only failed identity variables whenever possible.
