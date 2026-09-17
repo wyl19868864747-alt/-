@@ -12,18 +12,42 @@ Only record behaviors supported by actual user runs or repeated project feedback
 
 ## Current observed strengths
 
-- Produces higher-attractiveness faces more readily than Banana2 Pro in the current archetype tests.
+- Produces higher-attractiveness faces more readily than Banana2 Pro in current archetype and couple tests.
 - Strong at idealized partner exploration and readable fantasy archetypes.
+- Strong at romantic hero moments, especially `Soft Almost-Kiss` and `Close Eye Contact`.
+- Often gives a stronger “unknown best partner / heart-flutter” first impression.
 - Successfully separated Soft Refined / Clean Masculine / Power Masculine / Mature Dominant male types.
 - Successfully separated Soft Feminine / Elegant Feminine / Dominant Beauty female types.
-- Often gives stronger aspirational / high-attractiveness results with relatively little prompting.
 
 ## Current observed risks
 
-- More visible image noise / micro-grain / dirty texture than Banana2 Pro in current runs.
-- Tends toward a shared beauty-template aesthetic, especially across attractive female portraits.
-- Can over-beautify, reducing structural archetype diversity.
+- More visible image noise / micro-grain / dirty texture than Banana2 Pro baseline.
+- Can render dark, grey, muddy or "cement-like" tonal character.
+- Real-camera skin microtexture may be weaker even when the image is attractive.
+- Tends toward a shared beauty-template aesthetic, especially across attractive female portraits and multiple attractive male candidates.
+- Can over-beautify, reducing structural identity diversity.
 - `F08 Glamorous Bombshell` repeatedly failed to generate in the current platform/runtime; compatibility remains unverified. Do not generalize this as a permanent model limitation.
+
+## Validated prompt compensation
+
+The following improved current couple outputs:
+
+- `high definition`
+- `low noise`
+- `clean image`
+- brighter / airy natural window light
+- `not dark`
+- `not grey / muddy`
+- avoid gloomy dark grading
+- real skin texture / pores
+- medium-telephoto close portrait photography
+
+Observed result:
+
+- noise improved materially;
+- exposure / brightness improved;
+- high-attractiveness hero quality remained strong;
+- residual grey / cement-like rendering remained and is treated as partly model-driven.
 
 ## Prompt strategy
 
@@ -31,14 +55,16 @@ Use image 2.5 primarily for:
 
 - attraction exploration
 - archetype differentiation
-- aspirational face / fantasy partner exploration
+- aspirational partner generation
+- hero / first-impression couple image
+- high romantic tension with restrained intimacy
 
-When realism matters, explicitly protect:
+Protect:
 
 - natural skin texture
 - natural asymmetry
 - non-template facial identity
-- structural differences between archetypes
+- candidate identity separation
 - realistic age appearance
 
 Do not rely on generic `beautiful / handsome / glamorous` alone; they can collapse outputs toward a shared idealized template.
@@ -49,41 +75,57 @@ Do not rely on generic `beautiful / handsome / glamorous` alone; they can collap
 
 ## Current observed strengths
 
-- Very low visible noise in current outputs.
-- Strong photorealistic portrait feel.
-- Natural skin and photographic cleanliness.
-- Strong heritage-appearance naturalness in the current benchmark.
+- Very low visible generation noise in baseline outputs.
+- Strong photorealistic portrait / couple feel.
+- Strong heritage-appearance naturalness.
 - Less likely than image 2.5 to push every subject toward one idealized beauty template.
-- Mature / sensual / glamorous realism performed particularly well in the validated F08 test.
+- Strong believable candid composition.
+- Mature / sensual / glamorous realism performed particularly well in validated tests.
 
 ## Current observed risks
 
 - Conservative beauty prior: often produces believable ordinary people rather than aspirational partner-level attractiveness.
-- Abstract style words such as `elegant`, `high-end`, or `dominant` may under-express unless translated into visible structure, posture, grooming, and social signal.
-- Elegant Feminine repeatedly drifted toward understated / plain / everyday realism rather than strong aspirational elegance.
-- Dominant Beauty can be readable but may remain less visually striking than image 2.5.
+- Abstract style words such as `elegant`, `high-end`, `dominant`, or `romantic` may under-express unless translated into visible structure, posture, gaze and relationship action.
+- Elegant Feminine repeatedly drifted toward understated / plain / everyday realism.
+- Dominant Beauty can be readable but less visually striking than image 2.5.
+- Skin can become overly smooth / beauty-retouched in couple close-ups.
+- A recent realism-compensation run showed excessive brightness / higher contrast / overexposed-looking skin highlights.
 
 ## Prompt strategy
 
 Use Banana2 Pro primarily for:
 
 - photorealism validation
+- candid couple photography
 - heritage-appearance validation
-- low-noise final portrait direction
+- low-noise realistic portrait direction
 - realistic mature / sensual archetypes
 
-Do **not** waste prompt space repeatedly asking for `low noise`; current runs already show this as a model strength.
+Do **not** waste prompt space repeatedly asking for `low noise`; baseline outputs already show this as a model strength.
 
-To raise attractiveness, specify visible causes rather than abstract praise:
+To raise attractiveness / chemistry, specify visible causes:
 
 - facial structure tendency
-- body state
 - grooming
+- body state
 - posture
-- social signal
-- mature / refined / sensual presentation
+- gaze relationship
+- physical proximity
+- affectionate / flirtatious relationship action
 
-Keep the prompt concrete and photographic.
+For skin / exposure realism, prefer:
+
+- natural visible pores
+- fine irregular skin microtexture
+- no airbrushing / beauty filter
+- protected highlights
+- gentle highlight roll-off
+- soft low-contrast tonal curve
+- neutral or warm-neutral white balance
+- no HDR contrast
+- no clipped highlights
+
+Do not rely on heavy `film grain / sensor texture` wording as the primary realism mechanism. In current runs it did not solve realism cleanly and coincided with stronger contrast / overexposure.
 
 ---
 
@@ -112,30 +154,20 @@ Use concrete descriptions for:
 - who is where
 - who moves first
 - what the camera sees
-- shot size changes
+- shot-size changes
 - camera direction and movement
 - light source and continuity
 - when cuts happen and why
 
 Avoid replacing this information with abstract judgments such as `cinematic`, `high-energy`, or `strong tension`.
 
-For identity-critical couple video, later modules must compile reference assignments explicitly for USER and PARTNER rather than relying only on text.
+For identity-critical couple video, future video modules must assign USER and PARTNER references explicitly and inherit the approved couple image rather than rebuilding identities from text.
 
 ---
 
 # Shared Rule
 
 One structured creative decision may compile differently per model.
-
-Example:
-
-`F05 Dominant Beauty`
-
-is one archetype card, but:
-
-- image 2.5 may need stronger anti-template / natural-skin controls;
-- Banana2 Pro may need stronger visible attractiveness / presence cues;
-- Seedance 2.5 will need explicit performance, camera, spatial, and reference continuity instructions.
 
 Therefore:
 
@@ -144,6 +176,8 @@ Therefore:
 Never assume:
 
 `ONE PROMPT = ALL MODELS`
+
+Current product-level routing is defined in `model-routing-rules.md`.
 
 ---
 
