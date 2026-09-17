@@ -1,6 +1,6 @@
 ---
 name: ai-virtual-partner-skill
-description: AI virtual partner image and video generation skill. Current verified scope covers user portrait identity locking, partner archetype resolution, matching modes, partner identity locking, sweet-couple moment routing, camera realism controls, and model-specific image routing. Full pose/scene libraries and image-to-video continuity remain separate future modules.
+description: AI virtual partner image and video generation skill. Current verified scope covers user portrait identity locking, partner archetype resolution, matching modes, partner identity locking, sweet-couple moment routing, validated relation actions / scenes, camera realism controls, model-specific image routing, and a validated Seedance 2.5 short couple-video start strategy.
 ---
 
 # AI 虚拟伴侣｜AI Virtual Partner
@@ -26,11 +26,17 @@ PARTNER IDENTITY LOCK / PARTNER REFERENCE PACKAGE
 ↓
 COUPLE MOMENT ROUTER
 ↓
+RELATION ACTION / SCENE ROUTER
+↓
 MODEL ROUTER
 ↓
-MODEL-SPECIFIC PROMPT
+MODEL-SPECIFIC IMAGE PROMPT
 ↓
-IDENTITY + CHEMISTRY + REALISM QC
+APPROVED COUPLE FRAME
+↓
+SEEDANCE COUPLE-VIDEO START ROUTER
+↓
+IDENTITY + CHEMISTRY + REALISM + MOTION QC
 ```
 
 ## Required Knowledge Modules
@@ -43,9 +49,12 @@ Read only the modules needed by the current stage:
 - `references/partner-identity-lock.md` — freeze an approved partner into a reusable identity / reference package.
 - `references/couple-moment-dna.md` — sweet, intimate, non-formal couple-image DNA.
 - `references/moment-type-library.md` — validated sweet-moment types and their use cases.
+- `references/relation-action-library.md` — physical couple-action grammar and validated contact patterns.
+- `references/scene-tension-library.md` — validated window / sofa / bedroom scene behavior and tension routing.
 - `references/model-routing-rules.md` — choose image 2.5 vs Banana2 Pro by product target.
 - `references/model-adaptation.md` — compile different prompts for image 2.5 / Banana2 Pro / Seedance 2.5.
 - `references/camera-realism-layer.md` — real skin / exposure / camera texture controls.
+- `references/seedance-couple-video-start.md` — validated Seedance 2.5 first-frame and 3–5s approach logic.
 
 Do not copy entire knowledge files into the final model prompt. Resolve the structured decision first, then compile only the minimum effective instructions for the chosen model.
 
@@ -124,29 +133,54 @@ Partner reference authority:
 
 ---
 
-## 5. Couple Moment Router
+## 5. Couple Moment + Relation Action Router
 
-Read `couple-moment-dna.md` and `moment-type-library.md`.
+Read `couple-moment-dna.md`, `moment-type-library.md`, and `relation-action-library.md`.
 
 Default product goal:
 
 > The first impression should be sweet, intimate and slightly heart-fluttering—“this is what my unknown best partner looks like.”
 
-Validated moments:
+Validated moment / action findings:
 
-- `SOFT_ALMOST_KISS` — default Hero / strongest romantic-tension moment.
+- `SOFT_ALMOST_KISS` — strongest static Hero moment.
 - `CLOSE_EYE_CONTACT` — default realistic sweet moment.
-- `SHOULDER_LEAN` — safe long-term sweetness / secondary moment.
+- `SHOULDER_LEAN` — safe long-term sweetness.
+- `FACE-TO-FACE WAIST HOLD + BREATH-CLOSE` — strongest current physical chemistry route.
+- `PROTECTIVE SIDE EMBRACE` — safe protective sweetness.
+- `BACK HUG` — clear affection / safety but currently more conservative.
 
-Avoid defaulting to stiff, front-facing formal couple portraits.
+Core rule:
+
+`MORE TENSION ≠ MORE CONTACT`
+
+Prefer controlled approach, gaze and unresolved distance over immediately completing contact.
+
+Avoid stiff, front-facing formal couple portraits.
 
 ---
 
-## 6. Model Router
+## 6. Scene Router
+
+Read `scene-tension-library.md`.
+
+Current validated scene behavior:
+
+- `WINDOW-SIDE` — strongest current romantic-tension environment and best current Seedance start base.
+- `SOFA CORNER` — strongest realistic everyday-couple environment.
+- `BEDROOM EDGE` — private-space signal only; does not automatically create stronger chemistry.
+
+Do not use a private location as a substitute for relationship direction.
+
+Color-rich scene families remain under test; do not lock one neutral palette as the product default.
+
+---
+
+## 7. Model Router
 
 Read `model-routing-rules.md` and `model-adaptation.md`.
 
-### Default Hero Route
+### Default Hero / Canonical Asset Route
 
 `image 2.5`
 
@@ -160,7 +194,7 @@ Use for:
 
 Apply validated compensation for noise / grey / dark rendering and anti-redesign controls during identity completion.
 
-### Real / Candid Route
+### Real / Candid Image Route
 
 `Banana2 Pro`
 
@@ -171,14 +205,15 @@ Use for:
 - low generation noise
 - natural heritage appearance
 - photographic realism support
+- current real-couple first-frame exploration
 
-Apply skin-microtexture + exposure / highlight controls. Do not overuse film-grain / sensor-texture wording.
+Current Banana prompt compensation may include real pores / microtexture, `not overexposed`, and avoidance of a white hazy veil when observed. Do not over-stack tonal-control phrases if they flatten the image.
 
 Never mechanically reuse one prompt across models.
 
 ---
 
-## 7. Camera Realism
+## 8. Camera Realism
 
 Read `camera-realism-layer.md`.
 
@@ -198,7 +233,25 @@ not from dirty noise or decorative grain.
 
 ---
 
-## 8. Couple Identity Isolation
+## 9. Seedance 2.5 Couple Video Start
+
+Read `seedance-couple-video-start.md` before compiling short relationship-motion prompts.
+
+Current validated start:
+
+`LEAN-IN MOMENT → SLOW APPROACH → MICRO-PAUSE → PRE-KISS PAUSE`
+
+Use `LEAN-IN MOMENT` as the default first frame because it preserves motion room and lowers face-collision risk.
+
+Use `PRE-KISS PAUSE` as a later tension beat / second keyframe rather than automatically starting at minimum face distance.
+
+A current 5-second A/B generation showed that stronger romantic tension came from unresolved distance, pause and dimensional side/back light—not from using more aggressive “more intimate” wording or completing contact faster.
+
+Do not complete a kiss unless that beat is explicitly requested.
+
+---
+
+## 10. Couple Identity Isolation
 
 Always maintain:
 
@@ -212,9 +265,9 @@ For multiple partner candidates, enforce candidate identity separation; do not r
 
 ---
 
-## 9. QC Gate
+## 11. QC Gate
 
-A final couple image must pass:
+A final image / short video must pass the relevant checks:
 
 - user identity stability
 - partner identity stability
@@ -224,6 +277,9 @@ A final couple image must pass:
 - partner attractiveness
 - photorealism
 - fantasy / shareability value
+- natural contact geometry
+- motion continuity when video is used
+- no face fusion / hand-body penetration
 
 Use:
 
@@ -231,25 +287,26 @@ Use:
 - `validation/archetype-benchmark.md`
 - `validation/matching-moment-model-benchmark.md`
 - `validation/partner-identity-lock-benchmark.md`
+- `validation/seedance-couple-start-benchmark.md`
 
 Only behavior supported by real generation evidence may be labeled runtime-validated.
 
 ---
 
-## 10. Not Yet Verified / Future Modules
+## 12. Not Yet Verified / Future Modules
 
 Do not invent production rules for these until separately researched and tested:
 
-- full relation-action / pose library
-- full intimate scene library
+- large relation-action / pose library beyond the current validated core
+- color-rich scene / wardrobe palette library
 - stronger sensuality escalation system
-- image-to-video continuity engine
-- Seedance 2.5 couple-video benchmark
+- longer multi-shot Seedance 2.5 continuity
+- automatic-cut relationship video grammar
 - long multi-session partner identity persistence across many generations
 
 ---
 
-## 11. Expansion Rule
+## 13. Expansion Rule
 
 Every new module follows:
 
