@@ -32,6 +32,12 @@ plus, when available:
 
 Do not rebuild either identity from text.
 
+Read when compiling relationship behavior:
+
+- `references/moment-type-library.md`
+- `references/relation-action-library.md`
+- `references/expression-gaze-library.md`
+
 ---
 
 ## Validated 10s Grammar
@@ -55,6 +61,36 @@ Current production target:
 - final 0.8–1.2s readable closing hold.
 
 The first H3 production run showed that this structure can produce a more engaging 10-second interaction than the earlier single-shot Seedance slow-approach route.
+
+---
+
+## Moment + Expression / Gaze Compile Rule
+
+Each beat should define a **relationship-state change**, not only a body move.
+
+Compile from:
+
+`MOMENT STATE + ACTION CHANGE + GAZE / EXPRESSION CHANGE`
+
+For every explicit shot, state only the minimum visible facial logic needed:
+
+`CURRENT GAZE + CURRENT EXPRESSION + TRIGGER + CHANGE`
+
+Example:
+
+`direct mutual gaze + restrained smile → waist pull triggers a brief look-away / reaction smile → gaze returns as both lean closer.`
+
+Useful production chain:
+
+`PRIVATE EYE CONTACT`
+→ action initiation
+→ `REACTION SMILE / LOOK BACK`
+→ renewed approach
+→ `UNRESOLVED CLOSE / SOFT ALMOST-CONTACT`
+→ slight release
+→ `POST-CONTACT PULLBACK / SOFT PARTNER GAZE`
+
+Do not keep one fixed “sexy stare” for the whole clip. Eye / expression change should follow a visible cause.
 
 ---
 
@@ -100,6 +136,7 @@ Every explicit shot should state the visible relationship purpose and how the ca
 - show both identities clearly;
 - establish the approved first-frame relationship;
 - one partner initiates a visible action;
+- establish a readable gaze / expression state;
 - subtle lateral slide / short push-in may follow the movement.
 
 ### Shot 2｜3–6.5s｜Side Medium-Close / Reaction
@@ -107,6 +144,7 @@ Every explicit shot should state the visible relationship purpose and how the ca
 - cut on movement;
 - show hand contact / gaze / reaction from a new angle;
 - execute one stronger intimate action;
+- show one visible reciprocal expression / gaze change caused by that action;
 - camera follows the face / upper-body relation rather than orbiting randomly.
 
 ### Shot 3｜6.5–10s｜Tighter Two-Shot / Close Hold
@@ -114,6 +152,7 @@ Every explicit shot should state the visible relationship purpose and how the ca
 - cut to a tighter or 3/4 angle;
 - execute payoff / near-contact / affectionate beat;
 - preserve both identities at close distance;
+- expression settles rather than escalating endlessly;
 - hold the final relationship state for about 1 second before ending.
 
 The camera change must support a relationship beat. Do not add cuts only for visual decoration.
@@ -177,13 +216,13 @@ Compile from the approved image rather than from a fixed gender-specific script.
 
 Default pattern:
 
-`0–3s visible initiation`
+`0–3s visible initiation + readable starting gaze`
 → cut / angle change
-→ `3–6.5s reciprocal reaction + stronger body-contact change`
+→ `3–6.5s reciprocal reaction + stronger body-contact change + expression / gaze change`
 → cut / tighter framing
 → `6.5–9s near-contact / affectionate payoff within platform allowance`
-→ `9–10s slight release + eye contact / smile / stable close`
+→ `9–10s slight release + soft partner gaze / restrained smile / stable close`
 
-Adapt the exact action to the approved image, partner orientation, scene, hand availability and body geometry.
+Adapt the exact action, Moment, gaze, expression and payoff to the approved image, partner orientation, scene, hand availability and body geometry.
 
 Do not reopen broad H3 benchmarking unless a real production failure exposes a specific routing decision.
