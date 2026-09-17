@@ -38,6 +38,10 @@ Read when compiling relationship behavior:
 - `references/relation-action-library.md`
 - `references/expression-gaze-library.md`
 
+Read when a video identity failure is detected:
+
+- `references/identity-failure-recovery.md`
+
 ---
 
 ## Validated 10s Grammar
@@ -61,6 +65,8 @@ Current production target:
 - final 0.8–1.2s readable closing hold.
 
 The first H3 production run showed that this structure can produce a more engaging 10-second interaction than the earlier single-shot Seedance slow-approach route.
+
+Identity recovery must **not** replace this grammar. It only adjusts identity inheritance, face separation, rotation stress, and where cuts are placed around risky transformations.
 
 ---
 
@@ -174,7 +180,52 @@ Throughout all shots:
 
 Use cuts to reduce transition stress when one continuous transformation would risk anatomy failure.
 
+For every new shot after a cut, conceptually rebind:
+
+`PERSON_A = USER_REFERENCE_PACKAGE`
+
+`PERSON_B = PARTNER_REFERENCE_PACKAGE`
+
+while preserving:
+
+`APPROVED_COUPLE_IMAGE = FIRST-FRAME VISUAL TRUTH`.
+
 The validated H3 run kept the two male identities visually distinguishable through changing proximity and framing, which is sufficient for the current production route. Continue runtime QC on every final delivery.
+
+---
+
+## Video Identity Failure Recovery
+
+If a generated clip shows:
+
+- identity drift after Beat 1;
+- face fusion during near-contact;
+- USER / PARTNER identity switch after a cut;
+- sudden age change;
+- hairline / hair identity change;
+- body-build change during motion;
+
+route to `references/identity-failure-recovery.md`.
+
+Recovery priority:
+
+1. keep the approved first frame;
+2. keep the original USER / PARTNER identity packages as identity authority;
+3. reject drifted frames as new identity references;
+4. shorten long continuous morphs;
+5. cut before the highest-risk face / head / body transformation;
+6. reduce extreme head rotation;
+7. preserve visible separation between two faces;
+8. shorten high-risk face-to-face convergence;
+9. explicitly rebind A/B identity references after each cut.
+
+For close proximity:
+
+`IDENTITY STABILITY > CONTACT COMPLETION`
+
+A small unresolved face gap is preferred over a fused or contaminated payoff.
+
+Do not reopen Matching merely because a video frame drifted. Do not regenerate the approved partner from the abstract Archetype.
 
 ---
 
