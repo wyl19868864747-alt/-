@@ -42,7 +42,7 @@ When the user asks only for a still-image prompt:
 
 - lock the real user identity when a real photo is supplied;
 - resolve / match a partner when needed;
-- route moment + action + scene + color + expression;
+- route moment + action + scene + color / wardrobe + expression;
 - choose the current image model route;
 - output one self-contained, directly copyable final image prompt.
 
@@ -54,6 +54,7 @@ When the user asks only for a video prompt:
 
 - prefer an approved couple image as first-frame visual truth;
 - inherit USER and PARTNER identity references separately;
+- inherit the approved scene / wardrobe / color state;
 - compile a time-based interaction rather than rewriting a still-image prompt;
 - output one self-contained, directly copyable MiniMax H3 prompt by current production default.
 
@@ -67,7 +68,7 @@ When the user wants the full workflow:
 USER PHOTO
 → USER IDENTITY LOCK
 → PARTNER RESOLVE / MATCH
-→ ACTION + MOMENT + SCENE + COLOR + EXPRESSION ROUTE
+→ ACTION + MOMENT + SCENE + COLOR / WARDROBE + EXPRESSION ROUTE
 → FINAL IMAGE PROMPT / IMAGE
 → USER APPROVAL
 → APPROVED_COUPLE_IMAGE = VIDEO VISUAL TRUTH
@@ -105,7 +106,7 @@ Video prompts should include, when relevant:
 - camera position and camera movement for each explicit shot;
 - cut logic;
 - contact continuity;
-- scene / wardrobe continuity;
+- scene / wardrobe / color continuity;
 - ending / closing hold;
 - model-specific controls.
 
@@ -134,12 +135,12 @@ USER PREFERENCE ROUTE (optional / explicit user choice wins)
 ↓
 APPROVED PARTNER IDENTITY / PARTNER_REFERENCE_PACKAGE
 ↓
-ACTION + MOMENT + SCENE + COLOR LIBRARY LOOKUP
+ACTION + MOMENT + SCENE + COLOR / WARDROBE + EXPRESSION LIBRARY LOOKUP
 ↓
 ③ COUPLE IMAGE GENERATION / IMAGE PROMPT OUTPUT
 ↓
 USER REVIEW
-├─ NOT SATISFIED → reroute partner / action / scene / relationship temperature with minimum necessary change
+├─ NOT SATISFIED → reroute partner / action / scene / color / relationship temperature with minimum necessary change
 └─ APPROVED → freeze APPROVED_COUPLE_IMAGE
 ↓
 ④ VIDEO GENERATION / VIDEO PROMPT OUTPUT
@@ -220,7 +221,7 @@ After a partner is selected, freeze that partner into a reusable identity packag
 
 # 4. Asset Library Lookup｜动作 / 场景 / 色彩不是临场乱写
 
-The production image should be assembled from validated asset libraries.
+The production image should be assembled from reusable asset libraries.
 
 Read as needed:
 
@@ -228,7 +229,7 @@ Read as needed:
 - `references/moment-type-library.md`
 - `references/relation-action-library.md`
 - `references/scene-tension-library.md`
-- future `references/color-scene-library.md`
+- `references/color-wardrobe-library.md`
 
 Resolve the relationship image from:
 
@@ -245,6 +246,8 @@ EXPRESSION / GAZE
 +
 RELATIONSHIP TEMPERATURE
 ```
+
+Scene selection answers **where colors can physically exist**. `color-wardrobe-library.md` decides **how those colors are assigned to Person A / Person B / environment / light**.
 
 Do not default every couple to one pose, one neutral room or one black / white / grey wardrobe.
 
@@ -265,6 +268,12 @@ Current validated action families include:
 - `SHOULDER / SIDE LEAN`
 
 These are library assets, not the complete future pose inventory.
+
+Color routing must follow:
+
+`COORDINATED ≠ IDENTICAL`
+
+Use physical wardrobe / environment / light sources. Color remains subordinate to people, relationship action and scene.
 
 ---
 
@@ -298,6 +307,14 @@ Apply the `VISIBLE SUBJECT FILTER` before the final prompt. Internal matching ra
 
 The final prompt must be directly copyable and may not rely on prior chat shorthand.
 
+Read:
+
+- `references/model-routing-rules.md`
+- `references/model-adaptation.md`
+- `references/camera-realism-layer.md`
+- `references/color-wardrobe-library.md`
+- `references/standalone-prompt-routing.md`
+
 ## Current Delivery Image Route
 
 Default current real-photo couple generation route:
@@ -306,25 +323,18 @@ Default current real-photo couple generation route:
 
 Use it for the user-facing couple image when the target is believable candid photography, real skin / material feel and captured intimacy.
 
-Read:
-
-- `references/model-routing-rules.md`
-- `references/model-adaptation.md`
-- `references/camera-realism-layer.md`
-- `references/standalone-prompt-routing.md`
-
 Current Banana2 Pro compensation may include:
 
 - high-attractiveness adult couple
 - visible real skin pores / fine skin texture
 - slight natural imperfections
-- realistic photography
+- realistic candid photography
 - non-posed relationship moment
 - image not overexposed
 - avoid milky / foggy white veil when observed
 - clear, transparent image rendering
 
-Do not over-stack tonal restrictions when they make the image flat.
+Color prompts for Banana2 Pro should stay compact. Do not let long palette / lighting constraints flatten the image or overpower identity and relationship action.
 
 ## image 2.5 Role
 
@@ -336,6 +346,8 @@ Use image 2.5 when its strengths are specifically needed, especially:
 - high-attraction fantasy / hero alternatives
 
 Current image 2.5 compensation remains model-specific and should not be copied mechanically into Banana2 Pro.
+
+Color instructions for image 2.5 should protect against grey / muddy / cement-like rendering using concise, physically assigned color anchors rather than a long grading description.
 
 ---
 
@@ -358,7 +370,7 @@ If the user approves the image, freeze it as:
 
 `APPROVED_COUPLE_IMAGE`
 
-That approved image becomes the first-frame anchor for video.
+That approved image becomes the first-frame anchor for video, including its wardrobe and scene color state.
 
 ---
 
@@ -403,6 +415,7 @@ Do not merely append motion words to the still-image prompt.
 Video goal:
 
 - preserve both faces / hairlines / ages / body identities
+- preserve approved wardrobe colors and scene warm/cool direction across cuts
 - continue the relationship already visible in the approved image
 - create a visibly evolving flirtatious / intimate interaction rather than stretching one micro-action across ten seconds
 - increase chemistry through motion, gaze, touch, posture change, proximity and reaction
@@ -455,6 +468,8 @@ Check:
 - sweetness / romantic chemistry
 - natural body-contact geometry
 - photographic realism
+- wardrobe / background separation
+- skin tone remains identity-consistent under the selected palette
 - shareability / fantasy value
 
 ## Video QC
@@ -467,6 +482,8 @@ Also check:
 - no hand / limb penetration
 - continuous contact geometry
 - physically plausible motion
+- wardrobe color does not change across cuts
+- scene dominant colors / warm-cool direction remain stable
 - at least three readable relationship beats for the default 10-second route
 - shot / framing variation feels motivated rather than random
 - ending does not accidentally switch people / scene / wardrobe
@@ -507,6 +524,7 @@ Current modular knowledge base:
 - `references/moment-type-library.md`
 - `references/relation-action-library.md`
 - `references/scene-tension-library.md`
+- `references/color-wardrobe-library.md`
 - `references/model-routing-rules.md`
 - `references/model-adaptation.md`
 - `references/camera-realism-layer.md`
