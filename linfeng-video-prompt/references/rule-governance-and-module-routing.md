@@ -16,6 +16,8 @@
 | 商业/剧情与表演/体验主次 | `direction-routing.md` |
 | 输出块、开场边界、声音放置、负面项和终检 | `output-contract-and-validation.md` |
 | 创意幅度、信息压缩、容量、情绪转译和状态矛盾 | `prompt-compilation-and-consistency.md` |
+| 切镜密度、相隔景别、30°同侧机位、动静组接 | `director-information-control.md` |
+| 声线预算、逐窗台词容量、声音桥、BGM节点 | `voiceover-control.md` |
 | 光影、设备与可见结果、全局/局部光、数值取舍 | `camera-light-quality-baseline.md` |
 | 空间坐标、关键接触与复杂物理动作 | `spatial-optics-physics-control.md` |
 | 跨镜人物/道具/产品状态 | `continuity.md` |

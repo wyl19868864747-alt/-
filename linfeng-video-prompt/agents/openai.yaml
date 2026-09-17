@@ -1,7 +1,7 @@
 interface:
   display_name: 林枫视频提示词
-  short_description: 双轴路由驱动广告、剧情、写实奇观与观察者摄影提示词
-  default_prompt: 使用 $linfeng-video-prompt 将 Brief、分镜或参考素材转成具备导演信息、产品或剧情证据、连续性与技术基线的可生成视频提示词，并按需叠加写实超现实、观察者摄影与年代成像等能力模块。
+  short_description: 把创作目标转成具体画面，精简主体、镜头与声音并校验连续性
+  default_prompt: 使用 $linfeng-video-prompt 将 Brief 或分镜转成精简可复制的视频提示词，落实逐镜景别、机位、运镜、声音时长与状态连续。
   icon_small: assets/icon.svg
   icon_large: assets/icon.svg
 policy:
