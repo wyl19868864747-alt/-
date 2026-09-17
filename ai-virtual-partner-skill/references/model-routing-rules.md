@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Choose the image model by the production asset being created. Model testing serves three purposes in order:
+Choose the model by the production asset being created. Model testing serves three purposes in order:
 
 1. select the model best suited to the Skill's actual production target;
 2. test whether prompt compensation can reduce that model's weaknesses;
@@ -25,7 +25,7 @@ Use for the final user-facing couple image when priority is:
 - visible real skin / material texture
 - natural heritage appearance
 - sweet / flirtatious captured intimacy
-- approved first frame for later Seedance 2.5 video
+- approved first frame for later MiniMax H3 video
 
 Current compensation may include:
 
@@ -89,6 +89,31 @@ Current decision:
 
 ---
 
+## Route C — Approved Couple 10s Video｜CURRENT VIDEO DEFAULT
+
+**Model:** MiniMax H3
+
+Use after the user approves the couple image.
+
+Input priority:
+
+`APPROVED_COUPLE_IMAGE + USER_REFERENCE_PACKAGE + PARTNER_REFERENCE_PACKAGE`
+
+Current production requirement:
+
+- 10-second interaction;
+- at least 3 readable relationship beats by default;
+- purposeful shot / framing variation instead of stretching one micro-action;
+- normally ~2 natural cuts / angle changes when supported;
+- preserve first-frame scene / wardrobe / color continuity;
+- maintain both identities through close interaction.
+
+Current H3 route is newly selected and awaits one representative production validation. Do not launch a large H3 benchmark series.
+
+Seedance 2.5 is no longer the current production route; retain its prior results only as historical timing / tension evidence.
+
+---
+
 # Runtime Routing Logic
 
 ```text
@@ -98,11 +123,12 @@ IF creating / exploring the partner identity
 IF creating the final user-facing romantic couple image
 → Banana2 Pro by current production default
 
+IF user approves couple image and requests video
+→ MiniMax H3, 10 seconds, approved image as first-frame visual truth
+
 IF user explicitly requests a specific model
 → honor the user model choice + apply that model adapter
 ```
-
-The user-facing approved couple image may be generated with another model when product evidence later changes this routing decision.
 
 Never compile the same prompt unchanged across models.
 
@@ -119,6 +145,8 @@ When a genuinely new routing decision is needed, evaluate only what can change t
 5. tonal quality / exposure
 6. action / scene controllability
 7. prompt-compensation effectiveness
-8. suitability as Seedance first frame
+8. suitability as video first frame
+9. 10-second identity / anatomy stability
+10. shot / cut controllability
 
 Stop model comparison once the production routing is operationally clear.
