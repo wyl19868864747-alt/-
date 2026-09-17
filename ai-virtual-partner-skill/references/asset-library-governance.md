@@ -29,7 +29,7 @@ The libraries should make the runtime able to answer four practical questions qu
 4. `HOW SHOULD THE APPROVED IMAGE MOVE?`
    - use the approved couple image as the video first frame;
    - preserve both identities;
-   - select a validated 10-second Seedance 2.5 interaction grammar.
+   - select a validated 10-second MiniMax H3 interaction grammar.
 
 ---
 
@@ -61,13 +61,15 @@ The libraries should make the runtime able to answer four practical questions qu
 
 - Banana2 Pro prompt adapter
 - image 2.5 prompt adapter
-- Seedance 2.5 video adapter
+- MiniMax H3 video adapter
+- historical Seedance 2.5 evidence
 - camera-realism controls
 
 ### Video Libraries
 
 - first-frame states
 - 10-second flirt / intimacy interaction patterns
+- shot / cut grammar
 - safe hand / body-contact trajectories
 - identity-preserving motion patterns
 - ending beats
@@ -101,7 +103,7 @@ Good reasons to test:
 - validate a new partner archetype family;
 - check whether an action is romantic rather than friendly;
 - validate a new scene / color family;
-- verify a Seedance motion pattern does not drift identity or penetrate bodies.
+- verify a MiniMax H3 motion / cut pattern does not drift identity or penetrate bodies.
 
 Weak reasons to test:
 
@@ -145,7 +147,7 @@ Typical guidance:
 - new scene / color family: 1–3 representative outputs;
 - new partner archetype family: a small contrast set rather than every permutation;
 - model route comparison: stop once strengths / weaknesses are clear and compensation has been tried;
-- video motion grammar: 1–2 short clips per genuinely different motion structure before expanding.
+- video motion grammar: 1 representative 10-second clip when one production route is already chosen; add a second only if the first exposes a specific routing decision.
 
 These are operating guidelines, not mandatory numeric quotas.
 
@@ -158,10 +160,12 @@ Do not spend more time re-proving already sufficient modules unless they fail in
 Current priority gaps are:
 
 1. broaden the partner library for Western / English-speaking commercial use without stereotyping;
-2. expand relation-action / scene / color variety using distilled high-value references;
-3. build the Seedance 2.5 **10-second** interaction library from approved first frames;
+2. continue expanding relation-action / scene / color variety from high-value references during real use rather than through isolated tests;
+3. validate **one** MiniMax H3 10-second multi-beat / multi-shot interaction from an approved first frame;
 4. validate the end-to-end runtime once with a real uploaded user image:
    `upload → lock → partner resolve → action/scene lookup → image → approval → 10s video`.
+
+Do not reopen Seedance benchmarking unless the production model changes again.
 
 ---
 
