@@ -98,6 +98,7 @@ Do not rely on generic `beautiful / handsome / glamorous` alone; they can collap
 - Dominant Beauty can be readable but less visually striking than image 2.5.
 - Skin can become overly smooth / beauty-retouched in couple close-ups.
 - A recent realism-compensation run showed excessive brightness / higher contrast / overexposed-looking skin highlights.
+- Some current outputs show a pale / white hazy veil over the image surface; this is treated as a current model tendency to suppress when it appears.
 - In the P1 four-view identity test, front / 45-degree / profile retained useful realism but close-up substantially reinterpreted facial identity; therefore stronger photographic realism did not equal stronger identity canonicalization.
 
 ## Prompt strategy
@@ -110,6 +111,7 @@ Use Banana2 Pro primarily for:
 - low-noise realistic portrait direction
 - realistic mature / sensual archetypes
 - photographic-realism support after identity has already been established elsewhere
+- current realistic couple first-frame generation
 
 Do **not** waste prompt space repeatedly asking for `low noise`; baseline outputs already show this as a model strength.
 
@@ -125,19 +127,17 @@ To raise attractiveness / chemistry, specify visible causes:
 - physical proximity
 - affectionate / flirtatious relationship action
 
-For skin / exposure realism, prefer:
+Current practical compensation should stay minimal and evidence-driven. Useful additions when needed include:
 
-- natural visible pores
-- fine irregular skin microtexture
-- no airbrushing / beauty filter
-- protected highlights
-- gentle highlight roll-off
-- soft low-contrast tonal curve
-- neutral or warm-neutral white balance
-- no HDR contrast
-- no clipped highlights
+- real visible pores / fine skin microtexture;
+- minor natural imperfections;
+- `not overexposed`;
+- `avoid a pale white hazy veil / white foggy filter`; 
+- `clear transparent image surface`.
 
-Do not rely on heavy `film grain / sensor texture` wording as the primary realism mechanism. In current runs it did not solve realism cleanly and coincided with stronger contrast / overexposure.
+Do not automatically stack a long group of contrast / white-balance / HDR / highlight-control instructions. In current testing, over-controlling tone made results flatter or overly bright. Add only the smallest correction needed for the current failure.
+
+Do not rely on heavy `film grain / sensor texture` wording as the primary realism mechanism.
 
 ---
 
@@ -155,6 +155,25 @@ Observed / provided working characteristics:
 - responds better when camera, lighting, shot content, blocking, and storyboard intent are described explicitly;
 - behaves more like a professional film-production model than a casual one-line text-to-video tool.
 
+## Validated couple-start behavior
+
+A real 5-second A/B couple-start test produced a reusable finding:
+
+- the `standard` version felt more romantic / ambiguous than the version explicitly prompted as `more intimate`;
+- the stronger result used a slow lean-in, preserved a small unresolved face distance and held the moment rather than resolving contact quickly;
+- dimensional side/back window light gave faces more separation and atmosphere than a flatter high-key white backlight result in the tested setup;
+- stronger wording alone did not create stronger tension.
+
+Current motion principle:
+
+`APPROACH → MICRO-PAUSE → HOLD UNRESOLVED DISTANCE`
+
+For current couple starts:
+
+`LEAN-IN MOMENT` is the preferred first frame and `PRE-KISS PAUSE` is a later tension beat / second keyframe.
+
+Do not begin at minimum face distance unless the shot is intentionally very short.
+
 ## Prompt strategy
 
 Seedance 2.5 prompts should prioritize explicit executable film language:
@@ -169,11 +188,25 @@ Use concrete descriptions for:
 - shot-size changes
 - camera direction and movement
 - light source and continuity
+- hand-contact stability
+- face-distance progression
+- when the action pauses and why
 - when cuts happen and why
 
-Avoid replacing this information with abstract judgments such as `cinematic`, `high-energy`, or `strong tension`.
+For romantic tension, translate abstract intent into:
 
-For identity-critical couple video, future video modules must assign USER and PARTNER references explicitly and inherit the approved couple image rather than rebuilding identities from text.
+- approach speed;
+- gaze hold;
+- hand placement;
+- body distance;
+- unresolved final distance;
+- micro-pause duration / beat.
+
+Avoid replacing this information with abstract judgments such as `cinematic`, `high-energy`, `more intimate`, or `strong tension`.
+
+For identity-critical couple video, assign USER and PARTNER references explicitly and inherit the approved couple frame rather than rebuilding identities from text.
+
+Current detailed first-frame / motion-start rules live in `seedance-couple-video-start.md`.
 
 ---
 
