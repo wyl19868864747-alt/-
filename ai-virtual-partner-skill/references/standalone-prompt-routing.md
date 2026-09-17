@@ -28,6 +28,7 @@ Possible inputs:
 - relationship temperature;
 - action preference;
 - scene preference;
+- color / wardrobe preference;
 - target image model.
 
 Runtime:
@@ -36,7 +37,7 @@ Runtime:
 USER INPUT
 → USER IDENTITY LOCK when a real user photo exists
 → PARTNER RESOLVE / MATCHING when a partner is needed
-→ MOMENT + ACTION + SCENE + COLOR + EXPRESSION ROUTE
+→ MOMENT + ACTION + SCENE + COLOR / WARDROBE + EXPRESSION ROUTE
 → MODEL ROUTE
 → MODEL ADAPTER
 → FINAL IMAGE PROMPT
@@ -65,7 +66,7 @@ Runtime:
 ```text
 APPROVED COUPLE IMAGE
 → INHERIT USER + PARTNER IDENTITIES
-→ READ CURRENT RELATIONSHIP STATE / HAND POSITIONS / BODY GEOMETRY
+→ READ CURRENT RELATIONSHIP STATE / HAND POSITIONS / BODY GEOMETRY / COLOR STATE
 → MINIMAX H3 VIDEO ROUTE
 → MODEL ADAPTER
 → FINAL 10s VIDEO PROMPT
@@ -85,7 +86,7 @@ USER PHOTO
 → RESOLVE OR CONFIRM PARTNER PREFERENCES
 → PARTNER LIBRARY + MATCHING
 → LOCK PARTNER IDENTITY WHEN NEEDED
-→ ROUTE MOMENT / ACTION / SCENE / COLOR / EXPRESSION
+→ ROUTE MOMENT / ACTION / SCENE / COLOR / WARDROBE / EXPRESSION
 → FINAL IMAGE PROMPT
 → USER APPROVAL
 → FREEZE APPROVED_COUPLE_IMAGE
@@ -170,6 +171,8 @@ CAMERA REALISM
 IMAGE MODEL ADAPTER
 ```
 
+Color / wardrobe compilation must read `references/color-wardrobe-library.md` when the scene / wardrobe pairing is not already fixed by the user.
+
 Current default final-couple image route:
 
 `Banana2 Pro`
@@ -201,6 +204,8 @@ PARTNER_REFERENCE_PACKAGE
 +
 CURRENT BODY / HAND GEOMETRY
 +
+CURRENT SCENE / WARDROBE / COLOR STATE
++
 RELATIONSHIP TEMPERATURE
 +
 MINIMAX H3 10s GRAMMAR
@@ -224,6 +229,8 @@ BEAT 1 — INITIATE
 
 Do not stretch one micro-action across the full 10 seconds unless a specific concept genuinely requires a one-shot hold.
 
+Color in video is continuity data, not a new palette-design step. Preserve the approved first frame's wardrobe and warm/cool direction across cuts.
+
 ---
 
 # 4. Library Invocation Logic
@@ -241,6 +248,7 @@ portrait-identity-lock
 → moment-type-library
 → relation-action-library
 → scene-tension-library
+→ color-wardrobe-library
 → camera-realism-layer
 → model-routing-rules
 → model-adaptation
@@ -252,6 +260,7 @@ portrait-identity-lock
 ```text
 APPROVED_COUPLE_IMAGE
 → inherit user / partner identity locks
+→ inherit approved scene / wardrobe / color state
 → minimax-h3-couple-video
 → model-adaptation
 → FINAL VIDEO PROMPT
@@ -283,11 +292,13 @@ Use the matching engine's production defaults to propose a suitable adult partne
 
 Explicit user preference always overrides the default.
 
-## Action / scene missing
+## Action / scene / color missing
 
-Select from validated / production-ready libraries based on the requested relationship temperature.
+Select from validated / production-ready libraries based on the requested relationship temperature and physical scene compatibility.
 
-Do not default every user to the same action or neutral room.
+Scene is selected before color when both are unspecified.
+
+Do not default every user to the same action, neutral room, all-black / white / grey wardrobe, or one palette.
 
 ## Video requested but no approved image exists
 
@@ -308,7 +319,7 @@ Default output:
 ```text
 MODE
 MODEL
-SELECTED PARTNER / MOMENT / ACTION / SCENE SUMMARY
+SELECTED PARTNER / MOMENT / ACTION / SCENE / COLOR-WARDROBE SUMMARY
 FINAL IMAGE PROMPT
 ```
 
@@ -337,7 +348,7 @@ Output / execute in this order:
 ```text
 1. USER IDENTITY RESULT
 2. PARTNER ROUTE
-3. MOMENT / ACTION / SCENE DECISION
+3. MOMENT / ACTION / SCENE / COLOR-WARDROBE DECISION
 4. FINAL IMAGE PROMPT
 5. USER APPROVAL GATE
 6. FINAL VIDEO PROMPT
@@ -381,7 +392,8 @@ The standalone Skill must not:
 - invent unseen body identity details as hard facts;
 - expose internal matching rationale as visible subjects;
 - rebuild two people from text after reliable references exist;
-- generate a video prompt with unclear first-frame authority when identity continuity is critical.
+- generate a video prompt with unclear first-frame authority when identity continuity is critical;
+- let color instructions become longer or more important than the people / relationship action / scene.
 
 ---
 
