@@ -2,13 +2,7 @@
 
 ## Purpose
 
-Choose the model by the production asset being created. Model testing serves three purposes in order:
-
-1. select the model best suited to the Skill's actual production target;
-2. test whether prompt compensation can reduce that model's weaknesses;
-3. accumulate reusable model experience for future tasks.
-
-Do not treat model benchmarking as an end in itself.
+Choose the model by the production asset being created. Model testing exists only to make concrete production-routing decisions.
 
 ---
 
@@ -20,32 +14,32 @@ Do not treat model benchmarking as an end in itself.
 
 Use for the final user-facing couple image when priority is:
 
-- believable real-photo feel
-- candid relationship moment
-- visible real skin / material texture
-- natural heritage appearance
-- sweet / flirtatious captured intimacy
-- approved first frame for later MiniMax H3 video
+- believable real-photo feel;
+- candid relationship moment;
+- visible real skin / material texture;
+- natural heritage appearance;
+- sweet / flirtatious captured intimacy;
+- approved first frame for later MiniMax H3 video.
 
 Current compensation may include:
 
-- high-attractiveness adult couple
-- visible real skin pores
-- fine skin microtexture
-- slight natural imperfections
-- realistic photography
-- non-posed relationship moment
-- image not overexposed
-- avoid a milky / foggy white veil when observed
-- clear, transparent rendering
+- high-attractiveness adult couple;
+- visible real skin pores;
+- fine skin microtexture;
+- slight natural imperfections;
+- realistic photography;
+- non-posed relationship moment;
+- image not overexposed;
+- avoid a milky / foggy white veil when observed;
+- clear, transparent rendering.
 
 Do not over-stack tonal controls when they flatten the image.
 
 Known risks:
 
-- can be visually conservative unless attraction / relationship action is made concrete;
+- can be visually conservative unless attraction / relationship action is concrete;
 - can over-smooth skin;
-- some outputs can become too bright or acquire a white hazy veil;
+- some outputs become too bright or acquire a white hazy veil;
 - close-up identity canonicalization was weaker than image 2.5 in the current P1 test.
 
 Current decision:
@@ -60,22 +54,22 @@ Current decision:
 
 Use when priority is:
 
-- high-attraction partner exploration
-- archetype differentiation
-- aspirational partner / Hero alternatives
-- canonical partner reference-sheet construction
-- recovering stronger partner beauty when Banana2 Pro becomes too ordinary
+- high-attraction partner exploration;
+- archetype differentiation;
+- aspirational partner / Hero alternatives;
+- canonical partner reference-sheet construction;
+- recovering stronger partner beauty when Banana2 Pro becomes too ordinary.
 
 Validated compensation:
 
-- high definition
-- low noise
-- clean image
-- brighter / airy natural exposure
-- avoid dark / grey / muddy grading
-- preserve real skin texture
-- explicit anti-template / anti-rebeautification language
-- identity completion, not redesign
+- high definition;
+- low noise;
+- clean image;
+- brighter / airy natural exposure;
+- avoid dark / grey / muddy grading;
+- preserve real skin texture;
+- anti-template / anti-rebeautification language;
+- identity completion, not redesign.
 
 Known residual limitation:
 
@@ -89,7 +83,7 @@ Current decision:
 
 ---
 
-## Route C — Approved Couple 10s Video｜CURRENT VIDEO DEFAULT
+## Route C — Approved Couple 10s Video｜CURRENT VALIDATED VIDEO DEFAULT
 
 **Model:** MiniMax H3
 
@@ -99,35 +93,46 @@ Input priority:
 
 `APPROVED_COUPLE_IMAGE + USER_REFERENCE_PACKAGE + PARTNER_REFERENCE_PACKAGE`
 
-Current production requirement:
+Current validated production requirement:
 
 - 10-second interaction;
-- at least 3 readable relationship beats by default;
+- about 3 readable relationship beats by default;
 - purposeful shot / framing variation instead of stretching one micro-action;
-- normally ~2 natural cuts / angle changes when supported;
+- about 2 natural cuts / angle changes when supported;
 - preserve first-frame scene / wardrobe / color continuity;
-- maintain both identities through close interaction.
+- maintain both identities through close interaction;
+- finish with a readable closing hold rather than an abrupt cutoff.
 
-Current H3 route is newly selected and awaits one representative production validation. Do not launch a large H3 benchmark series.
+Validation evidence:
 
-Seedance 2.5 is no longer the current production route; retain its prior results only as historical timing / tension evidence.
+- one real 10-second Man × Man Night City Window H3 generation was reviewed as basically usable;
+- visible relationship progression and framing changes were achieved;
+- identities, wardrobe and environment remained operationally stable enough for current production use.
+
+Current decision:
+
+`DEFAULT 10-SECOND VIDEO MODEL = MiniMax H3`
+
+Do not launch a large H3 benchmark series unless real production exposes a specific failure that would change routing.
+
+Seedance 2.5 is historical evidence only, not the current production route.
 
 ---
 
 # Runtime Routing Logic
 
 ```text
-IF creating / exploring the partner identity
+IF creating / exploring partner identity
 → image 2.5 when high-attraction archetype clarity / canonical identity coverage is needed
 
-IF creating the final user-facing romantic couple image
+IF creating final user-facing romantic couple image
 → Banana2 Pro by current production default
 
 IF user approves couple image and requests video
 → MiniMax H3, 10 seconds, approved image as first-frame visual truth
 
 IF user explicitly requests a specific model
-→ honor the user model choice + apply that model adapter
+→ honor user model choice + apply that model adapter
 ```
 
 Never compile the same prompt unchanged across models.
@@ -136,17 +141,17 @@ Never compile the same prompt unchanged across models.
 
 # Model Evaluation Dimensions
 
-When a genuinely new routing decision is needed, evaluate only what can change that decision:
+Only reopen model comparison when a real routing decision is needed. Relevant dimensions:
 
-1. partner attractiveness
-2. identity preservation
-3. couple sweetness / chemistry
-4. skin / camera realism
-5. tonal quality / exposure
-6. action / scene controllability
-7. prompt-compensation effectiveness
-8. suitability as video first frame
-9. 10-second identity / anatomy stability
-10. shot / cut controllability
+1. partner attractiveness;
+2. identity preservation;
+3. couple sweetness / chemistry;
+4. skin / camera realism;
+5. tonal quality / exposure;
+6. action / scene controllability;
+7. prompt-compensation effectiveness;
+8. suitability as video first frame;
+9. 10-second identity / anatomy stability;
+10. shot / cut controllability.
 
-Stop model comparison once the production routing is operationally clear.
+Stop comparison once the production routing is operationally clear.
