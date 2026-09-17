@@ -78,13 +78,18 @@ The libraries must let runtime answer four practical questions quickly:
 
 ## 3. Validation Status
 
-Every library entry should be one of:
+Every runtime asset should carry one of these statuses:
 
-- `VALIDATED` — real generation evidence supports production use.
-- `CANDIDATE` — promising but not yet sufficiently tested.
-- `REJECTED / RISKY` — produced repeatable failure or poor product value.
+- `VALIDATED CORE` — direct project generation evidence supports production-default use.
+- `EVIDENCE-INFORMED` — supported by established photography / interaction practice or strong adjacent evidence and simple enough for production use, but not yet a project default.
+- `CANDIDATE` — promising and structurally useful, but should not become a default until real runtime evidence supports it.
+- `HIGH-RISK` / `REJECTED / RISKY` — anatomy, identity, social-role, model-compatibility, or product-value risk is high enough that runtime should not default-route to it.
+
+An asset may carry a compound label such as `EVIDENCE-INFORMED / ANATOMY-SENSITIVE` or `CANDIDATE / HIGH-RISK` when that gives runtime a useful routing warning.
 
 Do not keep testing a VALIDATED item unless a new model / market / real production failure changes the decision.
+
+Do not require a synthetic benchmark before every EVIDENCE-INFORMED asset can be used. Prefer real runtime evidence when geometry is simple and the risk is low.
 
 ---
 
@@ -129,13 +134,13 @@ Use the smallest sample that can reveal a real decision.
 
 Typical guidance:
 
-- new action family: 1–3 representative outputs;
+- new action family: 1–3 representative outputs only when risk / product read is unclear;
 - new scene / color family: 1–3 representative outputs;
 - new partner archetype family: small contrast set rather than every permutation;
 - model route comparison: stop once strengths / weaknesses and routing are clear;
 - video grammar: one representative production clip is enough when it proves the chosen route operationally usable.
 
-These are operating guidelines, not mandatory quotas.
+These are operating guidelines, not mandatory numeric quotas.
 
 ---
 
@@ -150,7 +155,7 @@ Current production routing is sufficiently established for the next phase:
 
 The first H3 10-second multi-beat / multi-shot run has been judged usable. Do not continue broad video benchmarking.
 
-Asset-library expansion should now happen mainly from real runtime cases rather than synthetic benchmark pages.
+Asset-library expansion should now happen mainly from research distillation + real runtime cases rather than synthetic benchmark pages.
 
 ---
 
