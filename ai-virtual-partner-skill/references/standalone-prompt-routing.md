@@ -4,22 +4,44 @@
 
 Make the AI Virtual Partner Skill independently usable in a fresh session without relying on temporary chat memory, benchmark context, or unstated prior work.
 
+Runtime principle:
+
+`CURRENT USER INPUT + CURRENT SKILL KNOWLEDGE BASE = COMPLETE PROMPT OUTPUT`
+
 The Skill must independently support:
 
-1. final still-image prompt;
-2. final MiniMax H3 video prompt;
-3. full user-photo → partner → couple image → approval → 10-second video workflow;
-4. minimum identity-recovery route when a person changes, fuses, swaps or drifts.
+1. `MODE A — IMAGE PROMPT ONLY`
+2. `MODE B — VIDEO PROMPT ONLY`
+3. `MODE C — END-TO-END`
+4. `IDENTITY FAILURE RECOVERY`
 
-Every final prompt must be executable on its own.
+Every final prompt must be self-contained, model-specific, directly copyable, and compiled only from current trusted inputs / references / library state.
+
+All generated or transformed partners are adults.
 
 ---
 
-# 1. Operating Modes
+# 1. Direct Prompt Request Rule
 
-## MODE A — IMAGE PROMPT ONLY
+If the user asks for a prompt rather than media generation, output the final copyable prompt directly after the required internal routing.
 
-Possible inputs:
+The user does not need to know:
+
+- internal library IDs;
+- Match Mode;
+- benchmark status;
+- risk labels;
+- why a combination was selected.
+
+Internal structure may be detailed. User-facing prompt output should remain compact and executable.
+
+---
+
+# 2. MODE A — IMAGE PROMPT ONLY
+
+Use when the user asks only for a still-image prompt.
+
+Possible current inputs:
 
 - user photo / identity reference;
 - partner gender / appearance preference;
@@ -31,27 +53,36 @@ Runtime:
 
 ```text
 USER INPUT
-→ USER IDENTITY LOCK when a real photo exists
-→ PARTNER RESOLVE / MATCHING when needed
-→ PARTNER LOCK when a specific approved partner exists
+→ USER IDENTITY LOCK when a real user photo exists
+→ USER_PREFERENCE_CARD
+→ PARTNER ARCHETYPE / MATCHING when needed
+→ PARTNER CANDIDATE ROUTE
+→ APPROVED PARTNER LOCK when a specific partner has already been approved
 → RELATIONSHIP COMBINATION ROUTER
 → RELATIONSHIP_COMBINATION_CARD
 → MODEL ROUTE
-→ MODEL ADAPTER
-→ FINAL IMAGE PROMPT
+→ IMAGE PROMPT COMPILE
+→ FINAL COPYABLE IMAGE PROMPT
 ```
 
-Do not independently improvise five separate creative libraries in a fresh session. Let `relationship-combination-router.md` orchestrate their compatibility.
+Rules:
 
-If there is no real user photo, do not pretend identity lock exists. Use a generic demo route or ask for the missing photo only when real-user continuity is essential.
+- If a real user photo exists, identity lock comes first.
+- If no real user photo exists, never pretend a locked real identity exists.
+- The user does not need to manually select Action / Scene / internal asset IDs.
+- If a partner candidate is shown as a separate product step, stop at `APPROVE / TRY ANOTHER` before partner lock.
+- If the product mode auto-continues directly to a couple image, the chosen concrete partner candidate must still be internally frozen as the current Partner identity source before compiling the couple prompt.
+- Do not independently improvise Moment / Action / Expression / Scene / Color in a fresh session; let `relationship-combination-router.md` resolve compatibility.
 
 ---
 
-## MODE B — VIDEO PROMPT ONLY
+# 3. MODE B — VIDEO PROMPT ONLY
+
+Use when the user asks for a 10-second couple-video prompt.
 
 Preferred authority:
 
-`APPROVED_COUPLE_IMAGE = VISUAL TRUTH / FIRST FRAME`
+`APPROVED_COUPLE_IMAGE = FIRST-FRAME VISUAL TRUTH`
 
 plus, when available:
 
@@ -61,154 +92,298 @@ Runtime:
 
 ```text
 APPROVED COUPLE IMAGE
-→ INHERIT USER + PARTNER IDENTITIES
-→ READ CURRENT BODY / HAND / MOMENT / EXPRESSION / SCENE / COLOR STATE
-→ READ COMBINATION CARD current state + H3_CONTINUATION_SEED when available
-→ MINIMAX H3 VIDEO ROUTE
-→ MODEL ADAPTER
-→ FINAL 10s VIDEO PROMPT
+→ BIND PERSON_A / PERSON_B IDENTITIES
+→ READ CURRENT BODY / HAND / CONTACT GEOMETRY
+→ READ CURRENT MOMENT / EXPRESSION / SCENE / COLOR STATE
+→ READ H3_CONTINUATION_SEED when available
+→ MINIMAX H3 ROUTE
+→ VIDEO PROMPT COMPILE
+→ FINAL COPYABLE 10s VIDEO PROMPT
 ```
 
-The seed is planning input only. The approved couple image remains immediate first-frame visual truth.
+Authority split:
 
-If no approved stable first frame exists and identity continuity matters, route first to couple-image creation.
+```text
+USER / PARTNER REFERENCE PACKAGES = IDENTITY AUTHORITY
+APPROVED_COUPLE_IMAGE = FIRST-FRAME COMPOSITION / BODY / WARDROBE / SCENE TRUTH
+H3_CONTINUATION_SEED = NEXT-BEAT PLANNING INPUT
+```
+
+The approved first frame may not redefine the user's or partner's higher-authority facial identity.
+
+If no approved / stable first frame exists and identity continuity matters, route first to couple-image / first-frame creation. Do not pretend a high-consistency video route already exists.
 
 ---
 
-## MODE C — END-TO-END
+# 4. MODE C — END-TO-END
+
+Fresh-session production flow:
 
 ```text
 USER PHOTO
-→ LOCK USER IDENTITY
-→ RESOLVE / CONFIRM PARTNER PREFERENCES
-→ PARTNER LIBRARY + MATCHING
-→ LOCK APPROVED PARTNER WHEN NEEDED
+→ USER IDENTITY LOCK
+→ CHOICE-BASED PARTNER PREFERENCES
+→ MATCHING ENGINE
+→ PARTNER CANDIDATE
+→ USER APPROVES / TRY ANOTHER
+→ PARTNER IDENTITY LOCK
 → RELATIONSHIP COMBINATION ROUTER
-→ FINAL IMAGE PROMPT
+→ FINAL COUPLE IMAGE PROMPT / IMAGE
+→ USER REVIEW
+→ APPROVED_COUPLE_IMAGE
+→ FINAL MINIMAX H3 VIDEO PROMPT / VIDEO
+```
+
+## Partner Candidate Approval Gate
+
+Normal visible product flow:
+
+```text
+PARTNER CANDIDATE
+→ USER APPROVES / TRY ANOTHER
+→ PARTNER IDENTITY LOCK
+→ COUPLE GENERATION
+```
+
+Do not jump from an unapproved abstract partner route straight into downstream identity-critical video.
+
+If a product mode intentionally skips a visible partner-selection page, the system must still mark one concrete generated candidate as the current Partner identity source before couple generation.
+
+## Couple Image Approval Gate
+
+Normal route:
+
+```text
+COUPLE IMAGE
 → USER APPROVAL
-→ FREEZE APPROVED_COUPLE_IMAGE + APPROVED COMBINATION STATE
-→ FINAL 10s MINIMAX H3 VIDEO PROMPT
+→ APPROVED_COUPLE_IMAGE
+→ VIDEO PROMPT
 ```
 
----
+Do not treat an unapproved image prompt / unapproved generated image as frozen video visual truth.
 
-# 2. Prompt Self-Containment
-
-Never rely on:
-
-- `same as before`;
-- `continue previous route`;
-- `use the benchmark result`;
-- unstated chat history.
-
-## Image prompt includes, when relevant
-
-- visible subject assignments;
-- user identity preservation;
-- partner identity / appearance route;
-- current Moment;
-- Action / hand / contact geometry;
-- Expression / Gaze;
-- Scene;
-- Wardrobe / physical color sources;
-- camera / framing when material;
-- realism controls;
-- model compensation.
-
-## Video prompt includes, when relevant
-
-- first-frame authority;
-- USER / PARTNER identity isolation;
-- duration;
-- Moment progression;
-- Action progression;
-- Expression / Gaze change caused by each beat;
-- shot size / camera position / camera move per explicit shot;
-- cut logic;
-- body-contact continuity;
-- scene / wardrobe / color continuity;
-- ending hold;
-- model controls.
+Exception: if the user explicitly asks to preview the video prompt before approval, output a preview and state internally that the first frame is not yet frozen.
 
 ---
 
-# 3. Image Prompt Writer
+# 5. IMAGE_PROMPT_COMPILE_PACKET
 
-Goal:
+Do not dump complete internal cards into the image model.
 
-`STRUCTURED COUPLE DECISION → FINAL STILL-IMAGE PROMPT`
-
-Compile from:
+Build an internal compile packet:
 
 ```text
-USER_IDENTITY_CARD
-+
-PARTNER_IDENTITY / PARTNER_APPEARANCE_CARD
-+
-RELATIONSHIP_COMBINATION_CARD
-+
-CAMERA REALISM
-+
-IMAGE MODEL ADAPTER
+IMAGE_PROMPT_COMPILE_PACKET
+
+PERSON_A_REFERENCE_ASSIGNMENT
+PERSON_B_REFERENCE_ASSIGNMENT
+
+USER_IDENTITY_LOCK_PAYLOAD
+PARTNER_IDENTITY_OR_APPEARANCE_PAYLOAD
+
+RELATIONSHIP_COMBINATION_VISIBLE_FIELDS
+- moment state
+- action / body geometry
+- hand / contact geometry
+- expression / gaze
+- scene
+- wardrobe / physical color sources
+- camera framing intent
+
+MODEL_ROUTE
+MODEL_ADAPTER_MINIMUM
+CAMERA_REALISM_MINIMUM
 ```
 
-The Router resolves:
+Then compile:
 
-`MOMENT + ACTION + EXPRESSION/GAZE + SCENE + COLOR/WARDROBE + CAMERA INTENT`.
+```text
+INTERNAL STRUCTURED STATE
+→ VISIBLE SUBJECT FILTER
+→ MINIMUM USEFUL FIELD SELECTION
+→ INFORMATION PRIORITY
+→ MERGE DUPLICATE CONTROLS
+→ REMOVE INTERNAL LABELS
+→ MODEL-SPECIFIC FINAL PROMPT
+```
 
-Source libraries remain their own SSOT; the Router only chooses a compatible set.
-
-Read:
-
-- `references/relationship-combination-router.md`
-- `references/couple-moment-dna.md`
-- source Moment / Action / Expression / Scene / Color files only when resolving compatibility or explicit overrides;
-- `references/camera-realism-layer.md`;
-- `references/model-routing-rules.md`;
-- `references/model-adaptation.md`.
-
-Current defaults:
-
-- final user-facing couple image → `Banana2 Pro`;
-- partner exploration / canonical identity → `image 2.5`.
-
-Never copy `why_this_combination_internal` or internal matching rationale into the visible prompt.
-
-Apply `VISIBLE SUBJECT FILTER`.
+`why_this_combination_internal`, `internal_selection_reason`, Match Mode, fit labels and risk labels never enter the visible prompt.
 
 ---
 
-# 4. Video Prompt Writer
+# 6. Image Prompt Information Priority
 
-Goal:
-
-`APPROVED COUPLE IMAGE → TIME-BASED RELATIONSHIP INTERACTION`
-
-Compile from:
+Use this order:
 
 ```text
-APPROVED_COUPLE_IMAGE
-+
-USER_REFERENCE_PACKAGE
-+
-PARTNER_REFERENCE_PACKAGE
-+
-APPROVED_RELATIONSHIP_COMBINATION_CARD when available
-+
-CURRENT BODY / HAND GEOMETRY
-+
-CURRENT EXPRESSION / GAZE / SCENE / COLOR STATE
-+
-H3_CONTINUATION_SEED when available
-+
-MINIMAX H3 10s GRAMMAR
-+
-VIDEO MODEL ADAPTER
+1. WHO THE PEOPLE ARE
+2. IDENTITY PRESERVATION / REFERENCE ASSIGNMENT
+3. WHAT THEY ARE DOING
+4. BODY / HAND / CONTACT GEOMETRY
+5. CURRENT MOMENT
+6. EXPRESSION / GAZE
+7. SCENE
+8. WARDROBE / PHYSICAL COLOR SOURCES
+9. CAMERA REALISM
+10. MODEL COMPENSATION
 ```
 
-Current default route: `MiniMax H3`.
+Global rule:
 
-Default grammar:
+`PEOPLE / ACTION / SCENE > COLOR > LIGHTING DECORATION`
+
+Do not let camera, color or lighting language become longer or more important than the people and relationship event.
+
+---
+
+# 7. Abstract-Word Translation Guard
+
+Final model prompts may not rely on abstract judgement words as the main instruction.
+
+Do not use these as substitutes for visual design:
+
+- high chemistry
+- cinematic
+- premium
+- high-end
+- visual impact
+- romantic tension
+- sexy vibe
+- luxury feeling
+- strong hook
+
+If a small style label remains, the prompt must already specify the visible cause through:
+
+`PEOPLE + ACTION + HANDS + DISTANCE + GAZE + SCENE + PHYSICAL COLOR SOURCES + CAMERA`.
+
+Relationship temperature is an internal routing direction; the final prompt should express it through visible behavior.
+
+---
+
+# 8. Prompt Compression Rule
+
+Final prompts must be:
+
+- minimal;
+- precise;
+- semantically complete;
+- directly executable by the target model.
+
+Internal cards may be detailed. Final prompts should not read like technical documentation.
+
+Compression pipeline:
+
+```text
+SELECT ONLY VISIBLE / EXECUTABLE FIELDS
+→ DROP NON-RENDERABLE RATIONALE
+→ MERGE DUPLICATE IDENTITY CONTROLS
+→ MERGE DUPLICATE REALISM CONTROLS
+→ KEEP ONLY MODEL-RELEVANT COMPENSATION
+→ FINAL PROMPT
+```
+
+Examples of duplicate cleanup:
+
+Instead of stacking:
+
+`same person + preserve identity + do not change face + identity unchanged`
+
+use one compact identity-control statement with concrete anchors / reference assignment.
+
+Instead of stacking:
+
+`realistic skin + natural pores + real texture + fine skin texture + no plastic skin`
+
+keep only the 2–3 controls materially useful for the selected model.
+
+---
+
+# 9. Prompt Pollution Guard
+
+Never put these into the final visible model prompt unless a target system explicitly requires a technical identifier:
+
+- benchmark status;
+- `VALIDATED CORE`;
+- `EVIDENCE-INFORMED`;
+- internal risk level;
+- Match Mode;
+- fit label;
+- compatibility explanation;
+- `internal_selection_reason`;
+- `why_this_combination_internal`;
+- library IDs;
+- analysis of user preferences;
+- research notes;
+- fallback logic that is not meant to render.
+
+The model sees only the production facts required to make the requested image / video.
+
+---
+
+# 10. Reference Assignment Guard
+
+Conceptual assignment:
+
+```text
+PERSON_A = USER_REFERENCE
+PERSON_B = PARTNER_REFERENCE
+FIRST_FRAME = APPROVED_COUPLE_IMAGE
+```
+
+If the target platform uses tokens such as `{{Mixed 1}}`, `{{Mixed 2}}`, or another reference syntax:
+
+- state once which token is USER;
+- state once which token is PARTNER;
+- state once which token / image is FIRST FRAME;
+- do not repeatedly @ / cite the same reference throughout the prompt unless the target system requires it.
+
+Text supports reliable references; it does not replace them.
+
+For identity:
+
+`USER / PARTNER AUTHORITY SOURCES > APPROVED COUPLE FRAME > TEXT DESCRIPTION`.
+
+For the exact recovery hierarchy, read `identity-failure-recovery.md`.
+
+---
+
+# 11. VIDEO_PROMPT_COMPILE_PACKET
+
+Build internally:
+
+```text
+VIDEO_PROMPT_COMPILE_PACKET
+
+FIRST_FRAME_VISUAL_TRUTH
+PERSON_A_IDENTITY_REFERENCE
+PERSON_B_IDENTITY_REFERENCE
+
+CURRENT_STATE
+CURRENT_HAND_GEOMETRY
+CURRENT_CONTACT_GEOMETRY
+CURRENT_EXPRESSION_GAZE
+
+H3_CONTINUATION_SEED
+
+SCENE_CONTINUITY
+WARDROBE_CONTINUITY
+COLOR_CONTINUITY
+
+MINIMAX_H3_GRAMMAR
+MODEL_ADAPTER_MINIMUM
+```
+
+Do not spend the video prompt re-describing the entire first frame. State only enough first-frame information to anchor continuity, then describe what happens next.
+
+---
+
+# 12. Video Prompt Compile Rule
+
+Current default:
+
+`MiniMax H3`
+
+Default grammar remains:
 
 ```text
 BEAT 1 — INITIATE
@@ -218,17 +393,66 @@ BEAT 1 — INITIATE
 → BEAT 3 — PAYOFF / HOLD / CLOSE
 ```
 
-Each Beat should compile:
+Target:
 
-`MOMENT STATE + ACTION CHANGE + GAZE / EXPRESSION CHANGE`.
+- 3 readable relationship beats;
+- approximately 2 purposeful cuts / framing changes;
+- final readable hold;
+- identity / wardrobe / scene continuity.
 
-Do not stretch one micro-action or fixed facial expression across 10 seconds.
+The grammar is a structure, not a fixed script.
 
-Color is continuity data in video, not a new palette-design task.
+Each actual beat must come from:
+
+`APPROVED FIRST FRAME + COMBINATION CARD + CURRENT GEOMETRY`.
+
+Every explicit shot should contain concise executable camera behavior integrated with the relationship action, for example:
+
+- slow push-in following the approach;
+- short lateral follow as one partner turns inward;
+- side medium-close tracking the reaction;
+- cut to tighter 3/4 as the body relationship changes;
+- small backward follow during a playful pull.
+
+Do not write `camera moves cinematically`.
+
+Do not create decorative camera movement unrelated to the relationship beat.
 
 ---
 
-# 5. Library Invocation Logic
+# 13. Video Identity Control
+
+Use one global slot assignment:
+
+`PERSON_A = USER`
+
+`PERSON_B = PARTNER`
+
+After each cut, the conceptual slot assignment remains unchanged.
+
+Do not repeat `preserve identity` in every sentence. Use one strong global identity rule plus necessary shot inheritance.
+
+If identity actually fails, leave Prompt Compilation and route to `identity-failure-recovery.md`.
+
+---
+
+# 14. Still vs Video Responsibility
+
+## IMAGE PROMPT
+
+Creates one complete, immediately readable adult-couple relationship moment.
+
+A still should not contain an entire 10-second timeline.
+
+## VIDEO PROMPT
+
+Continues from the approved first frame and creates new relationship events over time.
+
+A video prompt should not rebuild / redesign the first frame from scratch.
+
+---
+
+# 15. Library Invocation Logic
 
 ## Image path
 
@@ -238,10 +462,11 @@ portrait-identity-lock
 → matching-engine
 → partner-identity-lock when needed
 → relationship-combination-router
-   ↳ consult moment / action / expression-gaze / scene / color libraries as asset SSOT
+   ↳ source Moment / Action / Expression-Gaze / Scene / Color libraries as SSOT
 → camera-realism-layer
 → model-routing-rules
 → model-adaptation
+→ IMAGE PROMPT COMPILE
 → FINAL IMAGE PROMPT
 ```
 
@@ -249,16 +474,15 @@ portrait-identity-lock
 
 ```text
 APPROVED_COUPLE_IMAGE
-→ inherit USER / PARTNER identity locks
-→ inherit APPROVED RELATIONSHIP_COMBINATION_CARD current state
+→ USER / PARTNER identity packages
+→ APPROVED RELATIONSHIP_COMBINATION_CARD when available
 → minimax-h3-couple-video
 → model-adaptation
+→ VIDEO PROMPT COMPILE
 → FINAL VIDEO PROMPT
 ```
 
 ## Identity-recovery path
-
-Use only when the person themselves changed / fused / swapped / drifted:
 
 ```text
 USER FEEDBACK OR QC FAILURE
@@ -266,191 +490,139 @@ USER FEEDBACK OR QC FAILURE
 → identity-failure-recovery
 → invalidate bad reference when needed
 → minimum recovery
-→ regenerate failed state
+→ RECOVERED AUTHORITY SOURCE + UNCHANGED DIRECTOR STATE
+→ recompile only failed target state
 → identity QC
 ```
 
-Do not load benchmark / historical modules unless a real current failure requires them.
+Do not reload unrelated benchmark / historical modules for normal runtime.
 
 ---
 
-# 6. Missing Information
+# 16. Missing Information Handling
 
 ## Real user photo provided
 
-Run identity lock first. Do not beautify before identity is stable.
+Run identity lock first. Do not beautify before identity is stabilized.
 
 ## No real user photo
 
-Do not fabricate a locked identity.
+Do not fabricate a locked identity. Use a generic demo route or request the missing image only when real-user identity continuity is essential.
 
 ## Partner preference missing
 
-Use Matching Engine defaults. Explicit user preference always wins.
+Use Matching Engine defaults. Explicit user preference wins.
 
 ## Relationship creative inputs missing
-
-Do not select Moment / Action / Expression / Scene / Color independently in ad hoc order.
 
 Use:
 
 `RELATIONSHIP TEMPERATURE + CURRENT GEOMETRY + USER EXPLICIT CHOICES → RELATIONSHIP COMBINATION ROUTER`.
 
-The Router checks source-library compatibility and recent-combination diversity.
+Do not ask the user to manually solve internal creative routing unless the product intentionally exposes those controls.
 
-## Video requested with no approved image
+## Video requested without approved first frame
 
-If identity continuity matters:
+If high identity continuity matters:
 
-1. create / output the couple-image prompt;
+1. create / output couple-image route;
 2. obtain approved first frame;
-3. compile video from that image.
+3. compile H3 video.
 
 ---
 
-# 7. Output Contract
+# 17. User Feedback Routing
 
-## Image prompt
+Use the smallest reroute.
 
-```text
-MODE
-MODEL
-SELECTED PARTNER + RELATIONSHIP COMBINATION SUMMARY
-FINAL IMAGE PROMPT
-```
+## “换一个伴侣 / Try Another Match”
 
-Keep reasoning short unless requested.
+→ Matching Engine.
 
-## Video prompt
+Keep USER identity and hard preferences. Exclude / replace the previous concrete Partner candidate according to Matching rules.
 
-```text
-MODE
-MODEL
-FIRST-FRAME / VISUAL-TRUTH ASSIGNMENT
-SHORT 3-BEAT RELATIONSHIP PROGRESSION
-FINAL VIDEO PROMPT
-```
+## “这个脸我不喜欢，但类型对”
 
-## Full workflow
+→ keep Archetype / hard type preference; generate a new concrete Partner identity.
 
-```text
-1. USER IDENTITY RESULT
-2. PARTNER ROUTE
-3. RELATIONSHIP COMBINATION CARD / USER-FACING SUMMARY
-4. FINAL IMAGE PROMPT
-5. USER APPROVAL GATE
-6. FINAL VIDEO PROMPT
-```
+Do not change USER identity or director state unnecessarily.
 
-Do not output video before approval unless explicitly requested as preview.
+## “换个动作”
 
-## Identity failure
+→ Combination Router: reroute Action + caused Expression/Gaze; keep identities and compatible Scene.
 
-```text
-1. DETECT WHO DRIFTED
-2. CLASSIFY MINIMUM FAILURE
-3. RETURN TO CORRECT IDENTITY AUTHORITY
-4. DISCARD BAD REFERENCE IF NEEDED
-5. KEEP NON-FAILED DIRECTOR ASSETS
-6. REGENERATE FAILED STATE
-7. QC
-```
+## “换个 Moment / Try a Different Moment”
 
----
+Keep USER + Partner identity / Partner lock. Reroute Moment + Action + Expression/Gaze first. Keep Scene/Color when still compatible.
 
-# 8. Reference Assignment
+## “换个场景”
 
-Use conceptually:
+Keep identities + compatible Moment/Action. Reroute Scene + Color/Wardrobe.
 
-```text
-PERSON_A = USER_REFERENCE
-PERSON_B = PARTNER_REFERENCE
-FIRST_FRAME = APPROVED_COUPLE_IMAGE
-```
+## “太暧昧了”
 
-References outrank text for identity.
-
-For video composition / clothing / scene, approved couple image is immediate first-frame truth while original USER / PARTNER references remain identity authority.
-
-For exact recovery authority, read `references/identity-failure-recovery.md`.
-
----
-
-# 9. User Feedback Routing
-
-## Try Another Match
-
-Return to Matching Engine. Keep user identity and hard preferences. Do not reroute director assets until a new Partner is selected.
-
-## Try a Different Moment
-
-Keep:
-
-- USER identity;
-- PARTNER identity / lock;
-- hard partner preferences.
-
-Reroute first:
-
-- Moment;
-- Action;
-- Expression / Gaze.
-
-Keep Scene / Color when compatible. Change Scene only if the new Action cannot physically work there; then reroute Color only as needed.
-
-Do not reopen Matching.
-
-## Try a Different Vibe
-
-Keep Partner. Reroute Relationship Temperature + Moment + Expression/Gaze + Action as needed; change Color only when physically supported and useful.
-
-## “动作不喜欢”
-
-Keep identities / compatible Scene; reroute Action + caused Expression/Gaze.
-
-## “场景不好看”
-
-Keep identities + compatible Moment/Action; reroute Scene + Color.
+Lower Relationship Temperature; reroute Moment / Action / Gaze only as needed.
 
 ## “不够有感觉”
 
 Adjust first:
 
-`Moment → Gaze / Response → Body Distance → Action Tension Layer`.
+`MOMENT → GAZE / RESPONSE → BODY DISTANCE → ACTION TENSION LAYER`.
 
 Do not immediately replace Partner.
 
 ## “不是我了 / 伴侣变脸 / 第二镜换人”
 
-Route to Identity Failure Recovery.
+→ Identity Failure Recovery.
+
+## “手穿模 / 手指错了”
+
+→ Anatomy / Action correction. Do not rebuild identities if the people are still the same.
+
+## “颜色不好看”
+
+→ Color / Wardrobe reroute. Preserve identities / valid geometry.
+
+## “伴侣不够帅/美，但还是同一个人”
+
+→ Model / presentation / styling refinement.
+
+This is not Identity Recovery unless the person's actual identity changed.
 
 ---
 
-# 10. Prohibited Behaviors
+# 18. Identity Failure Fresh-Session Route
 
-The standalone Skill must not:
+If a fresh-session user provides a failed result plus trusted identity references and says something like `第二镜不是我`, do not require Matching again.
 
-- depend on temporary benchmark memory;
-- output shorthand instead of a self-contained prompt;
-- collapse image and video into one universal prompt;
-- reuse one model prompt mechanically across models;
-- skip identity lock for a real uploaded user when continuity matters;
-- invent unseen body identity facts;
-- expose internal matching or combination rationale as visible subjects;
-- rebuild two people from text after reliable references exist;
-- generate video with unclear first-frame authority;
-- let color instructions overpower people / action / scene;
-- use fixed gender roles;
-- make both people use identical smile / gaze behavior by default;
-- repair drift from a drifted output;
-- reopen Matching because an approved partner drifted downstream;
-- treat hand / scene / palette / attractiveness problems as identity failure;
-- brute-force Partner × Moment × Action × Expression × Scene × Color permutations;
-- allow fresh-session prompt writing to bypass `relationship-combination-router.md` when the creative combination is not explicitly fixed by the user.
+Route:
+
+```text
+FAILED OUTPUT + TRUSTED USER/PARTNER REFERENCES
+→ DETECT IDENTITY FAILURE
+→ identity-failure-recovery
+→ KEEP APPROVED FIRST FRAME / DIRECTOR STATE when valid
+→ RESTORE CORRECT IDENTITY AUTHORITY
+→ REWRITE / REGENERATE ONLY FAILED VIDEO STATE
+```
+
+Examples that route here:
+
+- `不是我了 / 这不是我`;
+- `脸变了`;
+- `怎么年轻了 / 变老了`;
+- `这个伴侣不是刚才那个`;
+- `两个人脸混了 / 换脸了`;
+- `第二个镜头换人了`;
+- `越改越不像`.
+
+Distinguish identity failure from Anatomy / Action / Scene / Color / Matching / Model-Presentation failures.
 
 ---
 
-# 11. Default Production Route
+# 19. Default Model Routing
+
+Current production defaults:
 
 ```text
 PARTNER EXPLORATION / CANONICAL IDENTITY
@@ -459,44 +631,221 @@ PARTNER EXPLORATION / CANONICAL IDENTITY
 FINAL USER-FACING COUPLE IMAGE
 → Banana2 Pro
 
-USER-APPROVED COUPLE IMAGE → 10s VIDEO
+APPROVED COUPLE IMAGE → 10s VIDEO
 → MiniMax H3
 ```
 
-Explicit compatible user model choice may override defaults.
+Seedance is historical evidence only, not the production default.
+
+A compatible explicit user model choice may override these defaults.
+
+Never compile one unchanged prompt for all models.
 
 ---
 
-# 12. Fresh-Session Requirement
+# 20. Output Contract
 
-`CURRENT USER INPUT + CURRENT SKILL KNOWLEDGE BASE = COMPLETE PROMPT OUTPUT`
+## Image prompt
 
-The user does not need to know internal asset IDs.
+```text
+MODE
+MODEL
+SHORT PARTNER + RELATIONSHIP COMBINATION SUMMARY
+FINAL IMAGE PROMPT
+```
 
-A fresh session must be able to resolve Partner, call the Combination Router, generate a complete still prompt, preserve the approved state, and compile the video without knowing how the libraries were originally benchmarked.
+## Video prompt
+
+```text
+MODE
+MODEL
+FIRST-FRAME / IDENTITY ASSIGNMENT
+SHORT 3-BEAT PROGRESSION
+FINAL VIDEO PROMPT
+```
+
+## Full workflow
+
+```text
+1. USER IDENTITY RESULT
+2. PARTNER CANDIDATE / APPROVAL STATE
+3. PARTNER LOCK WHEN APPROVED
+4. RELATIONSHIP COMBINATION SUMMARY
+5. FINAL IMAGE PROMPT / IMAGE
+6. COUPLE IMAGE APPROVAL GATE
+7. FINAL VIDEO PROMPT / VIDEO
+```
+
+## Identity recovery
+
+```text
+1. DETECT WHO DRIFTED
+2. CLASSIFY MINIMUM FAILURE
+3. RETURN TO CORRECT IDENTITY AUTHORITY
+4. DISCARD BAD REFERENCE IF NEEDED
+5. KEEP UNFAILED DIRECTOR ASSETS
+6. RECOMPILE / REGENERATE FAILED STATE ONLY
+7. QC
+```
 
 ---
 
-# 13. Fresh-Session Identity Failure Router
+# 21. Prohibited Behaviors
 
-If the user says:
+The standalone Skill must not:
 
-- `不是我了 / 这不是我`;
-- `脸变了`;
-- `怎么年轻了 / 变老了`;
-- `这个伴侣不是刚才那个`;
-- `两个人脸混了 / 换脸了`;
-- `第二个镜头换人了`;
-- `越改越不像`;
+- depend on temporary benchmark memory;
+- output `same as before` instead of a self-contained prompt;
+- collapse image and video into one universal prompt;
+- mechanically reuse one prompt across models;
+- skip identity lock when a real uploaded user photo exists and continuity matters;
+- invent unseen body identity facts;
+- expose internal matching / combination rationale as visible subjects;
+- copy full internal cards into a model prompt;
+- rebuild people from text after reliable references exist;
+- generate high-consistency video with unclear first-frame authority;
+- let color / lighting / camera language overpower people / action / scene;
+- rely on abstract judgement words instead of visible instructions;
+- use fixed gender roles;
+- make both adults use identical smile / gaze behavior by default;
+- repair drift from a drifted output;
+- reopen Matching because an approved partner drifted downstream;
+- treat hand / scene / palette / attractiveness problems as identity failure when identity is stable;
+- brute-force Partner × Moment × Action × Expression × Scene × Color permutations;
+- bypass `relationship-combination-router.md` when the creative combination is not explicitly fixed by the user;
+- leak benchmark status / internal IDs / risk labels / selection rationale into final prompts.
 
-route first to `references/identity-failure-recovery.md`.
+---
 
-Distinguish:
+# 22. Interface Continuity Audit
 
-`IDENTITY FAILURE`
+Required pipeline interfaces:
 
-from:
+```text
+MATCH_CANDIDATE_CARD
+→ PARTNER_APPEARANCE_CARD / visible_prompt_payload
+→ GENERATED PARTNER CANDIDATE
+→ APPROVAL
+→ PARTNER_IDENTITY_CARD
+```
 
-`ANATOMY / ACTION / SCENE / COLOR / MATCHING / MODEL-PRESENTATION FAILURE`.
+Then:
 
-Recover from the correct authority source and preserve all unaffected approved variables.
+```text
+PARTNER_IDENTITY / APPEARANCE
++ USER_IDENTITY
+→ RELATIONSHIP_COMBINATION_CARD
+→ IMAGE_PROMPT_COMPILE_PACKET
+→ FINAL IMAGE PROMPT
+```
+
+And after image approval:
+
+```text
+APPROVED_RELATIONSHIP_COMBINATION_CARD
++ APPROVED_COUPLE_IMAGE
++ USER/PARTNER REFERENCES
+→ VIDEO_PROMPT_COMPILE_PACKET
+→ MINIMAX H3 PROMPT
+```
+
+Recovery interface:
+
+```text
+RECOVERED AUTHORITY SOURCE
++ UNCHANGED DIRECTOR STATE
+→ PROMPT RECOMPILE
+```
+
+Do not regenerate Moment / Scene / Color merely because identity recovery occurred.
+
+---
+
+# 23. Standalone Static Acceptance Cases｜STEP 9
+
+No real generation is required for these checks.
+
+## CASE A — Real user + Men + Mature & Confident + Flirty
+
+Expected route:
+
+`Identity Lock → USER_PREFERENCE_CARD → Matching/P1 → concrete Partner Candidate → Partner approval/lock → Combination Router → IMAGE_PROMPT_COMPILE_PACKET → Banana2 Pro Prompt`
+
+Expected output: complete Partner / Couple image prompt flow without internal IDs exposed.
+
+Status: `PASS`.
+
+## CASE B — Real user + Women + Surprise Me + Sweet
+
+Expected route:
+
+`Identity Lock → Matching Surprise route → adult female-presentation candidate → Router Sweet rotation → Image Compile`.
+
+No ethnicity / orientation inference from photo.
+
+Status: `PASS`.
+
+## CASE C — Man × Man + Romantic
+
+Same Match / Router / Prompt grammar; no heterosexual role inheritance.
+
+Status: `PASS`.
+
+## CASE D — Woman × Woman + Playful
+
+Same role-neutral Action / Expression routing; reciprocal response carries relationship read.
+
+Status: `PASS`.
+
+## CASE E — “帮我换一个 Moment”
+
+Keep USER / PARTNER identity; call `Try a Different Moment`; reroute Moment + Action + Expression/Gaze first.
+
+Status: `PASS`.
+
+## CASE F — Approved Couple Image → “写10秒视频提示词”
+
+Enter MODE B; first frame = visual truth; identities = USER/PARTNER references; use Combination state / H3 seed when available.
+
+Status: `PASS`.
+
+## CASE G — High-consistency video but no approved first frame
+
+Route first to couple-image / first-frame creation.
+
+Status: `PASS`.
+
+## CASE H — “第二镜不是我”
+
+Identity Recovery; preserve approved director state; do not reopen Matching.
+
+Status: `PASS`.
+
+## CASE I — “伴侣不够帅/美，但还是同一个人”
+
+Model / presentation refinement, not identity recovery.
+
+Status: `PASS`.
+
+## CASE J — Completely fresh session
+
+Uses current input + Skill files only; no benchmark memory required.
+
+Status: `PASS`.
+
+---
+
+# 24. Fresh-Session Requirement
+
+A fresh-session invocation must be sufficient to:
+
+- lock a real uploaded user identity when present;
+- resolve a Partner from choice-based preferences;
+- establish a concrete Partner identity source;
+- call the Relationship Combination Router;
+- compile a self-contained still prompt;
+- preserve the approved couple state;
+- compile a self-contained MiniMax H3 video prompt;
+- enter identity recovery directly when the failure type warrants it.
+
+The Skill must never require knowledge of how the libraries were built, what tests happened previously, or what temporary chat produced the rules.
