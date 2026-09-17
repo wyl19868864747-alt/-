@@ -1,6 +1,6 @@
 ---
 name: ai-virtual-partner-skill
-description: Standalone AI virtual partner production skill for adult users. It can independently lock an uploaded user identity, resolve a suitable multi-orientation partner from curated libraries, route relationship moment/action/expression/scene/color, write model-specific image prompts, and after image approval write a 10-second MiniMax H3 flirtatious interaction video prompt while preserving both identities.
+description: Standalone AI virtual partner production skill for adult users. It can independently lock an uploaded user identity, resolve a suitable multi-orientation partner from curated libraries, route a compatible relationship combination, write model-specific image prompts, and after image approval write a 10-second MiniMax H3 flirtatious interaction video prompt while preserving both identities.
 ---
 
 # AI 虚拟伴侣｜AI Virtual Partner
@@ -23,18 +23,13 @@ The desired first impression is:
 
 This Skill must work independently in a fresh session.
 
-It must not depend on:
-
-- this week's benchmark context;
-- temporary chat memory;
-- unstated earlier prompt experiments;
-- phrases such as `same as before` or `continue the previous route`.
+It must not depend on temporary chat memory, unstated benchmark context, or phrases such as `same as before`.
 
 Read:
 
 - `references/standalone-prompt-routing.md`
 
-The Skill must independently support three modes:
+The Skill must independently support three modes.
 
 ### MODE A — IMAGE PROMPT ONLY
 
@@ -42,7 +37,7 @@ When the user asks only for a still-image prompt:
 
 - lock the real user identity when a real photo is supplied;
 - resolve / match a partner when needed;
-- route Moment → Action → Expression / Gaze → Scene → Color / Wardrobe;
+- run `references/relationship-combination-router.md` to select a compatible Moment / Action / Expression-Gaze / Scene / Color-Wardrobe combination;
 - choose the current image model route;
 - output one self-contained, directly copyable final image prompt.
 
@@ -54,26 +49,20 @@ When the user asks only for a video prompt:
 
 - prefer an approved couple image as first-frame visual truth;
 - inherit USER and PARTNER identity references separately;
-- inherit the approved scene / wardrobe / color state;
-- read the current Moment / Action / Expression-Gaze state;
+- inherit the approved relationship-combination state, scene, wardrobe and color state;
 - compile a time-based interaction rather than rewriting a still-image prompt;
 - output one self-contained, directly copyable MiniMax H3 prompt by current production default.
 
-If identity continuity matters and no stable first frame exists, route first to image / first-frame creation instead of pretending video continuity is already solved.
+If identity continuity matters and no stable first frame exists, route first to image / first-frame creation.
 
 ### MODE C — END-TO-END
-
-When the user wants the full workflow:
 
 ```text
 USER PHOTO
 → USER IDENTITY LOCK
 → PARTNER RESOLVE / MATCH
-→ MOMENT
-→ ACTION
-→ EXPRESSION / GAZE
-→ SCENE
-→ COLOR / WARDROBE
+→ PARTNER LOCK WHEN NEEDED
+→ RELATIONSHIP COMBINATION ROUTER
 → FINAL IMAGE PROMPT / IMAGE
 → USER APPROVAL
 → APPROVED_COUPLE_IMAGE = VIDEO VISUAL TRUTH
@@ -83,8 +72,6 @@ USER PHOTO
 ## Prompt Self-Containment
 
 Every final image or video prompt must restate all production information the target model needs.
-
-Do not rely on hidden project history.
 
 Image prompts should include, when relevant:
 
@@ -109,7 +96,7 @@ Video prompts should include, when relevant:
 - Action progression;
 - Expression / Gaze change triggered by each beat;
 - shot size;
-- camera position and camera movement for each explicit shot;
+- camera position and movement for each explicit shot;
 - cut logic;
 - contact continuity;
 - scene / wardrobe / color continuity;
@@ -118,11 +105,7 @@ Video prompts should include, when relevant:
 
 ## Direct Prompt Request Rule
 
-If the user explicitly asks for a prompt rather than asking the Skill to generate the media itself, output the final copyable prompt directly.
-
-Do not require the user to know internal library names.
-
-The internal libraries make the decision; the final user-facing output should remain simple.
+If the user explicitly asks for a prompt rather than media generation, output the final copyable prompt directly. Internal libraries make the decision; the final user-facing output stays simple.
 
 ---
 
@@ -135,24 +118,27 @@ USER UPLOAD
 ↓
 USER_IDENTITY_CARD / USER_REFERENCE_PACKAGE
 ↓
-USER PREFERENCE ROUTE (optional / explicit user choice wins)
+USER PREFERENCE ROUTE
 ↓
 ② PARTNER LIBRARY LOOKUP + MATCHING
 ↓
 APPROVED PARTNER IDENTITY / PARTNER_REFERENCE_PACKAGE
 ↓
-MOMENT → ACTION → EXPRESSION / GAZE → SCENE → COLOR / WARDROBE LOOKUP
+RELATIONSHIP COMBINATION ROUTER
+↓
+RELATIONSHIP_COMBINATION_CARD
 ↓
 ③ COUPLE IMAGE GENERATION / IMAGE PROMPT OUTPUT
 ↓
 USER REVIEW
-├─ NOT SATISFIED → reroute partner / Moment / Action / Expression-Gaze / Scene / Color with minimum necessary change
+├─ NOT SATISFIED → minimum reroute: partner OR Moment/Action/Expression-Gaze OR Scene/Color
 └─ APPROVED → freeze APPROVED_COUPLE_IMAGE
 ↓
 ④ VIDEO GENERATION / VIDEO PROMPT OUTPUT
 APPROVED_COUPLE_IMAGE = FIRST FRAME
 + USER_REFERENCE_PACKAGE
 + PARTNER_REFERENCE_PACKAGE
++ APPROVED COMBINATION STATE / H3 CONTINUATION SEED
 ↓
 MINIMAX H3
 ↓
@@ -161,7 +147,7 @@ MINIMAX H3
 IDENTITY + BODY CONTACT + EXPRESSION / GAZE + REALISM + MOTION QC
 ```
 
-The user-approved couple image is the visual truth for the video. Do not rebuild the couple from text after approval.
+The user-approved couple image is the visual truth for video. Do not rebuild the couple from text after approval.
 
 All people generated or transformed by this Skill are adults.
 
@@ -172,10 +158,7 @@ All people generated or transformed by this Skill are adults.
 Read:
 
 - `references/portrait-identity-lock.md`
-
-Goal:
-
-`LOCK WHO THE USER IS BEFORE ANY FANTASY GENERATION`
+- `references/identity-failure-recovery.md` only when identity failure is detected
 
 Build:
 
@@ -183,8 +166,6 @@ Build:
 - `USER_REFERENCE_PACKAGE` when identity risk / downstream video complexity justifies it
 
 Preserve hard identity anchors. Beautification, partner matching, pose, scene, color and video motion may not overwrite the user's face identity.
-
-The four-view logic is an identity-support asset, not a mandatory visible product step. It may be inferred / generated internally only when useful.
 
 ---
 
@@ -196,22 +177,14 @@ Read only what is needed:
 - `references/matching-engine.md`
 - `references/partner-identity-lock.md`
 
-Partner resolution must support multiple adult orientation routes, including at minimum:
+Partner resolution must support at minimum:
 
 - Woman × Man
 - Man × Woman
 - Woman × Woman
 - Man × Man
 
-User explicit choices override system priors, including:
-
-- partner gender
-- heritage appearance
-- visual age range
-- body-build preference
-- masculinity / femininity direction
-- attraction archetype
-- relationship temperature
+User explicit choices override system priors, including partner gender, heritage appearance, adult visual-age direction, body-build preference, masculinity / femininity direction, attraction archetype and relationship temperature.
 
 Keep:
 
@@ -219,17 +192,19 @@ Keep:
 
 Do not rank ethnic / racial groups by attractiveness. Do not output fake compatibility percentages.
 
-The matching engine exists to choose plausible, attractive candidates and avoid obvious visual mismatch—not to claim scientific destiny.
-
-After a partner is selected, freeze that partner into a reusable identity package when needed for complex image / video generation.
+After a partner is selected, freeze that partner into a reusable identity package when needed. Once approved, that specific person outranks the abstract Archetype.
 
 ---
 
-# 4. Asset Library Lookup｜关系状态 / 动作 / 表情 / 场景 / 色彩不是临场乱写
+# 4. Relationship Combination Router｜关系导演组合
 
-The production image should be assembled from reusable asset libraries.
+Read:
 
-Read as needed:
+- `references/relationship-combination-router.md`
+
+The Router orchestrates existing assets; it does not replace their SSOT files.
+
+Source libraries remain:
 
 - `references/couple-moment-dna.md`
 - `references/moment-type-library.md`
@@ -238,7 +213,7 @@ Read as needed:
 - `references/scene-tension-library.md`
 - `references/color-wardrobe-library.md`
 
-Keep responsibility boundaries strict:
+Responsibility boundaries:
 
 ```text
 MOMENT = WHEN / RELATIONSHIP STATE
@@ -246,99 +221,54 @@ ACTION = BODY GEOMETRY / CONTACT
 EXPRESSION / GAZE = VISIBLE FACE + EYE RESPONSE
 SCENE = WHERE / PHYSICAL SPACE
 COLOR / WARDROBE = PHYSICAL COLOR ASSIGNMENT
+ROUTER = WHICH COMPATIBLE SET TO USE TOGETHER
 ```
 
-Default runtime order:
+Default route:
 
 ```text
 RELATIONSHIP TEMPERATURE
-→ MOMENT STATE
-→ ACTION FAMILY
-→ EXPRESSION / GAZE PATTERN
-→ SCENE FAMILY
-→ COLOR / WARDROBE FAMILY
+→ RELATIONSHIP COMBINATION ROUTER
+→ MOMENT + ACTION + EXPRESSION/GAZE + SCENE + COLOR/WARDROBE + CAMERA INTENT
+→ COMPATIBILITY / RISK GATES
+→ RELATIONSHIP_COMBINATION_CARD
 ```
 
-Scene selection answers **where colors can physically exist**. `color-wardrobe-library.md` decides **how those colors are assigned to Person A / Person B / environment / light**.
+Rules:
 
-Do not default every couple to one pose, one fixed smile, one neutral room or one black / white / grey wardrobe.
-
-The current visual direction favors captured relationship moments:
-
-- direct / meaningful partner attention;
-- natural body contact;
-- weight transfer / leaning;
-- clear romantic partner geometry;
-- reciprocal facial response;
-- unresolved near-contact when tension is desired;
-- non-formal, non-passport, non-wedding-photo posing.
-
-Current validated action families include:
-
-- `FACE-TO-FACE WAIST HOLD + BREATH-CLOSE`
-- `PROTECTIVE SIDE EMBRACE`
-- `BACK HUG`
-- `SHOULDER / SIDE LEAN`
-
-Current validated / production-ready Moment defaults include:
-
-- `PRIVATE EYE CONTACT`
-- `SOFT ALMOST-CONTACT`
-- `UNRESOLVED CLOSE`
-- `REACTION SMILE`
-- `POST-CONTACT PULLBACK`
-
-Expression routing must follow:
-
-`MICRO-EXPRESSION > EXAGGERATED PERFORMANCE`
-
-Do not make both adults perform the same smile / gaze behavior by default. One initiates; the other reacts.
-
-Color routing must follow:
-
-`COORDINATED ≠ IDENTICAL`
-
-Use physical wardrobe / environment / light sources. Color remains subordinate to people, relationship action and scene.
+- explicit user choice wins unless physically / socially / identity / model incompatible;
+- preserve `MICRO-EXPRESSION > EXAGGERATED PERFORMANCE`;
+- preserve `COORDINATED ≠ IDENTICAL`;
+- preserve `MORE TENSION ≠ MORE CONTACT`;
+- do not default every couple to one pose / room / palette;
+- if a combination is high identity/anatomy risk, reduce the smallest risk variable instead of rebuilding identities.
 
 ---
 
 # 5. Stage ③ — Couple Image Generation / Image Prompt Writer
 
-## Independent Image Prompt Writer
-
-When the user asks for a still-image prompt, compile independently from:
+Compile from:
 
 ```text
 USER_IDENTITY_CARD
 +
 PARTNER_IDENTITY / PARTNER_APPEARANCE_CARD
 +
-MOMENT_STATE
-+
-RELATION_ACTION
-+
-EXPRESSION / GAZE
-+
-SCENE
-+
-COLOR / WARDROBE
+RELATIONSHIP_COMBINATION_CARD
 +
 CAMERA REALISM
 +
 IMAGE MODEL ADAPTER
 ```
 
-Apply the `VISIBLE SUBJECT FILTER` before the final prompt. Internal matching rationale must not accidentally become visible scene content.
+The card supplies the selected Moment, Action, Expression/Gaze, Scene, Color/Wardrobe, contact geometry and camera framing intent.
 
-The final prompt must be directly copyable and may not rely on prior chat shorthand.
+Apply `VISIBLE SUBJECT FILTER` before final delivery. Never include `why_this_combination_internal` or internal matching rationale in the visible prompt.
 
 Read:
 
-- `references/moment-type-library.md`
-- `references/relation-action-library.md`
-- `references/expression-gaze-library.md`
-- `references/scene-tension-library.md`
-- `references/color-wardrobe-library.md`
+- `references/relationship-combination-router.md`
+- source relationship libraries only as needed to resolve explicit overrides / compatibility
 - `references/model-routing-rules.md`
 - `references/model-adaptation.md`
 - `references/camera-realism-layer.md`
@@ -346,63 +276,50 @@ Read:
 
 ## Current Delivery Image Route
 
-Default current real-photo couple generation route:
+Default real-photo couple generation route:
 
 `Banana2 Pro`
 
-Use it for the user-facing couple image when the target is believable candid photography, real skin / material feel and captured intimacy.
+Use for believable candid photography, real skin / material feel and captured intimacy.
 
-Current Banana2 Pro compensation may include:
+Current compact compensation may include:
 
 - high-attractiveness adult couple;
-- visible real skin pores / fine skin texture;
+- visible real skin pores / fine skin microtexture;
 - slight natural imperfections;
 - realistic candid photography;
 - non-posed relationship moment;
-- image not overexposed;
+- not overexposed;
 - avoid milky / foggy white veil when observed;
-- clear, transparent image rendering.
+- clear rendering.
 
-Color prompts for Banana2 Pro should stay compact. Do not let long palette / lighting constraints flatten the image or overpower identity and relationship action.
-
-Expression / gaze prompts should also stay compact. One immediately readable state is enough for a still image.
+Color and lighting remain subordinate to people + relationship action + scene.
 
 ## image 2.5 Role
 
-Use image 2.5 when its strengths are specifically needed, especially:
-
-- attractive partner exploration;
-- archetype differentiation;
-- canonical partner identity-sheet construction;
-- high-attraction fantasy / hero alternatives.
-
-Current image 2.5 compensation remains model-specific and should not be copied mechanically into Banana2 Pro.
-
-Color instructions for image 2.5 should protect against grey / muddy / cement-like rendering using concise, physically assigned color anchors rather than a long grading description.
+Use image 2.5 especially for attractive partner exploration, archetype differentiation and canonical partner identity-sheet construction. Do not mechanically copy image 2.5 compensation into Banana2 Pro.
 
 ---
 
 # 6. User Review Gate
 
-After the couple image is generated, stop and let the user decide whether it is acceptable.
+After the couple image is generated, stop and let the user decide.
 
-If the user is not satisfied, do **not** restart the whole pipeline automatically.
+If dissatisfied, apply the smallest relevant reroute:
 
-Apply the smallest relevant reroute, for example:
-
-- keep user identity, change partner;
-- keep both identities, change Action;
-- keep Action, change Moment / Expression-Gaze;
-- keep identities + Action, change Scene / Color;
-- keep composition, adjust relationship temperature / gaze / expression.
+- change Partner → Matching Engine;
+- `Try a Different Moment` → keep identities / partner lock; reroute Moment + Action + Expression/Gaze first; keep Scene/Color if compatible;
+- change Scene → keep identities + compatible Moment/Action; reroute Scene + Color;
+- adjust vibe → reroute Relationship Temperature + relationship assets, not Partner by default;
+- identity changed → `identity-failure-recovery.md`.
 
 Only rebuild an identity when identity itself failed.
 
-If the user approves the image, freeze it as:
+If approved, freeze:
 
 `APPROVED_COUPLE_IMAGE`
 
-That approved image becomes the first-frame anchor for video, including its Moment state, hand/body geometry, expression/gaze state, wardrobe and scene color state.
+and preserve the approved `RELATIONSHIP_COMBINATION_CARD` as the starting relationship state for video.
 
 ---
 
@@ -410,6 +327,7 @@ That approved image becomes the first-frame anchor for video, including its Mome
 
 Read:
 
+- `references/relationship-combination-router.md`
 - `references/moment-type-library.md`
 - `references/relation-action-library.md`
 - `references/expression-gaze-library.md`
@@ -417,9 +335,7 @@ Read:
 - `references/model-adaptation.md`
 - `references/standalone-prompt-routing.md`
 
-Default target duration:
-
-`10 seconds`
+Default target duration: `10 seconds`.
 
 Inputs:
 
@@ -429,39 +345,15 @@ APPROVED_COUPLE_IMAGE = FIRST FRAME
 USER_REFERENCE_PACKAGE
 +
 PARTNER_REFERENCE_PACKAGE
++
+APPROVED RELATIONSHIP_COMBINATION_CARD
 ```
 
-## Independent Video Prompt Writer
+Use the card's current state + `h3_continuation_seed` as planning input, but the approved couple image remains immediate visual truth.
 
-When the user asks for a video prompt, compile independently from the approved first frame and current identity packages.
+Every explicit Beat combines:
 
-Every explicit Beat should combine:
-
-`MOMENT STATE + ACTION CHANGE + EXPRESSION / GAZE CHANGE`
-
-The prompt must explicitly include:
-
-- who each person is / which reference belongs to which person;
-- first-frame visual truth;
-- current body and hand geometry;
-- current Moment / Expression-Gaze state;
-- 10-second Beat progression;
-- camera / cut progression;
-- continuity rules;
-- closing beat.
-
-Do not merely append motion words to the still-image prompt.
-
-Video goal:
-
-- preserve both faces / hairlines / ages / body identities;
-- preserve approved wardrobe colors and scene warm/cool direction across cuts;
-- continue the relationship already visible in the approved image;
-- create visibly evolving Moment / Action / Expression changes rather than stretching one micro-action across ten seconds;
-- increase chemistry through motion, gaze, touch, posture change, proximity and reaction;
-- use shot-size / angle variation and natural cuts when the model can execute them;
-- allow stronger sensuality only within the platform / model's permitted adult-content range;
-- do not turn the video into a generic montage unrelated to the approved first frame.
+`MOMENT STATE + ACTION CHANGE + EXPRESSION / GAZE CHANGE`.
 
 Current production grammar:
 
@@ -471,11 +363,11 @@ Current production grammar:
 → `CUT / SHOT CHANGE`
 → `BEAT 3: PAYOFF / HOLD / CLOSE`
 
-A 10-second video should normally contain at least **three readable relationship beats** and approximately **two purposeful shot / framing changes** unless a specific concept genuinely benefits from one continuous shot.
+A 10-second video normally contains at least three readable relationship beats and approximately two purposeful shot / framing changes unless the concept genuinely benefits from one continuous shot.
 
-Expression / gaze should change because of the interaction, not randomly. Avoid holding one fixed “sexy stare” for the full clip.
+Preserve both identities, approved wardrobe / color direction, scene, body-contact continuity and a readable ending hold.
 
-Do not use the previous Seedance single-shot slow-approach template as the production default. Real testing showed it was too conservative and visually repetitive for a full 10-second delivery; an attempted higher-tension Seedance variant also failed in the current runtime. Seedance findings remain historical evidence only.
+Do not use the historical Seedance single-shot slow-approach route as production default.
 
 ---
 
@@ -487,13 +379,9 @@ Always maintain:
 
 `PERSON_B = PARTNER`
 
-No:
+No face swap, facial fusion, skin/hair contamination, identity convergence, or rebuilding identities from text after reliable references exist.
 
-- face swap;
-- facial feature fusion;
-- skin / hair contamination;
-- candidate identity convergence;
-- rebuilding identities from text after an approved image exists.
+If identity failure occurs, route to `references/identity-failure-recovery.md` rather than restarting Matching / director routing.
 
 ---
 
@@ -507,13 +395,14 @@ Check:
 - partner identity stability;
 - partner attractiveness;
 - couple-likeness;
-- sweetness / romantic chemistry;
+- sweetness / chemistry;
 - readable Moment state;
-- reciprocal Expression / Gaze rather than duplicated performance;
+- reciprocal Expression / Gaze;
 - natural body-contact geometry;
+- scene/action physical compatibility;
 - photographic realism;
 - wardrobe / background separation;
-- skin tone remains identity-consistent under the selected palette;
+- stable identity skin tone under selected palette;
 - shareability / fantasy value.
 
 ## Video QC
@@ -521,40 +410,27 @@ Check:
 Also check:
 
 - first-frame continuity;
-- no identity drift during motion;
-- no face fusion at close distance;
+- no identity drift / face fusion;
 - no hand / limb penetration;
 - continuous contact geometry;
 - physically plausible motion;
-- Moment / Expression / Gaze changes have visible causes;
-- wardrobe color does not change across cuts;
-- scene dominant colors / warm-cool direction remain stable;
-- at least three readable relationship beats for the default 10-second route;
-- shot / framing variation feels motivated rather than random;
-- ending does not accidentally switch people / scene / wardrobe.
+- facial changes have visible causes;
+- wardrobe and scene color continuity;
+- three readable relationship beats by default;
+- motivated shot / framing variation;
+- ending does not switch people / scene / wardrobe.
 
 ---
 
 # 10. Asset Libraries vs Product Runtime
 
-**Benchmarking is not a product step.**
-
-All current research / generation tests exist only to improve the reusable asset libraries:
-
-- what attractive partner archetypes work;
-- whether uploaded real users can be identity-locked;
-- which partner matches plausibly with which user / preference;
-- which Moments / Actions create sweetness / tension;
-- which Expression / Gaze patterns make the relationship read correctly;
-- which scenes / colors increase visual appeal;
-- which model best executes each asset type;
-- which video interaction grammars preserve identity while remaining engaging.
+Benchmarking is not a product step. Tests exist only to improve reusable libraries and routing decisions.
 
 Read:
 
 - `references/asset-library-governance.md`
 
-Do not expose internal benchmark complexity to normal product users.
+Do not expose benchmark complexity to normal users.
 
 ---
 
@@ -563,6 +439,7 @@ Do not expose internal benchmark complexity to normal product users.
 Current modular knowledge base:
 
 - `references/portrait-identity-lock.md`
+- `references/identity-failure-recovery.md`
 - `references/partner-archetype-library.md`
 - `references/matching-engine.md`
 - `references/partner-identity-lock.md`
@@ -572,15 +449,16 @@ Current modular knowledge base:
 - `references/expression-gaze-library.md`
 - `references/scene-tension-library.md`
 - `references/color-wardrobe-library.md`
+- `references/relationship-combination-router.md`
 - `references/model-routing-rules.md`
 - `references/model-adaptation.md`
 - `references/camera-realism-layer.md`
 - `references/minimax-h3-couple-video.md`
 - `references/standalone-prompt-routing.md`
-- `references/seedance-couple-video-start.md` — historical Seedance test evidence only; not current production runtime.
+- `references/seedance-couple-video-start.md` — historical evidence only
 - `references/asset-library-governance.md`
 
-Future libraries should stay modular. `SKILL.md` remains the orchestration layer.
+Future libraries should stay modular. `SKILL.md` remains orchestration only.
 
 ---
 
@@ -590,28 +468,16 @@ Use:
 
 `Research / Reference → Distill into Asset → Small Representative Validation → Record Reusable Failure / Compensation → Add to Library`
 
-Do **not** repeatedly isolate-test tiny variables once practical evidence is sufficient.
-
-When safe and interpretable, combine multiple creative variables in one representative test, such as:
-
-`partner type + Moment + Action + Expression / Gaze + Scene + Color`
+Do not repeatedly isolate-test tiny variables once practical evidence is sufficient.
 
 Only run additional A/B tests when the result would change a concrete routing or library decision.
-
-The goal is a strong production library, not an endless benchmark set.
 
 ---
 
 # 13. Fresh-Session Requirement｜新会话可独立工作
 
-A fresh-session invocation of this Skill must be sufficient to perform the production workflow.
-
-Runtime requirement:
+A fresh-session invocation must be sufficient to perform the production workflow.
 
 `CURRENT USER INPUT + CURRENT SKILL KNOWLEDGE BASE = COMPLETE PROMPT OUTPUT`
 
-The Skill may read its own knowledge files and the user's current assets, but it must not require knowledge of how the rules were discovered or what temporary conversation produced them.
-
-When asked only for a prompt, the Skill must be able to stop at the prompt-delivery stage without requiring media generation.
-
-When asked for end-to-end work, it should continue through the approval gate and then compile the video prompt from the approved couple image.
+When asked only for a prompt, stop at prompt delivery. When asked for end-to-end work, continue through approval and compile video from the approved couple image.
