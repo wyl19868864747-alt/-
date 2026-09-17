@@ -8,7 +8,8 @@ The Skill must be able to independently produce:
 
 1. a final image-generation prompt;
 2. a final video-generation prompt;
-3. the full user-photo → partner → couple image → approved first frame → 10-second video workflow.
+3. the full user-photo → partner → couple image → approved first frame → 10-second video workflow;
+4. a minimum identity-recovery route when the user reports that a person changed, fused, swapped, or drifted.
 
 Every final prompt must be executable on its own.
 
@@ -288,6 +289,20 @@ APPROVED_COUPLE_IMAGE
 → FINAL VIDEO PROMPT
 ```
 
+## Identity-recovery path
+
+Use only when the person themselves has changed / fused / swapped / drifted:
+
+```text
+USER FEEDBACK OR QC FAILURE
+→ portrait-identity-lock / partner-identity-lock authority check
+→ identity-failure-recovery
+→ invalidate bad reference when necessary
+→ minimum recovery
+→ regenerate target state
+→ identity QC
+```
+
 Do not load unrelated benchmark or historical modules unless they are needed to solve a current failure.
 
 ---
@@ -382,6 +397,22 @@ Output / execute in this order:
 
 Do not output the video prompt before the approval gate unless the user explicitly asks to preview it.
 
+## When user reports identity failure
+
+Do not restart the full workflow automatically.
+
+Default output / action:
+
+```text
+1. DETECT WHO DRIFTED
+2. CLASSIFY THE MINIMUM IDENTITY FAILURE
+3. RETURN TO CORRECT IDENTITY AUTHORITY
+4. DISCARD BAD REFERENCE IF NEEDED
+5. KEEP NON-FAILED ACTION / SCENE / COLOR / MOMENT ASSETS
+6. REGENERATE ONLY THE FAILED STATE
+7. QC
+```
+
 ---
 
 # 7. Reference Assignment Rule
@@ -404,6 +435,8 @@ Reference authority remains:
 
 except that for video composition / clothing / scene state, the approved couple image is the immediate visual truth for the first frame while original references remain the identity authority.
 
+For exact USER / PARTNER recovery authority, read `references/identity-failure-recovery.md`; never promote a later drifted frame merely because it looks good.
+
 ---
 
 # 8. Prohibited Behaviors
@@ -421,7 +454,10 @@ The standalone Skill must not:
 - generate a video prompt with unclear first-frame authority when identity continuity is critical;
 - let color instructions become longer or more important than the people / relationship action / scene;
 - use fixed gender roles for initiator / responder;
-- hold both people in identical smiles / identical gaze behavior by default.
+- hold both people in identical smiles / identical gaze behavior by default;
+- repair identity drift from the drifted output itself;
+- reopen Matching just because an approved partner drifted downstream;
+- treat hand / scene / palette / attractiveness problems as identity failure when the person's identity is still stable.
 
 ---
 
@@ -453,3 +489,31 @@ The Skill may use its own files and the user's current inputs, but must not requ
 Runtime principle:
 
 `CURRENT USER INPUT + CURRENT SKILL KNOWLEDGE BASE = COMPLETE PROMPT OUTPUT`
+
+---
+
+# 11. Fresh-Session Identity Failure Router
+
+If a fresh-session user says things such as:
+
+- `不是我了 / 这不是我`;
+- `脸变了`;
+- `怎么年轻了 / 变老了`;
+- `这个伴侣不是刚才那个`;
+- `两个人脸混了 / 换脸了`;
+- `第二个镜头换人了`;
+- `越改越不像`;
+
+route first to:
+
+- `references/identity-failure-recovery.md`
+
+Then distinguish:
+
+`IDENTITY FAILURE`
+
+from:
+
+`ANATOMY / ACTION / SCENE / COLOR / MATCHING / MODEL-PRESENTATION FAILURE`.
+
+Do not ask the user to repeat project history if the current references / approved assets are available. Recover from the correct authority source and preserve all unaffected approved variables.
