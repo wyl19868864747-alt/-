@@ -1,124 +1,230 @@
 ---
 name: ai-virtual-partner-skill
-description: AI virtual partner image and video generation skill. Current verified scope covers user portrait identity locking plus a validated partner archetype library and model-specific prompt adaptation rules. Partner matching, persistent partner identity, intimacy pose/scene routing, realism, and image-to-video continuity are added only after separate research and validation.
+description: AI virtual partner image and video generation skill. Current verified scope covers user portrait identity locking, partner archetype resolution, matching modes, sweet-couple moment routing, camera realism controls, and model-specific image routing. Persistent partner identity across long sessions, full pose/scene libraries, and image-to-video continuity remain separate future modules.
 ---
 
 # AI 虚拟伴侣｜AI Virtual Partner
 
-Build a persistent virtual-partner visual experience around the user's uploaded adult portrait. The system must lock the user's identity before any partner matching, couple composition, styling, or video work.
+Create a believable adult virtual-partner experience from the user's uploaded portrait. The result should feel like a captured sweet relationship moment with a highly attractive, plausible partner—not a formal couple portrait.
 
-## Current Verified Scope
+## Current Verified Flow
 
-Active modules:
+```text
+USER UPLOAD
+↓
+PORTRAIT IDENTITY LOCK
+↓
+USER_IDENTITY_CARD / REFERENCE SHEET
+↓
+PARTNER ARCHETYPE RESOLVE
+↓
+MATCHING ENGINE
+↓
+PARTNER CANDIDATE / IDENTITY
+↓
+COUPLE MOMENT ROUTER
+↓
+MODEL ROUTER
+↓
+MODEL-SPECIFIC PROMPT
+↓
+IDENTITY + CHEMISTRY + REALISM QC
+```
 
-`User Upload → Portrait Identity Lock → Identity QC → Approved User Reference`
+## Required Knowledge Modules
 
-`Partner Archetype Resolve → Model Adaptation → Partner Appearance Prompt`
+Read only the modules needed by the current stage:
 
-Read:
+- `references/portrait-identity-lock.md` — lock uploaded user identity, four-view logic, drift prevention.
+- `references/partner-archetype-library.md` — adult partner appearance archetypes.
+- `references/matching-engine.md` — Harmony / Preference / Complementary Contrast routing.
+- `references/couple-moment-dna.md` — sweet, intimate, non-formal couple-image DNA.
+- `references/moment-type-library.md` — validated sweet-moment types and their use cases.
+- `references/model-routing-rules.md` — choose image 2.5 vs Banana2 Pro by product target.
+- `references/model-adaptation.md` — compile different prompts for image 2.5 / Banana2 Pro / Seedance 2.5.
+- `references/camera-realism-layer.md` — real skin / exposure / camera texture controls.
 
-- `references/portrait-identity-lock.md` for user identity preservation;
-- `references/partner-archetype-library.md` for validated and candidate adult partner appearance archetypes;
-- `references/model-adaptation.md` before compiling prompts for image 2.5, Banana2 Pro, or Seedance 2.5.
+Do not copy entire knowledge files into the final model prompt. Resolve the structured decision first, then compile only the minimum effective instructions for the chosen model.
 
-Do not invent or activate unfinished modules merely because the future product may need them. The following remain **NOT YET VERIFIED**:
+---
 
-- partner matching / couple resemblance logic
-- persistent partner identity
-- intimacy pose grammar
-- intimate scene library
-- dedicated realism engine
-- image-to-video continuity engine
+## 1. Identity Gate
 
-Each module must be researched, distilled, tested, and then added separately.
+Before any partner generation:
 
-## 1. User Portrait Identity Lock
-
-Before generating any couple image, establish a stable user identity representation.
-
-The portrait-lock module must:
-
-1. inspect the uploaded portrait(s) for usable identity evidence;
-2. separate stable identity traits from transient photo conditions;
-3. build `USER_IDENTITY_CARD`;
-4. build `CANONICAL_IDENTITY`;
-5. classify traits into hard locks, strong locks, soft locks, and free variables;
-6. optionally build a four-view identity reference representation when downstream complexity requires it;
-7. run Identity QC after every generation that may become a new reference;
-8. reject identity drift and fall back to the original approved identity anchors;
-9. promote only high-confidence, identity-stable outputs into the reference pool.
+1. inspect user portrait evidence;
+2. build `USER_IDENTITY_CARD`;
+3. separate identity traits from photo conditions;
+4. build / infer the identity reference sheet when needed;
+5. lock hard identity anchors;
+6. reject identity drift.
 
 Core rule:
 
-`IDENTITY FIRST > STYLING > SCENE > POSE > BEAUTIFICATION`
+`IDENTITY FIRST`
 
-If “more attractive” conflicts with “more like the uploaded person,” preserve the uploaded person's identity.
+If beautification conflicts with the user's identity, preserve identity.
 
-## 2. Partner Archetype Resolve
+---
 
-Read `references/partner-archetype-library.md`.
+## 2. Partner Resolve
 
-Keep `HERITAGE_APPEARANCE` independent from `ARCHETYPE_ID`.
+Read `partner-archetype-library.md`.
 
-The library provides adult attraction archetypes, not ethnic beauty rankings or universal beauty formulas. Use only validated archetypes as default production choices; candidate archetypes may be used for explicit testing but must remain labeled as unverified.
+Keep:
 
-Do not use `golden ratio`, skin-tone ranking, or one fixed face template as a beauty engine.
+`HERITAGE_APPEARANCE` independent from `ARCHETYPE_ID`.
 
-A partner appearance profile should resolve from structured fields before prompt compilation, for example:
+Do not use heritage ranking, skin-tone ranking, golden-ratio formulas, or one universal beauty face.
 
-`ADULT AGE BAND + GENDER PRESENTATION + HERITAGE_APPEARANCE + ARCHETYPE_ID + FACE/BODY PARAMETERS + STYLE AURA`
+Create a distinct `PARTNER_APPEARANCE_CARD` before generating the partner.
 
-## 3. Model Adaptation
+---
 
-Read `references/model-adaptation.md` before generating.
+## 3. Matching Engine
 
-Do not mechanically reuse one prompt across models.
+Read `matching-engine.md`.
 
-Compile as:
+Supported validated modes:
 
-`STRUCTURED INTENT → MODEL ADAPTER → MODEL-SPECIFIC PROMPT`
+- `HARMONY_MATCH` — strongest natural couple-likeness.
+- `PREFERENCE_MATCH` — explicit user attraction preference first.
+- `COMPLEMENTARY_CONTRAST` — controlled visual / aura contrast with social-role risk checks.
 
-Current empirical profiles exist for:
+User explicit preference overrides system priors.
 
-- image 2.5
-- Banana2 Pro
-- Seedance 2.5
+Do not output fake compatibility percentages.
 
-Model behavior must be updated from reusable real-case feedback, not from one-off speculation.
+Matching logic is internal. Use a `VISIBLE SUBJECT FILTER` before prompt compilation so solo partner prompts do not accidentally render the user.
 
-## 4. Reference Priority
+---
 
-User identity authority order is fixed:
+## 4. Couple Moment Router
 
-`ORIGINAL_USER_IMAGE > USER_IDENTITY_CARD > CANONICAL_IDENTITY > CORE_REFERENCE_SHEET > APPROVED_REFERENCE > TEXT DESCRIPTION`
+Read `couple-moment-dna.md` and `moment-type-library.md`.
 
-AI-derived references may strengthen identity coverage but may never overwrite the original user's identity.
+Default product goal:
 
-## 5. Downstream Isolation
+> The first impression should be sweet, intimate and slightly heart-fluttering—“this is what my unknown best partner looks like.”
 
-When a virtual partner is added later, the user and partner must occupy separate identity slots:
+Validated moments:
+
+- `SOFT_ALMOST_KISS` — default Hero / strongest romantic-tension moment.
+- `CLOSE_EYE_CONTACT` — default realistic sweet moment.
+- `SHOULDER_LEAN` — safe long-term sweetness / secondary moment.
+
+Avoid defaulting to stiff, front-facing formal couple portraits.
+
+---
+
+## 5. Model Router
+
+Read `model-routing-rules.md` and `model-adaptation.md`.
+
+### Default Hero Route
+
+`image 2.5`
+
+Use for:
+
+- highest partner attractiveness
+- hero / cover result
+- strongest best-partner fantasy
+- Soft Almost-Kiss / heart-flutter moments
+
+Apply validated compensation for noise / grey / dark rendering.
+
+### Real / Candid Route
+
+`Banana2 Pro`
+
+Use for:
+
+- stronger real-photo feel
+- candid couple photography
+- low generation noise
+- natural heritage appearance
+
+Apply skin-microtexture + exposure / highlight controls. Do not overuse film-grain / sensor-texture wording.
+
+Never mechanically reuse one prompt across models.
+
+---
+
+## 6. Camera Realism
+
+Read `camera-realism-layer.md`.
+
+Distinguish:
+
+`GENERATION NOISE` from `PHOTOGRAPHIC TEXTURE`.
+
+Realism should come from:
+
+- real skin microtexture
+- natural tonal irregularity
+- believable exposure
+- restrained optical softness
+- real materials / hair / fabric
+
+not from dirty noise or decorative grain.
+
+---
+
+## 7. Couple Identity Isolation
+
+Always maintain:
 
 `PERSON_A = USER`
 
 `PERSON_B = PARTNER`
 
-No downstream module may merge, swap, or cross-contaminate their facial identity features.
+No face swap, feature fusion, hair / skin contamination, or identity convergence.
 
-## 6. Validation Gate
+For multiple partner candidates, enforce candidate identity separation; do not reuse the same idealized attractive face with only styling / body changes.
+
+---
+
+## 8. QC Gate
+
+A final couple image must pass:
+
+- user identity stability
+- partner identity stability
+- sweetness
+- couple-likeness
+- romantic chemistry
+- partner attractiveness
+- photorealism
+- fantasy / shareability value
 
 Use:
 
-- `validation/portrait-identity-lock-cases.md` for identity-lock changes;
-- `validation/archetype-benchmark.md` for archetype or model-adaptation changes.
+- `validation/portrait-identity-lock-cases.md`
+- `validation/archetype-benchmark.md`
+- `validation/matching-moment-model-benchmark.md`
 
-A document edit alone does not prove runtime stability. Only behavior directly supported by real generation evidence may be labeled runtime-validated.
+Only behavior supported by real generation evidence may be labeled runtime-validated.
 
-## 7. Expansion Rule
+---
 
-New capabilities are added one module at a time.
+## 9. Not Yet Verified / Future Modules
 
-For every new module:
+Do not invent production rules for these until separately researched and tested:
 
-`Research → Evidence Cards → Common Mechanism → Distilled Rule → Failure Cases → Validation → Add to Skill`
+- persistent partner identity across long multi-session use
+- full relation-action / pose library
+- full intimate scene library
+- stronger sensuality escalation system
+- image-to-video continuity engine
+- Seedance 2.5 couple-video benchmark
 
-Do not place large research notes directly into this file. Put heavy domain knowledge in `references/` and keep this file as the orchestration and hard-constraint layer.
+---
+
+## 10. Expansion Rule
+
+Every new module follows:
+
+`Research → Evidence / Reference Set → Distillation → Benchmark → Failure Analysis → Prompt Compensation → Validation → Add to Knowledge Module → Route from SKILL.md`
+
+Keep `SKILL.md` as orchestration. Store heavy rules, libraries, model behavior and domain knowledge in modular `references/` files.
