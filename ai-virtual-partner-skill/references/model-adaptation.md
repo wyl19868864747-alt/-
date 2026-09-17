@@ -132,7 +132,7 @@ Current practical compensation should stay minimal and evidence-driven. Useful a
 - real visible pores / fine skin microtexture;
 - minor natural imperfections;
 - `not overexposed`;
-- `avoid a pale white hazy veil / white foggy filter`; 
+- `avoid a pale white hazy veil / white foggy filter`;
 - `clear transparent image surface`.
 
 Do not automatically stack a long group of contrast / white-balance / HDR / highlight-control instructions. In current testing, over-controlling tone made results flatter or overly bright. Add only the smallest correction needed for the current failure.
@@ -141,72 +141,108 @@ Do not rely on heavy `film grain / sensor texture` wording as the primary realis
 
 ---
 
-# Seedance 2.5
+# MiniMax H3｜CURRENT VIDEO ROUTE
 
-## Current user-validated operating profile
+## Current status
 
-The user's production workflow primarily uses Seedance 2.5 for video.
+MiniMax H3 is the current production video model selected by the user for this Skill.
 
-Observed / provided working characteristics:
+This route replaces Seedance 2.5 for future AI Virtual Partner video generation.
 
-- can generate up to roughly 30 seconds in one generation in the user's current workflow;
-- can accept a large reference set, up to roughly 50 references in the user's current workflow;
-- can automatically cut between shots;
-- responds better when camera, lighting, shot content, blocking, and storyboard intent are described explicitly;
-- behaves more like a professional film-production model than a casual one-line text-to-video tool.
+Current H3 couple-video behavior is **not yet fully runtime-validated** in this Skill. Treat the first production clip as a small representative validation, not a new large benchmark campaign.
 
-## Validated couple-start behavior
+## Prompt strategy
 
-A real 5-second A/B couple-start test produced a reusable finding:
+Compile the 10-second interaction as a short directed scene with multiple relationship beats rather than one stretched micro-action.
+
+Default structure:
+
+`APPROVED FIRST FRAME → BEAT 1 → CUT / SHOT CHANGE → BEAT 2 → CUT / SHOT CHANGE → BEAT 3 / CLOSE`
+
+For the default 10-second route, target:
+
+- roughly 3 readable relationship beats;
+- roughly 2 purposeful shot / framing changes;
+- one clear escalation in body contact / gaze / posture;
+- one distinct reaction or playful / intimate micro-event;
+- a readable ending beat instead of an abrupt cutoff.
+
+Use concrete instructions for:
+
+- who initiates;
+- body direction;
+- hand trajectory;
+- gaze / facial reaction;
+- shot size;
+- camera position / move;
+- cut timing;
+- scene / wardrobe / color continuity;
+- identity continuity;
+- ending state.
+
+Do not spend ten seconds repeating only `slowly lean closer`.
+
+Do not use abstract intensity words alone. Translate `more flirtatious / more sensual / more exciting` into visible interaction such as:
+
+- waist pull / side turn;
+- hand moving from chest to shoulder / upper back;
+- playful half-turn into an embrace;
+- hair / face-side touch where anatomically safe;
+- cheek / temple / neck-side proximity within platform limits;
+- eye contact → reaction smile → renewed approach;
+- brief affectionate contact when the model / platform permits it;
+- change from medium two-shot to side close-up / tighter reaction shot.
+
+Identity rule:
+
+`APPROVED_COUPLE_IMAGE = visual truth`
+
+Do not reconstruct either person from text after approval.
+
+Input priority:
+
+`APPROVED_COUPLE_IMAGE + USER_REFERENCE_PACKAGE + PARTNER_REFERENCE_PACKAGE`
+
+Current safety / product rule:
+
+- all people are adults;
+- increase sensuality only within the connected platform / model's allowed adult-content range;
+- preserve mutual / reciprocal body language;
+- no coercive or non-consensual framing.
+
+---
+
+# Seedance 2.5｜HISTORICAL TEST EVIDENCE
+
+Seedance 2.5 is no longer the current production video route for this Skill.
+
+## Useful historical findings
+
+A real 5-second A/B couple-start test produced a reusable interaction finding:
 
 - the `standard` version felt more romantic / ambiguous than the version explicitly prompted as `more intimate`;
 - the stronger result used a slow lean-in, preserved a small unresolved face distance and held the moment rather than resolving contact quickly;
 - dimensional side/back window light gave faces more separation and atmosphere than a flatter high-key white backlight result in the tested setup;
 - stronger wording alone did not create stronger tension.
 
-Current motion principle:
+Historical motion principle worth keeping:
 
 `APPROACH → MICRO-PAUSE → HOLD UNRESOLVED DISTANCE`
 
-For current couple starts:
+## 10-second failure finding
 
-`LEAN-IN MOMENT` is the preferred first frame and `PRE-KISS PAUSE` is a later tension beat / second keyframe.
+The later 10-second Seedance test exposed a product-level problem:
 
-Do not begin at minimum face distance unless the shot is intentionally very short.
+- the generated video stayed in essentially one composition / relationship action for most of the duration;
+- motion was too conservative and visually repetitive;
+- no meaningful cut / shot progression occurred despite the product needing a more engaging 10-second interaction;
+- the higher-tension B route failed in the user's current Seedance runtime.
 
-## Prompt strategy
+Therefore:
 
-Seedance 2.5 prompts should prioritize explicit executable film language:
+`DO NOT USE SINGLE-SHOT SLOW APPROACH AS THE DEFAULT 10-SECOND PRODUCT TEMPLATE.`
 
-`scene → subject → blocking/action → shot size → camera position → camera move → spatial continuity → lighting → rhythm/cut logic`
-
-Use concrete descriptions for:
-
-- who is where
-- who moves first
-- what the camera sees
-- shot-size changes
-- camera direction and movement
-- light source and continuity
-- hand-contact stability
-- face-distance progression
-- when the action pauses and why
-- when cuts happen and why
-
-For romantic tension, translate abstract intent into:
-
-- approach speed;
-- gaze hold;
-- hand placement;
-- body distance;
-- unresolved final distance;
-- micro-pause duration / beat.
-
-Avoid replacing this information with abstract judgments such as `cinematic`, `high-energy`, `more intimate`, or `strong tension`.
-
-For identity-critical couple video, assign USER and PARTNER references explicitly and inherit the approved couple frame rather than rebuilding identities from text.
-
-Current detailed first-frame / motion-start rules live in `seedance-couple-video-start.md`.
+Keep Seedance notes only as historical evidence for romantic timing / unresolved distance.
 
 ---
 
