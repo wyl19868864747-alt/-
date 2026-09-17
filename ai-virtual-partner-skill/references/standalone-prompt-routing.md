@@ -37,7 +37,11 @@ Runtime:
 USER INPUT
 → USER IDENTITY LOCK when a real user photo exists
 → PARTNER RESOLVE / MATCHING when a partner is needed
-→ MOMENT + ACTION + SCENE + COLOR / WARDROBE + EXPRESSION ROUTE
+→ MOMENT STATE
+→ ACTION FAMILY
+→ EXPRESSION / GAZE
+→ SCENE
+→ COLOR / WARDROBE
 → MODEL ROUTE
 → MODEL ADAPTER
 → FINAL IMAGE PROMPT
@@ -66,7 +70,8 @@ Runtime:
 ```text
 APPROVED COUPLE IMAGE
 → INHERIT USER + PARTNER IDENTITIES
-→ READ CURRENT RELATIONSHIP STATE / HAND POSITIONS / BODY GEOMETRY / COLOR STATE
+→ READ CURRENT MOMENT STATE / ACTION / HAND POSITIONS / BODY GEOMETRY
+→ READ CURRENT EXPRESSION / GAZE / SCENE / COLOR STATE
 → MINIMAX H3 VIDEO ROUTE
 → MODEL ADAPTER
 → FINAL 10s VIDEO PROMPT
@@ -86,7 +91,7 @@ USER PHOTO
 → RESOLVE OR CONFIRM PARTNER PREFERENCES
 → PARTNER LIBRARY + MATCHING
 → LOCK PARTNER IDENTITY WHEN NEEDED
-→ ROUTE MOMENT / ACTION / SCENE / COLOR / WARDROBE / EXPRESSION
+→ ROUTE MOMENT → ACTION → EXPRESSION / GAZE → SCENE → COLOR / WARDROBE
 → FINAL IMAGE PROMPT
 → USER APPROVAL
 → FREEZE APPROVED_COUPLE_IMAGE
@@ -116,9 +121,9 @@ The final prompt must restate the production facts needed by the target model.
 - partner identity / partner appearance route;
 - moment / relationship state;
 - exact body action / hand placement;
+- expression / gaze;
 - scene;
 - wardrobe / physical color sources;
-- expression / gaze;
 - camera / framing when it materially affects the result;
 - realism controls;
 - model-specific compensation.
@@ -128,8 +133,9 @@ The final prompt must restate the production facts needed by the target model.
 - visual-truth / first-frame authority;
 - user / partner identity isolation;
 - duration;
-- relationship Beat progression;
-- body-action progression;
+- relationship Moment progression;
+- action progression;
+- expression / gaze change caused by each beat;
 - shot size / camera position / camera move for every explicit shot;
 - cut logic;
 - hand / body-contact continuity;
@@ -156,20 +162,24 @@ USER_IDENTITY_CARD
 +
 PARTNER_IDENTITY / PARTNER_APPEARANCE_CARD
 +
-MOMENT_TYPE
+MOMENT_STATE
 +
 RELATION_ACTION
++
+EXPRESSION / GAZE
 +
 SCENE
 +
 COLOR / WARDROBE
 +
-EXPRESSION / GAZE
-+
 CAMERA REALISM
 +
 IMAGE MODEL ADAPTER
 ```
+
+Moment compilation must read `references/moment-type-library.md`.
+
+Expression / gaze compilation must read `references/expression-gaze-library.md`.
 
 Color / wardrobe compilation must read `references/color-wardrobe-library.md` when the scene / wardrobe pairing is not already fixed by the user.
 
@@ -202,7 +212,11 @@ USER_REFERENCE_PACKAGE
 +
 PARTNER_REFERENCE_PACKAGE
 +
+CURRENT MOMENT STATE
++
 CURRENT BODY / HAND GEOMETRY
++
+CURRENT EXPRESSION / GAZE STATE
 +
 CURRENT SCENE / WARDROBE / COLOR STATE
 +
@@ -227,7 +241,11 @@ BEAT 1 — INITIATE
 → BEAT 3 — PAYOFF / HOLD / CLOSE
 ```
 
-Do not stretch one micro-action across the full 10 seconds unless a specific concept genuinely requires a one-shot hold.
+Each Beat should compile:
+
+`MOMENT STATE + ACTION CHANGE + GAZE / EXPRESSION CHANGE`
+
+Do not stretch one micro-action or one fixed facial expression across the full 10 seconds unless a specific concept genuinely requires it.
 
 Color in video is continuity data, not a new palette-design step. Preserve the approved first frame's wardrobe and warm/cool direction across cuts.
 
@@ -247,6 +265,7 @@ portrait-identity-lock
 → couple-moment-dna
 → moment-type-library
 → relation-action-library
+→ expression-gaze-library
 → scene-tension-library
 → color-wardrobe-library
 → camera-realism-layer
@@ -260,6 +279,9 @@ portrait-identity-lock
 ```text
 APPROVED_COUPLE_IMAGE
 → inherit user / partner identity locks
+→ read moment-type-library
+→ read relation-action-library
+→ read expression-gaze-library
 → inherit approved scene / wardrobe / color state
 → minimax-h3-couple-video
 → model-adaptation
@@ -292,13 +314,17 @@ Use the matching engine's production defaults to propose a suitable adult partne
 
 Explicit user preference always overrides the default.
 
-## Action / scene / color missing
+## Moment / action / expression / scene / color missing
 
-Select from validated / production-ready libraries based on the requested relationship temperature and physical scene compatibility.
+Select from validated / production-ready libraries based on the requested relationship temperature and current geometry.
+
+Use the order:
+
+`MOMENT → ACTION → EXPRESSION / GAZE → SCENE → COLOR / WARDROBE`
 
 Scene is selected before color when both are unspecified.
 
-Do not default every user to the same action, neutral room, all-black / white / grey wardrobe, or one palette.
+Do not default every user to the same moment, action, smile, neutral room, all-black / white / grey wardrobe, or one palette.
 
 ## Video requested but no approved image exists
 
@@ -319,7 +345,7 @@ Default output:
 ```text
 MODE
 MODEL
-SELECTED PARTNER / MOMENT / ACTION / SCENE / COLOR-WARDROBE SUMMARY
+SELECTED PARTNER / MOMENT / ACTION / EXPRESSION-GAZE / SCENE / COLOR-WARDROBE SUMMARY
 FINAL IMAGE PROMPT
 ```
 
@@ -335,7 +361,7 @@ Default output:
 MODE
 MODEL
 FIRST-FRAME / VISUAL-TRUTH ASSIGNMENT
-SHORT BEAT STRUCTURE
+SHORT MOMENT + ACTION + EXPRESSION-GAZE BEAT STRUCTURE
 FINAL VIDEO PROMPT
 ```
 
@@ -348,7 +374,7 @@ Output / execute in this order:
 ```text
 1. USER IDENTITY RESULT
 2. PARTNER ROUTE
-3. MOMENT / ACTION / SCENE / COLOR-WARDROBE DECISION
+3. MOMENT / ACTION / EXPRESSION-GAZE / SCENE / COLOR-WARDROBE DECISION
 4. FINAL IMAGE PROMPT
 5. USER APPROVAL GATE
 6. FINAL VIDEO PROMPT
@@ -393,7 +419,9 @@ The standalone Skill must not:
 - expose internal matching rationale as visible subjects;
 - rebuild two people from text after reliable references exist;
 - generate a video prompt with unclear first-frame authority when identity continuity is critical;
-- let color instructions become longer or more important than the people / relationship action / scene.
+- let color instructions become longer or more important than the people / relationship action / scene;
+- use fixed gender roles for initiator / responder;
+- hold both people in identical smiles / identical gaze behavior by default.
 
 ---
 
