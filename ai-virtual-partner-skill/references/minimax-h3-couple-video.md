@@ -29,11 +29,24 @@ plus, when available:
 `USER_REFERENCE_PACKAGE`
 +
 `PARTNER_REFERENCE_PACKAGE`
++
+`APPROVED_RELATIONSHIP_COMBINATION_CARD`
 
 Do not rebuild either identity from text.
 
+If a `RELATIONSHIP_COMBINATION_CARD` exists, read only its approved current-state fields and `h3_continuation_seed` as planning input. The card does not override the visible first frame.
+
+Priority:
+
+`APPROVED_COUPLE_IMAGE for composition / body state / wardrobe / scene`
+
+`USER + PARTNER REFERENCE PACKAGES for identity`
+
+`H3_CONTINUATION_SEED for next-beat planning`
+
 Read when compiling relationship behavior:
 
+- `references/relationship-combination-router.md`
 - `references/moment-type-library.md`
 - `references/relation-action-library.md`
 - `references/expression-gaze-library.md`
@@ -41,6 +54,30 @@ Read when compiling relationship behavior:
 Read when a video identity failure is detected:
 
 - `references/identity-failure-recovery.md`
+
+---
+
+## Combination Card → H3 Interface
+
+When available, map:
+
+```text
+RELATIONSHIP_COMBINATION_CARD
+.current state
+.body_geometry_summary
+.contact_geometry_summary
+.camera_framing_intent
+.h3_continuation_seed.current_state
+.h3_continuation_seed.next_natural_beat
+.h3_continuation_seed.second_possible_beat
+.h3_continuation_seed.payoff_direction
+```
+
+into the validated 3-beat grammar.
+
+Do not mechanically copy all card metadata into the prompt. Use only visible, executable facts.
+
+If the approved image visibly differs from the pre-image card, the approved image wins for actual first-frame geometry.
 
 ---
 
@@ -66,13 +103,13 @@ Current production target:
 
 The first H3 production run showed that this structure can produce a more engaging 10-second interaction than the earlier single-shot Seedance slow-approach route.
 
-Identity recovery must **not** replace this grammar. It only adjusts identity inheritance, face separation, rotation stress, and where cuts are placed around risky transformations.
+Identity recovery must not replace this grammar. It only adjusts identity inheritance, face separation, rotation stress and where cuts are placed around risky transformations.
 
 ---
 
 ## Moment + Expression / Gaze Compile Rule
 
-Each beat should define a **relationship-state change**, not only a body move.
+Each beat should define a relationship-state change, not only a body move.
 
 Compile from:
 
@@ -190,32 +227,21 @@ while preserving:
 
 `APPROVED_COUPLE_IMAGE = FIRST-FRAME VISUAL TRUTH`.
 
-The validated H3 run kept the two male identities visually distinguishable through changing proximity and framing, which is sufficient for the current production route. Continue runtime QC on every final delivery.
-
 ---
 
 ## Video Identity Failure Recovery
 
-If a generated clip shows:
-
-- identity drift after Beat 1;
-- face fusion during near-contact;
-- USER / PARTNER identity switch after a cut;
-- sudden age change;
-- hairline / hair identity change;
-- body-build change during motion;
-
-route to `references/identity-failure-recovery.md`.
+If a generated clip shows identity drift, face fusion, USER / PARTNER switch after a cut, sudden age change, hairline change or body-build change, route to `references/identity-failure-recovery.md`.
 
 Recovery priority:
 
 1. keep the approved first frame;
-2. keep the original USER / PARTNER identity packages as identity authority;
-3. reject drifted frames as new identity references;
+2. keep original USER / PARTNER identity packages as authority;
+3. reject drifted frames as identity references;
 4. shorten long continuous morphs;
-5. cut before the highest-risk face / head / body transformation;
+5. cut before the highest-risk transformation;
 6. reduce extreme head rotation;
-7. preserve visible separation between two faces;
+7. preserve visible separation between faces;
 8. shorten high-risk face-to-face convergence;
 9. explicitly rebind A/B identity references after each cut.
 
@@ -223,47 +249,35 @@ For close proximity:
 
 `IDENTITY STABILITY > CONTACT COMPLETION`
 
-A small unresolved face gap is preferred over a fused or contaminated payoff.
+A small unresolved face gap is preferred over a fused payoff.
 
-Do not reopen Matching merely because a video frame drifted. Do not regenerate the approved partner from the abstract Archetype.
+Do not reopen Matching because a video frame drifted. Do not regenerate an approved partner from the abstract Archetype.
 
 ---
 
 ## Chemistry Rule
 
-Do not confuse `more sensual` with `less movement` or with `complete contact immediately`.
-
 Build chemistry from:
 
 `INITIATION + RECIPROCAL REACTION + TOUCH CHANGE + GAZE + DISTANCE CHANGE + PAUSE`
 
-A useful clip should show that both people are actively responding to each other.
-
-For a 10-second product video, chemistry should evolve. Avoid holding one almost-kiss pose for most of the clip.
+Both people should actively respond. Avoid holding one almost-kiss pose for most of the clip.
 
 ---
 
 ## Color / Scene Continuity
 
-Preserve the approved first frame's scene / color identity unless the product explicitly requests a cut to a second location.
+Preserve the approved first frame's scene / color identity unless the product explicitly requests a second location.
 
-Rich color is encouraged when physically grounded in:
+Use physically grounded wardrobe / sky / city / plant / wood / practical-light colors. Avoid one grey / black / white palette across every couple.
 
-- wardrobe;
-- sky / city lights;
-- plants / wood / ceramics;
-- practical lamps;
-- environmental light.
-
-Avoid forcing one grey / black / white palette across every couple.
-
-The validated H3 run preserved the Night City Window warm-amber / cool-blue scene relationship well enough for production use.
+The validated H3 run preserved the Night City Window warm-amber / cool-blue relationship well enough for production use.
 
 ---
 
 ## Current Production Default
 
-Compile from the approved image rather than from a fixed gender-specific script.
+Compile from the approved image rather than a fixed gender-specific script.
 
 Default pattern:
 
@@ -274,6 +288,6 @@ Default pattern:
 → `6.5–9s near-contact / affectionate payoff within platform allowance`
 → `9–10s slight release + soft partner gaze / restrained smile / stable close`
 
-Adapt the exact action, Moment, gaze, expression and payoff to the approved image, partner orientation, scene, hand availability and body geometry.
+Adapt exact action, Moment, gaze, expression and payoff to approved image, orientation, scene, hand availability and body geometry.
 
-Do not reopen broad H3 benchmarking unless a real production failure exposes a specific routing decision.
+Do not reopen broad H3 benchmarking unless a real production failure exposes a routing decision.
