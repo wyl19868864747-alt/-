@@ -455,6 +455,12 @@ Use:
 
 Do not recursively repair a wrong identity through repeated edits. That compounds drift.
 
+For classified failures, two-person contamination, reference-pool contamination, or video/cut identity failures, read:
+
+- `references/identity-failure-recovery.md`
+
+The recovery library owns failure classification and the smallest safe repair route. This file remains the authority for USER identity definition and lock levels.
+
 ---
 
 ## 12. Double-Person Isolation
@@ -468,6 +474,8 @@ When the partner module is added, identity slots must be separate:
 The user may inherit only user identity anchors. The partner may inherit only partner identity anchors.
 
 Shared styling, scene, mood, lighting, or photographic chemistry may coordinate the pair, but face identity may never be blended.
+
+If slot contamination, face swap, or face fusion is detected, do not improvise a blended repair. Route to `identity-failure-recovery.md` and rebind the two authority sources separately.
 
 ---
 
@@ -501,6 +509,8 @@ Video must not redesign:
 
 Higher motion and larger head rotation increase drift risk and therefore require stronger reference coverage.
 
+If video identity drifts, preserve the approved first-frame state and route recovery through `references/identity-failure-recovery.md` rather than promoting later drifted frames as new identity evidence.
+
 ---
 
 ## 14. Final Hard Rules
@@ -515,3 +525,4 @@ Higher motion and larger head rotation increase drift risk and therefore require
 8. Only QC-passed outputs can be promoted.
 9. Four-view references exist to complete identity geometry, not to beautify or redesign the user.
 10. If evidence is missing, mark it unknown; do not invent identity details.
+11. Classified identity failures route to `identity-failure-recovery.md`; recover only the failed identity variable whenever possible.
