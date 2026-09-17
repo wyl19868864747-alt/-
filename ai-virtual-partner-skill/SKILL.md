@@ -1,6 +1,6 @@
 ---
 name: ai-virtual-partner-skill
-description: AI virtual partner generation workflow for adult users. The production flow locks the uploaded user identity, resolves a suitable multi-orientation partner from curated partner libraries, selects relationship actions/scenes/colors from validated asset libraries, generates a sweet intimate couple image, then converts the user-approved image into a 10-second Seedance 2.5 flirtatious interaction video while preserving both identities.
+description: AI virtual partner generation workflow for adult users. The production flow locks the uploaded user identity, resolves a suitable multi-orientation partner from curated partner libraries, selects relationship actions/scenes/colors from validated asset libraries, generates a sweet intimate couple image, then converts the user-approved image into a 10-second MiniMax H3 flirtatious interaction video while preserving both identities.
 ---
 
 # AI 虚拟伴侣｜AI Virtual Partner
@@ -47,7 +47,7 @@ APPROVED_COUPLE_IMAGE = FIRST FRAME
 + USER_REFERENCE_PACKAGE
 + PARTNER_REFERENCE_PACKAGE
 ↓
-SEEDANCE 2.5
+MINIMAX H3
 ↓
 10-SECOND FLIRTATIOUS / INTIMATE INTERACTION VIDEO
 ↓
@@ -233,11 +233,11 @@ That approved image becomes the first-frame anchor for video.
 
 ---
 
-# 7. Stage ④ — 10-Second Seedance 2.5 Video
+# 7. Stage ④ — 10-Second MiniMax H3 Video
 
 Read:
 
-- `references/seedance-couple-video-start.md`
+- `references/minimax-h3-couple-video.md`
 - `references/model-adaptation.md`
 
 Default target duration:
@@ -258,18 +258,23 @@ Video goal:
 
 - preserve both faces / hairlines / ages / body identities
 - continue the relationship already visible in the approved image
-- create a sweet, flirtatious, intimate interaction
-- increase chemistry through motion, gaze, pauses, proximity and natural touch
+- create a visibly evolving flirtatious / intimate interaction rather than stretching one micro-action across ten seconds
+- increase chemistry through motion, gaze, touch, posture change, proximity and reaction
+- use shot-size / angle variation and natural cuts when the model can execute them
 - allow stronger sensuality only within the platform / model's permitted adult-content range
 - do not turn the video into a generic montage unrelated to the approved first frame
 
-Current validated motion-start principle:
+Current production grammar:
 
-`LEAN-IN → SLOW APPROACH → MICRO-PAUSE → UNRESOLVED PRE-KISS DISTANCE`
+`BEAT 1: ESTABLISH / INITIATE`
+→ `CUT / SHOT CHANGE`
+→ `BEAT 2: ESCALATE PHYSICAL / EMOTIONAL CONTACT`
+→ `CUT / SHOT CHANGE`
+→ `BEAT 3: PAYOFF / HOLD / CLOSE`
 
-Current tests show that unresolved distance + pause can feel more intimate than rushing to completed contact.
+A 10-second video should normally contain at least **three readable relationship beats** and approximately **two purposeful shot / framing changes** unless a specific concept genuinely benefits from one continuous shot.
 
-The full 10-second interaction grammar is the next asset module to build; do not pretend the current 3–5 second start test already validates every 10-second behavior.
+Do not use the previous Seedance single-shot slow-approach template as the production default. Real testing showed it was too conservative and visually repetitive for a full 10-second delivery; an attempted higher-tension Seedance variant also failed in the current runtime. Seedance findings remain historical evidence only.
 
 ---
 
@@ -316,7 +321,8 @@ Also check:
 - no hand / limb penetration
 - continuous contact geometry
 - physically plausible motion
-- relationship action remains readable
+- at least three readable relationship beats for the default 10-second route
+- shot / framing variation feels motivated rather than random
 - ending does not accidentally switch people / scene / wardrobe
 
 ---
@@ -333,7 +339,7 @@ All current research / generation tests exist only to improve the reusable asset
 - which actions create sweetness / tension
 - which scenes / colors increase visual appeal
 - which model best executes each asset type
-- which motion patterns Seedance can preserve reliably
+- which video interaction grammars preserve identity while remaining engaging
 
 Read:
 
@@ -358,7 +364,8 @@ Current modular knowledge base:
 - `references/model-routing-rules.md`
 - `references/model-adaptation.md`
 - `references/camera-realism-layer.md`
-- `references/seedance-couple-video-start.md`
+- `references/minimax-h3-couple-video.md`
+- `references/seedance-couple-video-start.md` — historical Seedance test evidence only; not current production runtime.
 - `references/asset-library-governance.md`
 
 Future libraries should stay modular. `SKILL.md` remains the orchestration layer.
