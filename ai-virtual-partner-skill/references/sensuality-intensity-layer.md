@@ -101,7 +101,7 @@ A01 / A05 / A06 / A10 / A11 / A13 / A14.
 
 Frontend alias: `性感`
 
-This should be the **recommended default** when the product goal is a fantasy AI-partner image rather than a conservative lifestyle portrait.
+This remains a moderate sensual level, but it is no longer the default for the current fantasy AI-partner product.
 
 Visible cues:
 
@@ -215,11 +215,11 @@ If the user does not select a level:
 
 Product-level recommendation:
 
-For the AI Virtual Partner experience, the UI should visibly recommend:
+For the AI Virtual Partner experience, the current product default is:
 
-`V2 — 性感`
+`V3 — 大胆性感`
 
-instead of silently defaulting to V0/V1.
+when the user has not explicitly selected a lower visual-intimacy level. Use V2 only when the user chooses a more restrained sensual route. Use V4 only when the user explicitly requests the strongest non-explicit result.
 
 Do not auto-escalate a user's explicit lower choice.
 
@@ -478,3 +478,33 @@ This control should not be hidden inside Advanced settings if the product goal i
 8. Do not expose internal V-level codes in final prompts.
 9. Color remains owned by `color-wardrobe-library.md`; this layer owns coverage/cut/intimacy.
 10. Keep output non-explicit.
+
+
+---
+
+## Concept-image sensuality lock
+
+For the current product direction, the visual target is not ordinary romantic lifestyle photography.
+
+When user intent includes:
+- 高级;
+- 奢华;
+- 性感;
+- 荷尔蒙;
+- 暧昧;
+- 大尺度;
+
+default to:
+`V3 BOLD SENSUAL`
+
+and pair with:
+`VT3 FRAGRANCE-CAMPAIGN TENSION`
+
+V3 must visibly compile through:
+- at least one fitted / open / low-back / body-skimming wardrobe cue;
+- smaller body distance;
+- one meaningful waist / lower-waist / upper-hip / upper-back / collar contact;
+- reciprocal partner-directed expression from both adults;
+- tighter asymmetric framing.
+
+If those visible causes are absent, the result has not actually reached V3 even if the prompt contains words such as `sensual`, `sexy`, or `bold`.
