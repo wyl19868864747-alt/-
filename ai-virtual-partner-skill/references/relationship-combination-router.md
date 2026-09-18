@@ -21,6 +21,8 @@ RELATIONSHIP TEMPERATURE
 +
 VISUAL_INTIMACY_LEVEL
 +
+VISUAL_TREATMENT_PROFILE
++
 EXPLICIT USER CHOICES
 +
 CURRENT BODY GEOMETRY
@@ -31,7 +33,7 @@ RECENT COMBINATION HISTORY
 ↓
 COMBINATION ROUTER
 ↓
-MOMENT + ACTION + EXPRESSION/GAZE + SCENE + COLOR/WARDROBE + SENSUALITY PAYLOAD + CAMERA INTENT
+MOMENT + ACTION + EXPRESSION/GAZE + SCENE + COLOR/WARDROBE + SENSUALITY PAYLOAD + EDITORIAL TREATMENT + CAMERA INTENT
 ↓
 COMPATIBILITY / RISK GATES
 ↓
@@ -56,6 +58,7 @@ The router may read:
 - `PARTNER_IDENTITY_CARD` or `MATCH_CANDIDATE_CARD`
 - `RELATIONSHIP_TEMPERATURE`
 - `VISUAL_INTIMACY_LEVEL`
+- `VISUAL_TREATMENT_PROFILE`
 - `USER_EXPLICIT_MOMENT_PREFERENCE`
 - `USER_EXPLICIT_ACTION_PREFERENCE`
 - `USER_EXPLICIT_SCENE_PREFERENCE`
@@ -117,6 +120,8 @@ wardrobe_exposure_level
 body_distance_level
 contact_intensity_summary
 sensuality_payload
+visual_treatment_profile
+editorial_treatment_payload
 
 moment_id
 action_id
@@ -173,7 +178,8 @@ Check in this order:
 10. `COMBINATION ↔ ANATOMY RISK`
 11. `COMBINATION ↔ SOCIAL READ`
 12. `COMBINATION ↔ TARGET MODEL`
-13. `COMBINATION ↔ H3 CONTINUATION`
+13. `COMBINATION ↔ EDITORIAL TREATMENT`
+14. `COMBINATION ↔ H3 CONTINUATION`
 
 Only combinations that pass the gates may become production defaults.
 
@@ -280,7 +286,41 @@ Keep the output non-explicit and preserve reciprocal adult agency.
 
 ---
 
-# 10. Relationship Temperature Router
+# 10. Editorial Treatment Router
+
+Read `editorial-intimacy-dna.md` before finalizing the visual treatment.
+
+If the user does not specify a visual style, the product default is:
+
+`VT2 REFINED EDITORIAL INTIMACY + V2 SENSUAL`
+
+unless the user explicitly asks for cozy / UGC / everyday / conservative lifestyle.
+
+The Router should prefer:
+- asymmetrical close two-shot / 3/4 framing;
+- one dominant relationship gesture + one response signal;
+- visible body line;
+- material contrast;
+- directional light with a physical source;
+- narrative residue / unfinished moment;
+- reciprocal emotion on both adults.
+
+Reject the editorial default when the result collapses into:
+- bright beige apartment selfie;
+- cream-on-cream styling;
+- both smiling at camera;
+- centered stock-photo hug;
+- flat front lighting;
+- generic home décor carrying more visual weight than the couple.
+
+Do not fix “不高级 / 太像普通情侣照” by changing Partner identity first.
+
+Correction order:
+`EXPRESSION RECIPROCITY → COMPOSITION ASYMMETRY → BODY LINE / CONTACT → WARDROBE SILHOUETTE / MATERIAL → LIGHT DIRECTION → SCENE IF NEEDED`.
+
+---
+
+# 11. Relationship Temperature Router
 
 Relationship temperature is a direction, not a fixed pose.
 
@@ -351,7 +391,7 @@ Both adults must retain agency; protective must not read as bodyguard/client or 
 
 ---
 
-# 11. Combination Diversity Guard
+# 12. Combination Diversity Guard
 
 Maintain `RECENT_COMBINATION_HISTORY` for the same locked USER + PARTNER pair.
 
@@ -369,7 +409,7 @@ When `Try a Different Moment` is requested, exclude the immediately previous Mom
 
 ---
 
-# 12. Combined Identity Risk Gate
+# 13. Combined Identity Risk Gate
 
 Combination identity risk is ordinal only:
 
@@ -406,7 +446,7 @@ The Router only prevents risk. If an actual face swap / fusion / drift has alrea
 
 ---
 
-# 13. Anatomy Risk Accumulation
+# 14. Anatomy Risk Accumulation
 
 Use ordinal `LOW / MEDIUM / HIGH`.
 
@@ -429,7 +469,7 @@ A19 remains non-default and should not be promoted simply to increase intensity.
 
 ---
 
-# 14. Social Misread Gate
+# 15. Social Misread Gate
 
 Read matching, action and expression social-read guards.
 
@@ -452,7 +492,7 @@ Do not change the Partner face / identity to fix a social-read problem when cast
 
 ---
 
-# 15. Still Image Readability Gate
+# 16. Still Image Readability Gate
 
 One still image should immediately communicate:
 
@@ -469,7 +509,7 @@ Do not require the viewer to imagine unseen earlier video beats before the image
 
 ---
 
-# 16. Camera / Framing Intent
+# 17. Camera / Framing Intent
 
 This Router sets only the **relationship framing intention**. Camera realism details remain in `camera-realism-layer.md`.
 
@@ -485,7 +525,7 @@ Avoid extreme close-up when identity + hand + face proximity risks stack.
 
 ---
 
-# 17. Model-Aware Combination
+# 18. Model-Aware Combination
 
 ## Banana2 Pro｜Current Final Couple Default
 
@@ -513,7 +553,7 @@ The Router outputs only `H3_CONTINUATION_SEED`; the full video prompt remains ow
 
 ---
 
-# 18. H3_CONTINUATION_SEED
+# 19. H3_CONTINUATION_SEED
 
 Every selected combination should expose:
 
@@ -539,7 +579,7 @@ This is not a full video prompt.
 
 ---
 
-# 19. High-Value Core Director Routes
+# 20. High-Value Core Director Routes
 
 These are routing recipes built only from current source-library assets. They are **not a second asset SSOT**; if any source asset changes, the Router must resolve against the latest source file.
 
@@ -703,7 +743,7 @@ These are routing recipes built only from current source-library assets. They ar
 
 ---
 
-# 20. Core Route Status Rule
+# 21. Core Route Status Rule
 
 Use:
 
@@ -718,7 +758,7 @@ Existing project-proven Scene / Color / H3 evidence may support a core route wit
 
 ---
 
-# 21. User Feedback Minimal Reroute
+# 22. User Feedback Minimal Reroute
 
 ## “动作不喜欢”
 
@@ -735,6 +775,15 @@ Lower `VISUAL_INTIMACY_LEVEL` first; if the user also wants a different emotiona
 ## “太保守 / 不够性感 / 尺度不够”
 
 Keep identities and Partner. Increase `VISUAL_INTIMACY_LEVEL` first, then compile stronger wardrobe exposure + closer body distance + waist/lower-waist/upper-hip contact + stronger partner-directed gaze + slightly tighter framing. Only reroute Action / Scene if the current geometry cannot support the requested level.
+
+## “不高级 / 太普通 / 太像生活照”
+
+Keep USER + Partner identity. Keep valid Moment / Action where possible.
+
+Reroute first:
+`VISUAL_TREATMENT_PROFILE → COMPOSITION ASYMMETRY → BODY LINE → WARDROBE MATERIAL / SILHOUETTE → LIGHT DIRECTION`.
+
+Prefer VT2 / VT3 rather than replacing Partner or merely adding abstract words.
 
 ## “不够有感觉”
 
@@ -754,7 +803,7 @@ Return to `identity-failure-recovery.md`.
 
 ---
 
-# 22. TRY A DIFFERENT MOMENT
+# 23. TRY A DIFFERENT MOMENT
 
 When the user selects `Try a Different Moment`:
 
@@ -779,7 +828,7 @@ Do not reopen Matching.
 
 ---
 
-# 23. TRY A DIFFERENT VIBE｜Backend Capability
+# 24. TRY A DIFFERENT VIBE｜Backend Capability
 
 If requested:
 
@@ -797,7 +846,7 @@ Frontend exposure is decided later.
 
 ---
 
-# 24. Multi-Orientation Neutrality
+# 25. Multi-Orientation Neutrality
 
 The same router applies to:
 
@@ -814,7 +863,7 @@ Choose roles from:
 
 ---
 
-# 25. Rule-Level Acceptance Cases
+# 26. Rule-Level Acceptance Cases
 
 No new generation is required unless a future case cannot be resolved from routing logic.
 
@@ -833,7 +882,7 @@ Do not enumerate the full combinatorial space.
 
 ---
 
-# 26. Final Runtime Rules
+# 27. Final Runtime Rules
 
 1. Source libraries remain SSOT for asset definitions and IDs.
 2. Explicit user choice wins unless physically / socially / identity / model incompatible.
