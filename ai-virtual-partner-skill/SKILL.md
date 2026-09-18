@@ -1,6 +1,6 @@
 ---
 name: ai-virtual-partner-skill
-description: Standalone AI virtual partner production skill for adult users. It can independently lock an uploaded user identity, resolve a suitable multi-orientation partner from curated libraries, route a compatible relationship combination, write model-specific image prompts, and after image approval write a 10-second MiniMax H3 flirtatious interaction video prompt while preserving both identities.
+description: Standalone AI virtual partner production skill for adult users. It can independently lock an uploaded user identity, resolve a suitable multi-orientation partner from curated libraries, route a compatible relationship combination with an explicit visual-intimacy level, write model-specific image prompts, and after image approval write a 10-second MiniMax H3 flirtatious interaction video prompt while preserving both identities.
 ---
 
 # AI 虚拟伴侣｜AI Virtual Partner
@@ -9,7 +9,7 @@ description: Standalone AI virtual partner production skill for adult users. It 
 
 Turn one adult user's uploaded real photo into a believable fantasy relationship experience:
 
-> preserve the real user → find a suitable attractive virtual partner → create a captured sweet / intimate relationship moment → after user approval, animate that approved image into a short flirtatious couple video.
+> preserve the real user → find a suitable attractive virtual partner → create a captured sweet / intimate / sensual relationship moment → after user approval, animate that approved image into a short flirtatious couple video.
 
 The product is **not** a benchmark demo and not a formal couple-portrait generator.
 
@@ -37,7 +37,7 @@ When the user asks only for a still-image prompt:
 
 - lock the real user identity when a real photo is supplied;
 - resolve / match a partner when needed;
-- run `references/relationship-combination-router.md` to select a compatible Moment / Action / Expression-Gaze / Scene / Color-Wardrobe combination;
+- run `references/relationship-combination-router.md` to select a compatible Moment / Action / Expression-Gaze / Scene / Color-Wardrobe + Sensuality combination;
 - choose the current image model route;
 - output one self-contained, directly copyable final image prompt.
 
@@ -83,6 +83,7 @@ Image prompts should include, when relevant:
 - Expression / Gaze;
 - Scene;
 - physical Color / Wardrobe sources;
+- visible sensuality / wardrobe-exposure / body-distance controls when relevant;
 - camera / framing when useful;
 - realism controls;
 - model-specific compensation.
@@ -119,6 +120,8 @@ USER UPLOAD
 USER_IDENTITY_CARD / USER_REFERENCE_PACKAGE
 ↓
 USER PREFERENCE ROUTE
++
+VISUAL_INTIMACY_LEVEL
 ↓
 ② PARTNER LIBRARY LOOKUP + MATCHING
 ↓
@@ -212,6 +215,7 @@ Source libraries remain:
 - `references/expression-gaze-library.md`
 - `references/scene-tension-library.md`
 - `references/color-wardrobe-library.md`
+- `references/sensuality-intensity-layer.md`
 
 Responsibility boundaries:
 
@@ -221,15 +225,16 @@ ACTION = BODY GEOMETRY / CONTACT
 EXPRESSION / GAZE = VISIBLE FACE + EYE RESPONSE
 SCENE = WHERE / PHYSICAL SPACE
 COLOR / WARDROBE = PHYSICAL COLOR ASSIGNMENT
+SENSUALITY = VISIBLE INTIMACY SCALE / SKIN EXPOSURE / BODY DISTANCE / CONTACT INTENSITY
 ROUTER = WHICH COMPATIBLE SET TO USE TOGETHER
 ```
 
 Default route:
 
 ```text
-RELATIONSHIP TEMPERATURE
+RELATIONSHIP TEMPERATURE + VISUAL_INTIMACY_LEVEL
 → RELATIONSHIP COMBINATION ROUTER
-→ MOMENT + ACTION + EXPRESSION/GAZE + SCENE + COLOR/WARDROBE + CAMERA INTENT
+→ MOMENT + ACTION + EXPRESSION/GAZE + SCENE + COLOR/WARDROBE + SENSUALITY PAYLOAD + CAMERA INTENT
 → COMPATIBILITY / RISK GATES
 → RELATIONSHIP_COMBINATION_CARD
 ```
@@ -240,6 +245,8 @@ Rules:
 - preserve `MICRO-EXPRESSION > EXAGGERATED PERFORMANCE`;
 - preserve `COORDINATED ≠ IDENTICAL`;
 - preserve `MORE TENSION ≠ MORE CONTACT`;
+- preserve `RELATIONSHIP TEMPERATURE ≠ VISUAL INTIMACY LEVEL`;
+- when the user wants a bolder result, translate it into wardrobe exposure + body distance + contact zone + gaze + framing instead of adding the word `sexy`;
 - do not default every couple to one pose / room / palette;
 - if a combination is high identity/anatomy risk, reduce the smallest risk variable instead of rebuilding identities.
 
@@ -256,12 +263,14 @@ PARTNER_IDENTITY / PARTNER_APPEARANCE_CARD
 +
 RELATIONSHIP_COMBINATION_CARD
 +
+SENSUALITY PAYLOAD WHEN REQUESTED
++
 CAMERA REALISM
 +
 IMAGE MODEL ADAPTER
 ```
 
-The card supplies the selected Moment, Action, Expression/Gaze, Scene, Color/Wardrobe, contact geometry and camera framing intent.
+The card supplies the selected Moment, Action, Expression/Gaze, Scene, Color/Wardrobe, sensuality level/payload, contact geometry and camera framing intent.
 
 Apply `VISIBLE SUBJECT FILTER` before final delivery. Never include `why_this_combination_internal` or internal matching rationale in the visible prompt.
 
@@ -311,6 +320,8 @@ If dissatisfied, apply the smallest relevant reroute:
 - `Try a Different Moment` → keep identities / partner lock; reroute Moment + Action + Expression/Gaze first; keep Scene/Color if compatible;
 - change Scene → keep identities + compatible Moment/Action; reroute Scene + Color;
 - adjust vibe → reroute Relationship Temperature + relationship assets, not Partner by default;
+- too conservative / not sexy enough → increase `VISUAL_INTIMACY_LEVEL` and reroute wardrobe exposure + body distance + contact zone + gaze first; keep identities;
+- too bold / too sexualized → reduce `VISUAL_INTIMACY_LEVEL` first; keep identities;
 - identity changed → `identity-failure-recovery.md`.
 
 Only rebuild an identity when identity itself failed.
@@ -396,6 +407,7 @@ Check:
 - partner attractiveness;
 - couple-likeness;
 - sweetness / chemistry;
+- requested sensuality / visual-intimacy level is visibly achieved without relying on abstract adjectives;
 - readable Moment state;
 - reciprocal Expression / Gaze;
 - natural body-contact geometry;
@@ -449,6 +461,7 @@ Current modular knowledge base:
 - `references/expression-gaze-library.md`
 - `references/scene-tension-library.md`
 - `references/color-wardrobe-library.md`
+- `references/sensuality-intensity-layer.md`
 - `references/relationship-combination-router.md`
 - `references/model-routing-rules.md`
 - `references/model-adaptation.md`
