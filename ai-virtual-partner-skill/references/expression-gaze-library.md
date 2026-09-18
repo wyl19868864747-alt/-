@@ -519,3 +519,56 @@ Keep expression / gaze language shorter than the subject + relationship action d
 - protective → `G02 / G08 + E08 PROTECTIVE CALM`
 
 Use G03 and G10 as higher-control modifiers, not universal defaults.
+
+---
+
+# 10. Dual-Response Chemistry Gate｜双向表情硬规则
+
+Couple chemistry is invalid when only one adult carries the emotional read.
+
+Hard rule:
+
+`PARTNER AFFECTION + USER BLANK FACE = FAIL`
+
+`USER AFFECTION + PARTNER BLANK FACE = FAIL`
+
+For every couple still / video beat:
+
+- both adults must be emotionally present;
+- expressions must not be identical copies;
+- one person may initiate, but the other must visibly respond;
+- both people need partner-directed gaze or a clearly readable relational reaction;
+- mouth corners / eyelids / head angle should show small but visible emotional participation.
+
+Default pattern:
+
+`INITIATOR SIGNAL → RECEIVER RESPONSE → SHARED RELATIONSHIP READ`
+
+Useful pairings:
+
+- focused attraction → restrained responding smile;
+- direct mutual gaze → one brief gaze break → return with softened eyes;
+- waist / collar pull → receiver softens eyes + slight mouth-corner lift;
+- playful action → short reaction smile → reconnect;
+- near-contact → both reduce smile, hold gaze, one gives a tiny response.
+
+Immediate failure patterns:
+
+- one partner is flirtatious while the other looks cold;
+- USER looks into camera with neutral selfie face while PARTNER looks affectionate;
+- intimate body distance but emotionally dead faces;
+- both people wear the same pasted AI smile;
+- one adult reads as passive mannequin / bystander.
+
+Recovery order:
+
+`GAZE TARGET → EYE SOFTNESS → MOUTH-CORNER RESPONSE → HEAD ANGLE → EXPRESSION BALANCE`
+
+Do not first change Scene / Color / Partner when the actual failure is one-sided facial response.
+
+For still images, one frame must already show reciprocity.
+
+For video, each beat must preserve:
+
+`CURRENT GAZE + CURRENT EXPRESSION + TRIGGER + RECIPROCAL RESPONSE`.
+
