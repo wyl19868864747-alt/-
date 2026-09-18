@@ -628,3 +628,37 @@ If no explicit color preference exists:
 - S13 Hotel Lifestyle → CW08
 
 If scene and wardrobe are both unspecified, scene selection happens first. Color never chooses an incompatible scene.
+
+---
+
+# Editorial Wardrobe / Material Guard
+
+When `editorial-intimacy-dna.md` selects VT2 / VT3 / VT4, wardrobe should not default to conservative lifestyle styling.
+
+For V2+ sensual editorial routes, avoid using both adults in:
+- bulky cream knitwear;
+- loose beige overshirts;
+- fully covered high necklines;
+- identical soft textures;
+- cream-on-cream bodies against a cream room.
+
+Prefer at least one visible body-line or material cue:
+- open neck / collarbone;
+- fitted waist;
+- shoulder / upper-back line;
+- low-back / open-back silhouette;
+- leg line / slit when scene-compatible;
+- fitted fine-gauge knit;
+- silk / satin / body-skimming jersey;
+- crisp open-collar shirt;
+- tailored dark layer;
+- soft leather accent;
+- structured contrast between Person A and Person B.
+
+High-value editorial color logic:
+
+`SKIN + ONE DARK ANCHOR + ONE SOFT SUPPORT + ONE PHYSICAL LIGHT SOURCE`
+
+This does not replace the existing palette families; it changes how wardrobe and material are assigned inside them.
+
+Do not equate “high-end” with all-black, all-white, or more colors.
