@@ -36,7 +36,7 @@ For final user-facing fantasy couple images, do **not** silently default to:
 
 Recommended product default when the user does not specify a visual treatment:
 
-`VT2 REFINED EDITORIAL INTIMACY + V2 SENSUAL`
+`VT3 FRAGRANCE-CAMPAIGN TENSION + V3 BOLD SENSUAL`
 
 If the user explicitly asks for cozy / UGC / everyday / selfie, the lifestyle route may override this default.
 
@@ -465,3 +465,180 @@ unless the user chooses otherwise.
 8. Background décor never outranks faces / body geometry.
 9. Avoid stock-photo smiles and centered couple posing.
 10. Preserve identity, anatomy, adult mutual agency and non-explicit boundaries.
+
+
+---
+
+# 14. Concept-Image DNA Lock｜概念图视觉母版
+
+The latest concept-image tests define the desired **visual ceiling** for the product.
+
+When the user asks for:
+- 高级;
+- 奢华;
+- 性感;
+- 荷尔蒙;
+- 暧昧;
+- 大尺度;
+
+do not treat those words as prompt content. Route them into the following visible DNA.
+
+## 14.1 Desired Read
+
+The final image should feel like:
+- a fashion / fragrance campaign frame;
+- a private adult relationship moment;
+- visually expensive but not overloaded with luxury props;
+- sensual through body line, skin, material, gaze and proximity;
+- emotionally reciprocal;
+- one beat before or after a more intimate action.
+
+Reject the result if it mainly reads as:
+- cozy couple portrait;
+- engagement photo;
+- tourist selfie;
+- beige lifestyle ad;
+- ordinary social-media couple snapshot.
+
+## 14.2 Body / Skin Read
+
+For V3 / V4 routes, require at least **two** readable body-line cues when physically compatible:
+- shoulder / collarbone;
+- upper-back / back line;
+- fitted waist;
+- side torso;
+- leg line;
+- open neck / chest line without explicit exposure.
+
+Do not hide both adults inside bulky layers.
+
+## 14.3 Wardrobe Direction
+
+Preferred:
+- silk / satin slip-inspired dress with intimate areas covered;
+- low-back / open-back dress;
+- fitted body-skimming dress;
+- fitted bodysuit with opaque coverage;
+- open-collar fitted shirt;
+- fine-gauge fitted knit;
+- tailored dark jacket / shirt with open neck;
+- swimwear only in physically appropriate pool / coast / resort scenes.
+
+Avoid as the default for sensual editorial routes:
+- oversized cream sweaters;
+- loose beige overshirts;
+- high-neck fully covered knitwear on both people;
+- matching casual couple outfits.
+
+## 14.4 Contact / Geometry
+
+Use one strong relationship gesture plus one response signal.
+
+Preferred contact zones:
+- rear waist;
+- lower waist;
+- side waist;
+- upper hip;
+- upper back;
+- collar / chest-clothing edge;
+- neck-side / hair-side touch when anatomy is stable.
+
+Preferred body states:
+- torso-to-torso close with slight offset;
+- one body partially crossing in front of the other;
+- seated side-perch;
+- wall / window supported close with open exit geometry;
+- half-turn pull-in;
+- back-neck / near-whisper;
+- breath-close unresolved hold.
+
+Do not solve sensuality by adding many hands or complex limb overlap.
+
+## 14.5 Expression / Hormonal Read
+
+Both adults must carry the chemistry.
+
+Use:
+- focused partner-directed gaze;
+- one brief eye→lip→eye cue;
+- slightly softened eyelids;
+- restrained mouth-corner response;
+- lips relaxed or slightly parted only when natural;
+- one adult initiates, the other visibly receives / returns the signal.
+
+Hard fail:
+`PARTNER HOT + USER COLD = FAIL`.
+
+## 14.6 Composition
+
+Prefer:
+- medium-close / close 3/4 two-shot;
+- asymmetric body placement;
+- one face / shoulder slightly closer to lens;
+- intentional crop at shoulder / arm / hip;
+- partial foreground occlusion;
+- body lines crossing diagonally through frame;
+- camera positioned inside the relationship space.
+
+Avoid:
+- centered full-body pose;
+- side-by-side equal-scale portrait;
+- both looking at camera;
+- evenly spaced couple composition.
+
+## 14.7 Luxury / Expensive Read
+
+Luxury comes from restraint:
+- one strong material contrast;
+- one physically sourced light direction;
+- clean background depth;
+- fewer objects;
+- controlled surfaces: stone / dark wood / glass / metal / textured fabric;
+- private hotel / night window / terrace / refined lounge / pool / resort / corridor / elevator edge.
+
+Do not add logos, champagne, jewelry or designer props merely to signal luxury.
+
+## 14.8 Color DNA
+
+Preferred families:
+- black / espresso / deep navy + warm skin + amber practical;
+- wine / burgundy + charcoal / deep teal + cool city depth;
+- champagne / nude / muted blush + dark anchor;
+- bronze / sand / dark chocolate + sunset edge light.
+
+Avoid:
+- cream-on-cream-on-cream;
+- pastel-everything;
+- saturated red / purple used as a cheap sensual shortcut.
+
+## 14.9 Default High-Desire Route
+
+When user intent includes `高级 + 奢华 + 性感 + 荷尔蒙 + 暧昧 + 大尺度`, default to:
+
+`VT3 FRAGRANCE-CAMPAIGN TENSION + V3 BOLD SENSUAL`
+
+with:
+- Moment = M03 / M10 / M12;
+- Action = A01+T03 / A18 / stable A19 / A11;
+- Expression = reciprocal E05 / E09 with G01 / G03;
+- Scene = S05 / S13 / S12 / S19 / refined private interior;
+- Camera = asymmetric medium-close / close 3/4;
+- Wardrobe = fitted / open / low-back / silk-satin / tailored-dark support;
+- Light = directional practical + exterior or sunset edge;
+- Skin / identity = realistic and clearly readable.
+
+If the user asks for the strongest non-explicit result, V4 may be used while preserving adult agency, coverage, anatomy and identity.
+
+## 14.10 Hard Acceptance Gate
+
+For V3 / VT3 or stronger, the final still should satisfy at least **5 of 7**:
+
+1. visible body line beyond ordinary covered casualwear;
+2. close body distance;
+3. meaningful waist / hip / back / collar contact;
+4. reciprocal expression on both adults;
+5. asymmetric intimate framing;
+6. private / refined scene with controlled material depth;
+7. directional physically sourced light.
+
+If fewer than 5 are present, treat the result as **TOO CONSERVATIVE / TOO GENERIC** and reroute before approval.
