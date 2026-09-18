@@ -19,6 +19,8 @@ USER + SELECTED / APPROVED PARTNER
 +
 RELATIONSHIP TEMPERATURE
 +
+VISUAL_INTIMACY_LEVEL
++
 EXPLICIT USER CHOICES
 +
 CURRENT BODY GEOMETRY
@@ -29,7 +31,7 @@ RECENT COMBINATION HISTORY
 ↓
 COMBINATION ROUTER
 ↓
-MOMENT + ACTION + EXPRESSION/GAZE + SCENE + COLOR/WARDROBE + CAMERA INTENT
+MOMENT + ACTION + EXPRESSION/GAZE + SCENE + COLOR/WARDROBE + SENSUALITY PAYLOAD + CAMERA INTENT
 ↓
 COMPATIBILITY / RISK GATES
 ↓
@@ -53,6 +55,7 @@ The router may read:
 - `USER_IDENTITY_CARD`
 - `PARTNER_IDENTITY_CARD` or `MATCH_CANDIDATE_CARD`
 - `RELATIONSHIP_TEMPERATURE`
+- `VISUAL_INTIMACY_LEVEL`
 - `USER_EXPLICIT_MOMENT_PREFERENCE`
 - `USER_EXPLICIT_ACTION_PREFERENCE`
 - `USER_EXPLICIT_SCENE_PREFERENCE`
@@ -109,6 +112,11 @@ status
 
 partner_ref
 relationship_temperature
+visual_intimacy_level
+wardrobe_exposure_level
+body_distance_level
+contact_intensity_summary
+sensuality_payload
 
 moment_id
 action_id
@@ -158,13 +166,14 @@ Check in this order:
 3. `ACTION ↔ CURRENT BODY GEOMETRY`
 4. `ACTION ↔ EXPRESSION / GAZE`
 5. `SCENE ↔ COLOR / WARDROBE`
-6. `SCENE ↔ CAMERA`
-7. `ACTION ↔ CAMERA READABILITY`
-8. `COMBINATION ↔ IDENTITY RISK`
-9. `COMBINATION ↔ ANATOMY RISK`
-10. `COMBINATION ↔ SOCIAL READ`
-11. `COMBINATION ↔ TARGET MODEL`
-12. `COMBINATION ↔ H3 CONTINUATION`
+6. `VISUAL INTIMACY ↔ ACTION / WARDROBE / SCENE / IDENTITY RISK`
+7. `SCENE ↔ CAMERA`
+8. `ACTION ↔ CAMERA READABILITY`
+9. `COMBINATION ↔ IDENTITY RISK`
+10. `COMBINATION ↔ ANATOMY RISK`
+11. `COMBINATION ↔ SOCIAL READ`
+12. `COMBINATION ↔ TARGET MODEL`
+13. `COMBINATION ↔ H3 CONTINUATION`
 
 Only combinations that pass the gates may become production defaults.
 
@@ -241,7 +250,37 @@ Rules:
 
 ---
 
-# 9. Relationship Temperature Router
+# 9. Visual Intimacy Router
+
+Read `sensuality-intensity-layer.md` before finalizing the combination.
+
+Core rule:
+
+`RELATIONSHIP TEMPERATURE ≠ VISUAL_INTIMACY_LEVEL`.
+
+If the user explicitly selects a visual-intimacy level, preserve it unless identity / anatomy / mutual-agency constraints require the smallest safe reduction.
+
+If missing, use the Sensuality Layer defaults; for the fantasy AI-partner product, `V2 SENSUAL` is the recommended UI default rather than silently collapsing to a conservative lifestyle result.
+
+The Router must compile sensuality into visible facts:
+
+- wardrobe coverage / cut;
+- body distance;
+- contact zone;
+- gaze / expression intensity;
+- framing proximity.
+
+Do not solve `不够性感 / 太保守` by changing Partner identity first.
+
+Upgrade order:
+
+`VISUAL_INTIMACY_LEVEL → WARDROBE EXPOSURE → BODY DISTANCE → CONTACT ZONE → GAZE → FRAMING → ACTION/SCENE only if still needed`.
+
+Keep the output non-explicit and preserve reciprocal adult agency.
+
+---
+
+# 10. Relationship Temperature Router
 
 Relationship temperature is a direction, not a fixed pose.
 
@@ -312,7 +351,7 @@ Both adults must retain agency; protective must not read as bodyguard/client or 
 
 ---
 
-# 10. Combination Diversity Guard
+# 11. Combination Diversity Guard
 
 Maintain `RECENT_COMBINATION_HISTORY` for the same locked USER + PARTNER pair.
 
@@ -330,7 +369,7 @@ When `Try a Different Moment` is requested, exclude the immediately previous Mom
 
 ---
 
-# 11. Combined Identity Risk Gate
+# 12. Combined Identity Risk Gate
 
 Combination identity risk is ordinal only:
 
@@ -367,7 +406,7 @@ The Router only prevents risk. If an actual face swap / fusion / drift has alrea
 
 ---
 
-# 12. Anatomy Risk Accumulation
+# 13. Anatomy Risk Accumulation
 
 Use ordinal `LOW / MEDIUM / HIGH`.
 
@@ -390,7 +429,7 @@ A19 remains non-default and should not be promoted simply to increase intensity.
 
 ---
 
-# 13. Social Misread Gate
+# 14. Social Misread Gate
 
 Read matching, action and expression social-read guards.
 
@@ -413,7 +452,7 @@ Do not change the Partner face / identity to fix a social-read problem when cast
 
 ---
 
-# 14. Still Image Readability Gate
+# 15. Still Image Readability Gate
 
 One still image should immediately communicate:
 
@@ -430,7 +469,7 @@ Do not require the viewer to imagine unseen earlier video beats before the image
 
 ---
 
-# 15. Camera / Framing Intent
+# 16. Camera / Framing Intent
 
 This Router sets only the **relationship framing intention**. Camera realism details remain in `camera-realism-layer.md`.
 
@@ -446,7 +485,7 @@ Avoid extreme close-up when identity + hand + face proximity risks stack.
 
 ---
 
-# 16. Model-Aware Combination
+# 17. Model-Aware Combination
 
 ## Banana2 Pro｜Current Final Couple Default
 
@@ -474,7 +513,7 @@ The Router outputs only `H3_CONTINUATION_SEED`; the full video prompt remains ow
 
 ---
 
-# 17. H3_CONTINUATION_SEED
+# 18. H3_CONTINUATION_SEED
 
 Every selected combination should expose:
 
@@ -500,7 +539,7 @@ This is not a full video prompt.
 
 ---
 
-# 18. High-Value Core Director Routes
+# 19. High-Value Core Director Routes
 
 These are routing recipes built only from current source-library assets. They are **not a second asset SSOT**; if any source asset changes, the Router must resolve against the latest source file.
 
@@ -664,7 +703,7 @@ These are routing recipes built only from current source-library assets. They ar
 
 ---
 
-# 19. Core Route Status Rule
+# 20. Core Route Status Rule
 
 Use:
 
@@ -679,7 +718,7 @@ Existing project-proven Scene / Color / H3 evidence may support a core route wit
 
 ---
 
-# 20. User Feedback Minimal Reroute
+# 21. User Feedback Minimal Reroute
 
 ## “动作不喜欢”
 
@@ -689,9 +728,13 @@ Keep USER/PARTNER identities and compatible Scene. Reroute Action + the Expressi
 
 Keep identities + Moment + Action when physically possible. Reroute Scene + Color/Wardrobe.
 
-## “太暧昧了”
+## “太暧昧了 / 太大胆了”
 
-Lower `RELATIONSHIP_TEMPERATURE`; reroute Moment / Action / Gaze only as needed.
+Lower `VISUAL_INTIMACY_LEVEL` first; if the user also wants a different emotional tone, then lower `RELATIONSHIP_TEMPERATURE`. Preserve identities.
+
+## “太保守 / 不够性感 / 尺度不够”
+
+Keep identities and Partner. Increase `VISUAL_INTIMACY_LEVEL` first, then compile stronger wardrobe exposure + closer body distance + waist/lower-waist/upper-hip contact + stronger partner-directed gaze + slightly tighter framing. Only reroute Action / Scene if the current geometry cannot support the requested level.
 
 ## “不够有感觉”
 
@@ -711,7 +754,7 @@ Return to `identity-failure-recovery.md`.
 
 ---
 
-# 21. TRY A DIFFERENT MOMENT
+# 22. TRY A DIFFERENT MOMENT
 
 When the user selects `Try a Different Moment`:
 
@@ -736,7 +779,7 @@ Do not reopen Matching.
 
 ---
 
-# 22. TRY A DIFFERENT VIBE｜Backend Capability
+# 23. TRY A DIFFERENT VIBE｜Backend Capability
 
 If requested:
 
@@ -754,7 +797,7 @@ Frontend exposure is decided later.
 
 ---
 
-# 23. Multi-Orientation Neutrality
+# 24. Multi-Orientation Neutrality
 
 The same router applies to:
 
@@ -771,7 +814,7 @@ Choose roles from:
 
 ---
 
-# 24. Rule-Level Acceptance Cases
+# 25. Rule-Level Acceptance Cases
 
 No new generation is required unless a future case cannot be resolved from routing logic.
 
@@ -790,7 +833,7 @@ Do not enumerate the full combinatorial space.
 
 ---
 
-# 25. Final Runtime Rules
+# 26. Final Runtime Rules
 
 1. Source libraries remain SSOT for asset definitions and IDs.
 2. Explicit user choice wins unless physically / socially / identity / model incompatible.
@@ -801,4 +844,5 @@ Do not enumerate the full combinatorial space.
 7. Do not let one reliable recipe become the default for every user.
 8. Social-read corrections should modify relationship signals before changing Partner identity.
 9. Actual identity failure belongs to `identity-failure-recovery.md`, not this Router.
-10. Never brute-force all Partner × Moment × Action × Expression × Scene × Color permutations.
+10. Sensuality is a separate axis from relationship temperature; compile it through visible geometry / wardrobe / gaze / framing.
+11. Never brute-force all Partner × Moment × Action × Expression × Scene × Color permutations.
