@@ -472,6 +472,7 @@ Current modular knowledge base:
 - `references/scene-tension-library.md`
 - `references/color-wardrobe-library.md`
 - `references/sensuality-intensity-layer.md`
+- `references/editorial-intimacy-dna.md`
 - `references/relationship-combination-router.md`
 - `references/model-routing-rules.md`
 - `references/model-adaptation.md`
