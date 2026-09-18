@@ -266,7 +266,7 @@ Core rule:
 
 If the user explicitly selects a visual-intimacy level, preserve it unless identity / anatomy / mutual-agency constraints require the smallest safe reduction.
 
-If missing, use the Sensuality Layer defaults; for the fantasy AI-partner product, `V2 SENSUAL` is the recommended UI default rather than silently collapsing to a conservative lifestyle result.
+If missing, use the Sensuality Layer defaults; for the current fantasy AI-partner product, default to `V3 BOLD SENSUAL` rather than silently collapsing to a conservative lifestyle result.
 
 The Router must compile sensuality into visible facts:
 
@@ -292,7 +292,7 @@ Read `editorial-intimacy-dna.md` before finalizing the visual treatment.
 
 If the user does not specify a visual style, the product default is:
 
-`VT2 REFINED EDITORIAL INTIMACY + V2 SENSUAL`
+`VT3 FRAGRANCE-CAMPAIGN TENSION + V3 BOLD SENSUAL`
 
 unless the user explicitly asks for cozy / UGC / everyday / conservative lifestyle.
 
@@ -314,6 +314,17 @@ Reject the editorial default when the result collapses into:
 - generic home décor carrying more visual weight than the couple.
 
 Do not fix “不高级 / 太像普通情侣照” by changing Partner identity first.
+
+Concept-image acceptance gate for VT3/V3 or stronger:
+- visible body line beyond ordinary covered casualwear;
+- close body distance;
+- meaningful waist / hip / back / collar contact;
+- reciprocal expression on both adults;
+- asymmetric intimate framing;
+- refined private scene with controlled material depth;
+- directional physical light.
+
+Require at least 5/7 before approval. Otherwise classify as `TOO CONSERVATIVE / TOO GENERIC` and reroute the smallest failed visual variable.
 
 Correction order:
 `EXPRESSION RECIPROCITY → COMPOSITION ASYMMETRY → BODY LINE / CONTACT → WARDROBE SILHOUETTE / MATERIAL → LIGHT DIRECTION → SCENE IF NEEDED`.
@@ -775,6 +786,16 @@ Lower `VISUAL_INTIMACY_LEVEL` first; if the user also wants a different emotiona
 ## “太保守 / 不够性感 / 尺度不够”
 
 Keep identities and Partner. Increase `VISUAL_INTIMACY_LEVEL` first, then compile stronger wardrobe exposure + closer body distance + waist/lower-waist/upper-hip contact + stronger partner-directed gaze + slightly tighter framing. Only reroute Action / Scene if the current geometry cannot support the requested level.
+
+## “想要高级、奢华、性感、荷尔蒙、暧昧、大尺度”
+
+Keep USER + Partner identity. Route directly to:
+`VT3 FRAGRANCE-CAMPAIGN TENSION + V3 BOLD SENSUAL`.
+
+Compile:
+`BODY LINE + FITTED/OPEN WARDROBE + CLOSE DISTANCE + MEANINGFUL CONTACT + RECIPROCAL GAZE + ASYMMETRIC FRAMING + DIRECTIONAL LIGHT`.
+
+If user explicitly asks for the strongest non-explicit result, raise to V4 while preserving adult agency, coverage, anatomy and identity.
 
 ## “不高级 / 太普通 / 太像生活照”
 
