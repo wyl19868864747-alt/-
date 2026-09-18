@@ -46,6 +46,7 @@ Possible current inputs:
 - user photo / identity reference;
 - partner gender / appearance preference;
 - relationship temperature;
+- visual intimacy level / desired boldness;
 - optional Moment / Action / Scene / Color preference;
 - target image model.
 
@@ -188,6 +189,7 @@ RELATIONSHIP_COMBINATION_VISIBLE_FIELDS
 - expression / gaze
 - scene
 - wardrobe / physical color sources
+- visual-intimacy payload: wardrobe exposure / body distance / contact zone / framing intensity
 - camera framing intent
 
 MODEL_ROUTE
@@ -223,9 +225,10 @@ Use this order:
 5. CURRENT MOMENT
 6. EXPRESSION / GAZE
 7. SCENE
-8. WARDROBE / PHYSICAL COLOR SOURCES
-9. CAMERA REALISM
-10. MODEL COMPENSATION
+8. VISUAL INTIMACY / WARDROBE EXPOSURE / CONTACT INTENSITY
+9. WARDROBE / PHYSICAL COLOR SOURCES
+10. CAMERA REALISM
+11. MODEL COMPENSATION
 ```
 
 Global rule:
@@ -462,7 +465,7 @@ portrait-identity-lock
 → matching-engine
 → partner-identity-lock when needed
 → relationship-combination-router
-   ↳ source Moment / Action / Expression-Gaze / Scene / Color libraries as SSOT
+   ↳ source Moment / Action / Expression-Gaze / Scene / Color + Sensuality libraries as SSOT
 → camera-realism-layer
 → model-routing-rules
 → model-adaptation
@@ -559,9 +562,13 @@ Keep USER + Partner identity / Partner lock. Reroute Moment + Action + Expressio
 
 Keep identities + compatible Moment/Action. Reroute Scene + Color/Wardrobe.
 
-## “太暧昧了”
+## “太暧昧 / 太大胆了”
 
-Lower Relationship Temperature; reroute Moment / Action / Gaze only as needed.
+Lower `VISUAL_INTIMACY_LEVEL` first. Change Relationship Temperature only if the user also wants a different emotional tone.
+
+## “太保守 / 不够性感 / 尺度不够”
+
+Keep USER + Partner identity. Increase `VISUAL_INTIMACY_LEVEL`; reroute wardrobe exposure + body distance + contact zone + gaze + framing first. Only change Action / Scene when the current combination cannot physically support the requested level.
 
 ## “不够有感觉”
 
@@ -705,6 +712,7 @@ The standalone Skill must not:
 - rebuild people from text after reliable references exist;
 - generate high-consistency video with unclear first-frame authority;
 - let color / lighting / camera language overpower people / action / scene;
+- treat `sexy / sensual / bold` as sufficient visible instructions without compiling the physical causes;
 - rely on abstract judgement words instead of visible instructions;
 - use fixed gender roles;
 - make both adults use identical smile / gaze behavior by default;
@@ -841,6 +849,7 @@ A fresh-session invocation must be sufficient to:
 
 - lock a real uploaded user identity when present;
 - resolve a Partner from choice-based preferences;
+- preserve or resolve a user-selected visual-intimacy level;
 - establish a concrete Partner identity source;
 - call the Relationship Combination Router;
 - compile a self-contained still prompt;
