@@ -216,6 +216,7 @@ Source libraries remain:
 - `references/scene-tension-library.md`
 - `references/color-wardrobe-library.md`
 - `references/sensuality-intensity-layer.md`
+- `references/editorial-intimacy-dna.md`
 
 Responsibility boundaries:
 
@@ -226,15 +227,16 @@ EXPRESSION / GAZE = VISIBLE FACE + EYE RESPONSE
 SCENE = WHERE / PHYSICAL SPACE
 COLOR / WARDROBE = PHYSICAL COLOR ASSIGNMENT
 SENSUALITY = VISIBLE INTIMACY SCALE / SKIN EXPOSURE / BODY DISTANCE / CONTACT INTENSITY
+EDITORIAL TREATMENT = COMPOSITION / MATERIAL / CAMERA PROXIMITY / LIGHT DIRECTION / NARRATIVE RESIDUE
 ROUTER = WHICH COMPATIBLE SET TO USE TOGETHER
 ```
 
 Default route:
 
 ```text
-RELATIONSHIP TEMPERATURE + VISUAL_INTIMACY_LEVEL
+RELATIONSHIP TEMPERATURE + VISUAL_INTIMACY_LEVEL + VISUAL_TREATMENT_PROFILE
 → RELATIONSHIP COMBINATION ROUTER
-→ MOMENT + ACTION + EXPRESSION/GAZE + SCENE + COLOR/WARDROBE + SENSUALITY PAYLOAD + CAMERA INTENT
+→ MOMENT + ACTION + EXPRESSION/GAZE + SCENE + COLOR/WARDROBE + SENSUALITY PAYLOAD + EDITORIAL TREATMENT + CAMERA INTENT
 → COMPATIBILITY / RISK GATES
 → RELATIONSHIP_COMBINATION_CARD
 ```
@@ -247,6 +249,9 @@ Rules:
 - preserve `MORE TENSION ≠ MORE CONTACT`;
 - preserve `RELATIONSHIP TEMPERATURE ≠ VISUAL INTIMACY LEVEL`;
 - when the user wants a bolder result, translate it into wardrobe exposure + body distance + contact zone + gaze + framing instead of adding the word `sexy`;
+- when the user wants a better-looking / more editorial result, route through `editorial-intimacy-dna.md`; do not solve it by adding `premium / cinematic / high-end`;
+- default final fantasy couple images to `VT2 REFINED EDITORIAL INTIMACY + V2 SENSUAL` unless the user explicitly asks for cozy / UGC / conservative lifestyle;
+- both USER and PARTNER must show reciprocal emotion; one-sided chemistry is a QC failure;
 - do not default every couple to one pose / room / palette;
 - if a combination is high identity/anatomy risk, reduce the smallest risk variable instead of rebuilding identities.
 
@@ -264,6 +269,8 @@ PARTNER_IDENTITY / PARTNER_APPEARANCE_CARD
 RELATIONSHIP_COMBINATION_CARD
 +
 SENSUALITY PAYLOAD WHEN REQUESTED
++
+EDITORIAL TREATMENT PAYLOAD
 +
 CAMERA REALISM
 +
@@ -409,7 +416,8 @@ Check:
 - sweetness / chemistry;
 - requested sensuality / visual-intimacy level is visibly achieved without relying on abstract adjectives;
 - readable Moment state;
-- reciprocal Expression / Gaze;
+- reciprocal Expression / Gaze on both USER and PARTNER; blank / cold USER with affectionate Partner = fail;
+- editorial treatment quality: asymmetry, body line, material contrast, directional light, and non-stock-photo staging when the route calls for it;
 - natural body-contact geometry;
 - scene/action physical compatibility;
 - photographic realism;
