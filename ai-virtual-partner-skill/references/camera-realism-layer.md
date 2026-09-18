@@ -116,3 +116,34 @@ This module may reuse validated realism principles from the existing UGC scene/p
 - real-world mixed-light response
 
 But person identity and couple chemistry remain higher priority than texture styling.
+
+
+---
+
+## Editorial Capture DNA
+
+When the selected visual treatment is editorial / fragrance-campaign / after-dark, realism should come from **camera placement and light behavior**, not from decorative `cinematic` language.
+
+Prefer:
+- close two-shot / medium-close 3/4 framing;
+- off-axis or slightly asymmetric composition;
+- one face / shoulder slightly nearer the lens;
+- intentional crop at arm / hip / shoulder;
+- one physical foreground layer when useful: curtain edge, shoulder, doorway, glass edge;
+- directional side light or mixed practical + exterior light;
+- readable eye catchlight;
+- soft shadow gradient across face / torso;
+- material separation between skin, fabric, glass, metal and hair;
+- background simplified into depth / shape rather than décor display.
+
+Avoid:
+- flat front fill on both faces;
+- centered symmetrical couple portrait;
+- overly bright entire room;
+- generic phone-selfie geometry when the route calls for editorial intimacy;
+- heavy blur that removes body-contact readability;
+- extreme close-up when identity / face proximity risk is already high.
+
+Core rule:
+
+`CAMERA SHOULD FEEL INSIDE THE RELATIONSHIP MOMENT, NOT OUTSIDE RECORDING A POSE`.
