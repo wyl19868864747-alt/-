@@ -17,6 +17,10 @@ The Skill must independently support:
 
 Every final prompt must be self-contained, model-specific, directly copyable, and compiled only from current trusted inputs / references / library state.
 
+CURRENT PRODUCT DEFAULT:
+`VT3 FRAGRANCE-CAMPAIGN TENSION + V3 BOLD SENSUAL`
+unless the user explicitly chooses a lower-intensity / cozy / UGC / conservative route.
+
 All generated or transformed partners are adults.
 
 ---
@@ -192,6 +196,7 @@ RELATIONSHIP_COMBINATION_VISIBLE_FIELDS
 - wardrobe / physical color sources
 - visual-intimacy payload: wardrobe exposure / body distance / contact zone / framing intensity
 - editorial treatment payload / composition intent
+- concept-image DNA acceptance: body line / close distance / meaningful contact / reciprocal expression / asymmetric framing / refined private scene / directional light
 - camera framing intent
 
 MODEL_ROUTE
@@ -569,6 +574,26 @@ Keep identities + compatible Moment/Action. Reroute Scene + Color/Wardrobe.
 
 Lower `VISUAL_INTIMACY_LEVEL` first. Change Relationship Temperature only if the user also wants a different emotional tone.
 
+## “高级 / 奢华 / 性感 / 荷尔蒙 / 暧昧 / 大尺度”
+
+Keep USER + Partner identity.
+
+Default:
+`VT3 FRAGRANCE-CAMPAIGN TENSION + V3 BOLD SENSUAL`.
+
+Compile visible causes only:
+- fitted / open / low-back / body-skimming wardrobe;
+- close body distance;
+- waist / lower-waist / upper-hip / upper-back / collar contact;
+- reciprocal gaze / expression on both adults;
+- asymmetric medium-close / close 3/4 framing;
+- refined private scene;
+- directional physically sourced light.
+
+Do not output the abstract words as the main rendering instruction.
+
+If the user explicitly wants the strongest non-explicit route, use V4.
+
 ## “太保守 / 不够性感 / 尺度不够”
 
 Keep USER + Partner identity. Increase `VISUAL_INTIMACY_LEVEL`; reroute wardrobe exposure + body distance + contact zone + gaze + framing first. Only change Action / Scene when the current combination cannot physically support the requested level.
@@ -725,6 +750,7 @@ The standalone Skill must not:
 - make both adults use identical smile / gaze behavior by default;
 - allow one-sided chemistry where the AI Partner is affectionate but the USER remains blank / cold;
 - default final fantasy couple imagery to beige lifestyle / stock-photo staging when editorial treatment is not explicitly requested;
+- approve a VT3/V3 still with fewer than 5 of 7 concept-image DNA signals;
 - repair drift from a drifted output;
 - reopen Matching because an approved partner drifted downstream;
 - treat hand / scene / palette / attractiveness problems as identity failure when identity is stable;
