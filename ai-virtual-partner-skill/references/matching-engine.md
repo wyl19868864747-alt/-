@@ -86,6 +86,10 @@ archetype_preference:
 relationship_temperature:
   SWEET | ROMANTIC | FLIRTY | PASSIONATE | PLAYFUL | SURPRISE_ME
 
+visual_intimacy_level:
+  NATURAL | FLIRTY | SENSUAL | BOLD_SENSUAL | MAX_NON_EXPLICIT
+  # downstream director control; does not determine who the Partner is
+
 heritage_appearance_preference:
   EXPLICIT_SELECTION | NO_PREFERENCE | SURPRISE_ME
 
@@ -396,7 +400,15 @@ The coherence layer only prevents obvious casting discontinuity where the two pe
 
 ---
 
-# 13. Relationship Temperature as a Soft Signal
+# 13. Relationship Temperature vs Visual Intimacy
+
+Relationship temperature may softly influence Partner tie-breaking. `VISUAL_INTIMACY_LEVEL` must **not** select or sexualize a different person; it is passed downstream to `sensuality-intensity-layer.md` + `relationship-combination-router.md`.
+
+`WHO THE PARTNER IS ≠ HOW BOLD THE COUPLE IMAGE IS`.
+
+A user asking for a bolder image should not trigger a new Partner unless they also reject the Partner.
+
+## Relationship Temperature as a Soft Signal
 
 Relationship temperature may influence tie-breaking, but may not override explicit archetype preference.
 
@@ -678,6 +690,7 @@ Keep:
 - `USER_IDENTITY`
 - `USER_HARD_PREFERENCES`
 - `USER_SELECTED_RELATIONSHIP_TEMPERATURE`
+- `USER_SELECTED_VISUAL_INTIMACY_LEVEL`
 
 Reroute:
 
