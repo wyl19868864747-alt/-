@@ -250,7 +250,7 @@ Rules:
 - preserve `RELATIONSHIP TEMPERATURE ≠ VISUAL INTIMACY LEVEL`;
 - when the user wants a bolder result, translate it into wardrobe exposure + body distance + contact zone + gaze + framing instead of adding the word `sexy`;
 - when the user wants a better-looking / more editorial result, route through `editorial-intimacy-dna.md`; do not solve it by adding `premium / cinematic / high-end`;
-- default final fantasy couple images to `VT2 REFINED EDITORIAL INTIMACY + V2 SENSUAL` unless the user explicitly asks for cozy / UGC / conservative lifestyle;
+- default final fantasy couple images to `VT3 FRAGRANCE-CAMPAIGN TENSION + V3 BOLD SENSUAL` unless the user explicitly chooses a lower-intensity / cozy / UGC / conservative lifestyle route;
 - both USER and PARTNER must show reciprocal emotion; one-sided chemistry is a QC failure;
 - do not default every couple to one pose / room / palette;
 - if a combination is high identity/anatomy risk, reduce the smallest risk variable instead of rebuilding identities.
@@ -328,6 +328,7 @@ If dissatisfied, apply the smallest relevant reroute:
 - change Scene → keep identities + compatible Moment/Action; reroute Scene + Color;
 - adjust vibe → reroute Relationship Temperature + relationship assets, not Partner by default;
 - too conservative / not sexy enough → increase `VISUAL_INTIMACY_LEVEL` and reroute wardrobe exposure + body distance + contact zone + gaze first; keep identities;
+- high-end / luxury / hormonal / ambiguous / large-scale non-explicit request → route to the high-desire route in `editorial-intimacy-dna.md`: VT3 + V3 by default, V4 only when explicitly requested;
 - too bold / too sexualized → reduce `VISUAL_INTIMACY_LEVEL` first; keep identities;
 - identity changed → `identity-failure-recovery.md`.
 
@@ -418,6 +419,7 @@ Check:
 - readable Moment state;
 - reciprocal Expression / Gaze on both USER and PARTNER; blank / cold USER with affectionate Partner = fail;
 - editorial treatment quality: asymmetry, body line, material contrast, directional light, and non-stock-photo staging when the route calls for it;
+- Concept-image DNA acceptance gate for V3/VT3+: at least 5/7 of visible body line, close body distance, meaningful waist/hip/back/collar contact, reciprocal expression, asymmetric intimate framing, refined private scene, directional physical light;
 - natural body-contact geometry;
 - scene/action physical compatibility;
 - photographic realism;
