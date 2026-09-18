@@ -47,6 +47,7 @@ Possible current inputs:
 - partner gender / appearance preference;
 - relationship temperature;
 - visual intimacy level / desired boldness;
+- visual treatment preference when supplied; otherwise use the product default from `editorial-intimacy-dna.md`;
 - optional Moment / Action / Scene / Color preference;
 - target image model.
 
@@ -190,6 +191,7 @@ RELATIONSHIP_COMBINATION_VISIBLE_FIELDS
 - scene
 - wardrobe / physical color sources
 - visual-intimacy payload: wardrobe exposure / body distance / contact zone / framing intensity
+- editorial treatment payload / composition intent
 - camera framing intent
 
 MODEL_ROUTE
@@ -227,8 +229,9 @@ Use this order:
 7. SCENE
 8. VISUAL INTIMACY / WARDROBE EXPOSURE / CONTACT INTENSITY
 9. WARDROBE / PHYSICAL COLOR SOURCES
-10. CAMERA REALISM
-11. MODEL COMPENSATION
+10. EDITORIAL TREATMENT: ASYMMETRY / BODY LINE / MATERIAL / LIGHT DIRECTION
+11. CAMERA REALISM
+12. MODEL COMPENSATION
 ```
 
 Global rule:
@@ -259,7 +262,7 @@ If a small style label remains, the prompt must already specify the visible caus
 
 `PEOPLE + ACTION + HANDS + DISTANCE + GAZE + SCENE + PHYSICAL COLOR SOURCES + CAMERA`.
 
-Relationship temperature is an internal routing direction; the final prompt should express it through visible behavior.
+Relationship temperature, visual intimacy, and visual treatment are internal routing directions; the final prompt should express them through visible behavior. For editorial / high-end requests, compile asymmetry + body line + material contrast + directional light + narrative residue rather than adding `premium / cinematic / high-end`.
 
 ---
 
@@ -465,7 +468,7 @@ portrait-identity-lock
 → matching-engine
 → partner-identity-lock when needed
 → relationship-combination-router
-   ↳ source Moment / Action / Expression-Gaze / Scene / Color + Sensuality libraries as SSOT
+   ↳ source Moment / Action / Expression-Gaze / Scene / Color + Sensuality + Editorial Intimacy libraries as SSOT
 → camera-realism-layer
 → model-routing-rules
 → model-adaptation
@@ -569,6 +572,10 @@ Lower `VISUAL_INTIMACY_LEVEL` first. Change Relationship Temperature only if the
 ## “太保守 / 不够性感 / 尺度不够”
 
 Keep USER + Partner identity. Increase `VISUAL_INTIMACY_LEVEL`; reroute wardrobe exposure + body distance + contact zone + gaze + framing first. Only change Action / Scene when the current combination cannot physically support the requested level.
+
+## “不高级 / 太普通 / 太像生活照”
+
+Keep USER + Partner identity. Switch or strengthen `VISUAL_TREATMENT_PROFILE` first. Prefer `VT2 REFINED EDITORIAL` or `VT3 FRAGRANCE-CAMPAIGN TENSION`; then adjust composition asymmetry, body line, wardrobe material / silhouette and light direction. Do not merely add `高级 / premium / cinematic`.
 
 ## “不够有感觉”
 
@@ -716,6 +723,8 @@ The standalone Skill must not:
 - rely on abstract judgement words instead of visible instructions;
 - use fixed gender roles;
 - make both adults use identical smile / gaze behavior by default;
+- allow one-sided chemistry where the AI Partner is affectionate but the USER remains blank / cold;
+- default final fantasy couple imagery to beige lifestyle / stock-photo staging when editorial treatment is not explicitly requested;
 - repair drift from a drifted output;
 - reopen Matching because an approved partner drifted downstream;
 - treat hand / scene / palette / attractiveness problems as identity failure when identity is stable;
