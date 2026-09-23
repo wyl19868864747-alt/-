@@ -12,7 +12,8 @@ STYLES = sorted((ROOT / "references/styles").glob("*.md"))
 OWNERS = [f"references/{i:02d}-{name}.md" for i, name in enumerate((
     "project-defaults", "spatial-state-chain", "physical-previsualization",
     "cinematography-composition", "performance-voice-lipsync",
-    "bgm-sound-rhythm", "ending-payoff", "prompt-compiler"))]
+    "bgm-sound-rhythm", "ending-payoff", "prompt-compiler",
+    "perception-reaction-gate"))]
 errors = []
 
 def check(ok, message):
@@ -43,9 +44,16 @@ compiler = (ROOT / "references/07-prompt-compiler.md").read_text(encoding="utf-8
 for label, contents in (("core", core), ("G-05 owner", owner05), ("master", skill), ("compiler", compiler), ("cross-style QA", matrix)):
     check("12" in contents and ("对白" in contents or "台词" in contents), f"{label} missing 12+ purposeful dialogue rule")
 check("情绪" in owner05 and "时间" in owner05, "G-05 must require emotional progression and timed speech")
+owner09 = (ROOT / "references/08-perception-reaction-gate.md").read_text(encoding="utf-8") if (ROOT / "references/08-perception-reaction-gate.md").exists() else ""
+check("G-09" in core and "G-09" in skill and "G-09" in matrix and "G-09" in compiler, "G-09 must appear in core, master, regression and final compiler")
+check(all(term in owner09 for term in ("触发", "感知", "反射", "识别", "视线", "摄影")), "G-09 owner must define trigger, awareness, visible reflex and camera proof")
+for style in STYLES:
+    check("G-01～G-09" in style.read_text(encoding="utf-8"), f"Style missing G-09 inheritance declaration: {style.name}")
+    row = next((line for line in matrix.splitlines() if line.startswith("| `"+style.name+"`")), "")
+    check(row.count("|") == 11 and row.count("必测") == 9, f"Cross-style matrix missing 9 separate gates: {style.name}")
 if errors:
     for item in errors:
         print("FAIL:", item)
     sys.exit(1)
-print(f"PASS: core registry, 8 owner modules, {len(STYLES)} style inheritance declarations, routing and regression coverage")
+print(f"PASS: core registry, 9 owner modules, {len(STYLES)} style inheritance declarations, G-09 routing and cross-style regression coverage")
 print("NOTE: structural lint only; cinematic and generated-video validation are separate gates")
