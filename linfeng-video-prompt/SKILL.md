@@ -21,15 +21,15 @@ description: 把产品Brief、脚本、分镜、故事板、参考视频或成�
 
 1. 锁交付类型、模型/平台、时长/画幅、参考职责、人物/产品/空间事实、准确台词/文字及禁项。已给的信息不重复问；只缺真正改变任务的信息才问。
 2. 选一个主任务：剧情、产品证据、表演、环境奇观、动作运镜或返修。路由是并列勾选项，不得命中第一项后停止，也不为“可能有用”加载全部模块。
-3. 写/重写Prompt必读 `references/prompt-compilation-and-consistency.md` 与 `references/output-contract-and-validation.md`；抽象目标先编译，不直接传给模型。两镜以上必读镜头、节奏与连续性对应模块；有对白必读声音模块。
-4. 每镜执行编译器的 Per-Shot Spatial State Compile：继承完成态，确定本镜关系和必要位移/转身，再选能看见动作的同侧观察位置、相隔景别与短运镜；把镜尾状态交给下一镜。切点和时间预算同步校验，台词可跨镜作声音桥，节奏功能留在后台。
+3. 写/重写Prompt必读 `references/prompt-compilation-and-consistency.md`、`references/spatial-handoff-lock.md` 与 `references/output-contract-and-validation.md`；每次先过空间接力锁判断，简单单镜可快速通过不增加文字，高风险移动自动启用固定观察走廊。抽象目标先编译，不直接传给模型。两镜以上继续读取镜头、节奏与连续性对应模块；有对白必读声音模块。
+4. 每镜执行 Per-Shot Spatial State Compile，并先过 Spatial Handoff Lock：继承全员完成态，明确本镜谁移动、谁原地；跨区域／往返／一动一静时固定高风险运动段的观察方向，抵达后近景保留一个同地地标或受光证据，再选景别、机位与短运镜；把镜尾全员状态交给下一镜。切点和时间预算同步校验，台词可跨镜作声音桥，节奏功能留在后台。
 5. 交付前读 `references/independent-judge.md`。只修失败部分，随后复核前后接续；文字通过不等于成片通过。
 
 ### 路由表
 
 | 任务信号 | 读取模块 |
 |---|---|
-| 新写/重写Prompt、压缩、前后矛盾 | `references/prompt-compilation-and-consistency.md`、`references/output-contract-and-validation.md` |
+| 新写/重写Prompt、压缩、前后矛盾 | `references/prompt-compilation-and-consistency.md`、`references/spatial-handoff-lock.md`、`references/output-contract-and-validation.md` |
 | 光影/质感明确为主任务或返修目标 | `references/camera-light-quality-baseline.md` |
 | 抽象词、动作不落地、状态升级 | `references/state-change-compiler.md` |
 | 商业任务、产品事实/比例、购买犹豫 | `references/commercial-contract.md`、`references/product-preflight-and-category-routing.md`、`references/decision-driven-ad-creative.md` |
@@ -37,7 +37,7 @@ description: 把产品Brief、脚本、分镜、故事板、参考视频或成�
 | 多镜、连续节拍、参考反推、节奏调性/呼吸 | `references/director-information-control.md`、`references/rhythm-function-control.md`、`references/continuity.md` |
 | 剧情对话、关系戏、人物目的/认知变化 | `references/drama-performance-control.md` |
 | 已有剧情需细写微表情/FACS | `references/facial-expression-action-library.md` |
-| 多人换位、正反打、交接、复杂空间 | `references/spatial-optics-physics-control.md`；跨镜再叠加 `references/continuity.md` |
+| 多人换位、正反打、交接、复杂空间 | `references/spatial-handoff-lock.md`、`references/spatial-optics-physics-control.md`；跨镜再叠加 `references/continuity.md` |
 | 复杂运镜、动作戏、一镜到底 | `references/director-camera-attention.md` |
 | 构图主次、关系揭示 | `references/camera-composition-decision-layer.md`、`references/composition-story-engine.md` |
 | 摄影媒介/设备身份 | `references/camera-identity-selection-engine.md` |
@@ -67,7 +67,7 @@ description: 把产品Brief、脚本、分镜、故事板、参考视频或成�
 
 ## 3. 最小编译
 
-- 全局只定义一次主体/产品/参考、必要固定拓扑和持续声音；动态站位、朝向、接触和相机关系编入各镜，保留影响本镜的最小继承信息，不另附空间位置锁。没有参考图时不假称已锁定参考；不用旧项目品牌、人物或价格填空。
+- 全局只定义一次主体/产品/参考、必要固定拓扑和持续声音；后台每镜运行空间接力锁，动态站位、朝向、运动者／静止者、接触和相机关系只把影响本镜的最小继承信息编入各镜，不另附空间位置锁。没有参考图时不假称已锁定参考；不用旧项目品牌、人物或价格填空。
 - 每镜用最短完整句交代“谁在何处做什么、怎样变化、镜头怎样跟进”。关键交互保留接近、接触、响应和完成态，不逐指逐厘米展开。
 - 开场总控可省略；保留时只用一句交代片型、媒介和必要成像特征，不堆评价或镜头清单。具体事件直接进时间轴。
 - 默认只交规格、必要锁定、逐镜时间轴、简短声音。准确对白放实际时间窗一次；不再附镜头流、产品露出表、情绪曲线和一致性复述。
@@ -80,4 +80,4 @@ description: 把产品Brief、脚本、分镜、故事板、参考视频或成�
 
 默认一版最佳成品；用户只要Prompt就不外显分析。指定格式优先，但仍去重并执行容量检查。局部返修保留未失败的事实与设计，不重做整片。
 
-维护先找规则归属，修改旧模板与冲突示例，禁止只追加口号。运行现有结构检查与相关 evaluation-cases；空间编译回归见 `evaluation-cases/per-shot-spatial-state-regression.md`。未实际生成，不宣称成片效果已经验证。
+维护先找规则归属，修改旧模板与冲突示例，禁止只追加口号。运行现有结构检查与相关 evaluation-cases；基础空间编译回归见 `evaluation-cases/per-shot-spatial-state-regression.md`，固定观察走廊／运动所有权／到达锚点回归见 `evaluation-cases/spatial-handoff-lock-regression.md`。未实际生成，不宣称成片效果已经验证。
