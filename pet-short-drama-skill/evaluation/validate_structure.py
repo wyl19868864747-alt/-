@@ -57,6 +57,11 @@ check(all(term in owner10 for term in ("画面层", "位置层", "构图层", "�
 check((ROOT / "evaluation/HALLOWEEN_STATE_FIXTURE.md").is_file(), "Missing Halloween spatial regression fixture")
 check("Case 17" in (ROOT / "evaluation/REGRESSION_CASES.md").read_text(encoding="utf-8"), "Missing reset-to-origin regression case")
 check("Case 18" in (ROOT / "evaluation/REGRESSION_CASES.md").read_text(encoding="utf-8"), "Missing companion-follow regression case")
+check("Case 20" in (ROOT / "evaluation/REGRESSION_CASES.md").read_text(encoding="utf-8"), "Missing performance-after-spatial-lock regression case")
+owner07 = (ROOT / "references/06-ending-payoff.md").read_text(encoding="utf-8") if (ROOT / "references/06-ending-payoff.md").exists() else ""
+check("空间锁只锁风险段" in owner10, "G-10 must release camera freedom after risky movement")
+check("空间稳定不等于站桩" in owner05, "G-05 must preserve performance density after spatial stabilization")
+check("关系回合" in owner07, "G-07 must close the final relationship beat before the hold")
 if errors:
     for item in errors:
         print("FAIL:", item)
