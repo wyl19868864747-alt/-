@@ -20,6 +20,7 @@
 | 声线预算、逐窗台词容量、声音桥、BGM节点 | `voiceover-control.md` |
 | 光影、设备与可见结果、全局/局部光、数值取舍 | `camera-light-quality-baseline.md` |
 | 空间坐标、关键接触与复杂物理动作 | `spatial-optics-physics-control.md` |
+| 多镜空间接力锁：运动所有权、固定观察走廊、到达锚点、光影辅助坐标 | `spatial-handoff-lock.md` |
 | 完成态字段、人物/道具/目标/相机继承与变化因果 | `continuity.md` |
 | 逐对空间A–J验收及失败回写 | `independent-judge.md` |
 | 产品事实与尺度预检；商业身份交接 | `product-preflight-and-category-routing.md`；`commercial-contract.md` |
