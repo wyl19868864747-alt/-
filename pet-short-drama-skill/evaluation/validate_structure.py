@@ -38,6 +38,11 @@ for style in STYLES:
     check(style.name in matrix, f"Style not covered in regression matrix: {style.name}")
 check("逐镜循环" in skill, "SKILL.md must require per-shot iterative previsualization")
 check("只修改公共模块" in skill, "SKILL.md must state single-owner core updates")
+owner05 = (ROOT / "references/04-performance-voice-lipsync.md").read_text(encoding="utf-8") if (ROOT / "references/04-performance-voice-lipsync.md").exists() else ""
+compiler = (ROOT / "references/07-prompt-compiler.md").read_text(encoding="utf-8") if (ROOT / "references/07-prompt-compiler.md").exists() else ""
+for label, contents in (("core", core), ("G-05 owner", owner05), ("master", skill), ("compiler", compiler), ("cross-style QA", matrix)):
+    check("12" in contents and ("对白" in contents or "台词" in contents), f"{label} missing 12+ purposeful dialogue rule")
+check("情绪" in owner05 and "时间" in owner05, "G-05 must require emotional progression and timed speech")
 if errors:
     for item in errors:
         print("FAIL:", item)
