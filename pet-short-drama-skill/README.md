@@ -1,6 +1,10 @@
-# Pet Short Drama Skill v1.1.0
+# Pet Short Drama Skill v1.2.0
 
 **一条原则只维护一处，所有风格共同继承。** `SKILL.md` 负责调用；`references/CORE_RULES.md` 是全局规则索引；`references/00～07` 是各规则唯一拥有者；`references/styles/` 只写风格增量；`references/PROJECT_CONTRACT.md` 承载每条视频的实际角色／场景事实；`evaluation/` 管跨风格回归。
+
+## 当前对白基线
+
+默认30秒带对白宠物短剧**至少12句有效英文短对白**，按情绪与信息递进排布；一句算一个真实发声轮次，不把机关音效、吠叫或拆句充数。逐句安排镜头／发声者／自然时长，最后保留Reaction、Consequence、Final State与停稳。规则归属 G-05 的 `references/04-performance-voice-lipsync.md`，所有风格继承；用户明确静音等任务除外。
 
 ## 正确打开方式
 
