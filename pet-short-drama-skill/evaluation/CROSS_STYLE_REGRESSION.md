@@ -6,10 +6,10 @@
 
 | 主风格文件 | G-01身份 | G-02空间 | G-03物理 | G-04摄影 | G-05对白／口型 | G-06声音 | G-07结尾 | G-08编译 | G-09感知／反应 |
 |---|---|---|---|---|---|---|---|---|
-| `ip-story-superhero-absurd.md` | 必测 | 必测 | 必测 | 必测 | 必测 | 必测 | 必测 | 必测  必测 |
-| `commerce-story-product.md` | 必测 | 必测 | 必测 | 必测 | 必测 | 必测 | 必测 | 必测  必测 |
-| `ugc-unboxing.md` | 必测 | 必测 | 必测 | 必测 | 必测 | 必测 | 必测 | 必测  必测 |
-| `us-vertical-revenge-identity-flip.md` | 必测 | 必测 | 必测 | 必测 | 必测 | 必测 | 必测 | 必测  必测 |
+| `ip-story-superhero-absurd.md` | 必测 | 必测 | 必测 | 必测 | 必测 | 必测 | 必测 | 必测 | 必测 |
+| `commerce-story-product.md` | 必测 | 必测 | 必测 | 必测 | 必测 | 必测 | 必测 | 必测 | 必测 |
+| `ugc-unboxing.md` | 必测 | 必测 | 必测 | 必测 | 必测 | 必测 | 必测 | 必测 | 必测 |
+| `us-vertical-revenge-identity-flip.md` | 必测 | 必测 | 必测 | 必测 | 必测 | 必测 | 必测 | 必测 | 必测 |
 
 **每次全局规则变更**：先跑所改 G-ID 在全部风格的对应情景，再抽查其余 G-ID 是否被风格例外冲掉；新风格加入时对整行九个 G-ID 全测。
 
