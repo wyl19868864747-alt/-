@@ -1,4 +1,4 @@
-# Pet Short Drama Skill v1.4.0
+# Pet Short Drama Skill v1.4.1
 
 **一条原则只维护一处，所有风格共同继承。** `SKILL.md` 负责调用；`references/CORE_RULES.md` 是全局规则索引；`references/00～09` 是各规则唯一拥有者；`references/styles/` 只写风格增量；`references/PROJECT_CONTRACT.md` 承载每条视频的实际角色／场景事实；`evaluation/` 管跨风格回归。
 
@@ -19,6 +19,12 @@
 公共模块 references/09-four-layer-shot-gate.md 要求每镜后台联审画面／位置／构图／光影；出画角色仍持有位置，只有指定且有路线的角色才移动。长距离位移之后的近景保留最少同地标或光向；无因跨门／跨房间的分镜不得编译。
 
 **最终Prompt仍只输出镜头、【构图】、简短动作与声音。** 不附四层账本，不用末尾“位置锁定”补丁。测试见 evaluation/HALLOWEEN_STATE_FIXTURE.md。
+
+## v1.4.1｜空间锁保留，表演与视觉释放
+
+空间锁继续作为硬约束，但只锁跨区域、往返、一动一静等高风险位移段。位移完成并建立 Arrival Anchor 后，立即恢复低机位、斜前反打、前景遮挡、景别跳变、突然入画和短推拉等镜头变化；宠物对白镜继续保留耳朵、前爪、身体、尾巴、探头／躲藏等可见行为，不能退化为站桩。
+
+结尾除了 Reaction → Consequence → Final State，还要求完成角色关系最后一回合；不再用无铺垫的共同玩耍、友好点头或并排站稳代替互怼／恶作剧关系的真正收束。
 
 ## 正确打开方式
 
