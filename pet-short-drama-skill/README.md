@@ -1,6 +1,6 @@
-# Pet Short Drama Skill v1.3.0
+# Pet Short Drama Skill v1.4.0
 
-**一条原则只维护一处，所有风格共同继承。** `SKILL.md` 负责调用；`references/CORE_RULES.md` 是全局规则索引；`references/00～08` 是各规则唯一拥有者；`references/styles/` 只写风格增量；`references/PROJECT_CONTRACT.md` 承载每条视频的实际角色／场景事实；`evaluation/` 管跨风格回归。
+**一条原则只维护一处，所有风格共同继承。** `SKILL.md` 负责调用；`references/CORE_RULES.md` 是全局规则索引；`references/00～09` 是各规则唯一拥有者；`references/styles/` 只写风格增量；`references/PROJECT_CONTRACT.md` 承载每条视频的实际角色／场景事实；`evaluation/` 管跨风格回归。
 
 ## 当前对白基线
 
@@ -12,6 +12,14 @@
 
 今后任一风格出现突然发现、惊吓、Reveal或身份揭示，都要在逐镜分镜前验收 `注意力／刺激源方位 → 感知 → 第一身体反射 → 认出／判断 → 后果`。摄影机从角色的真实观察位拍到反应，不能为正面特写把角色翻到背对触发源。具体执行见 `references/08-perception-reaction-gate.md`；尾部恶作剧必须先建立未知感知条件，先拍到反射，再安排吐槽与约1秒稳定终态。此规则为公共 G-09，四个风格全部继承。
 
+## 新增：G-10逐镜四层状态接力（不增加Prompt负担）
+
+本轮成片约19～21秒金毛到过北门廊，却在近景里像回到草坪原点；贵宾原地却被无因拉到骷髅旁；旧Prompt直接写“贵宾立即跟上”，违背23秒贵宾原地等待的要求。27～28秒南瓜挡住两犬，缺少隐藏到突然出现和身体缩退的画面变化。
+
+公共模块 references/09-four-layer-shot-gate.md 要求每镜后台联审画面／位置／构图／光影；出画角色仍持有位置，只有指定且有路线的角色才移动。长距离位移之后的近景保留最少同地标或光向；无因跨门／跨房间的分镜不得编译。
+
+**最终Prompt仍只输出镜头、【构图】、简短动作与声音。** 不附四层账本，不用末尾“位置锁定”补丁。测试见 evaluation/HALLOWEEN_STATE_FIXTURE.md。
+
 ## 正确打开方式
 
 - 没想法：`调用宠物短剧Skill，主角还是之前的幼年金毛，选欧美豪门身份翻盘风格，先出30秒大纲。`
@@ -22,7 +30,7 @@
 
 ## 新内容放哪里
 
-- 所有风格都会受影响的规则：`CORE_RULES.md` 找到 G-ID → 修改对应 `references/00～08` **唯一拥有者** → 更新回归测试，不能只塞进某个风格文件。
+- 所有风格都会受影响的规则：`CORE_RULES.md` 找到 G-ID → 修改对应 `references/00～09` **唯一拥有者** → 更新回归测试，不能只塞进某个风格文件。
 - 新片型：新建 `references/styles/<name>.md`，写清 `全局继承：../CORE_RULES.md`，只加该片型独有节拍／道具／镜头案例，并在 `SKILL.md` 路由和 `CROSS_STYLE_REGRESSION.md` 登记。
 - 某条视频的角色、位置、产品、参考：只进入项目事实卡和逐镜状态，不污染全局／风格母版。
 - 真实成片的新穿帮：`evaluation/REGRESSION_CASES.md` 记录可观察失败与修复，再评估是否要提升至核心规则。
