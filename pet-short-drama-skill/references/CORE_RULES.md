@@ -6,7 +6,7 @@
 
 | ID | 不随风格改变的要求 | 唯一维护文件 | 验收 |
 |---|---|---|---|
-| G-01 | 参考职责、宠物IP、外形年龄和资产事实一致 | `references/00-project-defaults.md`、`references/07-prompt-compiler.md` | 引用只锁定声明属性；未给参考不杜撰 |
+| G-01 | 宠物IP、外形年龄与已确认的身份真源一致 | `references/00-project-defaults.md` | 已给参考优先；未给参考不杜撰 |
 | G-02 | 下一镜起始态＝上一镜结束态；世界坐标与屏幕左右分离，出画角色状态保留 | `references/01-spatial-state-chain.md` | 无因换边、瞬移、台阶高度跳变为失败 |
 | G-03 | 接触和物理过程遵守接近→对准／停稳→接触→响应→完成→分离 | `references/02-physical-previsualization.md` | 人手／狗嘴、狗爪／道具无穿模；道具持有可追溯 |
 | G-04 | 机位、运镜和【构图】从当前真实站位推导，镜头换位不替人物位移 | `references/03-cinematography-composition.md` | 每镜有可见观察位置；构图不重摆人物 |
