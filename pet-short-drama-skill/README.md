@@ -1,10 +1,16 @@
-# Pet Short Drama Skill v1.2.0
+# Pet Short Drama Skill v1.3.0
 
-**一条原则只维护一处，所有风格共同继承。** `SKILL.md` 负责调用；`references/CORE_RULES.md` 是全局规则索引；`references/00～07` 是各规则唯一拥有者；`references/styles/` 只写风格增量；`references/PROJECT_CONTRACT.md` 承载每条视频的实际角色／场景事实；`evaluation/` 管跨风格回归。
+**一条原则只维护一处，所有风格共同继承。** `SKILL.md` 负责调用；`references/CORE_RULES.md` 是全局规则索引；`references/00～08` 是各规则唯一拥有者；`references/styles/` 只写风格增量；`references/PROJECT_CONTRACT.md` 承载每条视频的实际角色／场景事实；`evaluation/` 管跨风格回归。
 
 ## 当前对白基线
 
 默认30秒带对白宠物短剧**至少12句有效英文短对白**，按情绪与信息递进排布；一句算一个真实发声轮次，不把机关音效、吠叫或拆句充数。逐句安排镜头／发声者／自然时长，最后保留Reaction、Consequence、Final State与停稳。规则归属 G-05 的 `references/04-performance-voice-lipsync.md`，所有风格继承；用户明确静音等任务除外。
+
+## 新增：G-09感知—反应闸门
+
+这次实际万圣节成片出现两类失误：约10秒贵宾面对摄影机，应该吓到它的骷髅却在它背后；约27～29秒贵宾已望向金毛，尾部轻声“Boo”没有可信惊吓条件，而且第一反射、认出、吐槽和停稳被塞进过短的时间。
+
+今后任一风格出现突然发现、惊吓、Reveal或身份揭示，都要在逐镜分镜前验收 `注意力／刺激源方位 → 感知 → 第一身体反射 → 认出／判断 → 后果`。摄影机从角色的真实观察位拍到反应，不能为正面特写把角色翻到背对触发源。具体执行见 `references/08-perception-reaction-gate.md`；尾部恶作剧必须先建立未知感知条件，先拍到反射，再安排吐槽与约1秒稳定终态。此规则为公共 G-09，四个风格全部继承。
 
 ## 正确打开方式
 
@@ -16,7 +22,7 @@
 
 ## 新内容放哪里
 
-- 所有风格都会受影响的规则：`CORE_RULES.md` 找到 G-ID → 修改对应 `references/00～07` **唯一拥有者** → 更新回归测试，不能只塞进某个风格文件。
+- 所有风格都会受影响的规则：`CORE_RULES.md` 找到 G-ID → 修改对应 `references/00～08` **唯一拥有者** → 更新回归测试，不能只塞进某个风格文件。
 - 新片型：新建 `references/styles/<name>.md`，写清 `全局继承：../CORE_RULES.md`，只加该片型独有节拍／道具／镜头案例，并在 `SKILL.md` 路由和 `CROSS_STYLE_REGRESSION.md` 登记。
 - 某条视频的角色、位置、产品、参考：只进入项目事实卡和逐镜状态，不污染全局／风格母版。
 - 真实成片的新穿帮：`evaluation/REGRESSION_CASES.md` 记录可观察失败与修复，再评估是否要提升至核心规则。
