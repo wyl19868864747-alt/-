@@ -41,6 +41,7 @@ def main() -> int:
     required_core = [
         "references/camera-light-quality-baseline.md",
         "references/prompt-compilation-and-consistency.md",
+        "references/spatial-handoff-lock.md",
         "references/output-contract-and-validation.md",
     ]
     for path in required_core:
