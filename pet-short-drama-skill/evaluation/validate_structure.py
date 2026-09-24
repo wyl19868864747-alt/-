@@ -13,7 +13,8 @@ OWNERS = [f"references/{i:02d}-{name}.md" for i, name in enumerate((
     "project-defaults", "spatial-state-chain", "physical-previsualization",
     "cinematography-composition", "performance-voice-lipsync",
     "bgm-sound-rhythm", "ending-payoff", "prompt-compiler",
-    "perception-reaction-gate", "four-layer-shot-gate"))]
+    "perception-reaction-gate", "four-layer-shot-gate",
+    "aigc-native-visual-event"))]
 errors = []
 
 def check(ok, message):
@@ -48,9 +49,9 @@ owner09 = (ROOT / "references/08-perception-reaction-gate.md").read_text(encodin
 check("G-09" in core and "G-09" in skill and "G-09" in matrix and "G-09" in compiler, "G-09 must appear in core, master, regression and final compiler")
 check(all(term in owner09 for term in ("触发", "感知", "反射", "识别", "视线", "摄影")), "G-09 owner must define trigger, awareness, visible reflex and camera proof")
 for style in STYLES:
-    check("G-01～G-10" in style.read_text(encoding="utf-8"), f"Style missing G-10 inheritance declaration: {style.name}")
+    check("G-01～G-11" in style.read_text(encoding="utf-8"), f"Style missing G-11 inheritance declaration: {style.name}")
     row = next((line for line in matrix.splitlines() if line.startswith("| `"+style.name+"`")), "")
-    check(row.count("|") == 12 and row.count("必测") == 10, f"Cross-style matrix missing 10 separate gates: {style.name}")
+    check(row.count("|") == 13 and row.count("必测") == 11, f"Cross-style matrix missing 11 separate gates: {style.name}")
 owner10 = (ROOT / "references/09-four-layer-shot-gate.md").read_text(encoding="utf-8") if (ROOT / "references/09-four-layer-shot-gate.md").exists() else ""
 check("G-10" in core and "G-10" in skill and "G-10" in matrix and "G-10" in compiler, "G-10 must appear in core, master, matrix and compiler")
 check(all(term in owner10 for term in ("画面层", "位置层", "构图层", "光影层", "运动", "地标")), "G-10 must specify four-layer review and movement owner")
@@ -58,6 +59,11 @@ check((ROOT / "evaluation/HALLOWEEN_STATE_FIXTURE.md").is_file(), "Missing Hallo
 check("Case 17" in (ROOT / "evaluation/REGRESSION_CASES.md").read_text(encoding="utf-8"), "Missing reset-to-origin regression case")
 check("Case 18" in (ROOT / "evaluation/REGRESSION_CASES.md").read_text(encoding="utf-8"), "Missing companion-follow regression case")
 check("Case 20" in (ROOT / "evaluation/REGRESSION_CASES.md").read_text(encoding="utf-8"), "Missing performance-after-spatial-lock regression case")
+owner11 = (ROOT / "references/10-aigc-native-visual-event.md").read_text(encoding="utf-8") if (ROOT / "references/10-aigc-native-visual-event.md").exists() else ""
+check("G-11" in core and "G-11" in skill and "G-11" in matrix and "G-11" in compiler, "G-11 must appear in core, master, matrix and compiler")
+check(all(term in owner11 for term in ("现实底盘", "触发", "传播", "中间态", "Camera", "Sound")), "G-11 must define reality base, trigger, propagation, intermediate state, camera and sound coupling")
+check("Case 21" in (ROOT / "evaluation/REGRESSION_CASES.md").read_text(encoding="utf-8"), "Missing connected-dialogue regression case")
+check("Case 22" in (ROOT / "evaluation/REGRESSION_CASES.md").read_text(encoding="utf-8"), "Missing AIGC-native visual regression case")
 owner07 = (ROOT / "references/06-ending-payoff.md").read_text(encoding="utf-8") if (ROOT / "references/06-ending-payoff.md").exists() else ""
 check("空间锁只锁风险段" in owner10, "G-10 must release camera freedom after risky movement")
 check("空间稳定不等于站桩" in owner05, "G-05 must preserve performance density after spatial stabilization")
@@ -66,5 +72,5 @@ if errors:
     for item in errors:
         print("FAIL:", item)
     sys.exit(1)
-print(f"PASS: core registry, 10 owner modules, {len(STYLES)} style inheritance declarations, G-09/G-10 routing and cross-style regression coverage")
+print(f"PASS: core registry, 11 owner modules, {len(STYLES)} style inheritance declarations, G-09/G-10/G-11 routing and cross-style regression coverage")
 print("NOTE: structural lint only; cinematic and generated-video validation are separate gates")
