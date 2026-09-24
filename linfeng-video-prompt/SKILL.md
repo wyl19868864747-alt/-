@@ -81,4 +81,4 @@ description: 把产品Brief、脚本、分镜、故事板、参考视频或成�
 
 默认一版最佳成品；用户只要Prompt就不外显分析。指定格式优先，但仍去重并执行容量检查。局部返修保留未失败的事实与设计，不重做整片。
 
-维护先找规则归属，修改旧模板与冲突示例，禁止只追加口号。运行现有结构检查与相关 evaluation-cases；基础空间编译回归见 `evaluation-cases/per-shot-spatial-state-regression.md`，固定观察走廊／运动所有权／到达锚点回归见 `evaluation-cases/spatial-handoff-lock-regression.md`。未实际生成，不宣称成片效果已经验证。
+维护先找规则归属，修改旧模板与冲突示例，禁止只追加口号。运行现有结构检查与相关 evaluation-cases；基础空间编译回归见 `evaluation-cases/per-shot-spatial-state-regression.md`，固定观察走廊／运动所有权／到达锚点回归见 `evaluation-cases/spatial-handoff-lock-regression.md`，AIGC原生视觉事件／镜头耦合／自然对白回归见 `evaluation-cases/aigc-dialogue-camera-regression.md`。未实际生成，不宣称成片效果已经验证。
