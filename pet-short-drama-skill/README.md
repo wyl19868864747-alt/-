@@ -1,4 +1,4 @@
-# Pet Short Drama Skill v1.5.0
+# 宠物广告skill v1.5.0
 
 **一条原则只维护一处，所有风格共同继承。** `SKILL.md` 负责调用；`references/CORE_RULES.md` 是全局规则索引；`references/00～10` 是各规则唯一拥有者；`references/styles/` 只写风格增量；`references/PROJECT_CONTRACT.md` 承载每条视频的实际角色／场景事实；`evaluation/` 管跨风格回归。
 
