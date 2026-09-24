@@ -19,6 +19,7 @@
 | 切镜密度、相隔景别、30°同侧机位、动静组接 | `director-information-control.md` |
 | 声线预算、逐窗台词容量、声音桥、BGM节点 | `voiceover-control.md` |
 | 光影、设备与可见结果、全局/局部光、数值取舍 | `camera-light-quality-baseline.md` |
+| AIGC原生虚实结合、现实底盘中的单一不可能机制 | `aigc-native-visual-event-design.md`；连续形变细节由 `visual-transformation-spectacle.md`，写实超现实合同由 `grounded-surreal-product-spectacle.md` |
 | 空间坐标、关键接触与复杂物理动作 | `spatial-optics-physics-control.md` |
 | 多镜空间接力锁：运动所有权、固定观察走廊、到达锚点、光影辅助坐标 | `spatial-handoff-lock.md` |
 | 完成态字段、人物/道具/目标/相机继承与变化因果 | `continuity.md` |
