@@ -1,9 +1,9 @@
 ---
-name: pet-short-drama-skill
+name: pet-ad-skill
 description: 面向欧美社媒的宠物短剧、剧情带货、UGC开箱和身份翻盘短片。总控加载全局核心规则、项目事实及单一主风格；逐镜继承空间完成态、预演物理接触、设计摄影构图和声音，并在最终提示词中落实反应镜头、后果与完整结尾。
 ---
 
-# Pet Short Drama Director Skill｜总控路由
+# 宠物广告skill｜总控路由
 
 **本文件只管调用顺序、规则优先级与交付闸门。** 规则母版在 `references/CORE_RULES.md`；各风格只写创意增量，不重写全局规则。
 
