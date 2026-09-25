@@ -8,6 +8,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 SKILL = ROOT / "SKILL.md"
+CAPTURE_BASELINE = ROOT / "references" / "camera-light-quality-baseline.md"
 
 
 def local_links(text: str) -> set[str]:
@@ -19,6 +20,7 @@ def local_links(text: str) -> set[str]:
 def main() -> int:
     errors: list[str] = []
     skill_text = SKILL.read_text(encoding="utf-8")
+    capture_text = CAPTURE_BASELINE.read_text(encoding="utf-8")
 
     actual_references = {
         str(path.relative_to(ROOT)) for path in (ROOT / "references").glob("*.md")
@@ -51,6 +53,23 @@ def main() -> int:
     if "并列勾选项" not in skill_text or "不得命中第一项后停止" not in skill_text:
         errors.append("parallel additive routing invariant is missing from SKILL.md")
 
+    mandatory_prompt_line = next(
+        (line for line in skill_text.splitlines() if "写/重写Prompt必读" in line),
+        "",
+    )
+    if "references/camera-light-quality-baseline.md" not in mandatory_prompt_line:
+        errors.append(
+            "capture baseline is not in the mandatory write/rewrite Prompt read chain"
+        )
+
+    if "摄影机与成像基线是常驻能力" not in skill_text:
+        errors.append("always-on capture baseline invariant is missing from SKILL.md")
+
+    if "Always-on Capture Baseline" not in capture_text or "每次必过" not in capture_text:
+        errors.append(
+            "camera-light-quality-baseline.md no longer declares the always-on capture layer"
+        )
+
     if errors:
         print("Routing audit failed:")
         for error in errors:
@@ -60,7 +79,7 @@ def main() -> int:
     print(
         "Routing audit passed: "
         f"{len(actual_references)} references are directly routed; "
-        "all local links resolve; required writing entry points and additive routing are present."
+        "all local links resolve; mandatory capture baseline, required writing entry points, and additive routing are present."
     )
     return 0
 
