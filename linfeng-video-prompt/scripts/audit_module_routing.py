@@ -65,6 +65,12 @@ def main() -> int:
     if "摄影机与成像基线是常驻能力" not in skill_text:
         errors.append("always-on capture baseline invariant is missing from SKILL.md")
 
+    if "先保护 Hero Idea，再修执行" not in skill_text:
+        errors.append("creative preservation invariant is missing from SKILL.md")
+
+    if "Creative Pass" not in skill_text or "Execution Gate" not in skill_text:
+        errors.append("creative-pass-before-execution-gate workflow is missing from SKILL.md")
+
     if "Always-on Capture Baseline" not in capture_text or "每次必过" not in capture_text:
         errors.append(
             "camera-light-quality-baseline.md no longer declares the always-on capture layer"
@@ -79,7 +85,7 @@ def main() -> int:
     print(
         "Routing audit passed: "
         f"{len(actual_references)} references are directly routed; "
-        "all local links resolve; mandatory capture baseline, required writing entry points, and additive routing are present."
+        "all local links resolve; mandatory capture baseline, creative preservation, required writing entry points, and additive routing are present."
     )
     return 0
 
