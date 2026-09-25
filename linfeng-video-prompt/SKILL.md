@@ -12,6 +12,7 @@ description: 把产品Brief、脚本、分镜、故事板、参考视频或成�
 - **最终模型指令不出现结果评价词**：包括“极强抓眼、高能、高级感、电影感、有感染力、热门感、突出情绪、信息推进快”。标题、总控、分镜、声音块同样检查；先设计具体事件、动作、切点和声音变化，再删掉评价。可观察的物理完成态必须保留，例如“泡沫被水冲掉、杯底落桌”；不能误删为“结果词”。
 - **画面优先**：主体/产品、事件、动作与当镜空间关系占主体；空间是逐镜编译前置变量，不是尾部补充。音色每个说话者默认一句，光影、配乐和真实性描述不淹没主体。声音或摄影为本轮主任务时才展开。
 - **每个明确分镜都有简短摄影机描述**，含快切组内每个子镜。以“景别＋机位＋运镜”短语融入动作句，不解释为什么动或不动。摄影机必须和画面事件耦合：动作／视线／遮挡／形变触发镜头，镜头结束时必须新增可见信息；位移、视线转移、空间揭示分别选跟移、摇镜、后拉，形变传播优先让镜头跟随变化前沿。固定机位用于必须让观众连续看清异常过程的画面。
+- **摄影机与成像基线是常驻能力**：任何新写／重写视频 Prompt 都必须读取并执行 `references/camera-light-quality-baseline.md` 的 Capture Baseline。默认保证真实摄影透视、与速度相符的自然运动模糊、不过锐的主体细节、真实皮肤／材质受光、亮部与暗部结构及服务信息层级的景深；只用一条最短全局成像句或必要局部结果下发，不机械逐镜复述。复杂布光、设备与高级光学仍按需展开；用户明确的手机、DV、监控、实验失焦等媒介优先。
 - **默认多镜视频平均约1–3秒一切**，在动作接点、新信息或反应处切，不等长切。相邻非特写镜头按相隔景别衔接；每次切镜改变观察角度大于30°，留在同一轴线侧。特写只豁免相隔景别要求，不豁免机位与连续性。切镜细则归 `references/director-information-control.md`。
 - **剧情对白不是关键词队列**：有角色对话时，大多数台词保持自然口语意群，并承接上一句或上一动作；1–2词反应只作少量节拍，不能连续用“Really? / Fine. / Sure.”这类碎片凑节奏。时长冲突先删重复意思／重复视觉，不把全部句子削成单词。
 - **连续与容量是交付条件**：每镜先继承上一镜的人物位置/朝向、道具归属/接触、目标位置、相机轴侧/观察方向和动作完成态，再设计动作及机位；逐段检查动作和台词所需时间，两人对白合并计算，预留交接与结尾约1秒收束。超载先精简或重排，不能靠“高速、流利”强塞。明确的一镜到底、固定镜头、慢片或其他用户约定优先，不强制套默认切镜密度。
@@ -22,7 +23,7 @@ description: 把产品Brief、脚本、分镜、故事板、参考视频或成�
 
 1. 锁交付类型、模型/平台、时长/画幅、参考职责、人物/产品/空间事实、准确台词/文字及禁项。已给的信息不重复问；只缺真正改变任务的信息才问。
 2. 选一个主任务：剧情、产品证据、表演、环境奇观、动作运镜或返修。路由是并列勾选项，不得命中第一项后停止，也不为“可能有用”加载全部模块。
-3. 写/重写Prompt必读 `references/prompt-compilation-and-consistency.md`、`references/spatial-handoff-lock.md` 与 `references/output-contract-and-validation.md`；每次先过空间接力锁判断，简单单镜可快速通过不增加文字，高风险移动自动启用固定观察走廊。抽象目标先编译，不直接传给模型。两镜以上继续读取镜头、节奏与连续性对应模块；有对白必读声音模块。
+3. 写/重写Prompt必读 `references/prompt-compilation-and-consistency.md`、`references/spatial-handoff-lock.md`、`references/camera-light-quality-baseline.md` 与 `references/output-contract-and-validation.md`；每次先过空间接力锁与 Capture Baseline 判断，简单单镜也不能跳过成像基线，但不因此增加多余逐镜文字；高风险移动自动启用固定观察走廊。抽象目标先编译，不直接传给模型。两镜以上继续读取镜头、节奏与连续性对应模块；有对白必读声音模块。
 4. 每镜执行 Per-Shot Spatial State Compile，并先过 Spatial Handoff Lock：继承全员完成态，明确本镜谁移动、谁原地；跨区域／往返／一动一静时固定高风险运动段的观察方向，抵达后近景保留一个同地地标或受光证据，再选景别、机位与短运镜；把镜尾全员状态交给下一镜。切点和时间预算同步校验，台词可跨镜作声音桥，节奏功能留在后台。
 5. 交付前读 `references/independent-judge.md`。只修失败部分，随后复核前后接续；文字通过不等于成片通过。
 
@@ -31,7 +32,8 @@ description: 把产品Brief、脚本、分镜、故事板、参考视频或成�
 | 任务信号 | 读取模块 |
 |---|---|
 | 新写/重写Prompt、压缩、前后矛盾 | `references/prompt-compilation-and-consistency.md`、`references/spatial-handoff-lock.md`、`references/output-contract-and-validation.md` |
-| 光影/质感明确为主任务或返修目标 | `references/camera-light-quality-baseline.md` |
+| 所有新写/重写视频Prompt | `references/camera-light-quality-baseline.md` 的 Capture Baseline；常驻执行，复杂灯光不自动展开 |
+| 光影/质感/摄影明确为主任务或返修目标 | 在常驻基线上展开 `references/camera-light-quality-baseline.md` 的 Lighting / Advanced 层；必要时再读 `references/cinematography-toolkit.md`、`references/visual-quality-diagnostics.md` |
 | 抽象词、动作不落地、状态升级 | `references/state-change-compiler.md` |
 | 商业任务、产品事实/比例、购买犹豫 | `references/commercial-contract.md`、`references/product-preflight-and-category-routing.md`、`references/decision-driven-ad-creative.md` |
 | 首屏停留、强Hook | `references/golden-3s-hook-engine.md` |
@@ -75,11 +77,11 @@ description: 把产品Brief、脚本、分镜、故事板、参考视频或成�
 - 默认只交规格、必要锁定、逐镜时间轴、简短声音。准确对白放实际时间窗一次；不再附镜头流、产品露出表、情绪曲线和一致性复述。
 - 表情用短动作链：“停手—复核—抬头”“缩肩—放松—轻呼气”；细演或特写任务才展开表情库。
 - 主体和动作清楚后，只补当前明确风险的一条最短真实性修正；没有风险就不加。必要接触和状态因果不能以“补丁只能一条”为由删掉。
-- 光影明确影响当前画面时读 `references/camera-light-quality-baseline.md`。设备名必须有可见职责，不堆ARRI、IMAX、UE5、8K等词包；主体未写清前不加光学装饰。
+- 每次写/重写Prompt都执行 `references/camera-light-quality-baseline.md` 的常驻 Capture Baseline，并把它压成一条最短全局成像句或必要局部结果；不逐镜重复。复杂光影／设备／光学只有明确影响当前画面时才展开。设备名必须有可见职责，不堆ARRI、IMAX、UE5、8K等词包；主体未写清前不加光学装饰。
 - BGM按剧情选择可听的节奏、音色与进入/抽空/收束节点；口播时压低，不替画面制造情绪。无配乐要求优先；无声片不擅自加声音。
 
 ## 4. 输出与维护
 
 默认一版最佳成品；用户只要Prompt就不外显分析。指定格式优先，但仍去重并执行容量检查。局部返修保留未失败的事实与设计，不重做整片。
 
-维护先找规则归属，修改旧模板与冲突示例，禁止只追加口号。运行现有结构检查与相关 evaluation-cases；基础空间编译回归见 `evaluation-cases/per-shot-spatial-state-regression.md`，固定观察走廊／运动所有权／到达锚点回归见 `evaluation-cases/spatial-handoff-lock-regression.md`，AIGC原生视觉事件／镜头耦合／自然对白回归见 `evaluation-cases/aigc-dialogue-camera-regression.md`。未实际生成，不宣称成片效果已经验证。
+维护先找规则归属，修改旧模板与冲突示例，禁止只追加口号。运行现有结构检查与相关 evaluation-cases；基础空间编译回归见 `evaluation-cases/per-shot-spatial-state-regression.md`，固定观察走廊／运动所有权／到达锚点回归见 `evaluation-cases/spatial-handoff-lock-regression.md`，常驻摄影机／成像基线回归见 `evaluation-cases/lighting-and-format-cases.md`，AIGC原生视觉事件／镜头耦合／自然对白回归见 `evaluation-cases/aigc-dialogue-camera-regression.md`。未实际生成，不宣称成片效果已经验证。
