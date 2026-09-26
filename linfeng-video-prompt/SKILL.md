@@ -13,7 +13,7 @@ description: 把产品Brief、脚本、分镜、故事板、参考视频或成�
 - **画面优先**：主体/产品、事件、动作与当镜空间关系占主体；空间是逐镜编译前置变量，不是尾部补充。音色每个说话者默认一句，光影、配乐和真实性描述不淹没主体。声音或摄影为本轮主任务时才展开。
 - **先保护 Hero Idea，再修执行**：先确定本段最值得被记住的一个可见事件／镜头关系／表演瞬间／产品证据，再用空间、物理、容量、成像和模型边界去修它的实现方式。风险不等于无效；不得因为“更稳”就默认把甩镜、遮挡揭示、极端景别、非常规观察位置、突然空间展开等有明确职责的设计降级成固定中景／普通慢推。只有事实/合规、已知模型能力、真实时长容量、素材证据或物理因果确实无法成立时，才最小幅度降级，并保留原设计的核心信息效果。简单任务不为追求“创意”强塞奇观。
 - **每个明确分镜都有简短摄影机描述**，含快切组内每个子镜。以“景别＋机位＋运镜”短语融入动作句，不解释为什么动或不动。摄影机必须和画面事件耦合：动作／视线／遮挡／形变触发镜头，镜头结束时必须新增可见信息；位移、视线转移、空间揭示分别选跟移、摇镜、后拉，形变传播优先让镜头跟随变化前沿。逐镜同时快速判断画面是否存在可利用的真实近景层；尤其在地点变化、大空间展开或新区域揭示时，若门框、人物肩背、柱体、植物、家具、车辆、布料等本来就在场景中，优先让摄影机借其产生近远不同速度的视差或短暂遮挡，再由遮挡边缘移开揭示新信息并在可读位置收稳。没有合理前景就不强加。最终只把这层关系压成对应分镜动作句中的一小段，不另列“前景／构图”栏目。固定机位用于必须让观众连续看清异常过程的画面。
-- **摄影机与成像基线是常驻能力**：任何新写／重写视频 Prompt 都必须读取并执行 `references/camera-light-quality-baseline.md` 的 Capture Baseline。默认保证真实摄影透视、与速度相符的自然运动模糊、不过锐的主体细节、真实皮肤／材质受光、亮部与暗部结构及服务信息层级的景深；只用一条最短全局成像句或必要局部结果下发，不机械逐镜复述。复杂布光、设备与高级光学仍按需展开；用户明确的手机、DV、监控、实验失焦等媒介优先。
+- **摄影机与视觉成像基线是常驻能力**：任何新写／重写视频 Prompt 都必须读取并执行 `references/camera-light-quality-baseline.md` 的 Capture Baseline。后台每次固定完成同一次 **Visual Surface Pass**：真实摄影透视与运动模糊 → 人物/产品/场景材质差异 → 光与材质的局部受光/高光反馈 → 颜色分工与远近层级 → 景深随信息变化 → 构图/前中后景是否帮助当前信息。五项视觉判断每次调用都必须经过，但不是五个输出栏目；最终只把真正改变画面的最短可见词组融进总控或对应分镜，例如“皮肤保留轻微油脂高光”“玻璃杯沿冷亮反射”“远景偏冷降对比”“前景门框虚化掠过”。禁止逐镜复述完整套餐。复杂布光、设备与高级光学仍按需展开；用户明确的手机、DV、监控、实验失焦等媒介优先。
 - **默认多镜视频平均约1–3秒一切**，在动作接点、新信息或反应处切，不等长切。相邻非特写镜头按相隔景别衔接；每次切镜改变观察角度大于30°，留在同一轴线侧。特写只豁免相隔景别要求，不豁免机位与连续性。切镜细则归 `references/director-information-control.md`。
 - **剧情对白不是关键词队列**：有角色对话时，大多数台词保持自然口语意群，并承接上一句或上一动作；1–2词反应只作少量节拍，不能连续用“Really? / Fine. / Sure.”这类碎片凑节奏。时长冲突先删重复意思／重复视觉，不把全部句子削成单词。
 - **连续与容量是交付条件**：每镜先继承上一镜的人物位置/朝向、道具归属/接触、目标位置、相机轴侧/观察方向和动作完成态，再设计动作及机位；逐段检查动作和台词所需时间，两人对白合并计算，预留交接与结尾约1秒收束。超载先精简或重排，不能靠“高速、流利”强塞。明确的一镜到底、固定镜头、慢片或其他用户约定优先，不强制套默认切镜密度。
@@ -24,7 +24,7 @@ description: 把产品Brief、脚本、分镜、故事板、参考视频或成�
 
 1. 锁交付类型、模型/平台、时长/画幅、参考职责、人物/产品/空间事实、准确台词/文字及禁项。已给的信息不重复问；只缺真正改变任务的信息才问。
 2. 选一个主任务：剧情、产品证据、表演、环境奇观、动作运镜或返修。先确定一个 **Hero Idea / 主记忆点**：它可以是大胆镜头，也可以是安静但独特的表演、关系揭示、构图、产品证据或声音落点；不要求每条视频都有奇观。Creative Pass 先把这个核心设计做清楚，再进入规则校验。路由是并列勾选项，不得命中第一项后停止，也不为“可能有用”加载全部模块。
-3. 写/重写Prompt必读 `references/prompt-compilation-and-consistency.md`、`references/spatial-handoff-lock.md`、`references/camera-light-quality-baseline.md` 与 `references/output-contract-and-validation.md`；每次先过空间接力锁与 Capture Baseline 判断，简单单镜也不能跳过成像基线，但不因此增加多余逐镜文字；高风险移动自动启用固定观察走廊。抽象目标先编译，不直接传给模型。两镜以上继续读取镜头、节奏与连续性对应模块；有对白必读声音模块。
+3. 写/重写Prompt必读 `references/prompt-compilation-and-consistency.md`、`references/spatial-handoff-lock.md`、`references/camera-light-quality-baseline.md` 与 `references/output-contract-and-validation.md`；每次先过空间接力锁与 Capture Baseline / Visual Surface Pass，简单单镜也不能跳过材质、受光、色彩、景深与构图判断，但这些判断必须被压缩进既有提示词语句，不因此增加五套栏目或逐镜画质套餐；高风险移动自动启用固定观察走廊。抽象目标先编译，不直接传给模型。两镜以上继续读取镜头、节奏与连续性对应模块；有对白必读声音模块。
 4. 进入 Execution Gate 后，每镜执行 Per-Shot Spatial State Compile，并先过 Spatial Handoff Lock：继承全员完成态，明确本镜谁移动、谁原地；跨区域／往返／一动一静时固定高风险运动段的观察方向，抵达后近景保留一个同地地标或受光证据，再选景别、机位与短运镜，并顺手检查空间层次是否能自然参与镜头运动；大场景变化若存在合理近景层，优先把“近景视差／短遮挡 → 新空间揭示 → 落幅”并进该镜正文。把镜尾全员状态交给下一镜。**发现风险时先修路径、观察位置、切点、动作拆分、遮挡或时间分配，不先替换 Hero Idea。** 切点和时间预算同步校验，台词可跨镜作声音桥，节奏功能留在后台。
 5. Prompt 编译时执行 `references/prompt-compilation-and-consistency.md` 的 Creative Preservation Gate：规则只保留必要控制，不能把已成立的主记忆点压成通用安全镜头。交付前读 `references/independent-judge.md`，同时检查技术失败和创意侵蚀；只修失败部分，随后复核前后接续。文字通过不等于成片通过。
 
@@ -33,7 +33,7 @@ description: 把产品Brief、脚本、分镜、故事板、参考视频或成�
 | 任务信号 | 读取模块 |
 |---|---|
 | 新写/重写Prompt、压缩、前后矛盾 | `references/prompt-compilation-and-consistency.md`、`references/spatial-handoff-lock.md`、`references/output-contract-and-validation.md` |
-| 所有新写/重写视频Prompt | `references/camera-light-quality-baseline.md` 的 Capture Baseline；常驻执行，复杂灯光不自动展开 |
+| 所有新写/重写视频Prompt | `references/camera-light-quality-baseline.md` 的 Capture Baseline / Visual Surface Pass；常驻检查材质差异、光×材质响应、颜色层级、景深信息层级与构图空间层次，最终融合输出；复杂灯光不自动展开 |
 | 光影/质感/摄影明确为主任务或返修目标 | 在常驻基线上展开 `references/camera-light-quality-baseline.md` 的 Lighting / Advanced 层；必要时再读 `references/cinematography-toolkit.md`、`references/visual-quality-diagnostics.md` |
 | 抽象词、动作不落地、状态升级 | `references/state-change-compiler.md` |
 | 商业任务、产品事实/比例、购买犹豫 | `references/commercial-contract.md`、`references/product-preflight-and-category-routing.md`、`references/decision-driven-ad-creative.md` |
@@ -78,7 +78,7 @@ description: 把产品Brief、脚本、分镜、故事板、参考视频或成�
 - 默认只交规格、必要锁定、逐镜时间轴、简短声音。准确对白放实际时间窗一次；不再附镜头流、产品露出表、情绪曲线和一致性复述。
 - 表情用短动作链：“停手—复核—抬头”“缩肩—放松—轻呼气”；细演或特写任务才展开表情库。
 - 主体和动作清楚后，只补当前明确风险的一条最短真实性修正；没有风险就不加。必要接触和状态因果不能以“补丁只能一条”为由删掉。
-- 每次写/重写Prompt都执行 `references/camera-light-quality-baseline.md` 的常驻 Capture Baseline，并把它压成一条最短全局成像句或必要局部结果；不逐镜重复。复杂光影／设备／光学只有明确影响当前画面时才展开。设备名必须有可见职责，不堆ARRI、IMAX、UE5、8K等词包；主体未写清前不加光学装饰。
+- 每次写/重写Prompt都执行 `references/camera-light-quality-baseline.md` 的常驻 Capture Baseline / Visual Surface Pass：材质、受光、颜色、景深、构图每次都判断，但最终只留下当前画面真正需要的最短词组，融合进总控或对应镜头，不单列“材质层／光层／色层／景深层／构图层”，也不逐镜重复套餐。复杂光影／设备／光学只有明确影响当前画面时才展开。设备名必须有可见职责，不堆ARRI、IMAX、UE5、8K等词包；主体未写清前不加光学装饰。
 - BGM按剧情选择可听的节奏、音色与进入/抽空/收束节点；口播时压低，不替画面制造情绪。无配乐要求优先；无声片不擅自加声音。
 
 ## 4. 输出与维护
