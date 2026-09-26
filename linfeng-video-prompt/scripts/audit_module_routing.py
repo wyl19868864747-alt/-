@@ -62,8 +62,11 @@ def main() -> int:
             "capture baseline is not in the mandatory write/rewrite Prompt read chain"
         )
 
-    if "摄影机与成像基线是常驻能力" not in skill_text:
-        errors.append("always-on capture baseline invariant is missing from SKILL.md")
+    if "摄影机与视觉成像基线是常驻能力" not in skill_text:
+        errors.append("always-on capture / visual surface baseline invariant is missing from SKILL.md")
+
+    if "Visual Surface Pass" not in skill_text:
+        errors.append("Visual Surface Pass is missing from SKILL.md always-on chain")
 
     if "先保护 Hero Idea，再修执行" not in skill_text:
         errors.append("creative preservation invariant is missing from SKILL.md")
@@ -71,10 +74,14 @@ def main() -> int:
     if "Creative Pass" not in skill_text or "Execution Gate" not in skill_text:
         errors.append("creative-pass-before-execution-gate workflow is missing from SKILL.md")
 
-    if "Always-on Capture Baseline" not in capture_text or "每次必过" not in capture_text:
+    if "Always-on Capture + Visual Surface Pass" not in capture_text or "每次必过" not in capture_text:
         errors.append(
-            "camera-light-quality-baseline.md no longer declares the always-on capture layer"
+            "camera-light-quality-baseline.md no longer declares the always-on capture / visual surface layer"
         )
+
+    for token in ["材质差异", "光×材质", "颜色层级", "景深信息层级", "构图/前中后景"]:
+        if token not in capture_text:
+            errors.append(f"visual surface invariant missing from capture baseline: {token}")
 
     if errors:
         print("Routing audit failed:")
