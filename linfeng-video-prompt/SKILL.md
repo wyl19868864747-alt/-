@@ -9,7 +9,8 @@ description: 把产品Brief、脚本、分镜、故事板、参考视频或成�
 
 ## 1. 不可漏的执行约定
 
-- **最终模型指令不出现结果评价词**：包括“极强抓眼、高能、高级感、电影感、有感染力、热门感、突出情绪、信息推进快”。标题、总控、分镜、声音块同样检查；先设计具体事件、动作、切点和声音变化，再删掉评价。可观察的物理完成态必须保留，例如“泡沫被水冲掉、杯底落桌”；不能误删为“结果词”。
+- **结果评价词与风格总控分层**：最终模型指令不把“高能、高级感、电影感、有感染力、热门感”等评价词当作独立动作指令；但商业广告必须保留简洁的【广告类型】【整体风格调性】【视频节奏特征】作为全片导演总控。风格词只作方向锚点，必须由场景、材质、色彩、光线行为、摄影/媒介质感和声音语法具体支撑；节奏词必须落到全片能量/情绪变化、加速/停顿/爆发/释放与声音变化。不得只堆形容词，也不得把有效的风格定位词一律删掉。
+- **广告类型与脚本类型分开**：广告类型说明这是什么商业传播（如高端香氛品牌片、时尚广告、美妆产品美学、食品感官广告、性能证明、生活方式广告、原生UGC）；脚本类型说明用什么表达机制（如产品质感、使用仪式、性能演示、人物微叙事、品牌宣言、视觉奇观）。TVC是视频广告形式，不等于广告类型。用户已给出完整脚本时不重做分类，只准确归类。
 - **画面优先**：主体/产品、事件、动作与当镜空间关系占主体；空间是逐镜编译前置变量，不是尾部补充。音色每个说话者默认一句，光影、配乐和真实性描述不淹没主体。声音或摄影为本轮主任务时才展开。
 - **先保护 Hero Idea，再修执行**：先确定本段最值得被记住的一个可见事件／镜头关系／表演瞬间／产品证据，再用空间、物理、容量、成像和模型边界去修它的实现方式。风险不等于无效；不得因为“更稳”就默认把甩镜、遮挡揭示、极端景别、非常规观察位置、突然空间展开等有明确职责的设计降级成固定中景／普通慢推。只有事实/合规、已知模型能力、真实时长容量、素材证据或物理因果确实无法成立时，才最小幅度降级，并保留原设计的核心信息效果。简单任务不为追求“创意”强塞奇观。
 - **每个明确分镜都有简短摄影机描述**，含快切组内每个子镜。以“景别＋机位＋运镜”短语融入动作句，不解释为什么动或不动。摄影机必须和画面事件耦合：动作／视线／遮挡／形变触发镜头，镜头结束时必须新增可见信息；位移、视线转移、空间揭示分别选跟移、摇镜、后拉，形变传播优先让镜头跟随变化前沿。逐镜同时快速判断画面是否存在可利用的真实近景层；尤其在地点变化、大空间展开或新区域揭示时，若门框、人物肩背、柱体、植物、家具、车辆、布料等本来就在场景中，优先让摄影机借其产生近远不同速度的视差或短暂遮挡，再由遮挡边缘移开揭示新信息并在可读位置收稳。没有合理前景就不强加。最终只把这层关系压成对应分镜动作句中的一小段，不另列“前景／构图”栏目。固定机位用于必须让观众连续看清异常过程的画面。
@@ -20,11 +21,11 @@ description: 把产品Brief、脚本、分镜、故事板、参考视频或成�
 
 ## 2. 工作链路
 
-`锁事实 → 确定 Hero Idea / 主记忆点 → Creative Pass 设计事件与镜头关系 → Execution Gate 校验时长/素材/空间物理 → 逐镜继承完成态 → 景别/机位/短运镜 → 完成态交接 → Prompt压缩 → 逐对验收`
+`锁事实 → 确定商业目标/广告类型（商业任务） → 定义整体风格DNA与视频节奏特征（商业任务） → 确定 Hero Idea / 主记忆点 → Creative Pass 设计事件与镜头关系 → Execution Gate 校验时长/素材/空间物理 → 逐镜继承完成态 → 景别/机位/短运镜 → 完成态交接 → Prompt压缩 → 逐对验收`
 
 1. 锁交付类型、模型/平台、时长/画幅、参考职责、人物/产品/空间事实、准确台词/文字及禁项。已给的信息不重复问；只缺真正改变任务的信息才问。
-2. 选一个主任务：剧情、产品证据、表演、环境奇观、动作运镜或返修。先确定一个 **Hero Idea / 主记忆点**：它可以是大胆镜头，也可以是安静但独特的表演、关系揭示、构图、产品证据或声音落点；不要求每条视频都有奇观。Creative Pass 先把这个核心设计做清楚，再进入规则校验。路由是并列勾选项，不得命中第一项后停止，也不为“可能有用”加载全部模块。
-3. 写/重写Prompt必读 `references/prompt-compilation-and-consistency.md`、`references/spatial-handoff-lock.md`、`references/camera-light-quality-baseline.md` 与 `references/output-contract-and-validation.md`；每次先过空间接力锁与 Capture Baseline / Visual Surface Pass，简单单镜也不能跳过材质、受光、色彩、景深与构图判断，但这些判断必须被压缩进既有提示词语句，不因此增加五套栏目或逐镜画质套餐；高风险移动自动启用固定观察走廊。抽象目标先编译，不直接传给模型。两镜以上继续读取镜头、节奏与连续性对应模块；有对白必读声音模块。
+2. 选一个主任务：剧情、产品证据、表演、环境奇观、动作运镜或返修。商业任务先区分广告类型与脚本类型，再确定整体风格调性和全片视频节奏特征；这三项是导演总控，不是分镜摘要。随后确定一个 **Hero Idea / 主记忆点**：它可以是大胆镜头，也可以是安静但独特的表演、关系揭示、构图、产品证据或声音落点；不要求每条视频都有奇观。Creative Pass 先把这个核心设计做清楚，再进入规则校验。路由是并列勾选项，不得命中第一项后停止，也不为“可能有用”加载全部模块。
+3. 写/重写Prompt必读 prompt-compilation-and-consistency.md、spatial-handoff-lock.md、camera-light-quality-baseline.md 与 output-contract-and-validation.md；商业广告任何时长都读取 direction-routing.md 与 rhythm-function-control.md，先建立广告类型、整体风格调性和全片视频节奏特征；完整创意再读取 tvc-full-workflow.md。每次先过空间接力锁与 Capture Baseline / Visual Surface Pass，简单单镜也不能跳过材质、受光、色彩、景深与构图判断，但这些判断必须被压缩进既有提示词语句，不因此增加五套栏目或逐镜画质套餐；高风险移动自动启用固定观察走廊。抽象目标先编译，不直接传给模型。两镜以上继续读取镜头、节奏与连续性对应模块；有对白必读声音模块。
 4. 进入 Execution Gate 后，每镜执行 Per-Shot Spatial State Compile，并先过 Spatial Handoff Lock：继承全员完成态，明确本镜谁移动、谁原地；跨区域／往返／一动一静时固定高风险运动段的观察方向，抵达后近景保留一个同地地标或受光证据，再选景别、机位与短运镜，并顺手检查空间层次是否能自然参与镜头运动；大场景变化若存在合理近景层，优先把“近景视差／短遮挡 → 新空间揭示 → 落幅”并进该镜正文。把镜尾全员状态交给下一镜。**发现风险时先修路径、观察位置、切点、动作拆分、遮挡或时间分配，不先替换 Hero Idea。** 切点和时间预算同步校验，台词可跨镜作声音桥，节奏功能留在后台。
 5. Prompt 编译时执行 `references/prompt-compilation-and-consistency.md` 的 Creative Preservation Gate：规则只保留必要控制，不能把已成立的主记忆点压成通用安全镜头。交付前读 `references/independent-judge.md`，同时检查技术失败和创意侵蚀；只修失败部分，随后复核前后接续。文字通过不等于成片通过。
 
@@ -36,7 +37,9 @@ description: 把产品Brief、脚本、分镜、故事板、参考视频或成�
 | 所有新写/重写视频Prompt | `references/camera-light-quality-baseline.md` 的 Capture Baseline / Visual Surface Pass；常驻检查材质差异、光×材质响应、颜色层级、景深信息层级与构图空间层次，最终融合输出；复杂灯光不自动展开 |
 | 光影/质感/摄影明确为主任务或返修目标 | 在常驻基线上展开 `references/camera-light-quality-baseline.md` 的 Lighting / Advanced 层；必要时再读 `references/cinematography-toolkit.md`、`references/visual-quality-diagnostics.md` |
 | 抽象词、动作不落地、状态升级 | `references/state-change-compiler.md` |
-| 商业任务、产品事实/比例、购买犹豫 | `references/commercial-contract.md`、`references/product-preflight-and-category-routing.md`、`references/decision-driven-ad-creative.md` |
+| 商业任务、广告类型、整体风格调性、产品事实/比例、购买犹豫 | `references/direction-routing.md`、`references/commercial-contract.md`、`references/product-preflight-and-category-routing.md`、`references/decision-driven-ad-creative.md` |
+| 商业广告全片节奏特征、情绪曲线、转折/爆发/停留/释放 | `references/rhythm-function-control.md`；30秒及以上叠加 `references/tvc-runtime-control.md` 或 `references/longform-rhythm-and-retake.md` |
+| TVC完整创意、品牌世界与视觉定调 | `references/tvc-full-workflow.md` |
 | 首屏停留、强Hook | `references/golden-3s-hook-engine.md` |
 | 多镜、连续节拍、参考反推、节奏调性/呼吸 | `references/director-information-control.md`、`references/rhythm-function-control.md`、`references/continuity.md` |
 | 剧情对话、关系戏、人物目的/认知变化 | `references/drama-performance-control.md` |
@@ -74,8 +77,8 @@ description: 把产品Brief、脚本、分镜、故事板、参考视频或成�
 
 - 全局只定义一次主体/产品/参考、必要固定拓扑和持续声音；后台每镜运行空间接力锁，动态站位、朝向、运动者／静止者、接触和相机关系只把影响本镜的最小继承信息编入各镜，不另附空间位置锁。没有参考图时不假称已锁定参考；不用旧项目品牌、人物或价格填空。
 - 每镜用最短完整句交代“谁在何处做什么、怎样变化、镜头怎样跟进”。关键交互保留接近、接触、响应和完成态，不逐指逐厘米展开；若某个非常规镜头／事件承担 Hero Idea，压缩时必须保留它的触发、核心变化和落幅，不能压成泛化的“镜头跟随/缓慢推进”。
-- 开场总控可省略；保留时只用一句交代片型、媒介和必要成像特征，不堆评价或镜头清单。具体事件直接进时间轴。
-- 默认只交规格、必要锁定、逐镜时间轴、简短声音。准确对白放实际时间窗一次；不再附镜头流、产品露出表、情绪曲线和一致性复述。
+- 商业广告必须输出【广告类型】【整体风格调性】【视频节奏特征】三项全片总控；非商业任务不强制套用。三项各自只写一条精炼信息：广告类型说明商业类别，风格调性定义审美/情绪/视觉世界，视频节奏特征概括全片情绪与能量曲线、关键转折、爆发、停留、释放和收束，不写逐镜动作清单。
+- 默认只交规格、商业任务的三项总控、必要锁定、逐镜时间轴、简短声音。准确对白放实际时间窗一次；不再附重复的镜头流、产品露出表或第二份情绪曲线；全片节奏只在【视频节奏特征】出现一次，逐镜只写该镜动作、切点和局部声音变化。
 - 表情用短动作链：“停手—复核—抬头”“缩肩—放松—轻呼气”；细演或特写任务才展开表情库。
 - 主体和动作清楚后，只补当前明确风险的一条最短真实性修正；没有风险就不加。必要接触和状态因果不能以“补丁只能一条”为由删掉。
 - 每次写/重写Prompt都执行 `references/camera-light-quality-baseline.md` 的常驻 Capture Baseline / Visual Surface Pass：材质、受光、颜色、景深、构图每次都判断，但最终只留下当前画面真正需要的最短词组，融合进总控或对应镜头，不单列“材质层／光层／色层／景深层／构图层”，也不逐镜重复套餐。复杂光影／设备／光学只有明确影响当前画面时才展开。设备名必须有可见职责，不堆ARRI、IMAX、UE5、8K等词包；主体未写清前不加光学装饰。
@@ -85,4 +88,4 @@ description: 把产品Brief、脚本、分镜、故事板、参考视频或成�
 
 默认一版最佳成品；用户只要Prompt就不外显分析。指定格式优先，但仍去重并执行容量检查。局部返修保留未失败的事实与设计，不重做整片。
 
-维护先找规则归属，修改旧模板与冲突示例，禁止只追加口号。运行现有结构检查与相关 evaluation-cases；基础空间编译回归见 `evaluation-cases/per-shot-spatial-state-regression.md`，固定观察走廊／运动所有权／到达锚点回归见 `evaluation-cases/spatial-handoff-lock-regression.md`，常驻摄影机／成像基线回归见 `evaluation-cases/lighting-and-format-cases.md`，Hero Idea 保护与“风险≠自动降级”回归见 `evaluation-cases/director-and-quality-cases.md`，AIGC原生视觉事件／镜头耦合／自然对白回归见 `evaluation-cases/aigc-dialogue-camera-regression.md`。未实际生成，不宣称成片效果已经验证。
+维护先找规则归属，修改旧模板与冲突示例，禁止只追加口号。运行现有结构检查与相关 evaluation-cases；基础空间编译回归见 `evaluation-cases/per-shot-spatial-state-regression.md`，固定观察走廊／运动所有权／到达锚点回归见 `evaluation-cases/spatial-handoff-lock-regression.md`，常驻摄影机／成像基线回归见 `evaluation-cases/lighting-and-format-cases.md`，Hero Idea 保护与“风险≠自动降级”回归见 `evaluation-cases/director-and-quality-cases.md`，广告类型/风格调性/全片节奏特征回归见 `evaluation-cases/advertising-style-rhythm-profile-cases.md`，AIGC原生视觉事件／镜头耦合／自然对白回归见 `evaluation-cases/aigc-dialogue-camera-regression.md`。未实际生成，不宣称成片效果已经验证。
